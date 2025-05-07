@@ -1,9 +1,7 @@
 ﻿using Services;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityScript.Scripting.Pipeline;
 
 public class LoadingManager : MonoBehaviour
 {

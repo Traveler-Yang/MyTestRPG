@@ -63,8 +63,8 @@ public class UICharacterSelect : MonoBehaviour {
                 int idx = i;
                 button.onClick.AddListener(() =>//给按钮组件上的事件加上一个点击事件
                 {
-                    OnSelectCharacter(idx);
-                    Onclass(charInfo.info.Class);
+                    OnSelectCharacter(idx, charInfo.info.Class);
+                    //Onclass(charInfo.info.Class);
                 });
 
                 uiChars.Add(go);//给选择列表中添加一个对象
@@ -73,19 +73,25 @@ public class UICharacterSelect : MonoBehaviour {
         }
     }
 
-    public void OnSelectCharacter(int idx)
+    public void OnSelectCharacter(int idx, CharacterClass charClass)
     {
         this.selectCharacterIdx = idx;
         var cha = User.Instance.Info.Player.Characters[idx];
         Debug.LogFormat("Select Char:[{0}]{1}[{2}]", cha.Id, cha.Name, cha.Class);
         User.Instance.CurrentCharacter = cha;
-        characterView.CurrectCharacter = idx;
-        
+        characterView.CurrectCharacter = (int)charClass;
+
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
         {
             UICharInfo ci = this.uiChars[i].GetComponent<UICharInfo>();
             ci.Selected = idx == i;
         }
+    }
+    public void Onclass(CharacterClass charClass)
+    {
+        this.charClass = (CharacterClass)charClass;
+
+        characterView.CurrectCharacter = (int)charClass;
     }
 
     public void OnCharacterCreate()
@@ -118,7 +124,7 @@ public class UICharacterSelect : MonoBehaviour {
     {
         this.charClass = (CharacterClass)charClass;
 
-        characterView.CurrectCharacter = charClass - 1;
+        characterView.CurrectCharacter = charClass;
 
         for (int i = 0; i < 3; i++)
         {
@@ -127,12 +133,6 @@ public class UICharacterSelect : MonoBehaviour {
 
         descs.text = DataManager.Instance.Characters[charClass].Description;//将职业描述赋值到UI
 
-    }
-    public void Onclass(CharacterClass charClass)
-    {
-        this.charClass = (CharacterClass)charClass;
-
-        characterView.CurrectCharacter = (int)charClass;
     }
     /// <summary>
     /// 进入游戏

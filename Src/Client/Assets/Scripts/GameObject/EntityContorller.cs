@@ -36,7 +36,12 @@ public class EntityContorller : MonoBehaviour {
             rb.useGravity = false;
     }
 
-	void UpdateTransform()
+    private void Update()
+    {
+		anim.SetFloat("Walk",rb.velocity.z);
+    }
+
+    void UpdateTransform()
 	{
 		this.position = GameObjectTool.LogicToWorld(entity.position);
 		this.direction = GameObjectTool.LogicToWorld(entity.direction);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Models;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,9 +32,9 @@ public class UICharacterView : MonoBehaviour {
 
 	void UpdateCharacter()
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < characters.Length; i++)
 		{
-			characters[i].SetActive(i == currectCharacter);
+			characters[i].SetActive((int)DataManager.Instance.Characters[i + 1].Class == currectCharacter);
 		}
 	}
 }
