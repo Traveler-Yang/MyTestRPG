@@ -13,6 +13,8 @@ namespace Services
 
         public UnityAction<Character> OnCharacterEnter;
 
+        public UnityAction<Character> OncharacterLeave;
+
         public CharacterManager()
         {
 
@@ -55,6 +57,16 @@ namespace Services
         {
             Debug.LogFormat("RemoveCharacter:{0}",characterId);
             this.Characters.Remove(characterId);
+
+            if (this.Characters.ContainsKey(characterId))
+            {
+
+                if (OncharacterLeave != null)
+                {
+                    OncharacterLeave(this.Characters[characterId]);
+                }
+                this.Characters.Remove(characterId);
+            }
         }
     }
 }

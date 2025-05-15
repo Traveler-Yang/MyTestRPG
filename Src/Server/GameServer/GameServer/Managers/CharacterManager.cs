@@ -43,7 +43,7 @@ namespace GameServer.Managers
         public Character AddCharacter(TCharacter cha)
         {
             Character character = new Character(CharacterType.Player, cha);
-            this.Characters[cha.ID] = character;
+            this.Characters[character.entityId] = character;
             return character;
         }
         /// <summary>

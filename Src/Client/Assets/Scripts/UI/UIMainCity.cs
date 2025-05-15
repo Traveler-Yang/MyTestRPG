@@ -24,4 +24,12 @@ public class UIMainCity : MonoBehaviour {
 	void Update () {
 		
 	}
+	/// <summary>
+	/// 返回角色选择按钮
+	/// </summary>
+	public void BackToCharSelect()
+	{
+		SceneManager.Instance.LoadScene("CharSelect");//切换场景为角色选择
+		Services.UserService.Instance.SendGameLeave();//发送角色离开的消息到服务器
+	}
 }

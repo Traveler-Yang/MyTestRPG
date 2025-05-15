@@ -27,13 +27,13 @@ public class LoadingManager : MonoBehaviour
 		MapService.Instance.Init();
 		UserService.Instance.Init();
 
-        for (float i = 30; i <= 100;)
+        for (float i = 0.01f; i <= 1;)
         {
-			i += Random.Range(1f, 1.5f);
+			i += Random.Range(0.001f, 0.0003f);
             loadingSlider.value = i;
-            loadingNumberText.text = loadingSlider.value.ToString();
+			loadingNumberText.text = string.Format("{0} %", (int)(loadingSlider.value * 100));
 			yield return new WaitForEndOfFrame();
-            if (loadingSlider.value >= 100)
+            if (loadingSlider.value >= 1)
             {
                 UILoadingPanel.SetActive(false);
                 UILoaginPanel.SetActive(true);

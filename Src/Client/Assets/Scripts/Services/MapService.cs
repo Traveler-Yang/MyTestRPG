@@ -61,7 +61,14 @@ namespace Services
         /// <param name="response"></param>
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-
+            Debug.LogFormat("OnMapCharacterLeave: characterID:{0}", response.characterId);//打印哪个角色离开地图的日志
+            //判断从服务端发送过来的要离开的角色，是不是我自己
+            //如果不是我自己，则移除那个角色
+            //如果是我自己，则清除所有角色
+            if (response.characterId != User.Instance.CurrentCharacter.Id)
+                CharacterManager.Instance.RemoveCharacter(response.characterId);
+            else
+                CharacterManager.Instance.Clear();
         }
 
         private void EnterMap(int mapId)
@@ -69,6 +76,7 @@ namespace Services
             if (DataManager.Instance.Maps.ContainsKey(mapId))
             {
                 MapDefine map = DataManager.Instance.Maps[mapId];
+                User.Instance.CurrentMapData = map;//在加载地图前，将地图资源赋值给map
                 SceneManager.Instance.LoadScene(map.Resource);
             }
             else

@@ -25,7 +25,10 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCreateCharacter);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameEnterRequest>(this.OnGameEnter);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnGameLeave);
         }
+
+
         /// <summary>
         /// 接收注册账号
         /// </summary>
@@ -164,6 +167,29 @@ namespace GameServer.Services
             sender.SendData(data, 0, data.Length);
             sender.Session.Character = character;//一旦进入游戏，就会将选择的指定角色 赋值给 会话对象
             MapManager.Instance[dbchar.MapID].CharacterEnter(sender, character);//2.让角色进入地图
+        }
+        /// <summary>
+        /// 接收游戏退出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="message"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void OnGameLeave(NetConnection<NetSession> sender, UserGameLeaveRequest request)
+        {
+            Character character = sender.Session.Character;//从客户端传过来的角色信息
+            Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
+
+            CharacterManager.Instance.RemoveCharacter(character.Id);//移除从客户端传送过来的角色
+            MapManager.Instance[character.Info.mapId].CharacterLeave(character.Info);
+
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.gameLeave = new UserGameLeaveResponse();
+            message.Response.gameLeave.Result = Result.Success;//得到结果
+            message.Response.gameLeave.Errormsg = "None";//错误为空
+
+            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
+            sender.SendData(data, 0, data.Length);
         }
     }
 }

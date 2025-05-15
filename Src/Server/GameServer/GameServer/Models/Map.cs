@@ -67,6 +67,7 @@ namespace GameServer.Models
             foreach (var kv in this.MapCharacters)
             {
                 message.Response.mapCharacterEnter.Characters.Add(kv.Value.character.Info);
+                //进入地图通知玩家
                 this.SendCharacterEnterMap(kv.Value.connection, character.Info);
             }
 
@@ -76,6 +77,26 @@ namespace GameServer.Models
             conn.SendData(data, 0, data.Length);
         }
 
+        /// <summary>
+        /// 角色离开
+        /// </summary>
+        /// <param name="cha"></param>
+        internal void CharacterLeave(NCharacterInfo cha)
+        {
+            Log.InfoFormat("CharacterLeave: Map{0} characterId{1}", this.Define.ID, cha.Id);//打印日志
+            this.MapCharacters.Remove(cha.Id);
+            //角色离开，通知其他所有在线玩家
+            foreach (var kv in this.MapCharacters)
+            {
+                this.SendCharacterLeaveMap(kv.Value.connection, cha);
+            }
+        }
+
+        /// <summary>
+        /// 进入地图通知
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="character"></param>
         void SendCharacterEnterMap(NetConnection<NetSession> conn, NCharacterInfo character)
         {
             NetMessage message = new NetMessage();
@@ -87,5 +108,21 @@ namespace GameServer.Models
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             conn.SendData(data, 0, data.Length);
         }
+        /// <summary>
+        /// 离开地图通知
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="cha"></param>
+        private void SendCharacterLeaveMap(NetConnection<NetSession> conn, NCharacterInfo character)
+        {
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.mapCharacterLeave = new MapCharacterLeaveResponse();
+
+            message.Response.mapCharacterLeave.characterId = character.Id;
+            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
+            conn.SendData(data, 0, data.Length);
+        }
+
     }
 }

@@ -259,6 +259,8 @@ namespace Services
         void OnGameLeave(object sender, UserGameLeaveResponse response)
         {
             Debug.LogFormat("OnGameLeave:{0} [{1}]", response.Result, response.Errormsg);
+
+
         }
 
     }
