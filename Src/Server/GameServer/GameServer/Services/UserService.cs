@@ -131,7 +131,7 @@ namespace GameServer.Services
                 MapPosY = 4000,
                 MapPosZ = 820,
             };
-            DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
+            character = DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();//更新Entities
 
@@ -141,6 +141,17 @@ namespace GameServer.Services
 
             message.Response.createChar.Result = Result.Success;//结果值
             message.Response.createChar.Errormsg = "None";
+
+            //把当前已经有的角色添加到列表中
+            foreach (var c in sender.Session.User.Player.Characters)
+            {
+                NCharacterInfo info = new NCharacterInfo();
+                info.Id = c.ID;
+                info.Name = c.Name;
+                info.Class = (CharacterClass)c.Class;
+                info.Tid = c.TID;
+                message.Response.createChar.Characters.Add(info);
+            }
 
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             sender.SendData(data, 0, data.Length);

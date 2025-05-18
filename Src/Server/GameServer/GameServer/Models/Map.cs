@@ -54,13 +54,14 @@ namespace GameServer.Models
         internal  void CharacterEnter(NetConnection<NetSession> conn, Character character)
         {
             Log.InfoFormat("CharacterEnter: Map:{0} CharacterID:{1}", this.Define.ID, character.Id);
-
+            //将当前地图的id赋值给此角色所在的地图的id
             character.Info.mapId = this.ID;
 
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
-            message.Response.mapCharacterEnter = new  MapCharacterEnterResponse();
+            message.Response.mapCharacterEnter = new MapCharacterEnterResponse();
 
+            //告诉客户端，这个角色成功进入地图了，地图的ID是XX，角色是XX
             message.Response.mapCharacterEnter.mapId = this.Define.ID;//将读取到的地图ID赋值给要进入地图的角色的地图ID
             message.Response.mapCharacterEnter.Characters.Add(character.Info);
             //当角色进入游戏时同时也通知其他角色
@@ -84,12 +85,13 @@ namespace GameServer.Models
         internal void CharacterLeave(NCharacterInfo cha)
         {
             Log.InfoFormat("CharacterLeave: Map{0} characterId{1}", this.Define.ID, cha.Id);//打印日志
-            this.MapCharacters.Remove(cha.Id);
+
             //角色离开，通知其他所有在线玩家
             foreach (var kv in this.MapCharacters)
             {
                 this.SendCharacterLeaveMap(kv.Value.connection, cha);
             }
+            this.MapCharacters.Remove(cha.Id);
         }
 
         /// <summary>

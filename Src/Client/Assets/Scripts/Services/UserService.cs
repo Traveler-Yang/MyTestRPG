@@ -238,6 +238,11 @@ namespace Services
             }
         }
 
+        /// <summary>
+        /// 角色进入地图
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="message"></param>
         private void OnCharacterEnter(object sender, MapCharacterEnterResponse message)
         {
             Debug.LogFormat("OnMapCharacterEnter:{0}", message.mapId);
@@ -247,6 +252,9 @@ namespace Services
             SceneManager.Instance.LoadScene(DataManager.Instance.Maps[message.mapId].Resource);//加载从服务端接收的地图ID并加载场景
            
         }
+        /// <summary>
+        /// 角色离开
+        /// </summary>
         public void SendGameLeave()
         {
             Debug.Log("UserGameLeaveRequest");
@@ -258,9 +266,8 @@ namespace Services
 
         void OnGameLeave(object sender, UserGameLeaveResponse response)
         {
+            MapService.Instance.CurrentMapId = 0;
             Debug.LogFormat("OnGameLeave:{0} [{1}]", response.Result, response.Errormsg);
-
-
         }
 
     }

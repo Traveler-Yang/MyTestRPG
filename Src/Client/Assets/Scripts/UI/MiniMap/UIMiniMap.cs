@@ -30,6 +30,8 @@ public class UIMiniMap : MonoBehaviour {
     }
 	
 	void Update () {
+		if (miniMap.overrideSprite == null || playerTransform == null) return;
+
 		float realWidth = miniMapBoundingBox.bounds.size.x;//地图包围盒的宽度
 		float realHeight = miniMapBoundingBox.bounds.size.y;//地图包围盒的高度
 

@@ -43,7 +43,7 @@ public class PlayerInputContorller : MonoBehaviour {
 
     }
 
-	void FixedUpdate()
+	void Update()
 	{
 		if (character == null)
 			return;

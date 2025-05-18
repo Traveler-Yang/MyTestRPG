@@ -16,7 +16,7 @@ namespace Services
 
         }
 
-        public int CurrentMapId { get; private set; }
+        public int CurrentMapId = 0;
 
         public void Dispose()
         {
