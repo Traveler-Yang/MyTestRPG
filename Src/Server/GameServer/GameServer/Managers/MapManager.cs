@@ -23,6 +23,11 @@ namespace GameServer.Managers
             }
         }
 
+        /// <summary>
+        /// 获取当前地图
+        /// </summary>
+        /// <param name="Key">地图管理器中Maps字典的键值</param>
+        /// <returns></returns>
         public Map this[int Key]
         {
             get 

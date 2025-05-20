@@ -21,6 +21,9 @@ namespace GameServer.Services
 
         public UserService()
         {
+            //注册消息
+            //最后括号中填写的方法是通过客户端那里直接进行SendMessage后，直接可以执行到这里的方法(函数)
+            //所有类似这样的写法，都是通过协议来与客户端和服务端进行通信的方法
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCreateCharacter);

@@ -64,7 +64,6 @@ namespace Services
         public void RemoveCharacter(int characterId)
         {
             Debug.LogFormat("RemoveCharacter:{0}",characterId);
-            this.Characters.Remove(characterId);
 
             if (this.Characters.ContainsKey(characterId))
             {

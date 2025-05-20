@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.Data;
 using GameServer.Entities;
+using GameServer.Services;
 using Network;
 using SkillBridge.Message;
 using System;
@@ -126,5 +127,28 @@ namespace GameServer.Models
             conn.SendData(data, 0, data.Length);
         }
 
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateEntity(NEntitySync entity)
+        {
+            //得到信息后，遍历发送给地图中的所有角色
+            foreach (var kv in this.MapCharacters)
+            {
+                //判断这个地图中的所有角色，是否是自己，如果是自己
+                //则将从客户端那里得到的自己的位置，更新到服务器
+                if (kv.Value.character.entityId == entity.Id)
+                {
+                    kv.Value.character.Position = entity.Entity.Position;
+                    kv.Value.character.Direction = entity.Entity.Direction;
+                    kv.Value.character.Speed = entity.Entity.Speed;
+                }
+                else//如果不是我自己，则将自己的信息发送给其他角色
+                {
+                    MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
+                }
+            }
+        }
     }
 }

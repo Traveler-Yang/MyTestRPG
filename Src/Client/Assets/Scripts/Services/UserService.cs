@@ -29,7 +29,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCreateCharacter);
             MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnGameLeave);
-            MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
+            //MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
 
         }
 
@@ -245,11 +245,11 @@ namespace Services
         /// <param name="message"></param>
         private void OnCharacterEnter(object sender, MapCharacterEnterResponse message)
         {
-            Debug.LogFormat("OnMapCharacterEnter:{0}", message.mapId);
+            //Debug.LogFormat("OnMapCharacterEnter:{0}", message.mapId);
 
-            NCharacterInfo info = message.Characters[0];
-            User.Instance.CurrentCharacter = info;
-            SceneManager.Instance.LoadScene(DataManager.Instance.Maps[message.mapId].Resource);//加载从服务端接收的地图ID并加载场景
+            //NCharacterInfo info = message.Characters[0];
+            //User.Instance.CurrentCharacter = info;
+            //SceneManager.Instance.LoadScene(DataManager.Instance.Maps[message.mapId].Resource);//加载从服务端接收的地图ID并加载场景
            
         }
         /// <summary>
@@ -264,6 +264,11 @@ namespace Services
             NetClient.Instance.SendMessage(message);
         }
 
+        /// <summary>
+        /// 离开主城
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
         void OnGameLeave(object sender, UserGameLeaveResponse response)
         {
             MapService.Instance.CurrentMapId = 0;

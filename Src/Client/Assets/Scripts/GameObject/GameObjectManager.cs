@@ -83,7 +83,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
     {
         go.transform.position = GameObjectTool.LogicToWorld(character.position);
         go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
-        Characters[character.Info.Id] = go;
+        //Characters[character.Info.Id] = go;
 
         EntityContorller ec = go.GetComponent<EntityContorller>();
         if (ec != null)

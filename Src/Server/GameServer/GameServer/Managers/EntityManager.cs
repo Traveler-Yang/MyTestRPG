@@ -1,5 +1,7 @@
 ﻿using Common;
 using GameServer.Entities;
+using SkillBridge.Message;
+using System;
 using System.Collections.Generic;
 
 namespace GameServer.Managers
@@ -52,6 +54,11 @@ namespace GameServer.Managers
         {
             AllEntitieys.Remove(entity);
             MapEntities[mapId].Remove(entity);
+        }
+
+        internal void OnEntitySync(NEntitySync entity)
+        {
+            
         }
     }
 }

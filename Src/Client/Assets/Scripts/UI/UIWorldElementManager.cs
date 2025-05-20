@@ -9,14 +9,6 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
 
 	private Dictionary<Transform, GameObject> elements = new Dictionary<Transform, GameObject>();
 
-	void Start () {
-		
-	}
-	
-	
-	void Update () {
-
-	}
 
 	public void AddCharacterNameBar(Transform owner, Character character)
 	{
