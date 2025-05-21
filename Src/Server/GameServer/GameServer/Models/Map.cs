@@ -114,8 +114,8 @@ namespace GameServer.Models
         /// <summary>
         /// 离开地图通知
         /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="cha"></param>
+        /// <param name="conn"></param>
+        /// <param name="character"></param>
         private void SendCharacterLeaveMap(NetConnection<NetSession> conn, NCharacterInfo character)
         {
             NetMessage message = new NetMessage();
