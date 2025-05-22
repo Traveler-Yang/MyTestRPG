@@ -83,7 +83,7 @@ namespace GameServer.Models
         /// 角色离开
         /// </summary>
         /// <param name="cha"></param>
-        internal void CharacterLeave(NCharacterInfo cha)
+        internal void CharacterLeave(Character cha)
         {
             Log.InfoFormat("CharacterLeave: Map{0} characterId{1}", this.Define.ID, cha.Id);//打印日志
 
@@ -116,7 +116,7 @@ namespace GameServer.Models
         /// </summary>
         /// <param name="conn"></param>
         /// <param name="character"></param>
-        private void SendCharacterLeaveMap(NetConnection<NetSession> conn, NCharacterInfo character)
+        private void SendCharacterLeaveMap(NetConnection<NetSession> conn, Character character)
         {
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
