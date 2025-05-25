@@ -42,8 +42,8 @@ namespace Services
             Debug.LogFormat("OnMapCharacterEnter:{0} [{1}]", response.mapId, response.Characters.Count);
             foreach (var cha in response.Characters)
             {
-                //判断当前列表中的角色是否是自己
-                if (User.Instance.CurrentCharacter.Id == cha.Id)
+                //判断当前列表中的角色是否是自己 或者 是否等于null
+                if (User.Instance.CurrentCharacter == null || User.Instance.CurrentCharacter.Id == cha.Id)
                 {
                     //当前角色切换地图
                     User.Instance.CurrentCharacter = cha;
