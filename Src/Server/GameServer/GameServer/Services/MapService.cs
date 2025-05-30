@@ -81,6 +81,7 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("OnMapTeleport：CharacterID：{0}：{1} TeleporterID：{2}", character.Id, character.Data, request.teleporterId);
             //如果传送点的ID在传送点列表中不存在，则不进行传送
+            //ContainsKey 该方法判断字典中是否包含指定的键，如果包含则返回true，否则返回false
             if (!DataManager.Instance.Teleporters.ContainsKey(request.teleporterId))
             {
                 Log.WarningFormat("Source TeleporterID:{0} not existed", request.teleporterId);
