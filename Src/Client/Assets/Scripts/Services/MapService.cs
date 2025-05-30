@@ -14,7 +14,6 @@ namespace Services
         {
             MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);//角色进入地图的消息
             MessageDistributer.Instance.Subscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);//离开地图
-
             MessageDistributer.Instance.Subscribe<MapEntitySyncResponse>(this.OnMapEntitySync);
         }
 
@@ -131,5 +130,18 @@ namespace Services
             Debug.Log(sb.ToString());
         }
 
+        /// <summary>
+        /// 发送传送请求到服务器
+        /// </summary>
+        /// <param name="teleporterID"></param>
+        internal void SendMapTeleport(int teleporterID)
+        {
+            Debug.LogFormat("MapTeleportRequest: TeleporterID:{0}", teleporterID);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.mapTeleport = new MapTeleportRequest();
+            message.Request.mapTeleport.teleporterId = teleporterID; //传送点ID
+            NetClient.Instance.SendMessage(message); //发送给服务器
+        }
     }
 }

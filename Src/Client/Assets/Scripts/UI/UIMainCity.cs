@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMainCity : MonoBehaviour {
+public class UIMainCity : MonoSingleton<UIMainCity>
+{
 
 	public Text avatarName;//玩家名字
 	public Text avatarLevel;//玩家等级
-	void Start () {
+    protected override void OnStart()
+    {
 		this.UpdateAvatar();
 	}
 
