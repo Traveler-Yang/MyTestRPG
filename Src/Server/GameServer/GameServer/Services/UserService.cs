@@ -196,8 +196,7 @@ namespace GameServer.Services
             Character character = sender.Session.Character;//从客户端传过来的角色信息
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
 
-            CharacterManager.Instance.RemoveCharacter(character.Id);//移除从客户端传送过来的角色
-            MapManager.Instance[character.Info.mapId].CharacterLeave(character);
+            CharacterLeave(character);
 
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
@@ -207,6 +206,12 @@ namespace GameServer.Services
 
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             sender.SendData(data, 0, data.Length);
+        }
+
+        public void CharacterLeave(Character character)
+        {
+            CharacterManager.Instance.RemoveCharacter(character.Id);//移除从客户端传送过来的角色
+            MapManager.Instance[character.Info.mapId].CharacterLeave(character);
         }
     }
 }

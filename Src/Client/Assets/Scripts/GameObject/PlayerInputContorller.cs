@@ -52,8 +52,10 @@ public class PlayerInputContorller : MonoBehaviour {
         float vertical = Input.GetAxis("Vertical");
         if (vertical > 0.01)//向前移动
         {
+            //判断当前状态是否为移动状态，如果不是则切换到移动状态
             if (state != SkillBridge.Message.CharacterState.Move)
             {
+                //切换为移动状态
                 state = SkillBridge.Message.CharacterState.Move;
                 this.character.MoveForward();
                 this.SendEntityEvent(EntityEvent.MoveFwd);
@@ -88,10 +90,10 @@ public class PlayerInputContorller : MonoBehaviour {
         }
 
         #region 左右转向
-        float horizontal = Input.GetAxis("Horizontal");
-        if (horizontal < -0.1 || horizontal > 0.1)
+        float mouseX = Input.GetAxis("Mouse X");
+        if (mouseX < -0.1 || mouseX > 0.1)
         {
-            this.transform.Rotate(0, horizontal * rotateSpeed, 0);
+            this.transform.Rotate(0, mouseX * rotateSpeed, 0);
             Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
             Quaternion rot = new Quaternion();
             rot.SetFromToRotation(dir, this.transform.forward);

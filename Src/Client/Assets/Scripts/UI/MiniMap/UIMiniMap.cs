@@ -12,28 +12,27 @@ public class UIMiniMap : MonoBehaviour {
 
 	private Transform playerTransform;//当前角色的位置
 
-	void Start () {
-		
-		InitMap();
+	void Start () 
+	{
+		MiniMapManager.Instance.miniMap = this;//将当前的迷你地图UI赋值给MiniMapManager，告诉管理器当前的迷你地图UI是哪个
+        UpdateMap();
     }
 	
-	void InitMap()
+	public void UpdateMap()
 	{
         this.mapName.text = User.Instance.CurrentMapData.Name;//将从配置表中读取的数值赋值给当前地图
-		if(miniMap.overrideSprite == null)
-			this.miniMap.overrideSprite = MiniMapManager.Instance.LoadCurrentMiniMap();
+		this.miniMap.overrideSprite = MiniMapManager.Instance.LoadCurrentMiniMap();
 
 		this.miniMap.SetNativeSize();
 		this.miniMap.transform.localPosition = Vector3.zero;
-
+		this.miniMapBoundingBox = MiniMapManager.Instance.MiniMapBoundingBox;//获取当前地图的包围盒
+		this.playerTransform = null;//清空当前角色的位置
     }
 	
 	void Update () {
 
 		if (playerTransform == null)
-		{
 			playerTransform = MiniMapManager.Instance.PlayerTransform;
-        }
 
         if (miniMap.overrideSprite == null || playerTransform == null) return;
 
