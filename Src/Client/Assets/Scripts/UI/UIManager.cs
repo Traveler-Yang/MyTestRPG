@@ -18,6 +18,13 @@ public class UIManager : Singleton<UIManager>
     /// </summary>
     private Dictionary<Type, UIElement> UIResources = new Dictionary<Type, UIElement>();
 
+    public UIManager()
+    {
+        //初始化UI资源信息
+        UIResources.Add(typeof(UITest), new UIElement() { Resource = "UI/UITest", cache = true });
+        //可以继续添加其他UI类型
+    }
+
     /// <summary>
     /// 打开UI界面
     /// </summary>
@@ -25,11 +32,28 @@ public class UIManager : Singleton<UIManager>
     /// <returns></returns>
     public T Show<T>()
     {
-        //检查UI是否已经打开
+        //获取UI类型
         Type type = typeof(T);
+        //判断UI是否存在
         if (UIResources.ContainsKey(type))
         {
-
+            //如果存在，则获取UI信息
+            UIElement uiInfo = UIResources[type];
+            if (uiInfo.instance != null)
+            {
+                //如果已经打开的，则直接启用
+                uiInfo.instance.SetActive(true);
+            }
+            else
+            {
+                //如果没有打开的，则加载资源
+                //从Resoueces中加载资源
+                UnityEngine.Object prefab = Resources.Load(uiInfo.Resource);
+                //实例出来Prefab UI
+                uiInfo.instance =  GameObject.Instantiate(uiInfo.instance);
+                //将激活的UI返回出去
+                return uiInfo.instance.GetComponent<T>();
+            }
         }
         return default(T);
     }
@@ -37,8 +61,26 @@ public class UIManager : Singleton<UIManager>
     /// <summary>
     /// 关闭UI界面
     /// </summary>
-    public void Colse()
+    /// <param name="type">UI信息字典的Key值，指的哪一个UI</param>
+    public void Colse(Type type)
     {
-
+        //检查UI是否存在
+        if (UIResources.ContainsKey(type))
+        {
+            //获取UI信息
+            UIElement uiInfo = UIResources[type];
+            if (uiInfo.cache)
+            {
+                //如果UI实例存在，则禁用它
+                uiInfo.instance.SetActive(false);
+            }
+            else
+            {
+                //如果UI实例不存在，则销毁它
+                GameObject.Destroy(uiInfo.instance);
+                //然后将实例置空
+                uiInfo.instance = null;
+            }
+        }
     }
 }
