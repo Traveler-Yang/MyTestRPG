@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 41.382175
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.2716036
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 31.241009
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
       propertyPath: m_Name
-      value: "\u7231\u8389\u5E0C\u96C5"
+      value: Elysia
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
         type: 3}
@@ -73,6 +73,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7713a4e385b6dfb42949636a7cdd1a51, type: 2}
+    - target: {fileID: 5866666021909216657, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: f5c5b5f96b3001e4b8c9bff1e74177d8,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +202,7 @@ MonoBehaviour:
   rotateSpeed: 2
   turnAngle: 10
   speed: 5
+  jumpPower: 3
   entityContorller: {fileID: 0}
   onAir: 0
 --- !u!95 &7739594759634668196 stripped

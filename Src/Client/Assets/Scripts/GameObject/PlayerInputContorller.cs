@@ -4,6 +4,7 @@ using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputContorller : MonoBehaviour {
 
@@ -18,7 +19,9 @@ public class PlayerInputContorller : MonoBehaviour {
 
 	public int speed;//移动速度
 
-	public EntityContorller entityContorller;
+    public float jumpPower = 3.0f;//跳跃力度
+
+    public EntityContorller entityContorller;
 
 	public bool onAir = false;
 	void Start () 
@@ -43,14 +46,13 @@ public class PlayerInputContorller : MonoBehaviour {
 		}
 
     }
-
-	void Update()
+    
+    void FixedUpdate()
 	{
-		if (character == null)
-			return;
+        if (character == null)
+            return;
         #region 前后移动
-        float vertical = Input.GetAxis("Vertical");
-        if (vertical > 0.01)//向前移动
+        if (Keyboard.current.wKey.isPressed)//向前移动
         {
             //判断当前状态是否为移动状态，如果不是则切换到移动状态
             if (state != SkillBridge.Message.CharacterState.Move)
@@ -62,7 +64,7 @@ public class PlayerInputContorller : MonoBehaviour {
             }
             this.rb.velocity = this.rb.velocity.y * Vector3.up + GameObjectTool.LogicToWorld(character.direction) * (character.speed + 9.81f) / 100f;
         }
-        else if (vertical < -0.01)//向后移动
+        else if (Keyboard.current.sKey.isPressed)//向后移动
         {
             if (state != SkillBridge.Message.CharacterState.Move)
             {
@@ -84,16 +86,27 @@ public class PlayerInputContorller : MonoBehaviour {
         }
         #endregion
 
+        if (rb.velocity.y == 0)
+        {
+            onAir = false; //如果y轴速度为0则设置为不在空中状态
+        }
         if (Input.GetButtonDown("Jump"))
 		{
+            if (onAir)
+                //如果在空中则不允许跳跃
+                return;
+
+            //如果不在空中则允许跳跃
+            this.rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            onAir = true; //设置为在空中状态
             this.SendEntityEvent(EntityEvent.Jump);
         }
 
         #region 左右转向
-        float mouseX = Input.GetAxis("Mouse X");
-        if (mouseX < -0.1 || mouseX > 0.1)
+        float horizontal = Input.GetAxis("Horizontal");
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.dKey.isPressed)
         {
-            this.transform.Rotate(0, mouseX * rotateSpeed, 0);
+            this.transform.Rotate(0, horizontal * rotateSpeed, 0);
             Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
             Quaternion rot = new Quaternion();
             rot.SetFromToRotation(dir, this.transform.forward);

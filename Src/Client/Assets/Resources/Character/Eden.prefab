@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b659e3a3a6aa2a146840fcd80e7f5dae,
         type: 3}
       propertyPath: m_Name
-      value: "\u4F0A\u7538"
+      value: Eden
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b659e3a3a6aa2a146840fcd80e7f5dae,
         type: 3}
@@ -72,7 +72,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 05c7c52767751b54a982e55a332c1153, type: 2}
+      objectReference: {fileID: 9100000, guid: 9de3f7a3ec539bc43b51b60b4b4b02e7, type: 2}
+    - target: {fileID: 5866666021909216657, guid: b659e3a3a6aa2a146840fcd80e7f5dae,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b659e3a3a6aa2a146840fcd80e7f5dae,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b659e3a3a6aa2a146840fcd80e7f5dae,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -167,9 +182,8 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   lastPosition: {x: 0, y: 0, z: 0}
-  speed: 0
-  animSpeed: 1.5
-  jumpPower: 3
+  forwardSpeed: -1
+  backwardSpeed: 2
   isPlayer: 1
 --- !u!114 &717224532187370110
 MonoBehaviour:
@@ -187,6 +201,7 @@ MonoBehaviour:
   rotateSpeed: 2
   turnAngle: 10
   speed: 5
+  jumpPower: 3
   entityContorller: {fileID: 0}
   onAir: 0
 --- !u!95 &6724016917726825985 stripped

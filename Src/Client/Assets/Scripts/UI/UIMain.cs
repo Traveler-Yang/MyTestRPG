@@ -34,4 +34,10 @@ public class UIMain : MonoSingleton<UIMain>
 		SceneManager.Instance.LoadScene("CharSelect");//切换场景为角色选择
 		Services.UserService.Instance.SendGameLeave();//发送角色离开的消息到服务器
 	}
+
+	public void TestClick()
+	{
+		UITest test = UIManager.Instance.Show<UITest>(); //打开UITest界面
+		test.Set("这是一个标题");
+    }
 }

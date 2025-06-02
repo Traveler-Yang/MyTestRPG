@@ -1,9 +1,11 @@
 ﻿using Entities;
 using Managers;
 using SkillBridge.Message;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EntityContorller : MonoBehaviour, IEntityNotify{
 
@@ -20,11 +22,13 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 	public UnityEngine.Vector3 lastPosition;
 	Quaternion lastRotation;
 
-    public float speed;
-    public float animSpeed = 1.5f;
-    public float jumpPower = 3.0f;
+    public float forwardSpeed = -1f;//前进速度
+    public float backwardSpeed = 2f;//后退速度
+    float currentSpeed;
+    float targetSpeed;//当前速度
+    Vector3 movement;//移动向量
 
-	public bool isPlayer  = false;
+    public bool isPlayer  = false;
 
 	void Start ()
 	{
@@ -40,7 +44,7 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 
     private void Update()
     {
-		anim.SetFloat("Walk",rb.velocity.z);
+		anim.SetFloat("Speed",rb.velocity.z);
     }
 
     void UpdateTransform()
@@ -91,13 +95,17 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
         {
             case EntityEvent.Idle:
                 anim.SetBool("Move", false);
+                anim.SetBool("MoveFow", false);
+                anim.SetBool("MoveBack", false);
                 anim.SetTrigger("Idle");
                 break;
             case EntityEvent.MoveFwd:
                 anim.SetBool("Move", true);
+                anim.SetBool("MoveFow", true);
                 break;
             case EntityEvent.MoveBack:
                 anim.SetBool("Move", true);
+                anim.SetBool("MoveBack", true);
                 break;
             case EntityEvent.Jump:
                 anim.SetTrigger("Jump");

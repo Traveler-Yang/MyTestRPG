@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIWindow : MonoBehaviour
 {
-    private Animator animator;
+    public delegate void CloseHandler(UIWindow sender, UIWindowResult result);
+    public event CloseHandler OnClose; // 窗口关闭事件
+
     public virtual System.Type Type { get { return this.GetType(); } }
 
     /// <summary>
@@ -17,11 +19,6 @@ public class UIWindow : MonoBehaviour
         No,
     }
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     /// <summary>
     /// 关闭UI窗口
     /// </summary>
@@ -29,6 +26,9 @@ public class UIWindow : MonoBehaviour
     public void Close(UIWindowResult result = UIWindowResult.None)
     {
         UIManager.Instance.Colse(this.Type);
+        if(this.OnClose != null)
+            this.OnClose(this, result);
+        this.OnClose = null; // 清除事件订阅，避免内存泄漏
     }
 
     /// <summary>

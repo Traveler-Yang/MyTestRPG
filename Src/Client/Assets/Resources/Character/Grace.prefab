@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 83d8ac8c86a1b6f4cacd20239be5940e,
         type: 3}
       propertyPath: m_Name
-      value: "\u683C\u857E\u4FEE"
+      value: Grace
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -104,9 +104,9 @@ Animator:
   m_GameObject: {fileID: 8563069570026510278}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 83d8ac8c86a1b6f4cacd20239be5940e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 915284c25573ce04c894601247ae8487, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11defe89a9aa9834690b6a4bd44b9eb5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -182,9 +182,8 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   lastPosition: {x: 0, y: 0, z: 0}
-  speed: 0
-  animSpeed: 1.5
-  jumpPower: 3
+  forwardSpeed: -1
+  backwardSpeed: 2
   isPlayer: 1
 --- !u!114 &3145203633829092024
 MonoBehaviour:
@@ -202,5 +201,6 @@ MonoBehaviour:
   rotateSpeed: 2
   turnAngle: 10
   speed: 5
+  jumpPower: 3
   entityContorller: {fileID: 0}
   onAir: 0

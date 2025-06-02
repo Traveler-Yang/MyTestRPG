@@ -50,10 +50,10 @@ public class UIManager : Singleton<UIManager>
                 //从Resoueces中加载资源
                 UnityEngine.Object prefab = Resources.Load(uiInfo.Resource);
                 //实例出来Prefab UI
-                uiInfo.instance =  GameObject.Instantiate(uiInfo.instance);
-                //将激活的UI返回出去
-                return uiInfo.instance.GetComponent<T>();
+                uiInfo.instance = (GameObject)GameObject.Instantiate(prefab);
             }
+            //将激活的UI返回出去
+            return uiInfo.instance.GetComponent<T>();
         }
         return default(T);
     }
