@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Services
+namespace Managers
 {
     class MiniMapManager : Singleton<MiniMapManager>
     {

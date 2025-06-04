@@ -1,6 +1,6 @@
 ﻿using log4net;
 
-namespace Common
+namespace SeverCommon
 {
 
     public static class Log

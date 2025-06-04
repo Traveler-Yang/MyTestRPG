@@ -5,7 +5,7 @@ using System.Text;
 using SkillBridge.Message;
 using ProtoBuf;
 using System.IO;
-using Common;
+using SeverCommon;
 using System.Threading;
 
 namespace GameServer

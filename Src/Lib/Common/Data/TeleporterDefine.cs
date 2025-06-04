@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SkillBridge.Message;
 
-namespace Common.Data
+namespace SeverCommon.Data
 {
     public class TeleporterDefine
     {

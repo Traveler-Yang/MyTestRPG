@@ -1,5 +1,5 @@
-﻿using Common;
-using Common.Data;
+﻿using SeverCommon;
+using SeverCommon.Data;
 using GameServer.Entities;
 using GameServer.Services;
 using Network;

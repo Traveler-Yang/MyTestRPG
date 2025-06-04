@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using SeverCommon;
 using GameServer.Entities;
 using GameServer.Managers;
 using Network;
@@ -132,9 +132,9 @@ namespace GameServer.Services
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标
-                MapPosX = 5000,
-                MapPosY = 4000,
-                MapPosZ = 820,
+                MapPosX = 5600,
+                MapPosY = 4400,
+                MapPosZ = 900,
             };
             character = DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
             sender.Session.User.Player.Characters.Add(character);

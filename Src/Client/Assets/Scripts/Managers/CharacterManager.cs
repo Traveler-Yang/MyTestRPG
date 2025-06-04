@@ -7,7 +7,7 @@ using Entities;
 using Managers;
 using System.Linq;
 
-namespace Services
+namespace Managers
 {
     class CharacterManager : Singleton<CharacterManager>, IDisposable
     {
