@@ -9,14 +9,26 @@ namespace SeverCommon.Data
     public enum Npctype
     {
         None = 0,
+        /// <summary>
+        /// 功能型NPC
+        /// </summary>
         Functional = 1,
+        /// <summary>
+        /// 任务型NPC
+        /// </summary>
         Task = 2,
     }
 
     public enum NpcFunction
     {
         None = 0,
+        /// <summary>
+        /// 打开商店
+        /// </summary>
         InvokeShop = 1,
+        /// <summary>
+        /// 打开副本
+        /// </summary>
         InvokeInsrance = 2,
     }
 
