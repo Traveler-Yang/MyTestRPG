@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SkillBridge.Message;
 
-namespace SeverCommon.Data
+namespace Common.Data
 {
     public enum Npctype
     {

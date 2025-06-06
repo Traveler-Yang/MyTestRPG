@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using GameServer;
-using SeverCommon;
+using Common;
 
 namespace Network
 {

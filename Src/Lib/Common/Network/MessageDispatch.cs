@@ -1,5 +1,5 @@
 //WARNING: DON'T EDIT THIS FILE!!!
-using SeverCommon;
+using Common;
 
 namespace Network
 {

@@ -1,4 +1,4 @@
-﻿using SeverCommon;
+﻿using Common;
 using GameServer.Entities;
 using SkillBridge.Message;
 using System;

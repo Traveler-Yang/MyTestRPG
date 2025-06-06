@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeverCommon
+namespace Common
 {
     public class BufferUtility
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using SeverCommon;
+using Common;
 
 namespace GameServer.Services
 {
@@ -20,6 +20,12 @@ namespace GameServer.Services
         public void Init()
         {
             entities = new ExtremeWorldEntities();
+        }
+
+        public void Save()
+        {
+            //异步保存数据库
+            entities.SaveChangesAsync();
         }
     }
 }

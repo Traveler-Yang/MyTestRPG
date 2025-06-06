@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Core
 {
-    using SeverCommon.Utils;
+    using Common.Utils;
     using SkillBridge.Message;
     // Vector3Int
     using System;

@@ -1,5 +1,5 @@
-﻿using SeverCommon;
-using SeverCommon.Data;
+﻿using Common;
+using Common.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

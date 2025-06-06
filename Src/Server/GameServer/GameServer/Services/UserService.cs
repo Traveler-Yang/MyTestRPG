@@ -1,4 +1,4 @@
-﻿using SeverCommon;
+﻿using Common;
 using GameServer.Entities;
 using GameServer.Managers;
 using Network;
@@ -179,6 +179,25 @@ namespace GameServer.Services
             message.Response.gameEnter = new UserGameEnterResponse();
             message.Response.gameEnter.Result = Result.Success;//结果值
             message.Response.gameEnter.Errormsg = "None";//错误信息
+
+            message.Response.gameEnter.Character = character.Info;//进入成功 发送初始角色信息给客户端
+
+            //道具系统测试
+            int itemId = 1;//假设我们要添加一个物品ID为1的道具
+            bool hasItem = character.ItemManager.HasItem(itemId);//检查角色是否拥有这个物品
+            Log.InfoFormat("HasItem[{0}]{1}", itemId, hasItem);
+            if (hasItem)//如果角色拥有这个物品，则移除1个物品
+            {
+                character.ItemManager.RemoveItem(itemId, 1);
+            }
+            else//如果角色没有这个物品，则添加2个物品
+            {
+                character.ItemManager.AddItem(itemId, 2);
+            }
+            //取出一个物品出来查看一下
+            Models.Item item = character.ItemManager.GetItem(itemId);
+
+            Log.InfoFormat("Item[{0}][{1}]", itemId, item);
 
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             sender.SendData(data, 0, data.Length);

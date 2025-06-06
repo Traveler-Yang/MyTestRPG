@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SeverCommon.Utils
+namespace Common.Utils
 {
     public class MathUtil
     {

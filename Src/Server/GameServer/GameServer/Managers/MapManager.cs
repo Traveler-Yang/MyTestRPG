@@ -1,4 +1,4 @@
-﻿using SeverCommon;
+﻿using Common;
 using GameServer.Models;
 using System;
 using System.Collections.Generic;

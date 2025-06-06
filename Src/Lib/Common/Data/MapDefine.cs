@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SeverCommon.Data
+namespace Common.Data
 {
     public class MapDefine
     {
