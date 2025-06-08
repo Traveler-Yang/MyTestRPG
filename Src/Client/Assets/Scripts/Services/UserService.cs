@@ -238,6 +238,7 @@ namespace Services
                 if (response.Character != null)
                 {
                     ItemManager.Instance.Init(response.Character.Items);//初始化物品
+                    BagManager.Instance.Init(response.Character.Bag);//初始化背包
                 }
             }
         }

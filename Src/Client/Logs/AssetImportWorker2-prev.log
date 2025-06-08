@@ -1,0 +1,1215 @@
+Using pre-set license
+Built from '2022.3/china_unity/release~1' branch; Version is '2022.3.53f1c1 (f16e16b78e06) revision 15822358'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 64733 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\UnityEditor\2022.3.53f1c1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/GitMMORPG/My Test RPG/Src/Client
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+64032
+Successfully changed project path to: D:/GitMMORPG/My Test RPG/Src/Client
+D:/GitMMORPG/My Test RPG/Src/Client
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [18684]  Target information:
+
+Player connection [18684]  * "[IP] 192.168.1.63 [Port] 0 [Flags] 2 [Guid] 4146536043 [EditorId] 4146536043 [Version] 1048832 [Id] WindowsEditor(7,Elysia) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [18684] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [18684] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+Refreshing native plugins compatible for Editor in 57.57 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.53f1c1 (f16e16b78e06)
+[Subsystems] Discovering subsystems at path D:/UnityEditor/2022.3.53f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GitMMORPG/My Test RPG/Src/Client/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 5070 Ti Laptop GPU (ID=0x2f18)
+    Vendor:   NVIDIA
+    VRAM:     11856 MB
+    Driver:   32.0.15.7652
+Initialize mono
+Mono path[0] = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56452
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.032604 seconds.
+- Loaded All Assemblies, in  0.905 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.217 seconds
+Domain Reload Profiling: 1109ms
+	BeginReloadAssembly (122ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (126ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (94ms)
+	LoadAllAssembliesAndSetupDomain (543ms)
+		LoadAssemblies (111ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (540ms)
+			TypeCache.Refresh (539ms)
+				TypeCache.ScanAssembly (455ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (217ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (184ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (54ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (87ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'log4net.dll' with different versions detected, using 'Assets/References/log4net.dll, AssemblyName=log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=null' and ignoring 'Packages/com.unity.collab-proxy/Lib/Editor/log4netPlastic.dll, AssemblyName=log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.432 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Client
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.587 seconds
+Domain Reload Profiling: 1996ms
+	BeginReloadAssembly (165ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (68ms)
+	LoadAllAssembliesAndSetupDomain (1144ms)
+		LoadAssemblies (512ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (738ms)
+			TypeCache.Refresh (713ms)
+				TypeCache.ScanAssembly (216ms)
+			ScanForSourceGeneratedMonoScriptInfo (17ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (588ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (489ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (23ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (88ms)
+			ProcessInitializeOnLoadAttributes (266ms)
+			ProcessInitializeOnLoadMethodAttributes (81ms)
+			AfterProcessingInitializeOnLoad (26ms)
+			EditorAssembliesLoaded (3ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 25.79 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6030 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 34 unused Assets / (322.4 KB). Loaded Objects now: 6526.
+Memory consumption went from 313.6 MB to 313.3 MB.
+Total: 4.747900 ms (FindLiveObjects: 0.436500 ms CreateObjectMapping: 0.202000 ms MarkObjects: 3.940800 ms  DeleteObjects: 0.168000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 714994.038026 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_book.png
+  artifactKey: Guid(739b1af8f95524f70921b52c1351ec0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_book.png using Guid(739b1af8f95524f70921b52c1351ec0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'fb1e1540c7952e349b2730aa55acc471') in 0.084059 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.237591 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_arrow_prev.png
+  artifactKey: Guid(7494f99a025ef45b484b431cce6f2add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_arrow_prev.png using Guid(7494f99a025ef45b484b431cce6f2add) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '628852314d3d4a4b89ecbecb5cd3a566') in 0.015695 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.470156 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_attachment.png
+  artifactKey: Guid(c23e5568e8b1b4aeab363d721d6f3795) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_attachment.png using Guid(c23e5568e8b1b4aeab363d721d6f3795) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '955684b309ed50b45cba6d880ffa1d62') in 0.015412 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.210996 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_block.png
+  artifactKey: Guid(0a07537ea8c3a458e955bc3af9e7f7a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_block.png using Guid(0a07537ea8c3a458e955bc3af9e7f7a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '69b97eeb3cdaf5a2f20715a7c91c888f') in 0.015387 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.471423 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_drawer.png
+  artifactKey: Guid(007f703144bea49cba55ba125d42e40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_drawer.png using Guid(007f703144bea49cba55ba125d42e40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'fc15b437c7de29a7059e0eb746f6f536') in 0.014744 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.128787 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_email.png
+  artifactKey: Guid(47e7873d3872b43a6a02bcf50e5c8e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_email.png using Guid(47e7873d3872b43a6a02bcf50e5c8e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd4c7cf7d155f7f23ac8a1f7a3d9cb3ed') in 0.016221 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.475643 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_email_read.png
+  artifactKey: Guid(e6ddedad84a77419d9e8b7857e98e846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_email_read.png using Guid(e6ddedad84a77419d9e8b7857e98e846) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '9d80ee5c1dbfdc4e80a9f2e9f5dd4bc5') in 0.015321 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.043132 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_emoji.png
+  artifactKey: Guid(a6c8b801e167f4656ad30333895ab93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_emoji.png using Guid(a6c8b801e167f4656ad30333895ab93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c4d20fae4f31e1b20dc41e330d907bae') in 0.015334 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.048488 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_exit.png
+  artifactKey: Guid(69f81769d14524af0aaed4e121fd9d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_exit.png using Guid(69f81769d14524af0aaed4e121fd9d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '13a738ffab8e5c92192e3a261be75dc5') in 0.015410 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.047700 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_export.png
+  artifactKey: Guid(ee4672e3effb843e0b6f04e0bcf52992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_export.png using Guid(ee4672e3effb843e0b6f04e0bcf52992) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '45458841b82dad7d98caf19e82e53b12') in 0.014328 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.515404 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_energy.png
+  artifactKey: Guid(05a6ee4e7768d4b08ac6f8259df3e209) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_energy.png using Guid(05a6ee4e7768d4b08ac6f8259df3e209) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '7039dd510be47c5a7aed180314d63a59') in 0.015511 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.148151 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_download.png
+  artifactKey: Guid(19d7c677f41204c71900a621822f8119) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_download.png using Guid(19d7c677f41204c71900a621822f8119) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '253d2ff592718dc141997f301632954b') in 0.014710 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.047829 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_dislike.png
+  artifactKey: Guid(d36b6eb2ccc98446f895f7227892f5c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_dislike.png using Guid(d36b6eb2ccc98446f895f7227892f5c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'b9705aaeab35d5806d4db064dc2506bd') in 0.015414 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.050966 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_up.png
+  artifactKey: Guid(f7458a965cd9147d6b666b80c82fa1f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_up.png using Guid(f7458a965cd9147d6b666b80c82fa1f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ec668cf20d13c9f706e9e3c4a1656c28') in 0.016072 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.049717 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_left.png
+  artifactKey: Guid(f394bad55b6c4420b908b14f81647b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_left.png using Guid(f394bad55b6c4420b908b14f81647b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '03af261cf905172ae2ee80185d8ecaa2') in 0.015695 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.047628 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_down.png
+  artifactKey: Guid(36e2188f5ed304825959cef196006f4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_down.png using Guid(36e2188f5ed304825959cef196006f4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'cd23b86082a55d46b99d354e034a8fe0') in 0.015922 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.529296 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_right.png
+  artifactKey: Guid(370e0af3d2b664c02902a37df89ee2bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_direction_right.png using Guid(370e0af3d2b664c02902a37df89ee2bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a92153ca7b1bfe77a51fa40f309016d6') in 0.014754 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.342796 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_discount.png
+  artifactKey: Guid(7dddd0b970f67479480398dede5842c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_discount.png using Guid(7dddd0b970f67479480398dede5842c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0daefb584efd0f1afa5e6bd30ec8e605') in 0.014796 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.867800 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_delete.png
+  artifactKey: Guid(3ed1d9a270f6f4539b2ef8b3c3ee4b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_delete.png using Guid(3ed1d9a270f6f4539b2ef8b3c3ee4b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd4556c1b77f4378ac98cb593f1eceea8') in 0.015150 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.126826 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_date.png
+  artifactKey: Guid(c3438e1d3d2a048379dd0a98663cd69f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_date.png using Guid(c3438e1d3d2a048379dd0a98663cd69f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd4c0307845a85765ceb6ed71f7ba87cb') in 0.014217 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.134456 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_crown.png
+  artifactKey: Guid(aad8fcf03fafd493aa3f6891d5bcbecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_crown.png using Guid(aad8fcf03fafd493aa3f6891d5bcbecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd8e66f1a3515e13b4d9557372ea52da9') in 0.014659 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.145736 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_control_stop.png
+  artifactKey: Guid(a879c3543ed6f448e8b612b4b3cbd645) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_control_stop.png using Guid(a879c3543ed6f448e8b612b4b3cbd645) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '54b822738d78c8dff5dea8d6cd75b4ad') in 0.013771 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.147266 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_control_prev.png
+  artifactKey: Guid(d4e07e60b7faf48068e647d7bd5f9f11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_control_prev.png using Guid(d4e07e60b7faf48068e647d7bd5f9f11) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '22734e764befb38cfa17fa0f4e5b173c') in 0.014931 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.495759 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_date.png
+  artifactKey: Guid(4ee0c0cc021ac4dee8fcaa1d52cc9745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_date.png using Guid(4ee0c0cc021ac4dee8fcaa1d52cc9745) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f94673e48d0c142efd05af878cfdbf1d') in 0.020765 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_direction_right.png
+  artifactKey: Guid(1af7c3b27763341f78317243ce898041) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_direction_right.png using Guid(1af7c3b27763341f78317243ce898041) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1275c3c3bff2fcee96a433577f121dce') in 0.021619 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_dollar.png
+  artifactKey: Guid(32a85a86cb94b40d484250314c0765c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Hole/btn_white_dig_dollar.png using Guid(32a85a86cb94b40d484250314c0765c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '6ad9c8d21b8ff2ef08b156fe8c45afb3') in 0.022892 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.145045 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Character/character_sample_00_0.png
+  artifactKey: Guid(2f345cd55b7074a368062321c0f5125f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Character/character_sample_00_0.png using Guid(2f345cd55b7074a368062321c0f5125f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '5e9689dae58f7f058a281a89804ea2ae') in 0.022457 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Character/character_sample_02.png
+  artifactKey: Guid(0881496e6b9384b74800031f5c644fa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Character/character_sample_02.png using Guid(0881496e6b9384b74800031f5c644fa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '913424238f813566d0dbc06b3e407783') in 0.021892 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.006680 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Blue1.png
+  artifactKey: Guid(d54f3fa607bcf47e183f80e57fa68d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Blue1.png using Guid(d54f3fa607bcf47e183f80e57fa68d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '93191a0862071e0a14ae0b26145cc104') in 0.017318 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.178694 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Blue2.png
+  artifactKey: Guid(2b2cd4152f2294fd3b94a367248e5100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Blue2.png using Guid(2b2cd4152f2294fd3b94a367248e5100) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '484e08438578f7a19b56876ac10b373e') in 0.014073 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004362 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Brown2.png
+  artifactKey: Guid(7e3243e052c1d46b383b938a8b3355bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Brown2.png using Guid(7e3243e052c1d46b383b938a8b3355bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '02761665c90809421835369462c48cb2') in 0.019377 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005318 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Orange2.png
+  artifactKey: Guid(b9d95f6ce4c294cb88bf8b6d824f9b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Orange2.png using Guid(b9d95f6ce4c294cb88bf8b6d824f9b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '8eaadb80b31a25b29f2351ed962eff71') in 0.019985 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004354 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Pink2.png
+  artifactKey: Guid(d7ea6a7d7d131404090575b6e7a5d747) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Pink2.png using Guid(d7ea6a7d7d131404090575b6e7a5d747) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1082eb31ec0e0e42048aea0a7f6177ca') in 0.020700 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Yellow1.png
+  artifactKey: Guid(9feb58c3f6ae14e7d8c4c32eb0401484) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_Yellow1.png using Guid(9feb58c3f6ae14e7d8c4c32eb0401484) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '48ccc104a42bec4b27116142a468ccaa') in 0.020454 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame01_Green.png
+  artifactKey: Guid(c7a3ed8e7cc644fbc870d977bcdcaca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame01_Green.png using Guid(c7a3ed8e7cc644fbc870d977bcdcaca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1568067cb8ca68d19ddec0194d186552') in 0.020070 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_White.png
+  artifactKey: Guid(40591314b0cbc4eb1b3a55d37e8e5018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame00_White.png using Guid(40591314b0cbc4eb1b3a55d37e8e5018) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f68d409eb7fde46de1c6c1a531dcb09b') in 0.020315 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.088887 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame02_n_Green.png
+  artifactKey: Guid(000a3c204a6224394a9327d3b30a448f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_ItemFrame02_n_Green.png using Guid(000a3c204a6224394a9327d3b30a448f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd97839d569d6c2a7de0f514893787719') in 0.021691 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.033411 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_TabMenu_n.png
+  artifactKey: Guid(6ba78c02e5d86428c8515c2b6a852cb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Frame/Frame_TabMenu_n.png using Guid(6ba78c02e5d86428c8515c2b6a852cb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '33684bb6cf0d81740113ba6b09334e1b') in 0.021423 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Image/fx_rainbow_04.png
+  artifactKey: Guid(10813f1c1196c462286ae599ab258ac9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Image/fx_rainbow_04.png using Guid(10813f1c1196c462286ae599ab258ac9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '94766dad1abf383778415d06348774e4') in 0.020375 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 14.699159 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_dollar.png
+  artifactKey: Guid(babcceccca64c403481a38fd12425fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_dollar.png using Guid(babcceccca64c403481a38fd12425fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ddfebe61ba491fe2eb4b0b9ddec12559') in 0.014719 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.590105 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_eye_close.png
+  artifactKey: Guid(e767a0864d60045cdbbc3c5a7416ae01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_eye_close.png using Guid(e767a0864d60045cdbbc3c5a7416ae01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '21101516a61c140ed34a53c282776cc2') in 0.014203 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.157650 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_eye_open.png
+  artifactKey: Guid(b5fa31d5d90864e0f9bcf46e845a258d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_eye_open.png using Guid(b5fa31d5d90864e0f9bcf46e845a258d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '66326d710b4c5e94c64ab86eaf370b29') in 0.014382 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.177756 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_facebook.png
+  artifactKey: Guid(840190547a2e944c4bd01d2fa34af811) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_facebook.png using Guid(840190547a2e944c4bd01d2fa34af811) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0b1605ff35252b3824d7b22483f96fdb') in 0.015838 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.161027 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_file.png
+  artifactKey: Guid(6130bdfcd293d48d7b50e8fda79cd3d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_file.png using Guid(6130bdfcd293d48d7b50e8fda79cd3d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c3148cf4d7190ac103238db756a6a3de') in 0.014160 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.166684 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_filter.png
+  artifactKey: Guid(73b69bb09de7b40f3acd469167593e88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_filter.png using Guid(73b69bb09de7b40f3acd469167593e88) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '57356441cc324fe3a6eda40931c6e2a1') in 0.013786 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.156232 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_fire.png
+  artifactKey: Guid(8e578dfad3583420da5552cafa2ee24d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_fire.png using Guid(8e578dfad3583420da5552cafa2ee24d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '142111ed39799d1a95cc7490622fd379') in 0.015977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.178703 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_flag.png
+  artifactKey: Guid(a61570068da8541f7ad9a01ccf3661b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Transpar_White/btn_translucence_white_flag.png using Guid(a61570068da8541f7ad9a01ccf3661b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '07b228e1e551393532294c92494043e4') in 0.015114 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'log4net.dll' with different versions detected, using 'Assets/References/log4net.dll, AssemblyName=log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=null' and ignoring 'Packages/com.unity.collab-proxy/Lib/Editor/log4netPlastic.dll, AssemblyName=log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.718 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Client
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.939 seconds
+Domain Reload Profiling: 2640ms
+	BeginReloadAssembly (176ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (444ms)
+		LoadAssemblies (521ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (13ms)
+			TypeCache.Refresh (4ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1939ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (526ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (30ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (98ms)
+			ProcessInitializeOnLoadAttributes (275ms)
+			ProcessInitializeOnLoadMethodAttributes (95ms)
+			AfterProcessingInitializeOnLoad (21ms)
+			EditorAssembliesLoaded (3ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Refreshing native plugins compatible for Editor in 50.23 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5850 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (322.6 KB). Loaded Objects now: 6550.
+Memory consumption went from 284.8 MB to 284.5 MB.
+Total: 8.515400 ms (FindLiveObjects: 0.992000 ms CreateObjectMapping: 0.560900 ms MarkObjects: 6.763400 ms  DeleteObjects: 0.197300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 45.754177 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_add_friend.png
+  artifactKey: Guid(475314872d4374d549f394ac216c93fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_add_friend.png using Guid(475314872d4374d549f394ac216c93fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '5c69a147d6453681f38ef298727db401') in 0.055362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 22.575081 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Gray/btn_line_gray_file.png
+  artifactKey: Guid(6c7c8d95b78d24b64a5e21d18b0065ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Gray/btn_line_gray_file.png using Guid(6c7c8d95b78d24b64a5e21d18b0065ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '97cc0b5ebf81738509edac5f1b036652') in 0.015236 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.225331 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Gray/btn_line_gray_filter.png
+  artifactKey: Guid(8321afe23487e4b7aa072564a118970a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Gray/btn_line_gray_filter.png using Guid(8321afe23487e4b7aa072564a118970a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '226402d66b8ee57f2f1f3fb4dc2486ae') in 0.014471 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'log4net.dll' with different versions detected, using 'Assets/References/log4net.dll, AssemblyName=log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=null' and ignoring 'Packages/com.unity.collab-proxy/Lib/Editor/log4netPlastic.dll, AssemblyName=log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.672 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Client
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.752 seconds
+Domain Reload Profiling: 2404ms
+	BeginReloadAssembly (166ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (50ms)
+	LoadAllAssembliesAndSetupDomain (405ms)
+		LoadAssemblies (481ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (14ms)
+			TypeCache.Refresh (4ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1752ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (496ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (95ms)
+			ProcessInitializeOnLoadAttributes (256ms)
+			ProcessInitializeOnLoadMethodAttributes (92ms)
+			AfterProcessingInitializeOnLoad (21ms)
+			EditorAssembliesLoaded (3ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Refreshing native plugins compatible for Editor in 51.14 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5850 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (321.7 KB). Loaded Objects now: 6555.
+Memory consumption went from 284.9 MB to 284.5 MB.
+Total: 8.679400 ms (FindLiveObjects: 1.047900 ms CreateObjectMapping: 0.586600 ms MarkObjects: 6.860600 ms  DeleteObjects: 0.183000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 24.165454 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_bulb.png
+  artifactKey: Guid(b5260c78c2bb748bc8feebcc6d5bddde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_bulb.png using Guid(b5260c78c2bb748bc8feebcc6d5bddde) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '95341a8f17c59ef6de081a80b7bdaf07') in 0.063160 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_play.png
+  artifactKey: Guid(a72abbfa87a2049f2bc09921b60bf791) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_play.png using Guid(a72abbfa87a2049f2bc09921b60bf791) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '3b65f2eca0703c05c0095ce36bd09cb3') in 0.022648 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_direction_down.png
+  artifactKey: Guid(4d77c0b7d366e44e692c43d7b0bfac54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_direction_down.png using Guid(4d77c0b7d366e44e692c43d7b0bfac54) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a9c502e7833ef1611ae18390598dac96') in 0.019496 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_prev.png
+  artifactKey: Guid(4aa3dc97eb02e457c8f56490c88b9ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_prev.png using Guid(4aa3dc97eb02e457c8f56490c88b9ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '400f155a8c7332eb15b451dc9da3cf95') in 0.021046 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_dollar.png
+  artifactKey: Guid(f2cf6ccc858484708beb1d1ad53086ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_dollar.png using Guid(f2cf6ccc858484708beb1d1ad53086ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c54bdd64fc33990c1b0a30ee02951b1c') in 0.021719 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_date.png
+  artifactKey: Guid(663cc0a337be14fb2a004306675ee52d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_date.png using Guid(663cc0a337be14fb2a004306675ee52d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'dace62dd589a3f87e8bbe1b5f9e795d7') in 0.021625 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_fire.png
+  artifactKey: Guid(7dbce52ba59064fbf86b3cdb5e3e474d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_fire.png using Guid(7dbce52ba59064fbf86b3cdb5e3e474d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '486e7306a89b6d325182d5cf5ec9f674') in 0.021099 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_filter.png
+  artifactKey: Guid(62817bb3caf4a4db184a723dd74b4341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_filter.png using Guid(62817bb3caf4a4db184a723dd74b4341) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '425de3499cb6c05754a5b1d81024e385') in 0.021541 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_globe.png
+  artifactKey: Guid(d1d2f8191f88d40b5aa1b0c4ce01e4ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_globe.png using Guid(d1d2f8191f88d40b5aa1b0c4ce01e4ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ebc24ce243d07c492a4e7963718ade48') in 0.018358 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_home.png
+  artifactKey: Guid(f233a940f79374e329ec3d0c8aac697e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_home.png using Guid(f233a940f79374e329ec3d0c8aac697e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ee8003f183c98482a8ebc6679b4d226f') in 0.018595 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_gender_female.png
+  artifactKey: Guid(ba5c2855af41949f89997ed4009ed816) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_gender_female.png using Guid(ba5c2855af41949f89997ed4009ed816) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f397798ca5f4b66fd5052f57bd7b5cff') in 0.020853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_lamp.png
+  artifactKey: Guid(23ab2c6478c7448f6bb6d07b72c72632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_lamp.png using Guid(23ab2c6478c7448f6bb6d07b72c72632) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '974b131feb318cf04484e60990a71b6d') in 0.020480 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_email_read.png
+  artifactKey: Guid(863a8e3c69e9c4d8ba0357774b1846f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_email_read.png using Guid(863a8e3c69e9c4d8ba0357774b1846f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '06945763c44d2afb200bfab27347e484') in 0.023984 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_energy.png
+  artifactKey: Guid(005023ca689e2424f8de37e9a313d8e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_energy.png using Guid(005023ca689e2424f8de37e9a313d8e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '14d929180f73543dbbb0c7401c1a4edb') in 0.023801 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_key.png
+  artifactKey: Guid(62c507a0481794834bc042ad28166348) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_key.png using Guid(62c507a0481794834bc042ad28166348) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '9a98bfc7d00ee398be765f1b3352756d') in 0.026583 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_folder.png
+  artifactKey: Guid(1a39703f343cd41db9cdd1a07d32f0e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_folder.png using Guid(1a39703f343cd41db9cdd1a07d32f0e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f9538a2ad538cc1c9fd1f810c29752d6') in 0.023188 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_keyboard.png
+  artifactKey: Guid(3a804b8ceb245452788d8f5f03e358e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_keyboard.png using Guid(3a804b8ceb245452788d8f5f03e358e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'db84062666592b20f41c33350ddbd636') in 0.022703 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_leaderboard.png
+  artifactKey: Guid(6deb8c9ca754b4e738bcde823ee6752b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_leaderboard.png using Guid(6deb8c9ca754b4e738bcde823ee6752b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'b534bde6f4510f065d0798d6a99b7648') in 0.025367 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_hammer.png
+  artifactKey: Guid(2bafc852f7cbd4a6cb7201f5b8ad785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_hammer.png using Guid(2bafc852f7cbd4a6cb7201f5b8ad785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0aa62ae920882d350bc07d573f2d058a') in 0.020119 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_hourglass.png
+  artifactKey: Guid(f828eb8ac986e4b5f94a804baa5516ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_hourglass.png using Guid(f828eb8ac986e4b5f94a804baa5516ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '4f835c696addcaf4c07e28e4b89ca00f') in 0.024212 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_info.png
+  artifactKey: Guid(f35952be5ba4b4013925031fe95d776f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_info.png using Guid(f35952be5ba4b4013925031fe95d776f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ce2f392e295a8a488117a22613ead9da') in 0.020216 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_direction_right.png
+  artifactKey: Guid(167409b83760b45d48468c48ec2f424f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_direction_right.png using Guid(167409b83760b45d48468c48ec2f424f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '13ea104b48a9b400b65a9650df8727f5') in 0.021537 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_computer.png
+  artifactKey: Guid(9f5fc1cdcf75447159c0fc1c9e87c6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_computer.png using Guid(9f5fc1cdcf75447159c0fc1c9e87c6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1220cd9e501d3e78315fc5339df40d70') in 0.021536 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_game_1.png
+  artifactKey: Guid(8a72638bc439e45b6b9bcdb1031beae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_game_1.png using Guid(8a72638bc439e45b6b9bcdb1031beae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '7d8e1de9d2e78515a2afda75a0c6ff2b') in 0.025716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_instagram.png
+  artifactKey: Guid(36c0e9cddcf1a4afeb259f0484c230e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_instagram.png using Guid(36c0e9cddcf1a4afeb259f0484c230e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'dc0f99efcfda4445fd0bc80b4485464f') in 0.022298 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_cny.png
+  artifactKey: Guid(4d0231800e72c42a5a96e21d8f4e74c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_cny.png using Guid(4d0231800e72c42a5a96e21d8f4e74c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c55523b3077e43e21445a227f926a846') in 0.021505 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_go_down.png
+  artifactKey: Guid(c80adeb00f62644d1bb54f58808b555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_go_down.png using Guid(c80adeb00f62644d1bb54f58808b555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ad9ac897552b59efb2d5a5bcb013e66c') in 0.021909 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_jewel_1.png
+  artifactKey: Guid(dcdea0700b37149f290c62ed4ec74660) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_jewel_1.png using Guid(dcdea0700b37149f290c62ed4ec74660) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd8e7f57d129958dccb49641337666d93') in 0.022016 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_next.png
+  artifactKey: Guid(78f45be79ab704d3ca848675e3b3c9be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_control_next.png using Guid(78f45be79ab704d3ca848675e3b3c9be) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0d8a0a197a8e37f0793d293a622fa1a3') in 0.023671 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_eye_open.png
+  artifactKey: Guid(9e14120b3ffb24e67a34c1784e8f100c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_eye_open.png using Guid(9e14120b3ffb24e67a34c1784e8f100c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '9ba9d1d479eab3ff3a24449116fdb41f') in 0.021089 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_land.png
+  artifactKey: Guid(25d33bfbd293e4827809f4cf0f37cdf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/ButtonIcons/ButtonIcon_Line_Black/btn_line_black_land.png using Guid(25d33bfbd293e4827809f4cf0f37cdf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd10f785dcc9dbf7661c7326ea38ff17e') in 0.024627 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'log4net.dll' with different versions detected, using 'Assets/References/log4net.dll, AssemblyName=log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=null' and ignoring 'Packages/com.unity.collab-proxy/Lib/Editor/log4netPlastic.dll, AssemblyName=log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.837 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Client
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.982 seconds
+Domain Reload Profiling: 2786ms
+	BeginReloadAssembly (214ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (35ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (69ms)
+	LoadAllAssembliesAndSetupDomain (487ms)
+		LoadAssemblies (588ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (15ms)
+			TypeCache.Refresh (4ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1983ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (546ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (287ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (30ms)
+			EditorAssembliesLoaded (3ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Refreshing native plugins compatible for Editor in 42.64 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5850 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (322.8 KB). Loaded Objects now: 6560.
+Memory consumption went from 284.9 MB to 284.6 MB.
+Total: 7.636900 ms (FindLiveObjects: 1.218700 ms CreateObjectMapping: 0.263100 ms MarkObjects: 5.928900 ms  DeleteObjects: 0.220400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 由于线程退出或应用程序请求，已中止 I/O 操作。
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

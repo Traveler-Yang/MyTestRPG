@@ -40,4 +40,9 @@ public class UIMain : MonoSingleton<UIMain>
 		UITest test = UIManager.Instance.Show<UITest>(); //打开UITest界面
 		test.Set("这是一个标题");
     }
+
+	public void ClickBag()
+	{
+		//UIManager.Instance.Show<UIBag>();
+	}
 }

@@ -132,10 +132,15 @@ namespace GameServer.Services
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标
-                MapPosX = 5600,
-                MapPosY = 4400,
-                MapPosZ = 900,
+                MapPosX = 1410,
+                MapPosY = 110,
+                MapPosZ = 1000,
             };
+            var bag = new TCharacterBag();
+            bag.Owner = character;
+            bag.Items = new byte[0];
+            bag.Unlocked = 20;
+            character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
             character = DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();//更新Entities
@@ -188,16 +193,20 @@ namespace GameServer.Services
             Log.InfoFormat("HasItem[{0}]{1}", itemId, hasItem);
             if (hasItem)//如果角色拥有这个物品，则移除1个物品
             {
-                character.ItemManager.RemoveItem(itemId, 1);
+                //character.ItemManager.RemoveItem(itemId, 1);
             }
             else//如果角色没有这个物品，则添加2个物品
             {
-                character.ItemManager.AddItem(itemId, 2);
+                character.ItemManager.AddItem(1, 200);
+                character.ItemManager.AddItem(2, 100);
+                character.ItemManager.AddItem(3, 30);
+                character.ItemManager.AddItem(4, 120);
             }
             //取出一个物品出来查看一下
             Models.Item item = character.ItemManager.GetItem(itemId);
 
             Log.InfoFormat("Item[{0}][{1}]", itemId, item);
+            DBService.Instance.Save();
 
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             sender.SendData(data, 0, data.Length);

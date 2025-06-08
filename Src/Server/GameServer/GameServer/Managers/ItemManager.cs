@@ -105,7 +105,7 @@ namespace GameServer.Managers
                 Items.Add(itemId, item);
             }
             Log.InfoFormat("[{0}]AddItem[{1}] addCount：[{2}]", this.Owner.Data.ID, itemId, count);
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
 
@@ -131,7 +131,7 @@ namespace GameServer.Managers
             //如果这个物品的数量足够，则从物品中移除指定数量
             item.Remove(count);
             Log.InfoFormat("[{0}]RemoveItem[{1}] removeCount[{2}]", this.Owner.Data.ID, item, count);
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
 

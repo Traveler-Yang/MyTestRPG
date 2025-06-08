@@ -30,6 +30,8 @@ namespace Common.Data
         public float UseCD { get; set; }//使用冷却时间
         public int Price { get; set; }//物品价格
         public int SellPrice { get; set; }//物品出售价格
+        public int StackLimit { get; set; }//堆叠限制
+        public string Icon { get; set; }//道具图标
         public ItemFunction Function { get; set; }//物品功能
         public int Param { get; set; }//物品参数，具体含义根据Function不同而不同
         public List<int> Params { get; set; }//物品参数列表

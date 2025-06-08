@@ -22,9 +22,11 @@ namespace GameServer.Services
             entities = new ExtremeWorldEntities();
         }
 
+        /// <summary>
+        /// 异步保存数据库
+        /// </summary>
         public void Save()
         {
-            //异步保存数据库
             entities.SaveChangesAsync();
         }
     }
