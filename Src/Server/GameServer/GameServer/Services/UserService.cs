@@ -132,9 +132,9 @@ namespace GameServer.Services
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标
-                MapPosX = 1410,
-                MapPosY = 110,
-                MapPosZ = 1000,
+                MapPosX = 14100,
+                MapPosY = 1100,
+                MapPosZ = 10000,
             };
             var bag = new TCharacterBag();
             bag.Owner = character;

@@ -17,7 +17,7 @@ namespace Models
         {
             this.Id = item.Id;
             this.Count = item.Count;
-            //this.define = DataManager.Instance.Items[item, Id];
+            this.define = DataManager.Instance.Items[item.Id];//获取当前道具的所有信息
         }
 
         public override string ToString()
