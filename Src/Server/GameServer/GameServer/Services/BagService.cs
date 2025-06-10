@@ -17,6 +17,11 @@ namespace GameServer.Services
 
         }
 
+        /// <summary>
+        /// 背包保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="request"></param>
         private void OnBagSave(NetConnection<NetSession> sender, BagSaveRequest request)
         {
             Character character = sender.Session.Character;

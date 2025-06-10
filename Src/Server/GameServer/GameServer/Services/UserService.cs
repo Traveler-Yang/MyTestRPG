@@ -132,14 +132,16 @@ namespace GameServer.Services
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标
-                MapPosX = 14100,
-                MapPosY = 1100,
-                MapPosZ = 10000,
+                MapPosX = 14250,
+                MapPosY = 9500,
+                MapPosZ = 1100,
             };
+            //根据配置表实例化一个背包
             var bag = new TCharacterBag();
             bag.Owner = character;
             bag.Items = new byte[0];
             bag.Unlocked = 20;
+            //将新建的背包数据添加到服务器，再赋值给角色
             character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
             character = DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
             sender.Session.User.Player.Characters.Add(character);
