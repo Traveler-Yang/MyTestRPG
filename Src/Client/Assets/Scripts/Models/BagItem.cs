@@ -19,6 +19,8 @@ namespace Models
             this.Count = (ushort)count;
         }
 
+        #region 字符串重载
+        //让每个物品可以比较
         public static bool operator ==(BagItem lhs, BagItem rhs)
         {
             return lhs.ItemId == rhs.ItemId && lhs.Count == rhs.Count;
@@ -47,5 +49,7 @@ namespace Models
         {
             return ItemId.GetHashCode() ^ (Count.GetHashCode() << 2);
         }
+        #endregion
+
     }
 }

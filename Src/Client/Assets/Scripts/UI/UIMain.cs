@@ -43,6 +43,6 @@ public class UIMain : MonoSingleton<UIMain>
 
 	public void ClickBag()
 	{
-		//UIManager.Instance.Show<UIBag>();
+		UIManager.Instance.Show<UIBag>();
 	}
 }

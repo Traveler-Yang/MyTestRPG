@@ -20,6 +20,11 @@ public class UIIconItem : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 设置物品图标
+    /// </summary>
+    /// <param name="iconName">图标名称（ID）</param>
+    /// <param name="text">物品数量</param>
     public void SetMainIcon(string iconName, string text)
     {
         this.mainImage.overrideSprite = Resloader.Load<Sprite>(iconName);

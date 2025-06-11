@@ -30,30 +30,49 @@ class BagManager : Singleton<BagManager>
         }
     }
 
-    private void Reset()
+    /// <summary>
+    /// 整理
+    /// </summary>
+    public void Reset()
     {
         int i = 0;
         foreach (var kv in ItemManager.Instance.Items)
         {
+            //如果当前道具的数量小于当前物品的最大堆叠数量
+            //那就直接将当前物品的id（也就是键值）和数量填充到背包里面
             if (kv.Value.Count <= kv.Value.define.StackLimit)
             {
                 this.items[i].ItemId = (ushort)kv.Key;
                 this.items[i].Count = (ushort)kv.Value.Count;
             }
-            else
+            else//如果大于最大堆叠数量
             {
+                //记录当前物品的数量
                 int count = kv.Value.Count;
+                //循环判断当前数量是否大于最大堆叠数量
                 while (count > kv.Value.define.StackLimit)
                 {
-
+                    //填充当前格子，填充的数量就是最大堆叠限制的数量（如：99个）
+                    this.items[i].ItemId = (ushort)kv.Key;
+                    this.items[i].Count = (ushort)kv.Value.define.StackLimit;
+                    //填充完成后，进入下一个格子，并将上面记录的数量减去最大堆叠数量
+                    i++;
+                    count -= kv.Value.define.StackLimit;
                 }
+                //直到最后减完之后上面记录的数量减到小于最大堆叠数量
+                //最后将剩余的物品数量全部填充到格子里面
+                this.items[i].ItemId = (ushort)kv.Key;
+                this.items[i].Count = (ushort)count;
             }
+            i++;
         }
     }
 
     unsafe void Analyze(byte[] data)
     {
         //声明一个byte类型的指针，并指向data数组的第一位的内存地址
+        //如果在C#中要用指针，必须要这么写，因为在C#中内存是动态管理的
+        //这个是让我们的内存指定一块不会去改变
         fixed (byte* pt = data)
         {
             //遍历背包的所有格子
@@ -69,6 +88,8 @@ class BagManager : Singleton<BagManager>
                 //并将得到的这块内存，转换(强转)成 BagItem* 类型，存储起来
                 BagItem* item = (BagItem*)(pt + i * sizeof(BagItem));
                 //这行是将上面存储的内存，放入背包的格子
+                //在将让得到的地址数据，存储下来的时候，只是改变他的值，不会修改他的地址
+                //这也是为什么要用结构体的原因
                 items[i] = *item;
             }
         }
@@ -82,7 +103,7 @@ class BagManager : Singleton<BagManager>
             for (int i = 0; i < Unlocked; i++)
             {
                 BagItem* item = (BagItem*)(pt + i * sizeof(BagItem));
-                items[i] = *item;
+                *item = items[i];
             }
         }
         return this.Info;
