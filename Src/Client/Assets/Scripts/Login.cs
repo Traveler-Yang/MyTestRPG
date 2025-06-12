@@ -10,12 +10,12 @@ public class Login : MonoBehaviour {
 		Network.NetClient.Instance.Connect();
 
 
-		SkillBridge.Message.NetMessage msg = new SkillBridge.Message.NetMessage();
-		msg.Request = new SkillBridge.Message.NetMessageRequest();
-        msg.Request.firstRequest = new SkillBridge.Message.FirstTestRequest();
-        msg.Request.firstRequest.Helloworld = "Hello World!";
+		//SkillBridge.Message.NetMessage msg = new SkillBridge.Message.NetMessage();
+		//msg.Request = new SkillBridge.Message.NetMessageRequest();
+        //msg.Request.firstRequest = new SkillBridge.Message.FirstTestRequest();
+        //msg.Request.firstRequest.Helloworld = "Hello World!";
 
-		Network.NetClient.Instance.SendMessage(msg);
+		//Network.NetClient.Instance.SendMessage(msg);
 	}
 	
 	// Update is called once per frame

@@ -72,6 +72,7 @@ message NCharacterInfo {
 	int32 level = 6;
 	int32 mapId = 7;
 	NEntity entity = 8;
+	int64 gold = 9;
 
 	repeated NItemInfo Items = 10;
 	NBagInfo Bag = 11;
@@ -142,7 +143,7 @@ message NetMessageRequest{
 	MapEntitySyncRequest mapEntitySync = 8;
 	MapTeleportRequest mapTeleport = 9;
 
-	FirstTestRequest firstRequest = 10;
+	ItemBuyRequest itemBuy = 10;
 }
 
 message NetMessageResponse{
@@ -156,6 +157,8 @@ message NetMessageResponse{
 	MapCharacterLeaveResponse mapCharacterLeave = 7;
 
 	MapEntitySyncResponse mapEntitySync = 8;
+
+	ItemBuyResponse itemBuy = 9;
 	
 }
 
@@ -263,6 +266,18 @@ message BagSaveRequest
 
 //±³°ü
 message BagSaveResponse
+{
+	RESULT result = 1;
+	string errormsg = 2;
+}
+
+message ItemBuyRequest
+{
+	int32 shopId = 1;
+	int32 shopItemId = 2;
+}
+
+message ItemBuyResponse
 {
 	RESULT result = 1;
 	string errormsg = 2;
