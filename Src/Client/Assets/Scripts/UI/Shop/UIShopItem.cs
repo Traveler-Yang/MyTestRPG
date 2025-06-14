@@ -1,0 +1,71 @@
+﻿using Common.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class UIShopItem : MonoBehaviour, ISelectHandler
+{
+    public Image icon;//图标
+    public Text title;//商品名字
+    public Text price;//价格
+
+
+    public Image backGround;//商品的背景图
+    public Sprite normalBg;//正常状态的背景图
+    public Sprite selectBg;//选中状态的背景图
+
+    private bool selected;
+    /// <summary>
+    /// 是否被选中
+    /// </summary>
+    public bool Selected
+    {
+        get { return selected; }
+        set
+        {
+            selected = value;
+            //每次赋值就会改变当前背景图
+            backGround.overrideSprite = selected ? selectBg : normalBg;
+
+        }
+    }
+
+    public int ShopItemID { get; set; }
+    private UIShop shop;
+
+    private ItemDefine item;
+    private ShopItemDefine shopItem {  get; set; }
+
+    /// <summary>
+    /// 设置商店物品基本信息
+    /// </summary>
+    /// <param name="id">物品的ID</param>
+    /// <param name="shopItem">哪一个物品</param>
+    /// <param name="owner">我属于哪个商店</param>
+    public void SetShopItem(int id, ShopItemDefine shopItem, UIShop owner)
+    {
+        this.shop = owner;
+        this.ShopItemID = id;
+        this.shopItem = shopItem;
+        this.item = DataManager.Instance.Items[this.shopItem.ItemID];
+
+        this.title.text = this.item.Name;
+        this.price.text = shopItem.Price.ToString();
+        this.icon.overrideSprite = Resloader.Load<Sprite>(item.Icon);
+    }
+
+    /// <summary>
+    /// 点击商店物品事件
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnSelect(BaseEventData eventData)
+    {
+        this.Selected = true;
+        this.shop.SelectShopItem(this);
+    }
+}

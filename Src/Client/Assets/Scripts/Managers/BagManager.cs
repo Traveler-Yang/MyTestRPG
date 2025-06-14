@@ -30,6 +30,46 @@ class BagManager : Singleton<BagManager>
         }
     }
 
+    public void AddItem(int itemId, int count)
+    {
+        ushort addCount = (ushort)count;
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i].ItemId == itemId)
+            {
+                //可以增加的数量
+                ushort canAdd = (ushort)(DataManager.Instance.Items[itemId].StackLimit - this.items[i].Count);
+                if (canAdd >= addCount)
+                {
+                    this.items[i].Count += addCount;
+                    addCount = 0;
+                    break;
+                }
+                else
+                {
+                    this.items[i].Count += canAdd;
+                    addCount -= canAdd;
+                }
+            }
+        }
+        if (addCount > 0)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (this.items[i].ItemId == 0)
+                {
+                    this.items[i].ItemId = (ushort)itemId;
+                    this.items[i].Count = addCount;
+                }
+            }
+        }
+    }
+
+    public void RemoveItem(int itemId, int count)
+    {
+
+    }
+
     /// <summary>
     /// 整理
     /// </summary>

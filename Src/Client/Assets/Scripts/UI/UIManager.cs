@@ -22,7 +22,8 @@ public class UIManager : Singleton<UIManager>
     {
         //初始化UI资源信息
         UIResources.Add(typeof(UITest), new UIElement() { Resource = "UI/UITest", cache = true });
-        UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBag", cache = true });
+        UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBag", cache = false });
+        UIResources.Add(typeof(UIShop), new UIElement() { Resource = "UI/UIShop", cache = false });
         //可以继续添加其他UI类型
     }
 

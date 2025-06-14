@@ -97,6 +97,41 @@ message NBagInfo
 	bytes Items = 2;//背包里的道具列表
 }
 
+enum STATUS_ACTION
+{
+	UPDATE = 0;//更新，用于添加不删除的东西，比如金钱
+	ADD = 1;//添加
+	DELETE = 2;//删除
+}
+
+enum STATUS_TYPE
+{
+	MONEY = 0;//钱
+	EXP = 1;//技能
+	SKILL_POINT = 2;//技能点
+	ITEM = 3;//物品
+}
+
+enum STATUS_SOURCE
+{
+	UPDATE = 0;
+	ADD = 1;
+	DELETE = 2;
+}
+
+message NStatus
+{
+	STATUS_TYPE type = 1;
+	STATUS_ACTION action = 2;
+	int32 id = 3;
+	int32 value = 4;
+}
+
+message StatusNotify
+{
+	repeated NStatus status = 1;
+}
+
 ////////////////////////////////////////////////////////////////
 //
 //  Entities
@@ -159,6 +194,8 @@ message NetMessageResponse{
 	MapEntitySyncResponse mapEntitySync = 8;
 
 	ItemBuyResponse itemBuy = 9;
+
+	StatusNotify statusNotify = 100;
 	
 }
 

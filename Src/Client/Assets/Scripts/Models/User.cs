@@ -23,6 +23,11 @@ namespace Models
             this.userInfo = info;
         }
 
+        internal void AddGold(int gold)
+        {
+            this.CurrentCharacter.Gold += gold;
+        }
+
         public MapDefine CurrentMapData { get; set; }
 
         public SkillBridge.Message.NCharacterInfo CurrentCharacter { get; set; }
