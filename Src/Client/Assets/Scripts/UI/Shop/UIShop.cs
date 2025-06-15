@@ -2,14 +2,14 @@ using Common.Data;
 using Managers;
 using Models;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIShop : UIWindow
 {
     public Text title;//标题
-    public Text money;//金钱
+    public TextMeshProUGUI money;//金钱
 
     public GameObject shopItem;//商定物品预制体
     ShopDefine shop;
@@ -26,14 +26,22 @@ public class UIShop : UIWindow
     /// <returns></returns>
     IEnumerator InitItems()
     {
+        int count = 0;
+        int pape = 0;
         foreach (var kv in DataManager.Instance.ShopItems[shop.ID])
         {
             if (kv.Value.Status > 0)
             {
-                GameObject go = Instantiate(shopItem, itemRoot[0]);
+                GameObject go = Instantiate(shopItem, itemRoot[pape]);
                 UIShopItem ui = go.GetComponent<UIShopItem>();
                 ui.SetShopItem(kv.Key, kv.Value, this);
-
+                count++;
+                if (count >= 10)
+                {
+                    count = 0;
+                    pape++;
+                    itemRoot[pape].gameObject.SetActive(true);
+                }
             }
         }
         yield return null;

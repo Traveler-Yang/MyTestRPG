@@ -1,9 +1,5 @@
 ﻿using Common.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,7 +8,9 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
 {
     public Image icon;//图标
     public Text title;//商品名字
-    public Text price;//价格
+    public TextMeshProUGUI price;//价格
+    public Text limitClass;//职业类型
+    public TextMeshProUGUI count;//数量
 
 
     public Image backGround;//商品的背景图
@@ -55,7 +53,9 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
         this.item = DataManager.Instance.Items[this.shopItem.ItemID];
 
         this.title.text = this.item.Name;
+        this.count.text = "X" + shopItem.Count.ToString();
         this.price.text = shopItem.Price.ToString();
+        this.limitClass.text = this.item.LimitClass.ToString();
         this.icon.overrideSprite = Resloader.Load<Sprite>(item.Icon);
     }
 

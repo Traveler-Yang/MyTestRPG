@@ -26,6 +26,8 @@ namespace Common.Data
         public string Description { get; set; }//物品描述
         //public ItemType Type { get; set; }//物品类型
         public string Category { get; set; }//物品分类
+        public int Level { get; set; }//等级
+        public CharacterClass LimitClass { get; set; }//限制职业
         public bool CanUse { get; set; }//是否可以使用
         public float UseCD { get; set; }//使用冷却时间
         public int Price { get; set; }//物品价格

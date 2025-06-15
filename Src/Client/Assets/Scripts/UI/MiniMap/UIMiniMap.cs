@@ -9,6 +9,7 @@ public class UIMiniMap : MonoBehaviour {
 	public Image miniMap;//地图图片
 	public Image arrow;//角色箭头
 	public Text mapName;//地图名字
+	public Camera minimapCamera;//小地图的相机
 
 	private Transform playerTransform;//当前角色的位置
 
@@ -21,11 +22,11 @@ public class UIMiniMap : MonoBehaviour {
 	public void UpdateMap()
 	{
         this.mapName.text = User.Instance.CurrentMapData.Name;//将从配置表中读取的数值赋值给当前地图
-		this.miniMap.overrideSprite = MiniMapManager.Instance.LoadCurrentMiniMap();
+		//this.miniMap.overrideSprite = MiniMapManager.Instance.LoadCurrentMiniMap();
 
-		this.miniMap.SetNativeSize();
-		this.miniMap.transform.localPosition = Vector3.zero;
-		this.miniMapBoundingBox = MiniMapManager.Instance.MiniMapBoundingBox;//获取当前地图的包围盒
+		//this.miniMap.SetNativeSize();
+		//this.miniMap.transform.localPosition = Vector3.zero;
+		//this.miniMapBoundingBox = MiniMapManager.Instance.MiniMapBoundingBox;//获取当前地图的包围盒
 		this.playerTransform = null;//清空当前角色的位置
     }
 	
@@ -34,19 +35,20 @@ public class UIMiniMap : MonoBehaviour {
 		if (playerTransform == null)
 			playerTransform = MiniMapManager.Instance.PlayerTransform;
 
-        if (miniMap.overrideSprite == null || playerTransform == null) return;
+        if (playerTransform == null) return;
 
-		float realWidth = miniMapBoundingBox.bounds.size.x;//地图包围盒的宽度
-		float realHeight = miniMapBoundingBox.bounds.size.y;//地图包围盒的高度
+		//float realWidth = miniMapBoundingBox.bounds.size.x;//地图包围盒的宽度
+		//float realHeight = miniMapBoundingBox.bounds.size.y;//地图包围盒的高度
 
-		float relaX = playerTransform.position.x - miniMapBoundingBox.bounds.min.x;//包围盒的左下角坐标
-		float relaY = playerTransform.position.z - miniMapBoundingBox.bounds.min.z;
+		//float relaX = playerTransform.position.x - miniMapBoundingBox.bounds.min.x;//包围盒的左下角坐标
+		//float relaY = playerTransform.position.z - miniMapBoundingBox.bounds.min.z;
 
-		float pivotX = relaX / realWidth;
-		float pivotY = relaY / realHeight;
+		//float pivotX = relaX / realWidth;
+		//float pivotY = relaY / realHeight;
 
-		this.miniMap.rectTransform.pivot = new Vector2(pivotX, pivotY);
-		this.miniMap.rectTransform.localPosition = Vector3.zero;
-		this.arrow.transform.eulerAngles = new Vector3(0f, 0f, -playerTransform.eulerAngles.y);
+		//this.miniMap.rectTransform.pivot = new Vector2(pivotX, pivotY);
+		//this.miniMap.rectTransform.localPosition = Vector3.zero;
+		this.minimapCamera.transform.position = new Vector3(playerTransform.position.x, minimapCamera.transform.position.y, playerTransform.position.z);
+        this.arrow.transform.eulerAngles = new Vector3(0f, 0f, -playerTransform.eulerAngles.y);
 	}
 }

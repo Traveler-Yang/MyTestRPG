@@ -3,6 +3,7 @@ using Services;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LoadingManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class LoadingManager : MonoBehaviour
 	public GameObject UIRegisterPanel;//注册场景
 
 	public Slider loadingSlider;//加载进度条
-	public Text loadingNumberText;//加载显示数字
+	public TextMeshProUGUI loadingNumberText;//加载显示数字
 	public Text loagingText;//加载显示文本
 
 	private IEnumerator WaitLoading()

@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIBag : UIWindow
 {
-    public Text money;//如名所示，钱
+    public TextMeshProUGUI money;//如名所示，钱
 
     public Sprite notEnableSlote;//未解锁的格子图片
 
@@ -57,8 +58,21 @@ public class UIBag : UIWindow
         this.money.text = User.Instance.CurrentCharacter.Id.ToString();
     }
 
+    void Clear()
+    {
+        for (int i = 0; i < slote.Count; i++)
+        {
+            if (slote[i].transform.childCount > 1)
+            {
+                Destroy(slote[i].transform.GetChild(1).gameObject);
+            }
+        }
+    }
+
     public void OnReset()
     {
         BagManager.Instance.Reset();
+        this.Clear();
+        StartCoroutine(InitBags());
     }
 }
