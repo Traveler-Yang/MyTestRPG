@@ -24,7 +24,7 @@ namespace Common.Data
         public int ID { get; set; }
         public string Name { get; set; }//物品名称
         public string Description { get; set; }//物品描述
-        //public ItemType Type { get; set; }//物品类型
+        public ItemType Type { get; set; }//物品类型
         public string Category { get; set; }//物品分类
         public int Level { get; set; }//等级
         public CharacterClass LimitClass { get; set; }//限制职业

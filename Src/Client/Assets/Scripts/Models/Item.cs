@@ -7,12 +7,13 @@ using UnityEngine;
 
 namespace Models
 {
-    public class Item : MonoBehaviour
+    public class Item 
     {
         public int Id;
 
         public int Count;
-        public ItemDefine define;
+        public ItemDefine Define;
+        public EquipDefine EquipInfo;
         public Item(NItemInfo item) : 
             this(item.Id, item.Count)
         {
@@ -22,7 +23,8 @@ namespace Models
         {
             this.Id = id;
             this.Count = count;
-            this.define = DataManager.Instance.Items[id];//获取当前道具的所有信息
+            DataManager.Instance.Items.TryGetValue(this.Id, out Define);
+            DataManager.Instance.Equips.TryGetValue(this.Id, out EquipInfo);
         }
 
         public override string ToString()

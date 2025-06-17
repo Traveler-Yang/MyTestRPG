@@ -721,14 +721,12 @@ namespace SkillBridge.Message
         Helmet = 2,
         [global::ProtoBuf.ProtoEnum(Name = @"CHEST")]
         Chest = 3,
-        [global::ProtoBuf.ProtoEnum(Name = @"SHOULDER")]
-        Shoulder = 4,
         [global::ProtoBuf.ProtoEnum(Name = @"PANTS")]
-        Pants = 5,
+        Pants = 4,
         [global::ProtoBuf.ProtoEnum(Name = @"BOOTS")]
-        Boots = 6,
+        Boots = 5,
         [global::ProtoBuf.ProtoEnum(Name = @"SLOT_MAX")]
-        SlotMax = 7,
+        SlotMax = 6,
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"STATUS_ACTION")]

@@ -128,6 +128,7 @@ namespace GameServer.Services
                 MapPosY = 9500,
                 MapPosZ = 1100,
                 Gold = 100000,
+                Equips = new byte[24],
             };
             //根据配置表实例化一个背包
             var bag = new TCharacterBag();
@@ -137,6 +138,20 @@ namespace GameServer.Services
             //将新建的背包数据添加到服务器，再赋值给角色
             character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
             character = DBService.Instance.Entities.Characters.Add(character);//将创建的角色表Add到Entities
+
+            character.Items.Add(new TCharacterItem()
+            {
+                Owner = character,
+                ItemID = 1,
+                ItemCount = 20,
+            });
+            character.Items.Add(new TCharacterItem()
+            {
+                Owner = character,
+                ItemID = 2,
+                ItemCount = 20,
+            });
+
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();//更新Entities
 
@@ -181,27 +196,6 @@ namespace GameServer.Services
             message.Response.gameEnter.Errormsg = "None";//错误信息
 
             message.Response.gameEnter.Character = character.Info;//进入成功 发送初始角色信息给客户端
-
-            //道具系统测试
-            int itemId = 1;//假设我们要添加一个物品ID为1的道具
-            bool hasItem = character.ItemManager.HasItem(itemId);//检查角色是否拥有这个物品
-            Log.InfoFormat("HasItem[{0}]{1}", itemId, hasItem);
-            if (hasItem)//如果角色拥有这个物品，则移除1个物品
-            {
-                //character.ItemManager.RemoveItem(itemId, 1);
-            }
-            else//如果角色没有这个物品，则添加2个物品
-            {
-                character.ItemManager.AddItem(1, 200);
-                character.ItemManager.AddItem(2, 100);
-                character.ItemManager.AddItem(3, 30);
-                character.ItemManager.AddItem(4, 120);
-            }
-            //取出一个物品出来查看一下
-            Models.Item item = character.ItemManager.GetItem(itemId);
-
-            Log.InfoFormat("Item[{0}][{1}]", itemId, item);
-            DBService.Instance.Save();
 
             byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
             sender.SendData(data, 0, data.Length);

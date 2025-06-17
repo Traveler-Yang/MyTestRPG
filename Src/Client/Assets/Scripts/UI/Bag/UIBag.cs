@@ -41,7 +41,7 @@ public class UIBag : UIWindow
             {
                 GameObject go = Instantiate(bagItem, slote[i].transform);
                 var ui = go.GetComponent<UIIconItem>();
-                var def = ItemManager.Instance.Items[item.ItemId].define;
+                var def = ItemManager.Instance.Items[item.ItemId].Define;
                 ui.SetMainIcon(def.Icon, item.Count.ToString());
             }
         }

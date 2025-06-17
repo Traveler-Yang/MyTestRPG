@@ -9,7 +9,7 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
     public Image icon;//图标
     public Text title;//商品名字
     public TextMeshProUGUI price;//价格
-    public Text limitClass;//职业类型
+    public TextMeshProUGUI limitClass;//职业类型
     public TextMeshProUGUI count;//数量
 
 

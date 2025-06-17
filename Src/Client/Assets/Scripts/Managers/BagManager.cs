@@ -60,6 +60,7 @@ class BagManager : Singleton<BagManager>
                 {
                     this.items[i].ItemId = (ushort)itemId;
                     this.items[i].Count = addCount;
+                    break;
                 }
             }
         }
@@ -80,7 +81,7 @@ class BagManager : Singleton<BagManager>
         {
             //如果当前道具的数量小于当前物品的最大堆叠数量
             //那就直接将当前物品的id（也就是键值）和数量填充到背包里面
-            if (kv.Value.Count <= kv.Value.define.StackLimit)
+            if (kv.Value.Count <= kv.Value.Define.StackLimit)
             {
                 this.items[i].ItemId = (ushort)kv.Key;
                 this.items[i].Count = (ushort)kv.Value.Count;
@@ -90,14 +91,14 @@ class BagManager : Singleton<BagManager>
                 //记录当前物品的数量
                 int count = kv.Value.Count;
                 //循环判断当前数量是否大于最大堆叠数量
-                while (count > kv.Value.define.StackLimit)
+                while (count > kv.Value.Define.StackLimit)
                 {
                     //填充当前格子，填充的数量就是最大堆叠限制的数量（如：99个）
                     this.items[i].ItemId = (ushort)kv.Key;
-                    this.items[i].Count = (ushort)kv.Value.define.StackLimit;
+                    this.items[i].Count = (ushort)kv.Value.Define.StackLimit;
                     //填充完成后，进入下一个格子，并将上面记录的数量减去最大堆叠数量
                     i++;
-                    count -= kv.Value.define.StackLimit;
+                    count -= kv.Value.Define.StackLimit;
                 }
                 //直到最后减完之后上面记录的数量减到小于最大堆叠数量
                 //最后将剩余的物品数量全部填充到格子里面

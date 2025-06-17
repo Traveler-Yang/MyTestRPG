@@ -239,6 +239,7 @@ namespace Services
                 {
                     ItemManager.Instance.Init(response.Character.Items);//初始化物品
                     BagManager.Instance.Init(response.Character.Bag);//初始化背包
+                    EquipManager.Instance.Init(response.Character.Equips);//初始化装备
                 }
             }
         }

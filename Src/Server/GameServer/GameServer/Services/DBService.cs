@@ -23,11 +23,15 @@ namespace GameServer.Services
         }
 
         /// <summary>
-        /// 异步保存数据库
+        /// 保存信息到数据库
         /// </summary>
-        public void Save()
+        /// <param name="async">是否是同步保存</param>
+        public void Save(bool async = false)
         {
-            entities.SaveChangesAsync();
+            if(async)
+                entities.SaveChangesAsync();
+            else
+                entities.SaveChanges();
         }
     }
 }

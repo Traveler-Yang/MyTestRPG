@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIMain : MonoSingleton<UIMain>
 {
 
 	public Text avatarName;//玩家名字
-	public Text avatarLevel;//玩家等级
+	public TextMeshProUGUI avatarLevel;//玩家等级
     protected override void OnStart()
     {
 		this.UpdateAvatar();
@@ -41,9 +42,13 @@ public class UIMain : MonoSingleton<UIMain>
 		test.Set("这是一个标题");
     }
 
-	public void ClickBag()
+	public void OnClickBag()
 	{
 		UIManager.Instance.Show<UIBag>();
 	}
 
+	public void OnClickCharEquip()
+	{
+		UIManager.Instance.Show<UICharEquip>();
+	}
 }
