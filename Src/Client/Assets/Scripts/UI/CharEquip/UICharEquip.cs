@@ -43,7 +43,8 @@ public class UICharEquip : UIWindow
     {
         foreach (var kv in ItemManager.Instance.Items)
         {
-            if (kv.Value.Define.Type == ItemType.Equip)
+            //如果是装备类型，并且类型是当前的职业
+            if (kv.Value.Define.Type == ItemType.Equip && kv.Value.Id/1000 == User.Instance.CurrentCharacter.Id)
             {
                 //已经装备就不显示了
                 if (EquipManager.Instance.Contains(kv.Key))

@@ -6,7 +6,7 @@ namespace Suntail
 {
     public class LightCulling : MonoBehaviour
     {
-        [SerializeField] private GameObject playerCamera;
+        //[SerializeField] private GameObject playerCamera;
         [SerializeField] private float shadowCullingDistance = 15f;
         [SerializeField] private float lightCullingDistance = 30f;
         private Light _light;
@@ -20,7 +20,7 @@ namespace Suntail
         private void Update()
         {
             //Calculate the distance between a given object and the light source
-            float cameraDistance = Vector3.Distance(playerCamera.transform.position, gameObject.transform.position);
+            float cameraDistance = Vector3.Distance(transform.position, gameObject.transform.position);
 
             if (cameraDistance <= shadowCullingDistance && enableShadows)
             {

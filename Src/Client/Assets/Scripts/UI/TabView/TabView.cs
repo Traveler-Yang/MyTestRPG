@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TabView : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class TabView : MonoBehaviour
     public GameObject[] tabPages;//背包页
 
     public int index = -1;//当前的背包页索引
+
+
+    public UnityAction<int> OnTabSelect;
 
     IEnumerator Start()
     {

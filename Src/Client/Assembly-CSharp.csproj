@@ -66,6 +66,9 @@
     <Compile Include="Assets\Scripts\Managers\EquipManager.cs" />
     <Compile Include="Assets\Scripts\Login.cs" />
     <Compile Include="Assets\Scripts\Entities\Entity.cs" />
+    <Compile Include="Assets\Scripts\UI\ListView\ListView.cs" />
+    <Compile Include="Assets\Scripts\UI\MiniMap\MinimapCamera.cs" />
+    <Compile Include="Assets\Scripts\Models\Quest.cs" />
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />
     <Compile Include="Assets\Scripts\GameObject\GameObjectTool.cs" />
     <Compile Include="Assets\Scripts\UI\TabView\TabView.cs" />
@@ -75,6 +78,8 @@
     <Compile Include="Assets\FemaleRunnerAnimset\Scripts\CameraWalk.cs" />
     <Compile Include="Assets\Scripts\Services\StatusService.cs" />
     <Compile Include="Assets\Scripts\GameObject\EntityContorller.cs" />
+    <Compile Include="Assets\Scripts\UI\UIQuestSystem\UIQuestItem.cs" />
+    <Compile Include="Assets\Scripts\UI\UIQuestSystem\UIQuestInfo.cs" />
     <Compile Include="Assets\Scripts\GameObject\GameObjectManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\GameObject\MainPlayerCamera.cs" />
@@ -97,13 +102,17 @@
     <Compile Include="Assets\Suntail Village\Scripts\SuntailStartDemo.cs" />
     <Compile Include="Assets\Suntail Village\Scripts\LightCulling.cs" />
     <Compile Include="Assets\Scripts\GameObject\TeleporterObject.cs" />
+    <Compile Include="Assets\Scripts\UI\UIQuestSystem\UIQuestDialog.cs" />
     <Compile Include="Assets\Scripts\Managers\BagManager.cs" />
     <Compile Include="Assets\Suntail Village\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\Scripts\Managers\NPCManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
     <Compile Include="Assets\Scripts\UI\UITest.cs" />
     <Compile Include="Assets\Scripts\GameObject\PlayerInputContorller.cs" />
     <Compile Include="Assets\Scripts\Assets\Resloader.cs" />
     <Compile Include="Assets\Scripts\UI\MiniMap\UIMiniMap.cs" />
+    <Compile Include="Assets\Scripts\UI\UIQuestSystem\UIQuestStatus.cs" />
+    <Compile Include="Assets\Scripts\UI\UIQuestSystem\UIQuestSystem.cs" />
     <Compile Include="Assets\Layer Lab\Scripts\PanelView.cs" />
     <Compile Include="Assets\Scripts\UI\UIMessageBox.cs" />
     <Compile Include="Assets\Scripts\Models\BagItem.cs" />
@@ -129,6 +138,7 @@
     <Compile Include="Assets\Suntail Village\Scripts\AudioZoneControl.cs" />
     <Compile Include="Assets\FemaleRunnerAnimset\Scripts\CameraFollowWalk.cs" />
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Services\QuestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

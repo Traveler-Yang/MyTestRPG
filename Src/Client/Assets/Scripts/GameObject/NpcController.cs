@@ -12,7 +12,7 @@ public class NpcController : MonoBehaviour
 
     SkinnedMeshRenderer renderer;//NPC 的渲染器
     Animator animator;//NPC 的动画控制器
-    Color originalColor; // NPC 的原始颜色
+    //Color originalColor; // NPC 的原始颜色
 
     private bool inInteraction = false; // 是否正在交互中
 
@@ -22,7 +22,7 @@ public class NpcController : MonoBehaviour
     {
         renderer = this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();//获取NPC的渲染器
         animator = GetComponent<Animator>();
-        originalColor = renderer.sharedMaterial.color; // 保存NPC的原始颜色
+        //originalColor = renderer.sharedMaterial.color; // 保存NPC的原始颜色
         npc = NPCManager.Instance.GetNpcDefine(npcId);
         //this.StartCoroutine(Actions());
     }

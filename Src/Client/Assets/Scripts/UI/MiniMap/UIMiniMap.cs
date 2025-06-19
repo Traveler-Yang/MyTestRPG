@@ -15,7 +15,7 @@ public class UIMiniMap : MonoBehaviour {
 
 	void Start () 
 	{
-		MiniMapManager.Instance.miniMap = this;//将当前的迷你地图UI赋值给MiniMapManager，告诉管理器当前的迷你地图UI是哪个
+        MiniMapManager.Instance.miniMap = this;//将当前的迷你地图UI赋值给MiniMapManager，告诉管理器当前的迷你地图UI是哪个
         UpdateMap();
     }
 	
