@@ -24,8 +24,6 @@ public class UINameBar : MonoBehaviour {
 	void Update () 
 	{
         this.UpdateInfo();
-
-        this.transform.forward = Camera.main.transform.forward;//让信息条看向相机的位置
     }
 
     void UpdateInfo()

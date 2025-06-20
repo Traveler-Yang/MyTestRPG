@@ -25,6 +25,8 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBag", cache = false });
         UIResources.Add(typeof(UIShop), new UIElement() { Resource = "UI/UIShop", cache = false });
         UIResources.Add(typeof(UICharEquip), new UIElement() { Resource = "UI/UICharEquip", cache = false });
+        UIResources.Add(typeof(UIQuestSystem), new UIElement() { Resource = "UI/UIQuestSystem", cache = false });
+        UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resource = "UI/UIQuestDialog", cache = false });
         //可以继续添加其他UI类型
     }
 

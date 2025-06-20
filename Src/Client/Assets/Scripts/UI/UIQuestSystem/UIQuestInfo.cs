@@ -1,4 +1,4 @@
-using Assets.Scripts.Models;
+using Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +20,10 @@ public class UIQuestInfo : MonoBehaviour
     public TextMeshProUGUI rewarGold;
     public TextMeshProUGUI rewarExp;
 
+    /// <summary>
+    /// 设置任务面板的信息
+    /// </summary>
+    /// <param name="quest"></param>
     internal void SetQuestInfo(Quest quest)
     {
         this.title.text = string.Format("[{0}]{1}", quest.Define.Type, quest.Define.Name);

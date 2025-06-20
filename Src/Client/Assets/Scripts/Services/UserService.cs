@@ -237,9 +237,11 @@ namespace Services
             {
                 if (response.Character != null)
                 {
+                    User.Instance.CurrentCharacter = response.Character;//将当前角色赋值给User
                     ItemManager.Instance.Init(response.Character.Items);//初始化物品
                     BagManager.Instance.Init(response.Character.Bag);//初始化背包
                     EquipManager.Instance.Init(response.Character.Equips);//初始化装备
+                    QuestManager.Instance.Init(response.Character.Quests);//初始化任务
                 }
             }
         }
