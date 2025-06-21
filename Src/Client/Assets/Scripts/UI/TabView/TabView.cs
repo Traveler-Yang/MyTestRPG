@@ -39,7 +39,7 @@ public class TabView : MonoBehaviour
             for (int i = 0; i < tabButtons.Length; i++)
             {
                 tabButtons[i].Select(i == index);
-                tabPages[i].SetActive(i == index);
+                //tabPages[i].SetActive(i == index);
             }
         }
     }

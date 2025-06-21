@@ -21,7 +21,8 @@ public class UIQuestDialog : UIWindow
     {
         this.quest = quest;
         this.UpdateQuest();
-        //如果
+        //判断当前任务是否是新任务，如果是新任务，则显示可接任务按钮，否则显示提交任务按钮
+        //info为null，则表示是新任务
         if (this.quest.Info == null) 
         {
             openButtons.SetActive(true);
@@ -39,6 +40,7 @@ public class UIQuestDialog : UIWindow
             {
                 openButtons.SetActive(false);
                 submitButton.SetActive(false);
+                MessageBox.Show("任务出现问题", "错误", MessageBoxType.Error);
             }
         }
     }

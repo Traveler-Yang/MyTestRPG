@@ -46,4 +46,10 @@ public class UIWindow : MonoBehaviour
     {
         this.Close(UIWindowResult.Yes);
     }
+
+    public virtual void OnNoClick()
+    {
+        this.Close(UIWindowResult.No);
+        this.Close();
+    }
 }

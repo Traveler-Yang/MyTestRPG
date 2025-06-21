@@ -37,10 +37,12 @@ public class ListView : MonoBehaviour
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            //点击任务项，如果当前项没有被选中，则选中当前项
             if (!this.selected)
             {
                 this.Selected = true;
             }
+            //如果当前选择的的任务不是自己，则把自己赋值给 owner 的 SelectedItem
             if (owner != null && owner.SelectedItem != this)
             {
                 owner.SelectedItem = this;
@@ -56,6 +58,7 @@ public class ListView : MonoBehaviour
         get { return selectedItem; }
         private set
         {
+            //如果当前选中的项不为空，并且新选中的项不是当前选中的项，则取消当前选中项的选中状态
             if (selectedItem!=null && selectedItem != value)
             {
                 selectedItem.Selected = false;

@@ -18,6 +18,8 @@ public class NpcController : MonoBehaviour
 
     NpcDefine npc;//NPC 对象
 
+    NpcQuestStatus questStatus;
+
     void Start()
     {
         renderer = this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();//获取NPC的渲染器
@@ -25,6 +27,35 @@ public class NpcController : MonoBehaviour
         //originalColor = renderer.sharedMaterial.color; // 保存NPC的原始颜色
         npc = NPCManager.Instance.GetNpcDefine(npcId);
         //this.StartCoroutine(Actions());
+        RefreshNpcStatus();
+        QuestManager.Instance.onQuestStatusChanged += OnQuestStatusChanged;
+    }
+
+
+    void OnQuestStatusChanged(Quest quest)
+    {
+        //当任务状态发生变化时，刷新NPC的任务状态
+        this.RefreshNpcStatus();
+    }
+
+    /// <summary>
+    /// 刷新NPC的任务状态
+    /// </summary>
+    void RefreshNpcStatus()
+    {
+        //从QuestManager获取NPC的任务状态
+        questStatus = QuestManager.Instance.GetNpcQuestStatus(this.npcId);
+        //增加NPC任务状态显示
+        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, questStatus);
+    }
+
+    private void OnDestroy()
+    {
+        //当NPC被销毁时，取消监听任务状态变化事件
+        QuestManager.Instance.onQuestStatusChanged -= OnQuestStatusChanged;
+        //从UIWorldElementManager中移除NPC的任务状态显示
+        if (UIWorldElementManager.Instance != null)
+            UIWorldElementManager.Instance.RemoveNpcQuestStatus(this.transform);
     }
 
     IEnumerator Actions()

@@ -74,9 +74,11 @@ namespace Managers
         /// <returns></returns>
         private bool DoTaskInteractive(NpcDefine npc)
         {
+            //效验一下 NPC 任务状态
             var status  = QuestManager.Instance.GetNpcQuestStatus(npc.ID);
             if(status == NpcQuestStatus.None)
                 return false;
+            //如果这个 NPC 有任务，则打开任务对话框
             return QuestManager.Instance.OpenNpcQuest(npc.ID);
         }
 

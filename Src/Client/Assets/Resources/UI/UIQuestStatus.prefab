@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2459088861939496701}
   - component: {fileID: 8660152174413886825}
+  - component: {fileID: 6288674933905434709}
+  - component: {fileID: 402488945888466181}
   m_Layer: 5
   m_Name: UIQuestStatus
   m_TagString: Untagged
@@ -47,6 +49,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4474389591883142051}
   m_CullTransparentMesh: 1
+--- !u!114 &6288674933905434709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474389591883142051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3d8f904dbd75048af8b6eb3c14eba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  height: 1.5
+--- !u!114 &402488945888466181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474389591883142051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430e9ca907fcd81458165bd34dc36179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusImages:
+  - {fileID: 0}
+  - {fileID: 445539468291069981}
+  - {fileID: 427969591205996246}
+  - {fileID: 7897900429706721520}
 --- !u!1 &5280376122689527760
 GameObject:
   m_ObjectHideFlags: 0
