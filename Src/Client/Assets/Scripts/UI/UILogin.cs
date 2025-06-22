@@ -19,7 +19,9 @@ public class UILogin : MonoBehaviour {
 
 	public void OnLoginClickButton()
 	{
-		if (string.IsNullOrEmpty(username.text))
+        username.text = "user123";
+        password.text = "123456";
+        if (string.IsNullOrEmpty(username.text))
 		{
             MessageBox.Show("请输入账号");
             return;

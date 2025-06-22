@@ -52,7 +52,8 @@ public class PlayerInputContorller : MonoBehaviour {
         if (character == null)
             return;
         #region 前后移动
-        if (Keyboard.current.wKey.isPressed)//向前移动
+        float v = Input.GetAxis("Vertical");
+        if (v > 0.01)//向前移动
         {
             //判断当前状态是否为移动状态，如果不是则切换到移动状态
             if (state != SkillBridge.Message.CharacterState.Move)
@@ -64,7 +65,7 @@ public class PlayerInputContorller : MonoBehaviour {
             }
             this.rb.velocity = this.rb.velocity.y * Vector3.up + GameObjectTool.LogicToWorld(character.direction) * (character.speed + 9.81f) / 100f;
         }
-        else if (Keyboard.current.sKey.isPressed)//向后移动
+        else if (v < -0.01)//向后移动
         {
             if (state != SkillBridge.Message.CharacterState.Move)
             {
@@ -103,10 +104,10 @@ public class PlayerInputContorller : MonoBehaviour {
         }
 
         #region 左右转向
-        float horizontal = Input.GetAxis("Horizontal");
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.dKey.isPressed)
+        float h = Input.GetAxis("Horizontal");
+        if (h > 0.01 || h < -0.01)
         {
-            this.transform.Rotate(0, horizontal * rotateSpeed, 0);
+            this.transform.Rotate(0, h * rotateSpeed, 0);
             Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
             Quaternion rot = new Quaternion();
             rot.SetFromToRotation(dir, this.transform.forward);
@@ -146,7 +147,10 @@ public class PlayerInputContorller : MonoBehaviour {
 	{
         //把当前的信息发送给角色
 		if (entityContorller != null)
-			entityContorller.OnEntityEvent(entityEvent);
+        {
+            entityContorller.OnEntityEvent(entityEvent);
+            Debug.Log("SendEntityEvent" + entityEvent);
+        }
         //将自身当前的状态发送给当前地图中的所有角色
         MapService.Instance.SendMapEntitySync(entityEvent, this.character.EntityData);
 	}

@@ -36,12 +36,6 @@ public class UIMain : MonoSingleton<UIMain>
 		Services.UserService.Instance.SendGameLeave();//发送角色离开的消息到服务器
 	}
 
-	public void TestClick()
-	{
-		UITest test = UIManager.Instance.Show<UITest>(); //打开UITest界面
-		test.Set("这是一个标题");
-    }
-
 	public void OnClickBag()
 	{
 		UIManager.Instance.Show<UIBag>();
