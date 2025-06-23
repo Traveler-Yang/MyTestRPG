@@ -21,8 +21,9 @@ namespace Managers
 
     public class QuestManager : Singleton<QuestManager>
     {
-        //所有有效的任务
+        //任务列表缓存（从服务器接收来的）
         public List<NQuestInfo> questInfos;
+        //所有有效的任务
         public Dictionary<int, Quest> allQuests = new Dictionary<int, Quest>();
 
         public Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>> npcQuests = new Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>>();
@@ -87,7 +88,7 @@ namespace Managers
                         continue; //前置任务还没接
                 }
                 Quest quest = new Quest(kv.Value);
-                this.allQuests[quest.Info.QuestId] = quest;
+                this.allQuests[quest.Define.ID] = quest;
             }
         }
 
@@ -113,12 +114,12 @@ namespace Managers
             }
             if (!this.npcQuests[npcId].TryGetValue(NpcQuestStatus.Complete, out compltes))
             {
-                availables = new List<Quest>();
+                compltes = new List<Quest>();
                 this.npcQuests[npcId][NpcQuestStatus.Complete] = compltes;
             }
             if (!this.npcQuests[npcId].TryGetValue(NpcQuestStatus.Incomplete, out incompletes))
             {
-                availables = new List<Quest>();
+                incompletes = new List<Quest>();
                 this.npcQuests[npcId][NpcQuestStatus.Incomplete] = incompletes;
             }
 
@@ -204,8 +205,8 @@ namespace Managers
                 dialog.OnClose += OnQuestDialogClose;
                 return true;
             }
-            //如果任务状态不是已完成，则显示任务对话信息
-            if (quest.Info != null || quest.Info.Status == QuestStatus.Complated)
+            //如果任务状态是已接受未完成，则显示任务未完成对话框
+            if (quest.Info != null && quest.Info.Status == QuestStatus.InProgress)
             {
                 if (string.IsNullOrEmpty(quest.Define.DialogIncomplete))
                     MessageBox.Show(quest.Define.DialogIncomplete);
@@ -247,7 +248,7 @@ namespace Managers
             if (allQuests.ContainsKey(quest.QuestId))
             {
                 //如果任务已经存在，则更新任务状态
-                result = allQuests[quest.QuestId];
+                this.allQuests[quest.QuestId].Info = quest;
                 result = this.allQuests[quest.QuestId];
             }
             else
@@ -266,6 +267,7 @@ namespace Managers
                 this.AddNpcQuest(kv.Value.Define.SubitNPC, kv.Value);
             }
 
+            //任务更新后，让NPC的任务状态发生变化
             if (onQuestStatusChanged != null)
                 onQuestStatusChanged.Invoke(result);
             return result;

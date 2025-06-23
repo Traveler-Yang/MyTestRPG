@@ -58,7 +58,7 @@ public class UIQuestSystem : UIWindow
             }
             else
             {
-                if (kv.Value.Info == null)
+                if (kv.Value.Define == null)
                     continue;
             }
             //加载任务项的预制体，并根据任务类型添加到对应的列表中
@@ -67,10 +67,11 @@ public class UIQuestSystem : UIWindow
             //设置任务项的信息
             ui.SetQuestInfo(kv.Value);
             //如果任务是主线任务，则添加到主线任务列表，否则添加到支线任务列表
-            if (kv.Value.Define.Type == QuestType.Main)
-                this.listMain.AddItem(ui);
-            else
-                this.listBranch.AddItem(ui);
+            //if (kv.Value.Define.Type == QuestType.Main)
+            //    this.listMain.AddItem(ui as ListView.ListViewItem);
+            //else
+            //    this.listBranch.AddItem(ui as ListView.ListViewItem);
+            this.listMain.AddItem(ui);
         }
     }   
 

@@ -1,17 +1,17 @@
 {
   "1001": {
     "ID": 1001,
-    "Name": "拜访菲谢尔",
+    "Name": "拜访琴团长",
     "LimitLevel": 1,
     "LimitClass": 0,
     "PreQuest": 0,
     "Type": "MAIN",
     "AcceptNPC": 1,
-    "SubmitNPC": 3,
-    "Overview": "前往拜访菲谢尔，听取她的建议",
+    "SubmitNPC": 2,
+    "Overview": "前往拜访琴团长，听取她的建议",
     "Dialog": "“XXX，愿风神护佑你！以后你就要开始为村庄贡献一份自己的力量啦！但是，在这之前，你需要去拜访一些前辈，他们会给到你一些建议和帮助~你可以先去拜访下菲谢尔，他可是落日空间的看守者。不过她行踪不定，快去找找吧，去晚了可能就碰不到了，我在这等你回来。”",
     "DialogAccept": "“等你回来哟”",
-    "DialogDeny": "“我建议你还是要去拜访下菲谢尔哦~”",
+    "DialogDeny": "“我建议你还是要去拜访下琴团长哦~”",
     "DialogFinish": "“是琴团长让你来的吧，她总是介绍刚成年的孩子到我这来（菲谢尔脸上出现无奈的表情）。自我介绍下，我是落日空间的看守者，我估计你连落日空间是什么都不知道吧？现在还不是告知你这些的时候，等你再强大一些再来找我吧！”",
     "Target1": "None",
     "Target1ID": 0,
@@ -22,8 +22,10 @@
     "Target3": "None",
     "Target3ID": 0,
     "Target3Num": 0,
-    "RewardGold": 1000,
-    "RewardExp": 2000
+    "RewardGold": 300,
+    "RewardExp": 2000,
+    "RewardItem1": 3,
+    "RewardItem1Count": 5
   },
   "1002": {
     "ID": 1002,
@@ -32,7 +34,7 @@
     "LimitClass": 0,
     "PreQuest": 1001,
     "Type": "MAIN",
-    "AcceptNPC": 3,
+    "AcceptNPC": 2,
     "SubmitNPC": 4,
     "Overview": "找到希诺宁，获取装备",
     "Dialog": "“我建议你先去落日森林游历一翻，提升下自己的实力。不过在你去落日森林之前，我建议你去找下希诺宁，他那出售一些装备，可以给你提供一些基础的防护。快去吧，他就在小镇的广场。”",
@@ -48,7 +50,10 @@
     "Target3": "None",
     "Target3ID": 0,
     "Target3Num": 0,
-    "RewardExp": 2000
+    "RewardGold": 300,
+    "RewardExp": 2000,
+    "RewardItem1": 4,
+    "RewardItem1Count": 5
   },
   "1003": {
     "ID": 1003,
@@ -58,7 +63,7 @@
     "PreQuest": 1002,
     "Type": "MAIN",
     "AcceptNPC": 4,
-    "SubmitNPC": 2,
+    "SubmitNPC": 3,
     "Overview": "找到爱可菲，获取一些补给",
     "Dialog": "“等等，别急着走，听我把话说完，你光有装备不行，出门在外总要带些食物和药品做补给。去找爱可菲吧，她会送你些补给的（不能光让我一个人出血，希诺宁小声嘀咕着）”",
     "DialogAccept": "“不能只有我一个人出血,哈哈”",
@@ -73,6 +78,7 @@
     "Target3": "None",
     "Target3ID": 0,
     "Target3Num": 0,
+    "RewardGold": 500,
     "RewardExp": 2000
   },
   "1004": {
@@ -98,6 +104,7 @@
     "Target3": "None",
     "Target3ID": 0,
     "Target3Num": 0,
+    "RewardGold": 500,
     "RewardExp": 2000
   },
   "2001": {
@@ -124,6 +131,7 @@
     "Target3": "None",
     "Target3ID": 0,
     "Target3Num": 0,
+    "RewardGold": 800,
     "RewardExp": 3000
   },
   "2002": {
@@ -191,8 +199,8 @@
     "LimitClass": 1,
     "PreQuest": 2003,
     "Type": "MAIN",
-    "AcceptNPC": 3,
-    "SubmitNPC": 3,
+    "AcceptNPC": 2,
+    "SubmitNPC": 2,
     "Overview": "进入落日空间，并探查能量异常的源头",
     "Dialog": "“XXX，你来了，你是一个真正的勇士，因为只有真正的勇士才能独立战胜山丘巨人！落日森林的异变和落日空间脱离不了关系。近期，我感受到了落日空间中有异常的能量波动。我需要你带一队人马去落日空间查看一番，帮我找到异常能量的源头。\n",
     "DialogAccept": "“多喊几个朋友帮忙，希望你们平安归来”",
@@ -251,8 +259,8 @@
     "LimitClass": 2,
     "PreQuest": 2005,
     "Type": "MAIN",
-    "AcceptNPC": 3,
-    "SubmitNPC": 3,
+    "AcceptNPC": 2,
+    "SubmitNPC": 2,
     "Overview": "进入落日空间，并探查能量异常的源头",
     "Dialog": "“XXX，你来了，你是一个真正的勇士，因为只有真正的勇士才能独立战胜山丘巨人！落日森林的异变和落日空间脱离不了关系。近期，我感受到了落日空间中有异常的能量波动。我需要你带一队人马去落日空间查看一番，帮我找到异常能量的源头。\n",
     "DialogAccept": "“多喊几个朋友帮忙，希望你们平安归来”",
@@ -311,8 +319,8 @@
     "LimitClass": 3,
     "PreQuest": 2007,
     "Type": "MAIN",
-    "AcceptNPC": 3,
-    "SubmitNPC": 3,
+    "AcceptNPC": 2,
+    "SubmitNPC": 2,
     "Overview": "进入落日空间，并探查能量异常的源头",
     "Dialog": "“XXX，你来了，你是一个真正的勇士，因为只有真正的勇士才能独立战胜山丘巨人！落日森林的异变和落日空间脱离不了关系。近期，我感受到了落日空间中有异常的能量波动。我需要你带一队人马去落日空间查看一番，帮我找到异常能量的源头。\n",
     "DialogAccept": "“多喊几个朋友帮忙，希望你们平安归来”",

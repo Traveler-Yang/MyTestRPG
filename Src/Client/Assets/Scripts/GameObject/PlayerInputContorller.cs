@@ -15,7 +15,7 @@ public class PlayerInputContorller : MonoBehaviour {
 
 	public float rotateSpeed = 2.0f;//旋转速度
 
-	public float turnAngle = 10;//旋转角度大小
+	public float turnAngle = 10;
 
 	public int speed;//移动速度
 
@@ -143,6 +143,15 @@ public class PlayerInputContorller : MonoBehaviour {
             this.SendEntityEvent(EntityEvent.None);
         }
         this.transform.position = this.rb.transform.position;
+
+        Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
+        Quaternion rot = new Quaternion();
+        rot.SetFromToRotation(dir, this.transform.forward);
+        if (rot.eulerAngles.y > this.turnAngle && rot.eulerAngles.y < (360 - this.turnAngle))
+        {
+            character.SetDirection(GameObjectTool.WorldToLogic(this.transform.forward));
+            this.SendEntityEvent(EntityEvent.None);
+        }
     }
 
     /// <summary>
