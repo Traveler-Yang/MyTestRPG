@@ -49,7 +49,7 @@ public class PlayerInputContorller : MonoBehaviour {
     
     void FixedUpdate()
 	{
-        if (character == null)
+        if (character == null || this.entityContorller == null)
             return;
         #region 前后移动
         float v = Input.GetAxis("Vertical");
@@ -100,6 +100,12 @@ public class PlayerInputContorller : MonoBehaviour {
             //如果不在空中则允许跳跃
             this.rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             onAir = true; //设置为在空中状态
+            //如果当前速度大于0，则发送RunningJump事件
+            if (v > 0)
+            {
+                this.SendEntityEvent(EntityEvent.RunningJump);
+                return;
+            }
             this.SendEntityEvent(EntityEvent.Jump);
         }
 

@@ -858,6 +858,8 @@ namespace SkillBridge.Message
         MoveBack = 3,
         [global::ProtoBuf.ProtoEnum(Name = @"JUMP")]
         Jump = 4,
+        [global::ProtoBuf.ProtoEnum(Name = @"RUNNING_JUMP")]
+        RunningJump = 5,
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"ITEM_TYPE")]

@@ -110,6 +110,9 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
             case EntityEvent.Jump:
                 anim.SetTrigger("Jump");
                 break;
+            case EntityEvent.RunningJump:
+                anim.SetTrigger("RunningJump");
+                break;
         }
     }
 
