@@ -37,7 +37,7 @@ namespace Common.Data
         public int PreQuest { get; set; } //前置任务ID
         public QuestType Type { get; set; } //任务类型
         public int AcceptNPC { get; set; } //接受任务NPC ID
-        public int SubitNPC { get; set; } //提交任务NPC ID
+        public int SubmitNPC { get; set; } //提交任务NPC ID
         public string Overview { get; set; } //任务概述
         public string Dialog { get; set; } //任务对话
         public string DialogAccept { get; set; } //任务接受对话

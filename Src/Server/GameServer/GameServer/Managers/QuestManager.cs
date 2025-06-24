@@ -118,7 +118,7 @@ namespace GameServer.Managers
                     }
                     //任务已完成，设置为已提交状态
                     dbquest.Status = (int)QuestStatus.Finished;
-                    sender.Session.Response.questAccept.Quest = this.GetQuestInfo(dbquest);
+                    sender.Session.Response.questSubmit.Quest = this.GetQuestInfo(dbquest);
                     DBService.Instance.Save();
 
                     //给玩家奖励

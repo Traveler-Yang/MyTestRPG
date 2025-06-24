@@ -58,7 +58,7 @@ public class UIQuestSystem : UIWindow
             }
             else
             {
-                if (kv.Value.Define == null)
+                if (kv.Value.Info == null)
                     continue;
             }
             //加载任务项的预制体，并根据任务类型添加到对应的列表中

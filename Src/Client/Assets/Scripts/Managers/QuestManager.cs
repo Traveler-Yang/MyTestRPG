@@ -54,7 +54,7 @@ namespace Managers
             {
                 //并将任务添加到对应的 NPC 的任务列表中
                 this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
-                this.AddNpcQuest(kv.Value.Define.SubitNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
             }
         }
 
@@ -134,7 +134,7 @@ namespace Managers
             else
             {
                 //如果是 交任务的npc，并且判断任务状态是否是已经完成的
-                if (quest.Define.SubitNPC == npcId && quest.Info.Status == QuestStatus.Complated)
+                if (quest.Define.SubmitNPC == npcId && quest.Info.Status == QuestStatus.Complated)
                 {
                     if (!this.npcQuests[npcId][NpcQuestStatus.Complete].Contains(quest))
                     {
@@ -142,7 +142,7 @@ namespace Managers
                     }
                 }
                 //状态是进行中的任务，则添加到未完成的任务列表中
-                if (quest.Define.SubitNPC == npcId && quest.Info.Status == QuestStatus.InProgress)
+                if (quest.Define.SubmitNPC == npcId && quest.Info.Status == QuestStatus.InProgress)
                 {
                     if (!this.npcQuests[npcId][NpcQuestStatus.Incomplete].Contains(quest))
                     {
@@ -264,7 +264,7 @@ namespace Managers
             {
                 //并将任务添加到对应的 NPC 的任务列表中
                 this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
-                this.AddNpcQuest(kv.Value.Define.SubitNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
             }
 
             //任务更新后，让NPC的任务状态发生变化

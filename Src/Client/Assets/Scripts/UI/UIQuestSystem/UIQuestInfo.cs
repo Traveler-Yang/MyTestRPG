@@ -15,10 +15,18 @@ public class UIQuestInfo : MonoBehaviour
 
     public Text description;//任务描述
 
-    public UIIconItem rewardItem;
+    public UIIconItem[] rewardItems;//奖励物品列表
 
     public TextMeshProUGUI rewarGold;//任务奖励金币
     public TextMeshProUGUI rewarExp;//任务奖励经验
+
+    private void Start()
+    {
+        for (int i = 0; i < rewardItems.Length; i++)
+        {
+            rewardItems[i].gameObject.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// 设置任务面板的信息
@@ -32,7 +40,7 @@ public class UIQuestInfo : MonoBehaviour
         //如果info为null，则表示是新任务，则显示概述
         if (quest.Info == null)
         {
-            this.description.text = quest.Define.Overview;
+            this.description.text = quest.Define.Dialog;
         }
         else
         {
@@ -41,6 +49,35 @@ public class UIQuestInfo : MonoBehaviour
             {
                 this.description.text = quest.Define.DialogFinish;
             }
+        }
+        if (rewardItems[0] != null && quest.Define.RewardItem1 > 0)
+        {
+            rewardItems[0].gameObject.SetActive(true);
+            rewardItems[0].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem1].Icon, quest.Define.RewardItem1Count.ToString());
+        }
+        else
+        {
+            rewardItems[0].gameObject.SetActive(false);
+        }
+
+        if (rewardItems[1] != null && quest.Define.RewardItem2 > 0)
+        {
+            rewardItems[1].gameObject.SetActive(true);
+            rewardItems[1].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem2].Icon, quest.Define.RewardItem2Count.ToString());
+        }
+        else
+        {
+            rewardItems[1].gameObject.SetActive(false);
+        }
+
+        if (rewardItems[2] != null && quest.Define.RewardItem3 > 0)
+        {
+            rewardItems[2].gameObject.SetActive(true);
+            rewardItems[2].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem3].Icon, quest.Define.RewardItem3Count.ToString());
+        }
+        else
+        {
+            rewardItems[2].gameObject.SetActive(false);
         }
         //设置奖励金币和经验
         this.rewarGold.text = quest.Define.RewardGold.ToString();
