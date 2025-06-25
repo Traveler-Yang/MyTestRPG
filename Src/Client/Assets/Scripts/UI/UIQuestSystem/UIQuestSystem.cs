@@ -86,5 +86,12 @@ public class UIQuestSystem : UIWindow
         //设置当前选择的任务项的信息到Info中
         UIQuestItem questItem = item as UIQuestItem;
         this.questInfo.SetQuestInfo(questItem.quest);
+        if (questItem.quest.Info.Status == SkillBridge.Message.QuestStatus.Finished)
+        {
+            if (questItem.owner == listMain)
+            {
+                listMain.RemoveItem(questItem);
+            }
+        }
     }
 }

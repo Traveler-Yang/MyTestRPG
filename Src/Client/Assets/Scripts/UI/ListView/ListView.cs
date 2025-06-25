@@ -83,4 +83,10 @@ public class ListView : MonoBehaviour
         }
         items.Clear();
     }
+
+    public void RemoveItem(ListViewItem item)
+    {
+        Destroy(item.gameObject);
+        items.Remove(item);
+    }
 }

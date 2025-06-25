@@ -155,12 +155,9 @@ namespace GameServer.Services
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();//更新Entities
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.createChar = new UserCreateCharacterResponse();
-
-            message.Response.createChar.Result = Result.Success;//结果值
-            message.Response.createChar.Errormsg = "None";
+            sender.Session.Response.createChar = new UserCreateCharacterResponse();
+            sender.Session.Response.createChar.Result = Result.Success;//结果值
+            sender.Session.Response.createChar.Errormsg = "None";
 
             //把当前已经有的角色添加到列表中
             foreach (var c in sender.Session.User.Player.Characters)
@@ -171,11 +168,10 @@ namespace GameServer.Services
                 info.Type = CharacterType.Player;
                 info.Class = (CharacterClass)c.Class;
                 info.Tid = c.ID;
-                message.Response.createChar.Characters.Add(info);
+                sender.Session.Response.createChar.Characters.Add(info);
             }
 
-            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
-            sender.SendData(data, 0, data.Length);
+            sender.SendResPonse();
         }
 
         /// <summary>
@@ -189,16 +185,12 @@ namespace GameServer.Services
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", dbchar.ID, dbchar.Name, dbchar.MapID);//打印日志
             Character character = CharacterManager.Instance.AddCharacter(dbchar);//1.添加一个角色到角色管理器，并得到一个实体的Character
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.gameEnter = new UserGameEnterResponse();
-            message.Response.gameEnter.Result = Result.Success;//结果值
-            message.Response.gameEnter.Errormsg = "None";//错误信息
+            sender.Session.Response.gameEnter = new UserGameEnterResponse();
+            sender.Session.Response.gameEnter.Result = Result.Success;//结果值
+            sender.Session.Response.gameEnter.Errormsg = "None";//错误信息
+            sender.Session.Response.gameEnter.Character = character.Info;//进入成功 发送初始角色信息给客户端
+            sender.SendResPonse();
 
-            message.Response.gameEnter.Character = character.Info;//进入成功 发送初始角色信息给客户端
-
-            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
-            sender.SendData(data, 0, data.Length);
             sender.Session.Character = character;//一旦进入游戏，就会将选择的指定角色 赋值给 会话对象
             MapManager.Instance[dbchar.MapID].CharacterEnter(sender, character);//2.让角色进入地图
         }
@@ -214,15 +206,10 @@ namespace GameServer.Services
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
 
             CharacterLeave(character);
-
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.gameLeave = new UserGameLeaveResponse();
-            message.Response.gameLeave.Result = Result.Success;//得到结果
-            message.Response.gameLeave.Errormsg = "None";//错误为空
-
-            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
-            sender.SendData(data, 0, data.Length);
+            sender.Session.Response.gameLeave = new UserGameLeaveResponse();
+            sender.Session.Response.gameLeave.Result = Result.Success;//得到结果
+            sender.Session.Response.gameLeave.Errormsg = "None";//错误为空
+            sender.SendResPonse();
         }
 
         public void CharacterLeave(Character character)
