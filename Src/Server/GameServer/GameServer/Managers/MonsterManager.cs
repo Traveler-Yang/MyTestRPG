@@ -13,6 +13,9 @@ namespace GameServer.Managers
     {
         private Map map;
 
+        /// <summary>
+        /// 所有的怪物
+        /// </summary>
         public Dictionary<int, Monster> Monsters = new Dictionary<int, Monster>();
 
         public void Init(Map map)

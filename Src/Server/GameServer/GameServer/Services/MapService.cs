@@ -60,13 +60,9 @@ namespace GameServer.Services
         /// <param name="entity"></param>
         public void SendEntityUpdate(NetConnection<NetSession> conn, NEntitySync entity)
         {
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.mapEntitySync = new MapEntitySyncResponse();
-            message.Response.mapEntitySync.entitySyncs.Add(entity);
-
-            byte[] data = PackageHandler.PackMessage(message);//将创建成功的消息打包成字节流，发送给客户端
-            conn.SendData(data, 0, data.Length);
+            conn.Session.Response.mapEntitySync = new MapEntitySyncResponse();
+            conn.Session.Response.mapEntitySync.entitySyncs.Add(entity);
+            conn.SendResPonse();
         }
 
         /// <summary>
