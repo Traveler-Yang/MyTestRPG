@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 public class DataManager : Singleton<DataManager>
 {
     public string DataPath;
+    public string ServiceDataPath;
+    public string GameDataPath;
     public Dictionary<int, MapDefine> Maps = null;
     public Dictionary<int, CharacterDefine> Characters = null;
     public Dictionary<int, TeleporterDefine> Teleporters = null;
@@ -28,6 +30,8 @@ public class DataManager : Singleton<DataManager>
     public DataManager()
     {
         this.DataPath = "Data/";
+        this.ServiceDataPath = "../Server/GameServer/GameServer/bin/Debug/Data/";
+        this.GameDataPath = "Bin/Data/";
         Debug.LogFormat("DataManager > DataManager()");
     }
 
@@ -104,12 +108,16 @@ public class DataManager : Singleton<DataManager>
     {
         string json = JsonConvert.SerializeObject(this.Teleporters, Formatting.Indented);
         File.WriteAllText(this.DataPath + "TeleporterDefine.txt", json);
+        File.WriteAllText(this.ServiceDataPath + "TeleporterDefine.txt", json);
+        File.WriteAllText(this.GameDataPath + "TeleporterDefine.txt", json);
     }
 
     public void SaveSpawnPoints()
     {
         string json = JsonConvert.SerializeObject(this.SpawnPoints, Formatting.Indented);
         File.WriteAllText(this.DataPath + "SpawnPointDefine.txt", json);
+        File.WriteAllText(this.ServiceDataPath + "SpawnPointDefine.txt", json);
+        File.WriteAllText(this.GameDataPath + "SpawnPointDefine.txt", json);
     }
 
 #endif

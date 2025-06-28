@@ -242,6 +242,7 @@ namespace Services
                     BagManager.Instance.Init(response.Character.Bag);//初始化背包
                     EquipManager.Instance.Init(response.Character.Equips);//初始化装备
                     QuestManager.Instance.Init(response.Character.Quests);//初始化任务
+                    FriendManager.Instance.Init(response.Character.Friends);//初始化好友
                 }
             }
         }

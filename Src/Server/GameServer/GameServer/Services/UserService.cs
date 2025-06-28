@@ -99,7 +99,7 @@ namespace GameServer.Services
                     info.Name = c.Name;
                     info.Type = CharacterType.Player;
                     info.Class = (CharacterClass)c.Class;
-                    info.Tid = c.ID;
+                    info.ConfigId = c.ID;
                     sender.Session.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
@@ -121,6 +121,7 @@ namespace GameServer.Services
                 Name = request.Name,
                 Class = (int)request.Class,
                 TID = (int)request.Class,
+                Level = 1,
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标
@@ -163,11 +164,11 @@ namespace GameServer.Services
             foreach (var c in sender.Session.User.Player.Characters)
             {
                 NCharacterInfo info = new NCharacterInfo();
-                info.Id = 0;
+                info.Id = c.ID;
                 info.Name = c.Name;
                 info.Type = CharacterType.Player;
                 info.Class = (CharacterClass)c.Class;
-                info.Tid = c.ID;
+                info.ConfigId = c.ID;
                 sender.Session.Response.createChar.Characters.Add(info);
             }
 
@@ -184,7 +185,7 @@ namespace GameServer.Services
             TCharacter dbchar = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", dbchar.ID, dbchar.Name, dbchar.MapID);//打印日志
             Character character = CharacterManager.Instance.AddCharacter(dbchar);//1.添加一个角色到角色管理器，并得到一个实体的Character
-
+            
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
             sender.Session.Response.gameEnter.Result = Result.Success;//结果值
             sender.Session.Response.gameEnter.Errormsg = "None";//错误信息

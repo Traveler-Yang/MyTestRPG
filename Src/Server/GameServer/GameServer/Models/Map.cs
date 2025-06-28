@@ -33,6 +33,9 @@ namespace GameServer.Models
         }
         internal MapDefine Define;
 
+        /// <summary>
+        /// 地图中的角色 以CharacterId为Key
+        /// </summary>
         Dictionary<int, MapCharacter> MapCharacters = new Dictionary<int, MapCharacter>();
 
         /// <summary>
@@ -127,7 +130,7 @@ namespace GameServer.Models
         private void SendCharacterLeaveMap(NetConnection<NetSession> conn, Character character)
         {
             conn.Session.Response.mapCharacterLeave = new MapCharacterLeaveResponse();
-            conn.Session.Response.mapCharacterLeave.characterId = character.Id;
+            conn.Session.Response.mapCharacterLeave.entityId = character.entityId;
             conn.SendResPonse();
         }
 
@@ -162,7 +165,7 @@ namespace GameServer.Models
         internal void MonsterEnter(Monster monster)
         {
             Log.InfoFormat("MonsterEnter：Map:{0} MonsterID:{1}", this.Define.ID, monster.Id);
-            foreach (var kv in MapCharacters)
+            foreach (var kv in this.MapCharacters)
             {
                 this.AddCharacterEnterMap(kv.Value.connection, monster.Info);
             }

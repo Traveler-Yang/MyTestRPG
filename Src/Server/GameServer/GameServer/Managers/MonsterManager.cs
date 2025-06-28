@@ -36,6 +36,7 @@ namespace GameServer.Managers
             Monster monster = new Monster(spawnMonID, spawnLevel, position, direction);//构建一个Monster
             EntityManager.Instance.AddEntity(map.ID, monster);//添加到EntityManager里面所维护的实体列表中
             monster.Info.Id = monster.entityId;//设置Monster的基本信息ID
+            monster.Info.EntityId = monster.entityId;//设置Monster的EntityId
             monster.Info.mapId = map.ID;//地图ID
             Monsters[monster.Id] = monster;//并添加到MonsterManager中所维护的Monsters字典中
 

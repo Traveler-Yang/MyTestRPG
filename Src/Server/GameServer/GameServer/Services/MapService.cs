@@ -46,7 +46,7 @@ namespace GameServer.Services
             if (character != null)
             {
                 //这行中最后的.string()可以把角色的信息完整的打印出来，位置、方向、速度
-                Log.InfoFormat("OnMapEntitySync: characterID:{0} : {1} Entity.Id:{2} Evt:{3} Entity:{4}", character.Id, character.Info.Name, request.entitySync.Id, request.entitySync.Event, request.entitySync.Entity.String());
+                //Log.InfoFormat("OnMapEntitySync: characterID:{0} : {1} Entity.Id:{2} Evt:{3} Entity:{4}", character.Id, character.Info.Name, request.entitySync.Id, request.entitySync.Event, request.entitySync.Entity.String());
                 //通过地图管理器来找到这个角色所在的当前地图
                 MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);
 

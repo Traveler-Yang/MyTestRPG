@@ -102,7 +102,7 @@ public class MapTools
                 def.Direction = GameObjectTool.WorldToLogicN(sp.transform.forward);
             }
         }
-        DataManager.Instance.SaveTeleporters();
+        DataManager.Instance.SaveSpawnPoints();
         EditorSceneManager.OpenScene("Assets/Levels/" + currentScene + ".unity");
         EditorUtility.DisplayDialog("提示", "刷怪点导出完成", "确定");
     }

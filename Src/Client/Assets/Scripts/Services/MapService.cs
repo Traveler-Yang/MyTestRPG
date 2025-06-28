@@ -42,7 +42,7 @@ namespace Services
             foreach (var cha in response.Characters)
             {
                 //判断当前列表中的角色是否是自己 或者 是否等于null
-                if (User.Instance.CurrentCharacter == null || User.Instance.CurrentCharacter.Id == cha.Id)
+                if (User.Instance.CurrentCharacter == null || (cha.Type == CharacterType.Player && User.Instance.CurrentCharacter.Id == cha.Id))
                 {
                     //当前角色切换地图
                     User.Instance.CurrentCharacter = cha;
@@ -63,12 +63,12 @@ namespace Services
         /// <param name="response"></param>
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-            Debug.LogFormat("OnMapCharacterLeave: characterID:{0}", response.characterId);//打印哪个角色离开地图的日志
+            Debug.LogFormat("OnMapCharacterLeave: characterID:{0}", response.entityId);//打印哪个角色离开地图的日志
             //判断从服务端发送过来的要离开的角色，是不是我自己
             //如果不是我自己，则移除那个角色
             //如果是我自己，则清除所有角色
-            if (response.characterId != User.Instance.CurrentCharacter.Id)
-                CharacterManager.Instance.RemoveCharacter(response.characterId);
+            if (response.entityId != User.Instance.CurrentCharacter.EntityId)
+                CharacterManager.Instance.RemoveCharacter(response.entityId);
             else
                 CharacterManager.Instance.Clear();
         }
@@ -94,7 +94,7 @@ namespace Services
         /// <param name="entity"></param>
         public void SendMapEntitySync(EntityEvent entityEvent, NEntity entity)
         {
-            Debug.LogFormat("MapEntityUpdateRequest :ID{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(), entity.Direction.ToString(), entity.Speed);
+            //Debug.LogFormat("MapEntityUpdateRequest :ID{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(), entity.Direction.ToString(), entity.Speed);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.mapEntitySync = new MapEntitySyncRequest();

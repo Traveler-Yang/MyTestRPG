@@ -29,6 +29,7 @@ public class LoadingManager : MonoBehaviour
 		MapService.Instance.Init();
 		UserService.Instance.Init();
 		ShopManager.Instance.Init();
+		FriendService.Instance.Init();
 
         for (float i = 0.01f; i <= 1;)
         {
