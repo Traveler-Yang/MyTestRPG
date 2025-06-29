@@ -107,7 +107,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FriendID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FriendID" Type="int" Nullable="false" />
     <Property Name="FriendName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Class" Type="bigint" Nullable="false" />
     <Property Name="Level" Type="int" Nullable="false" />
@@ -334,7 +334,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
-          <Property Name="FriendID" Type="String" Nullable="false" />
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
           <Property Name="FriendName" Type="String" Nullable="false" />
           <NavigationProperty Name="Owner" Relationship="ExtremeWorldModel.TCharacterTCharacterFriend" FromRole="TCharacterFriend" ToRole="TCharacter" />
           <Property Name="Class" Type="Int64" Nullable="false" />

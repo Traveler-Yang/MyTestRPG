@@ -33,6 +33,10 @@ public class UIFriendItem : ListView.ListViewItem
         
     }
 
+    /// <summary>
+    /// 设置好友项信息
+    /// </summary>
+    /// <param name="item"></param>
     public void SetFriendInfo(NFriendInfo item)
     {
         this.info = item;

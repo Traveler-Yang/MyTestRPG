@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/28/2025 23:38:51
+-- Date Created: 06/29/2025 21:22:44
 -- Generated from EDMX file: D:\GitMMORPG\My Test RPG\Src\Server\GameServer\GameServer\Entities.edmx
 -- --------------------------------------------------
 
@@ -133,7 +133,7 @@ GO
 -- Creating table 'TCharacterFriends'
 CREATE TABLE [dbo].[TCharacterFriends] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [FriendID] nvarchar(max)  NOT NULL,
+    [FriendID] int  NOT NULL,
     [FriendName] nvarchar(max)  NOT NULL,
     [Class] bigint  NOT NULL,
     [Level] int  NOT NULL,

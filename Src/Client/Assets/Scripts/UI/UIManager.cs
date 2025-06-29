@@ -21,12 +21,13 @@ public class UIManager : Singleton<UIManager>
     public UIManager()
     {
         //初始化UI资源信息
-        UIResources.Add(typeof(UITest), new UIElement() { Resource = "UI/UITest", cache = true });
-        UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBag", cache = false });
-        UIResources.Add(typeof(UIShop), new UIElement() { Resource = "UI/UIShop", cache = false });
-        UIResources.Add(typeof(UICharEquip), new UIElement() { Resource = "UI/UICharEquip", cache = false });
-        UIResources.Add(typeof(UIQuestSystem), new UIElement() { Resource = "UI/UIQuestSystem", cache = false });
-        UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resource = "UI/UIQuestDialog", cache = false });
+        //UIResources.Add(typeof(UITest), new UIElement() { Resource = "UI/UITest", cache = true });
+        UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBagPrefab/UIBag", cache = false });
+        UIResources.Add(typeof(UIShop), new UIElement() { Resource = "UI/UIShopPrefab/UIShop", cache = false });
+        UIResources.Add(typeof(UICharEquip), new UIElement() { Resource = "UI/UIEquipPrefab/UICharEquip", cache = false });
+        UIResources.Add(typeof(UIQuestSystem), new UIElement() { Resource = "UI/UIQuestPrefab/UIQuestSystem", cache = false });
+        UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resource = "UI/UIQuestPrefab/UIQuestDialog", cache = false });
+        UIResources.Add(typeof(UIFriends), new UIElement() { Resource = "UI/UIFriend/UIFriends", cache = false });
         //可以继续添加其他UI类型
     }
 

@@ -45,6 +45,7 @@ public class UIBag : UIWindow
                 ui.SetMainIcon(def.Icon, item.Count.ToString());
             }
         }
+        SetTitle();
         //将所有未解锁的格子的图标设置为锁子图片
         for (int i = BagManager.Instance.items.Length; i < slote.Count; i++)
         {
@@ -53,9 +54,9 @@ public class UIBag : UIWindow
         yield return null;
     }
 
-    public void SetTitle(string title)
+    public void SetTitle()
     {
-        this.money.text = User.Instance.CurrentCharacter.Id.ToString();
+        this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
     }
 
     void Clear()

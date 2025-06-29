@@ -19,6 +19,7 @@ public class LoadingManager : MonoBehaviour
 
 	private IEnumerator WaitLoading()
 	{
+		log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
         UITips.SetActive(true);
         yield return new WaitForSeconds(2f);
 		//UILoadingPanel.SetActive(true);
@@ -33,7 +34,7 @@ public class LoadingManager : MonoBehaviour
 
         for (float i = 0.01f; i <= 1;)
         {
-			i += Random.Range(0.001f, 0.0003f);
+			i += Random.Range(0.01f, 0.03f);
             loadingSlider.value = i;
 			loadingNumberText.text = string.Format("{0} %", (int)(loadingSlider.value * 100));
 			yield return new WaitForEndOfFrame();

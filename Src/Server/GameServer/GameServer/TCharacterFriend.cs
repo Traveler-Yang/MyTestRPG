@@ -15,7 +15,7 @@ namespace GameServer
     public partial class TCharacterFriend
     {
         public int Id { get; set; }
-        public string FriendID { get; set; }
+        public int FriendID { get; set; }
         public string FriendName { get; set; }
         public long Class { get; set; }
         public int Level { get; set; }
