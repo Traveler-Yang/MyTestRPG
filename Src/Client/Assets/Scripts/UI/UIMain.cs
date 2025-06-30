@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Entities;
+using Common.Data;
 
 public class UIMain : MonoSingleton<UIMain>
 {
-
 	public Text avatarName;//玩家名字
 	public TextMeshProUGUI avatarLevel;//玩家等级
+	public Image Icon;//玩家头像
+	public Image miniMapIcon;//小地图头像
     protected override void OnStart()
     {
 		this.UpdateAvatar();
@@ -18,10 +21,12 @@ public class UIMain : MonoSingleton<UIMain>
 	void UpdateAvatar()
 	{
 		//将角色的名字赋值给UI显示
-		this.avatarName.text = string.Format("{0} [{1}]", User.Instance.CurrentCharacter.Name, User.Instance.CurrentCharacter.Id);
+		this.avatarName.text = string.Format("{0} ID: [{1}]", User.Instance.CurrentCharacter.Name, User.Instance.CurrentCharacter.Id);
 		//将角色的等级赋值给UI显示
 		this.avatarLevel.text = User.Instance.CurrentCharacter.Level.ToString();
-	}
+		this.Icon.overrideSprite = Resources.Load<Sprite>(User.Instance.CurrentCharacter.Icon);
+		this.miniMapIcon.overrideSprite = Resources.Load<Sprite>(User.Instance.CurrentCharacter.Icon);
+    }
 	
 	// Update is called once per frame
 	void Update () {

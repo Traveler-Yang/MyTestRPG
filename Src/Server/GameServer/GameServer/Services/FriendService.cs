@@ -91,10 +91,10 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("OnFriendAddRequest: :Character:[{0}],Result:[{1}],FromID:[{2}],ToID:[{3}]",character.Id , response.Result, response.Request.FromId, response.Request.ToId);
             sender.Session.Response.friendAddRes = response;
+            var requester = SessionManager.Instance.GetSession(response.Request.FromId);
             if (response.Result == Result.Success)
             {
                 //接受好友请求
-                var requester = SessionManager.Instance.GetSession(response.Request.FromId);
                 if (requester == null)
                 {
                     sender.Session.Response.friendAddRes.Result = Result.Failed;
@@ -112,7 +112,9 @@ namespace GameServer.Services
                     requester.SendResPonse();
                 }
             }
-            sender.SendResPonse();
+            requester.Session.Response.friendAddRes = response;
+            requester.Session.Response.friendAddRes.Result = Result.Failed;
+            requester.SendResPonse();
         }
 
         /// <summary>

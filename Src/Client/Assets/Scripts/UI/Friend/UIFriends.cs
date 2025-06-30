@@ -52,7 +52,7 @@ public class UIFriends : UIWindow
             tips = "不可以添加自己哦~";
             return false;
         }
-
+        friendName = CharacterManager.Instance.Characters[friendId].Name;
         FriendService.Instance.SendFriendAddRequest(friendId, friendName);
         return true;
     }

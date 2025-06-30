@@ -81,18 +81,19 @@ message NCharacterInfo {
 	int32 config_id = 2;//config id
 	int32 entity_id = 3;//entity id
 	string name = 4;
-	CHARACTER_TYPE type = 5;
-	CHARACTER_CLASS class = 6;
-	int32 level = 7;
-	int32 mapId = 8;
-	NEntity entity = 9;
-	int64 gold = 10;
+	string icon = 5;
+	CHARACTER_TYPE type = 6;
+	CHARACTER_CLASS class = 7;
+	int32 level = 8;
+	int32 mapId = 9;
+	NEntity entity = 10;
+	int64 gold = 11;
 
-	repeated NItemInfo Items = 11;//拥有的道具
-	NBagInfo Bag = 12;//背包
-	bytes Equips = 13;//穿上的装备
-	repeated NQuestInfo quest = 14;//任务列表
-	repeated NFriendInfo friends = 15;//好友信息
+	repeated NItemInfo Items = 12;//拥有的道具
+	NBagInfo Bag = 13;//背包
+	bytes Equips = 14;//穿上的装备
+	repeated NQuestInfo quest = 15;//任务列表
+	repeated NFriendInfo friends = 16;//好友信息
 }
 
 message NItemInfo 

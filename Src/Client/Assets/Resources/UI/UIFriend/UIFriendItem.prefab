@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 2028808224740274918}
   - component: {fileID: 1383985571180717353}
   - component: {fileID: 7357915010256243748}
+  - component: {fileID: 3452332610057197683}
   m_Layer: 0
   m_Name: UIFriendItem
   m_TagString: Untagged
@@ -389,12 +390,54 @@ MonoBehaviour:
   owner: {fileID: 0}
   icon: {fileID: 1270439063714122160}
   nickName: {fileID: 5791825100407998431}
-  Class: {fileID: 6777835517670779768}
+  class: {fileID: 0}
   Level: {fileID: 7222789608614055058}
   status: {fileID: 288697706099200257}
   backGround: {fileID: 1383985571180717353}
   normalBg: {fileID: 21300000, guid: 0a9d11f27a22e4652b713dfcb3c1f0e9, type: 3}
-  selectBg: {fileID: 21300000, guid: 9eead89c98ac1418ba9aa407ff9941ad, type: 3}
+  selectBg: {fileID: 21300000, guid: a54a00aa58b9b455c895e9312d25164d, type: 3}
+--- !u!114 &3452332610057197683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483840398621269363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 9eead89c98ac1418ba9aa407ff9941ad,
+      type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1383985571180717353}
 --- !u!1 &7596757701614871824
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,10 +470,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6412182239039362206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -18.7}
-  m_SizeDelta: {x: 165, y: 199}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &73247310275891231
 CanvasRenderer:
@@ -460,7 +503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0218889454a914bd5baee21b49606ae7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cbdb336fc7a94c48b5e32dc846ed3c8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

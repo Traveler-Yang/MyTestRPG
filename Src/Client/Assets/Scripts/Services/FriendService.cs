@@ -62,8 +62,8 @@ namespace Services
         private void OnFriendAddResponse(object sender, FriendAddResponse message)
         {
             if (message.Result == Result.Success)
-                MessageBox.Show(string.Format("[{0}]接受了您的请求", message.Request.ToName), "添加好友成功");
-            else
+                MessageBox.Show(string.Format("[{0}] 接受了您的请求", message.Request.ToName), "添加好友成功");
+            else if(sender != null)
                 MessageBox.Show(message.Errormsg, "添加好友失败");
         }
 
@@ -91,13 +91,15 @@ namespace Services
         /// <param name="message"></param>
         private void OnFriendAddRequest(object sender, FriendAddRequest request)
         {
-            var confirm = MessageBox.Show(string.Format("[{0}]请求加你为好友", request.FromName), "好友请求", MessageBoxType.Confirm, "接受", "拒绝");
+            var confirm = MessageBox.Show(string.Format("[{0}] 请求加你为好友", request.FromName), "好友请求", MessageBoxType.Confirm, "接受", "拒绝");
             confirm.OnYes = () =>
             {
+                //接受
                 this.SendFriendAddResponse(true, request);
             };
             confirm.OnNo = () =>
             {
+                //拒绝
                 this.SendFriendAddResponse(false, request);
             };
         }
