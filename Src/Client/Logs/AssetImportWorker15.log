@@ -1,0 +1,905 @@
+Using pre-set license
+Built from '2022.3/china_unity/release~1' branch; Version is '2022.3.53f1c1 (f16e16b78e06) revision 15822358'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 64733 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\UnityEditor\2022.3.53f1c1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker15
+-projectPath
+D:/GitMMORPG/MyTestRPG/Src/Client
+-logFile
+Logs/AssetImportWorker15.log
+-srvPort
+59743
+Successfully changed project path to: D:/GitMMORPG/MyTestRPG/Src/Client
+D:/GitMMORPG/MyTestRPG/Src/Client
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [4440]  Target information:
+
+Player connection [4440]  * "[IP] 192.168.1.63 [Port] 0 [Flags] 2 [Guid] 3925266192 [EditorId] 3925266192 [Version] 1048832 [Id] WindowsEditor(7,Elysia) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [4440] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [4440] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+Refreshing native plugins compatible for Editor in 71.18 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.53f1c1 (f16e16b78e06)
+[Subsystems] Discovering subsystems at path D:/UnityEditor/2022.3.53f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GitMMORPG/MyTestRPG/Src/Client/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 5070 Ti Laptop GPU (ID=0x2f18)
+    Vendor:   NVIDIA
+    VRAM:     11856 MB
+    Driver:   32.0.15.7680
+Initialize mono
+Mono path[0] = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/UnityEditor/2022.3.53f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56492
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/UnityEditor/2022.3.53f1c1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.027501 seconds.
+- Loaded All Assemblies, in  0.360 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.221 seconds
+Domain Reload Profiling: 568ms
+	BeginReloadAssembly (104ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (93ms)
+	LoadAllAssembliesAndSetupDomain (109ms)
+		LoadAssemblies (95ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (106ms)
+			TypeCache.Refresh (105ms)
+				TypeCache.ScanAssembly (94ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (221ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (186ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (52ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (93ms)
+			ProcessInitializeOnLoadMethodAttributes (33ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'log4net.dll' with different versions detected, using 'Assets/References/log4net.dll, AssemblyName=log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=null' and ignoring 'Packages/com.unity.collab-proxy/Lib/Editor/log4netPlastic.dll, AssemblyName=log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.956 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Client
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.787 seconds
+Domain Reload Profiling: 1720ms
+	BeginReloadAssembly (156ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (73ms)
+	LoadAllAssembliesAndSetupDomain (675ms)
+		LoadAssemblies (579ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (191ms)
+			TypeCache.Refresh (163ms)
+				TypeCache.ScanAssembly (141ms)
+			ScanForSourceGeneratedMonoScriptInfo (19ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (788ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (668ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (32ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (146ms)
+			ProcessInitializeOnLoadAttributes (370ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+			AfterProcessingInitializeOnLoad (33ms)
+			EditorAssembliesLoaded (3ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 24.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6067 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (356.7 KB). Loaded Objects now: 6535.
+Memory consumption went from 294.9 MB to 294.6 MB.
+Total: 4.938600 ms (FindLiveObjects: 0.562100 ms CreateObjectMapping: 0.282000 ms MarkObjects: 3.894200 ms  DeleteObjects: 0.199300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 706234.379683 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider10_Fill_Blue.png
+  artifactKey: Guid(a89b7169988a5454484722cac1118186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider10_Fill_Blue.png using Guid(a89b7169988a5454484722cac1118186) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'e08c50beb91d78591cb3a58e1c942903') in 0.102652 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider10_Frame.png
+  artifactKey: Guid(be560d80c4ca6416a9114a4ad8e0a6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider10_Frame.png using Guid(be560d80c4ca6416a9114a4ad8e0a6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a4a4fdbec135279109bae3f5afb89758') in 0.013072 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Fill2.png
+  artifactKey: Guid(0b062c3e93b4a4e858d5b30ea3a7b020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Fill2.png using Guid(0b062c3e93b4a4e858d5b30ea3a7b020) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '8a5d495e2670f909e0f34dada7b43960') in 0.011331 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider09_White_Fill.png
+  artifactKey: Guid(a8b46af9e1a19495ea670775d1554434) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider09_White_Fill.png using Guid(a8b46af9e1a19495ea670775d1554434) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'cef37fd77d9e3ece85a4d1caea88076c') in 0.009828 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider10_Fill_Orange.png
+  artifactKey: Guid(9189b0a5821084514b0b61ca19d0c961) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider10_Fill_Orange.png using Guid(9189b0a5821084514b0b61ca19d0c961) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a3a898b499155a73e4f403831b3622a0') in 0.010308 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Frame.png
+  artifactKey: Guid(144084d91d010449890ae618ab5ef2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Frame.png using Guid(144084d91d010449890ae618ab5ef2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'bdb6777cd179642f938963b85ffed982') in 0.010783 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider07_White_Fill1.png
+  artifactKey: Guid(cb15511bb05244be58f164b8bb8f495e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider07_White_Fill1.png using Guid(cb15511bb05244be58f164b8bb8f495e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1ff074a93e899dade6f57e631b56eeab') in 0.010614 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider08_Frame.png
+  artifactKey: Guid(0787f71962f5046848224efa8d6d1d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider08_Frame.png using Guid(0787f71962f5046848224efa8d6d1d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c404f23edcd1dd61a2ac8f43f30cbb62') in 0.026567 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider09_Fill_Orange.png
+  artifactKey: Guid(59aed6f75e6db4577be763604ed86559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider09_Fill_Orange.png using Guid(59aed6f75e6db4577be763604ed86559) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '4409bbfed9e7244b7086afcdcaa56698') in 0.011140 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Frame.png
+  artifactKey: Guid(6359bba9b301f4a5c94e06efb6d43fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Frame.png using Guid(6359bba9b301f4a5c94e06efb6d43fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '44db3a439ff1eb3314fd316f27233566') in 0.009186 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider09_Fill_Green.png
+  artifactKey: Guid(78d59cae767584e239e11f22d0adcc24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider09_Fill_Green.png using Guid(78d59cae767584e239e11f22d0adcc24) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'b92da7969020ce096dc3dc3f3516a2a5') in 0.008287 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Fill1.png
+  artifactKey: Guid(37d033f3eeeed40d89e2f874d7712e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider08_Fill1.png using Guid(37d033f3eeeed40d89e2f874d7712e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '8f19a9180f4507f8cb495a01b1e26bc3') in 0.010968 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Fill2.png
+  artifactKey: Guid(438917a0e31b440c3981f780935ce458) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Fill2.png using Guid(438917a0e31b440c3981f780935ce458) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'e7177e18506d08c325e4fb80f13cc24a') in 0.009685 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Fill1.png
+  artifactKey: Guid(457d042978e3242a582d485817855aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider08_White_Fill1.png using Guid(457d042978e3242a582d485817855aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '63cc981149bcd9d1f5b8c37b7e139fb8') in 0.009990 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.089029 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Frame.png
+  artifactKey: Guid(e2e8e0f79f3c040f8b3217742ef8b853) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Frame.png using Guid(e2e8e0f79f3c040f8b3217742ef8b853) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '59ad1c3f3eabd27befd040d0b1d21b94') in 0.013362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider07_Fill_Red.png
+  artifactKey: Guid(80aef1228d61741ee8d79e5f7edbdd0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider07_Fill_Red.png using Guid(80aef1228d61741ee8d79e5f7edbdd0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd6cf2c9b6100db8f1b417ebe4fbc67cb') in 0.011760 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider07_Fill_Green.png
+  artifactKey: Guid(ffae1d7f0d8904d469f27d0288405cbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider07_Fill_Green.png using Guid(ffae1d7f0d8904d469f27d0288405cbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '2671f30244daca796be0e426b3057deb') in 0.010442 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider07_Fill_Red.png
+  artifactKey: Guid(ddb5e662d8fe14cb8b94ae483fab78da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider07_Fill_Red.png using Guid(ddb5e662d8fe14cb8b94ae483fab78da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1ef9a55bbecf5797bb57c136e2a651b5') in 0.009302 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Icon.png
+  artifactKey: Guid(adbf100552dd4447cb3cd02bacf66952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Icon.png using Guid(adbf100552dd4447cb3cd02bacf66952) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f9b01be04da520e27362fccb44e8df16') in 0.010099 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.018521 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Fill_Green.png
+  artifactKey: Guid(51d1f0a10780d4db0b241590824000db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Fill_Green.png using Guid(51d1f0a10780d4db0b241590824000db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0dbf972a6666004c3d39505126e44e2f') in 0.009228 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider05_Frame.png
+  artifactKey: Guid(487f731db4e76474dbf5d2799b96212a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider05_Frame.png using Guid(487f731db4e76474dbf5d2799b96212a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '191b275ecf8b559938fa35e0b88efa41') in 0.008811 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Fill.png
+  artifactKey: Guid(69123283eb1e94001b1d6f03c6d95ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider06_Fill.png using Guid(69123283eb1e94001b1d6f03c6d95ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a6b1e888c6d673d9d586ae9b30f454f5') in 0.008489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Icon_Blue.png
+  artifactKey: Guid(05f5388948512490d837e8e72cff6e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Icon_Blue.png using Guid(05f5388948512490d837e8e72cff6e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'aa1861cb27879b4f5a283dda138f94e6') in 0.011960 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider05_Icon_Green.png
+  artifactKey: Guid(31d8a788aa7fc4889aa55e68590d1393) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider05_Icon_Green.png using Guid(31d8a788aa7fc4889aa55e68590d1393) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'fb8e20e3d03e43053ef258bb8a7716c7') in 0.010013 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.536738 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider02_Frame.png
+  artifactKey: Guid(8221b47c83a8545efaa5883524c2a670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider02_Frame.png using Guid(8221b47c83a8545efaa5883524c2a670) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '2b06fafc4dcdcf36d5470ae5e65eac13') in 0.009442 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Fill_Blue.png
+  artifactKey: Guid(634cfa1e41a2f44b191d83f4c33e827a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider05_Fill_Blue.png using Guid(634cfa1e41a2f44b191d83f4c33e827a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '1767635c998d9a80474bdf37b88709fc') in 0.010477 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider03_Frame.png
+  artifactKey: Guid(3b70a9c34ec6d4f28be6a26083ef896e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider03_Frame.png using Guid(3b70a9c34ec6d4f28be6a26083ef896e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '54e874ae2dcb028c8ea762fe3cec7b28') in 0.010448 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider03_Fill.png
+  artifactKey: Guid(867ac6f38b7c64250800a5bbd455aee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider03_Fill.png using Guid(867ac6f38b7c64250800a5bbd455aee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'ad471745cf99b830e3b6772648004564') in 0.011915 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider05_Fill_Green.png
+  artifactKey: Guid(071d3ea772fd949388e2ea624259a9e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Dark/Slider05_Fill_Green.png using Guid(071d3ea772fd949388e2ea624259a9e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'afe494800864458eceffc0871c4e2e53') in 0.009508 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon02_1.png
+  artifactKey: Guid(ed9e711ac31e240cca7ebf807d8056d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon02_1.png using Guid(ed9e711ac31e240cca7ebf807d8056d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'da394fa8594c38af9bafaa401ee355b3') in 0.009652 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon01_1.png
+  artifactKey: Guid(526227ee4c96e4c52820924261964651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon01_1.png using Guid(526227ee4c96e4c52820924261964651) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '0edaa13b2a3e25542e2f63d7ae4e78d7') in 0.009132 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon01_2.png
+  artifactKey: Guid(c2cdbabebad234947aef01d3f8756aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Custom/Slider01~06_White_Icon01_2.png using Guid(c2cdbabebad234947aef01d3f8756aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'c0934160cb6374df674d5a26a3e51bcc') in 0.009602 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider02_FillArea.png
+  artifactKey: Guid(2c70beca16b164abeada175a8192b474) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider02_FillArea.png using Guid(2c70beca16b164abeada175a8192b474) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '6fe3c6d7654175cc565d3b18f9bf6f22') in 0.010828 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider04_Fill.png
+  artifactKey: Guid(e8ed467916f094dcb84b19fc4a0d5505) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider04_Fill.png using Guid(e8ed467916f094dcb84b19fc4a0d5505) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '689eb9a4e532b0b8aef188b4ecfcf1e2') in 0.010698 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider02_Fill.png
+  artifactKey: Guid(5af1a8c1ad96c49d9b94dbaed1ededf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider02_Fill.png using Guid(5af1a8c1ad96c49d9b94dbaed1ededf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '91abdbbde1144f20ade5783a184f8bfe') in 0.010027 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.123978 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider00_Battery_Fill.png
+  artifactKey: Guid(90b914bf4f4d349f8b318a660560f7f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Common/Slider00_Battery_Fill.png using Guid(90b914bf4f4d349f8b318a660560f7f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f4450c410dec7b190f3fbe02623f7905') in 0.009471 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider01_Frame.png
+  artifactKey: Guid(e29d8fee689c74ced9ed7604ed01c3be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Slider/Slider_Demo_Light/Slider01_Frame.png using Guid(e29d8fee689c74ced9ed7604ed01c3be) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'caf61b5f3c90e3e7f214f0192e64506e') in 0.009368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider00_Fill.png
+  artifactKey: Guid(31d1afea631de4e84af8a9a07f5bbb17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider00_Fill.png using Guid(31d1afea631de4e84af8a9a07f5bbb17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'fdeb077f0ee799e59e6e82b8073c6a60') in 0.010713 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider00_Frame.png
+  artifactKey: Guid(c0a7f6ccaaa724499adb91c892ec4899) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider00_Frame.png using Guid(c0a7f6ccaaa724499adb91c892ec4899) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '598154c409997410eb47816f78174c3e') in 0.010049 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider01.png
+  artifactKey: Guid(3ba852f5634bd47169eb93b1251d9288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Slider/Slider01.png using Guid(3ba852f5634bd47169eb93b1251d9288) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a102c941e36855550d08ea5f3a6ea47c') in 0.009823 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 43.193984 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/512/PictoIcon_Zoomout.Png
+  artifactKey: Guid(17cb3546f108e413fb4a6ed1bf0ce404) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/512/PictoIcon_Zoomout.Png using Guid(17cb3546f108e413fb4a6ed1bf0ce404) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '46626513b1bd9ddc22f7b2cfa5f16b8a') in 0.011317 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Light/PictureFrame01_Frame.png
+  artifactKey: Guid(647af18abc22845439866a81f3629a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Light/PictureFrame01_Frame.png using Guid(647af18abc22845439866a81f3629a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '73a8ef6a720e9bd97093d57f497c809a') in 0.009104 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Dark/PictureFrame01_Frame.png
+  artifactKey: Guid(effa108f13061487e847e4dcbe6c6b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Dark/PictureFrame01_Frame.png using Guid(effa108f13061487e847e4dcbe6c6b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '3a7995e63a51bfaaac35a3f45c56589e') in 0.009923 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame4.png
+  artifactKey: Guid(d80bcb697b8e54973bade85dcaabbf97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame4.png using Guid(d80bcb697b8e54973bade85dcaabbf97) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '3315e0cd341c566a8cf886a9e405f680') in 0.010716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup03_Frame1.png
+  artifactKey: Guid(91cf202a8863648639e41cd135cb7b81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup03_Frame1.png using Guid(91cf202a8863648639e41cd135cb7b81) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f9a00680390f6270ca44b2902048d005') in 0.009594 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Custom/Popup_White5_BottomLeft.png
+  artifactKey: Guid(7533b20753d00430784333540d124030) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Custom/Popup_White5_BottomLeft.png using Guid(7533b20753d00430784333540d124030) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '5db8ee5b8ea8a45d84b865636fc392ae') in 0.011576 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup03_Frame5.png
+  artifactKey: Guid(2b81dc9566c854d1a98095fe06e12368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup03_Frame5.png using Guid(2b81dc9566c854d1a98095fe06e12368) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '9d4c9373af2b61268b4b7a35276d5a23') in 0.009824 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Light/PictureFrame00_Frame_Inner.png
+  artifactKey: Guid(03b9c2fda3b464aef93c5d35f007d4cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Light/PictureFrame00_Frame_Inner.png using Guid(03b9c2fda3b464aef93c5d35f007d4cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '7b840ad02337c4432adb0c5e457f8808') in 0.010161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup00.png
+  artifactKey: Guid(7e4b324aee8f449db9bedc900785edbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup00.png using Guid(7e4b324aee8f449db9bedc900785edbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'b3adb4800c0d24984052c5a72ec81900') in 0.009471 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup03_Frame5.png
+  artifactKey: Guid(f4cb1baeb08f44d829d9949399f49275) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup03_Frame5.png using Guid(f4cb1baeb08f44d829d9949399f49275) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '85e3cb227b5ea95542ea3e0c9c4c88c5') in 0.010225 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame2_navy.png
+  artifactKey: Guid(dfad48a07b0db481c86ce0b2f4712d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame2_navy.png using Guid(dfad48a07b0db481c86ce0b2f4712d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '6b4a45a484670e1693e14dc08c431597') in 0.010580 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame2_pruple.png
+  artifactKey: Guid(8ee1d22b489764550af99eb7407c4fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame2_pruple.png using Guid(8ee1d22b489764550af99eb7407c4fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd591f1068dac01b4d044df039db7902b') in 0.008407 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame3_navy.png
+  artifactKey: Guid(56335d90987c54e629d2446bb91bf254) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame3_navy.png using Guid(56335d90987c54e629d2446bb91bf254) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f0a64a1db1b8ecaa84bd631d1e7f3487') in 0.009344 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame1.png
+  artifactKey: Guid(2a494c3f274624b3f9aceba815c0dd4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup01_Frame1.png using Guid(2a494c3f274624b3f9aceba815c0dd4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'cccb3e2dc45dc0c470862f950743ea22') in 0.010569 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/Preview/Shop_Gem.png
+  artifactKey: Guid(21df31f00b96f467e8d79bbc54d2ccae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/Preview/Shop_Gem.png using Guid(21df31f00b96f467e8d79bbc54d2ccae) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f20fe81b50b67f7b0620a7fb76122b3b') in 0.011779 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup00_Frame1.png
+  artifactKey: Guid(2285a0f38fb1240dabc094f3251eca16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup00_Frame1.png using Guid(2285a0f38fb1240dabc094f3251eca16) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'dc46654be958c277ac684ac3e88a0770') in 0.010542 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup02_Inner2.png
+  artifactKey: Guid(ed7f64200c6a74b50b48384a8f722c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup02_Inner2.png using Guid(ed7f64200c6a74b50b48384a8f722c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a3bd57477ee24b0f3e16a23c9f95942d') in 0.012337 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame3_red.png
+  artifactKey: Guid(84ff63c00bc6b43e699b0eed0c1c5b59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame3_red.png using Guid(84ff63c00bc6b43e699b0eed0c1c5b59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '3b9e704005e927aea3df978b0a5cde05') in 0.010405 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Art/UI/Icons/Shoes.png
+  artifactKey: Guid(2c567910988ae1546a87d84a8dbd6082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/UI/Icons/Shoes.png using Guid(2c567910988ae1546a87d84a8dbd6082) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '4179854a70e7cef78ab009ceee69b84f') in 0.010441 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Custom/Popup_White2_Topbar01.png
+  artifactKey: Guid(ff6bf3ce721dc4041ab195344ffd6c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Custom/Popup_White2_Topbar01.png using Guid(ff6bf3ce721dc4041ab195344ffd6c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'a682814ca9d3d172e6d1cf724f0c643f') in 0.011342 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup01_TopBar.png
+  artifactKey: Guid(d1d2ea161451d44dbb21abcc9d8cf662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI-MonoRound/ResourceData/Sprites/Components/Popup/Popup01_TopBar.png using Guid(d1d2ea161451d44dbb21abcc9d8cf662) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'd2edccedb58298f13e3d89ee77a75359') in 0.011251 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup03_Frame3.png
+  artifactKey: Guid(d2a486abffb2b4094bf4d6a65c0231e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Dark/Popup03_Frame3.png using Guid(d2a486abffb2b4094bf4d6a65c0231e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f26ea983d483e600f0471aeb5ee3cd62') in 0.008638 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Dark/PictureFrame00_Frame_Inner.png
+  artifactKey: Guid(9220298bcc5674b59800b94b1029fea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Frame/Frame_Demo_Dark/PictureFrame00_Frame_Inner.png using Guid(9220298bcc5674b59800b94b1029fea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'e43e449f2a42dfd5ec3bcbf18fb7b62a') in 0.009433 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup00_Frame1.png
+  artifactKey: Guid(7bbada9ddcd31495c947963907e58cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup00_Frame1.png using Guid(7bbada9ddcd31495c947963907e58cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '2b5d1cbfd202bdd0ff4979e5c9119253') in 0.009135 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame2_gray.png
+  artifactKey: Guid(16ec45055daf54649a7d94b9d00bfb52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Popup/Popup_Demo_Light/Popup01_Frame2_gray.png using Guid(16ec45055daf54649a7d94b9d00bfb52) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '9bef797988da04eac53d98d5b6e80c97') in 0.008441 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 134.894748 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Life_Line.Png
+  artifactKey: Guid(f4fb76ff2a5e547439c2a96f5cf9afc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Life_Line.Png using Guid(f4fb76ff2a5e547439c2a96f5cf9afc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '3e41679b61edf5a4a56c5745b9da2af9') in 0.019669 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.017951 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/128/PictoIcon_Life_Line.Png
+  artifactKey: Guid(151b45ffaaf7f435e9f4f5b1395ebd37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/128/PictoIcon_Life_Line.Png using Guid(151b45ffaaf7f435e9f4f5b1395ebd37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'f99cd07d19414d02f5d28fe30c555824') in 0.009418 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Star_Line.Png
+  artifactKey: Guid(a07a4abfeaf79424883cdb878e9c0cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Star_Line.Png using Guid(a07a4abfeaf79424883cdb878e9c0cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: '18cdbe1d6176fd7f757ebfd219ee7815') in 0.009336 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000076 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/512/PictoIcon_Star_Line.Png
+  artifactKey: Guid(6cf137f4215574356bfeb5d00955f825) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/512/PictoIcon_Star_Line.Png using Guid(6cf137f4215574356bfeb5d00955f825) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'fb30018ffc31a8349bbc28d3b4613df1') in 0.010859 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Player_Play_Line.Png
+  artifactKey: Guid(427a4bb7d63a04c9a871206a4cf10223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/256/PictoIcon_Player_Play_Line.Png using Guid(427a4bb7d63a04c9a871206a4cf10223) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'acb2726510bc747fb04007e1f5c1ea38') in 0.010495 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/64/PictoIcon_Player_Play_Line.Png
+  artifactKey: Guid(cf691fb3f02f44c03a09433261f25450) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Sprites/Components/Icon_PictoIcons/64/PictoIcon_Player_Play_Line.Png using Guid(cf691fb3f02f44c03a09433261f25450) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 32 workers.
+ -> (artifact id: 'e03ea3106849fd69b8f7518312fc9b67') in 0.009116 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 由于线程退出或应用程序请求，已中止 I/O 操作。
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

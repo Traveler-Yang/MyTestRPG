@@ -24,6 +24,11 @@ namespace Network
             if (message.friendAddRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendAddRes); }
             if (message.friendList != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendList); }
             if (message.friendRemove != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendRemove); }
+            if (message.tempInviteReq != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteReq); }
+            if (message.tempInviteRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteRes); }
+            if (message.tempInfo != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInfo); }
+            if (message.TempLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.TempLeave); }
+            
         }
 
         public void Dispatch(T sender, SkillBridge.Message.NetMessageRequest message)
@@ -44,6 +49,11 @@ namespace Network
             if (message.friendAddRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendAddRes); }
             if (message.friendList != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendList); }
             if (message.friendRemove != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendRemove); }
+            if (message.tempInviteReq != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteReq); }
+            if (message.tempInviteRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteRes); }
+            if (message.tempInfo != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInfo); }
+            if (message.TempLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.TempLeave); }
+
         }
     }
 }

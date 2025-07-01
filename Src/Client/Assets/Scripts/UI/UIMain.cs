@@ -13,6 +13,7 @@ public class UIMain : MonoSingleton<UIMain>
 	public TextMeshProUGUI avatarLevel;//玩家等级
 	public Image Icon;//玩家头像
 	public Image miniMapIcon;//小地图头像
+	public UITemp TempWindow;
     protected override void OnStart()
     {
 		this.UpdateAvatar();
@@ -59,5 +60,10 @@ public class UIMain : MonoSingleton<UIMain>
 	public void OnClickFriend()
 	{
 		UIManager.Instance.Show<UIFriends>();
+	}
+
+	public void ShowTeamUI(bool show)
+	{
+		TempWindow.ShowTeam(show);
 	}
 }

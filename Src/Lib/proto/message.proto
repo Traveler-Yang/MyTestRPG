@@ -207,6 +207,11 @@ message NetMessageRequest{
 	FriendAddResponse friendAddRes = 16;
 	FriendListRequest friendList = 17;
 	FriendRemoveRequest friendRemove = 18;
+
+	TempInviteRequest tempInviteReq = 19;
+	TempInviteResponse tempInviteRes = 20;
+	TempInfoRequest tempInfo = 21;
+	TempLeaveRequest TempLeave = 22;
 }
 
 message NetMessageResponse{
@@ -232,6 +237,11 @@ message NetMessageResponse{
 	FriendAddResponse friendAddRes = 16;
 	FriendListResponse friendList = 17;
 	FriendRemoveResponse friendRemove = 18;
+
+	TempInviteRequest tempInviteReq = 19;
+	TempInviteResponse tempInviteRes = 20;
+	TempInfoResponse tempInfo = 21;
+	TempLeaveResponse TempLeave = 22;
 
 	StatusNotify statusNotify = 100;
 	
@@ -499,4 +509,54 @@ message FriendRemoveResponse
 	RESULT result = 1;
 	string errormsg = 2;
 	int32 id = 3;
+}
+
+//Temp System
+
+message NTempInfo//组队信息
+{
+	int32 id = 1;//队伍id
+	int32 leader = 2;//队伍的队长
+	repeated NCharacterInfo members = 3;//队伍成员列表
+}
+
+message TempInviteRequest//组队邀请的请求
+{
+	int32 team_id = 1;//队伍id
+	int32 from_id = 2;//发起者id
+	string from_name = 3;//发起者名字
+	int32 to_id = 4;//接收者id
+	string to_name = 5;//接收者名字
+}
+
+message TempInviteResponse//组队邀请响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	TempInviteRequest request = 3;
+}
+
+message TempInfoRequest
+{
+
+}
+
+message TempInfoResponse
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NTempInfo team = 3;
+}
+
+message TempLeaveRequest//退出队伍请求
+{
+	int32 team_id = 1;//队伍id
+	int32 characterid = 2;//角色id
+}
+
+message TempLeaveResponse//退出队伍响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	int32 characterid = 3;//角色id
 }
