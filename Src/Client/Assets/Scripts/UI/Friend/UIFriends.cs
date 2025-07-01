@@ -37,6 +37,12 @@ public class UIFriends : UIWindow
         InputBox.Show("请输入要添加的好友的名称或ID", "添加好友").OnSubmit += OnFriendAddSubmit;
     }
 
+    /// <summary>
+    /// 添加好友事件（点击确认按钮执行的事件）
+    /// </summary>
+    /// <param name="input">输入的信息</param>
+    /// <param name="tips">提示信息</param>
+    /// <returns></returns>
     private bool OnFriendAddSubmit(string input, out string tips)
     {
         tips = "";
@@ -44,8 +50,10 @@ public class UIFriends : UIWindow
         string friendName = "";
         //因为我们输入的有可能是一个id或者是一个文本
         //所以我们要先判断这输入的内容可不可以转换成int类型
+        //如果不可以转换，就将输入的信息赋值给名字
         if (!int.TryParse(input, out friendId))
             friendName = input;
+        //如果可以转换
         //判断输入的内容是否是自己
         if (friendId == User.Instance.CurrentCharacter.Id || friendName == User.Instance.CurrentCharacter.Name)
         {
