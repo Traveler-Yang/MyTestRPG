@@ -19,6 +19,9 @@ namespace Network
         public TUser User { get; set; }
         public Character Character { get; set; }
         public NEntity Entity { get; set; }
+        /// <summary>
+        /// 后处理器
+        /// </summary>
         public IPostResponser PostResponser { get; set; }
 
         public void Disconnected()
@@ -49,10 +52,12 @@ namespace Network
         {
             if (response != null)
             {
+                //如果当前会话中有后处理对象，就让他执行他的PostProcess()方法
                 if (PostResponser != null)
                     this.PostResponser.PostProcess(Response);
-
+                //打包成字节流
                 byte[] data = PackageHandler.PackMessage(response);
+                //将response置空，防止发送相同数据或发送残留旧数据
                 response = null;
                 return data;
             }

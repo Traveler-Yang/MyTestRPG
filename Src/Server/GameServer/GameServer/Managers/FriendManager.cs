@@ -75,12 +75,13 @@ namespace GameServer.Managers
         }
 
         /// <summary>
-        /// 删除好友
+        /// 删除好友（删除别人好友中的自己）
         /// </summary>
-        /// <param name="friendId">好友id</param>
+        /// <param name="friendId">我的id（别人好友中的friendid）</param>
         /// <returns></returns>
         public bool RemoveFriendByFriendId(int friendId)
         {
+            //查找所有好友列表中的FriendID为我自己的好友实体（如果是我自己，说明这个人的好友列表中有我自己）
             var removeItem = this.Owner.Data.Friends.FirstOrDefault(v => v.FriendID == friendId);
             if (removeItem != null)
             {
@@ -91,7 +92,7 @@ namespace GameServer.Managers
         }
 
         /// <summary>
-        /// 删除好友（直接将数据库中的好友实体移除掉）
+        /// 删除好友（删除自己好友列表中的好友）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -113,20 +114,26 @@ namespace GameServer.Managers
         /// <returns></returns>
         public NFriendInfo GetFriendInfo(TCharacterFriend friend)
         {
+            //创建一个返回对象
             NFriendInfo friendInfo = new NFriendInfo();
+            //查找有无这个角色信息
             var character = CharacterManager.Instance.GetCharacter(friend.FriendID);
             friendInfo.friendInfo = new NCharacterInfo();
+            //将数据库中的唯一id赋值给网络信息
             friendInfo.Id = friend.Id;
+            //如果没有，则不在线
             if (character == null)
             {
+                //直接将数据中的信息进行赋值
                 friendInfo.friendInfo.Id = friend.FriendID;
                 friendInfo.friendInfo.Name = friend.FriendName;
                 friendInfo.friendInfo.Class = (CharacterClass)friend.Class;
                 friendInfo.friendInfo.Level = friend.Level;
                 friendInfo.Status = false;
             }
-            else
+            else//如果在线
             {
+                //将这个角色在线信息进行赋值
                 friendInfo.friendInfo = GetBasicInfo(character.Info);
                 friendInfo.friendInfo.Name = character.Info.Name;
                 friendInfo.friendInfo.Class = character.Info.Class;
@@ -137,6 +144,11 @@ namespace GameServer.Managers
             return friendInfo;
         }
 
+        /// <summary>
+        /// 封装保护
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         NCharacterInfo GetBasicInfo(NCharacterInfo info)
         {
             return new NCharacterInfo()
@@ -186,16 +198,25 @@ namespace GameServer.Managers
             this.friendChanged = true;
         }
 
+        /// <summary>
+        /// 后处理（暂时只是更新好友列表信息）
+        /// </summary>
+        /// <param name="message"></param>
         public void PostProcess(NetMessageResponse message)
         {
+            //好友信息是否变化
             if (friendChanged)
             {
+                //如果变化则更新好友列表
                 this.InitFriends();
                 if (message.friendList == null)
                 {
+                    //如果这个列表为空，则new一个
+                    //并将更新的列表添加到消息列表中
                     message.friendList = new FriendListResponse();
                     message.friendList.Friends.AddRange(this.friends);
                 }
+                //复位变化，防止发送相同数据
                 friendChanged = false;
             }
         }

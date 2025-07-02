@@ -134,7 +134,9 @@ namespace GameServer.Services
             {
                 sender.Session.Response.friendRemove.Result = Result.Success;
                 //删除别人好友中的自己
+                //得到别人的角色Session信息
                 var friend = SessionManager.Instance.GetSession(request.friendId);
+                //Session如果不为null，则在线，否则不在线
                 if (friend != null)
                 {
                     //好友在线
@@ -143,15 +145,21 @@ namespace GameServer.Services
                 else
                 {
                     //不在线
-                    this.RemoveFriend(character.Id, request.friendId);
+                    this.RemoveFriend(request.friendId, character.Id);
                 }
             }
             else
                 sender.Session.Response.friendRemove.Result = Result.Failed;
         }
 
+        /// <summary>
+        /// 直接删除数据中的好友实体（不在线也可以用）
+        /// </summary>
+        /// <param name="charId">当前角色id</param>
+        /// <param name="friendId">对方角色id</param>
         private void RemoveFriend(int charId, int friendId)
         {
+            //查找数据库中好友列表中的characterid和friendid的好友实体
             var removeItem = DBService.Instance.Entities.TCharacterFriends.FirstOrDefault(v => v.CharacterID == charId && v.FriendID == friendId);
             if (removeItem != null)
             {

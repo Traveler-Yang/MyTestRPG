@@ -185,7 +185,7 @@ namespace GameServer.Services
             TCharacter dbchar = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", dbchar.ID, dbchar.Name, dbchar.MapID);//打印日志
             Character character = CharacterManager.Instance.AddCharacter(dbchar);//1.添加一个角色到角色管理器，并得到一个实体的Character
-            SessionManager.Instance.AddSession(character.Id,sender);//每进入游戏，就将当前角色的Session添加到管理器中
+            SessionManager.Instance.AddSession(character.Id,sender);//每进入游戏，就将当前角色的会话对象添加到管理器中
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
             sender.Session.Response.gameEnter.Result = Result.Success;//结果值
             sender.Session.Response.gameEnter.Errormsg = "None";//错误信息
@@ -193,7 +193,7 @@ namespace GameServer.Services
             sender.SendResPonse();
 
             sender.Session.Character = character;//一旦进入游戏，就会将选择的指定角色 赋值给 会话对象
-            sender.Session.PostResponser = character;//进入游戏给后处理器赋值
+            sender.Session.PostResponser = character;//进入游戏给后处理器赋值（里氏替换）
             MapManager.Instance[dbchar.MapID].CharacterEnter(sender, character);//2.让角色进入地图
         }
         /// <summary>
@@ -206,7 +206,7 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;//从客户端传过来的角色信息
             Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
-            SessionManager.Instance.RemoveSession(character.Id);
+            SessionManager.Instance.RemoveSession(character.Id);//角色离开删除会话对象
             CharacterLeave(character);
             sender.Session.Response.gameLeave = new UserGameLeaveResponse();
             sender.Session.Response.gameLeave.Result = Result.Success;//得到结果
