@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SkillBridge.Message;
+using Assets.Scripts.UI.Temp;
 
 public class UITempItem : ListView.ListViewItem
 {
@@ -14,17 +16,31 @@ public class UITempItem : ListView.ListViewItem
     public Image backGround;//背景
     public override void onSelected(bool selected)
     {
+        //是否显示
         this.backGround.enabled = selected ? true : false;
     }
+
+    public int idx;
+    public NCharacterInfo Info;
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 设置队伍成员项信息
+    /// </summary>
+    /// <param name="idx">索引</param>
+    /// <param name="info">角色信息</param>
+    /// <param name="isLeader">是否是队长</param>
+    public void SetMemberInfo(int idx, NCharacterInfo info, bool isLeader)
     {
-        
+        this.idx = idx;
+        this.Info = info;
+        if (this.nickName != null) this.nickName.text = this.Info.Name;
+        if (this.classIcon != null) this.classIcon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.Info.Class - 1];
+        if (this.level != null) this.level.text = this.Info.Level.ToString();
+        if (isLeader) this.leaderIcon.gameObject.SetActive(true);
     }
 }

@@ -43,7 +43,7 @@ namespace Services
         /// <param name="friendName"></param>
         public void SendFriendAddRequest(int friendId, string friendName)
         {
-            Debug.Log("SendFriendAddRequest");
+            Debug.Log("[Client]：SendFriendAddRequest");
             //NetMessage message = new NetMessage();
             //message.Request = new NetMessageRequest();
             //message.Request.friendAddReq = new FriendAddRequest();
@@ -68,7 +68,7 @@ namespace Services
         private void OnFriendAddResponse(object sender, FriendAddResponse message)
         {
             if (message.Result == Result.Success)
-                MessageBox.Show(string.Format("[{0}] 接受了您的请求", message.Request.ToName), "添加好友成功");
+                MessageBox.Show(string.Format("[{0}] 接受了请求", message.Request.ToName), "添加好友成功");
             else if(sender != null)
                 MessageBox.Show(message.Errormsg, "添加好友失败");
         }
@@ -80,7 +80,7 @@ namespace Services
         /// <param name="request"></param>
         public void SendFriendAddResponse(bool accept, FriendAddRequest request)
         {
-            Debug.Log("SendFriendAddResponse");
+            Debug.Log("[Client]：SendFriendAddResponse");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.friendAddRes = new FriendAddResponse();
@@ -120,7 +120,7 @@ namespace Services
 
         public void SendFriendRemoveRequest(int id, int friendId)
         {
-            Debug.Log("SendFriendRemoveRequest");
+            Debug.Log("[Client]：SendFriendRemoveRequest");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.friendRemove = new FriendRemoveRequest();
