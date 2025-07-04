@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Common;
+using Managers;
+using Models;
+using Network;
+using SkillBridge.Message;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Common;
-using Network;
 using UnityEngine;
-
-using SkillBridge.Message;
-using Models;
-using Managers;
 
 namespace Services
 {
@@ -48,6 +47,30 @@ namespace Services
         public void Init()
         {
 
+        }
+
+        /// <summary>
+        /// SendMessage方法
+        /// </summary>
+        /// <typeparam name="T">消息类型</typeparam>
+        /// <param name="buildRequest">Request消息</param>
+        private void Send<T>(Action<NetMessageRequest> buildRequest) where T : class
+        {
+            //构建消息
+            var message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            buildRequest?.Invoke(message.Request);//如果传进来的消息信息不为空，则调用
+            //是否已连接，如果链接，则直接发送
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else//未连接，则缓存下来
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
         }
 
         public void ConnectToServer()
@@ -119,22 +142,14 @@ namespace Services
         public void SendLogin(string user, string psw)
         {
             Debug.LogFormat("UserLoginRequest::user :{0} psw:{1}", user, psw);
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.userLogin = new UserLoginRequest();
-            message.Request.userLogin.User = user;
-            message.Request.userLogin.Passward = psw;
-
-            if (this.connected && NetClient.Instance.Connected)
+            this.Send<UserLoginRequest>(req =>
             {
-                this.pendingMessage = null;
-                NetClient.Instance.SendMessage(message);
-            }
-            else
-            {
-                this.pendingMessage = message;
-                this.ConnectToServer();
-            }
+                req.userLogin = new UserLoginRequest
+                {
+                    User = user,
+                    Passward = psw
+                };
+            });
         }
 
         void OnUserLogin(object sender, UserLoginResponse response)
@@ -155,22 +170,14 @@ namespace Services
         public void SendRegister(string user, string psw)
         {
             Debug.LogFormat("UserRegisterRequest::user :{0} psw:{1}", user, psw);
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.userRegister = new UserRegisterRequest();
-            message.Request.userRegister.User = user;
-            message.Request.userRegister.Passward = psw;
-
-            if (this.connected && NetClient.Instance.Connected)
+            this.Send<UserRegisterRequest>(req =>
             {
-                this.pendingMessage = null;
-                NetClient.Instance.SendMessage(message);
-            }
-            else
-            {
-                this.pendingMessage = message;
-                this.ConnectToServer();
-            }
+                req.userRegister = new UserRegisterRequest
+                {
+                    User = user,
+                    Passward = psw
+                };
+            });
         }
 
         void OnUserRegister(object sender, UserRegisterResponse response)
@@ -185,22 +192,31 @@ namespace Services
         public void SendCharacterCreate(string charatcterName, CharacterClass chaClass)
         {
             Debug.LogFormat("UserCreateCharacterRequest::charatcterName :{0} chaClass:{1}", charatcterName, chaClass);
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.createChar = new UserCreateCharacterRequest();
-            message.Request.createChar.Name = charatcterName;
-            message.Request.createChar.Class = chaClass;
+            //NetMessage message = new NetMessage();
+            //message.Request = new NetMessageRequest();
+            //message.Request.createChar = new UserCreateCharacterRequest();
+            //message.Request.createChar.Name = charatcterName;
+            //message.Request.createChar.Class = chaClass;
 
-            if (this.connected && NetClient.Instance.Connected)
+            //if (this.connected && NetClient.Instance.Connected)
+            //{
+            //    this.pendingMessage = null;
+            //    NetClient.Instance.SendMessage(message);
+            //}
+            //else
+            //{
+            //    this.pendingMessage = message;
+            //    this.ConnectToServer();
+            //}
+
+            this.Send<UserCreateCharacterRequest>(req =>
             {
-                this.pendingMessage = null;
-                NetClient.Instance.SendMessage(message);
-            }
-            else
-            {
-                this.pendingMessage = message;
-                this.ConnectToServer();
-            }
+                req.createChar = new UserCreateCharacterRequest
+                {
+                    Name = charatcterName,
+                    Class = chaClass
+                };
+            });
         }
 
         void OnUserCreateCharacter(object sender, UserCreateCharacterResponse response)
@@ -222,11 +238,18 @@ namespace Services
         public void SendGameEnter(int characterIdx)
         {
             Debug.LogFormat("UserGameEnterRequest::charatcterId :{0}", characterIdx);
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.gameEnter = new UserGameEnterRequest();
-            message.Request.gameEnter.characterIdx = characterIdx;//将角色的类型赋值给协议
-            NetClient.Instance.SendMessage(message);//发送到服务端
+            //NetMessage message = new NetMessage();
+            //message.Request = new NetMessageRequest();
+            //message.Request.gameEnter = new UserGameEnterRequest();
+            //message.Request.gameEnter.characterIdx = characterIdx;//将角色的类型赋值给协议
+            //NetClient.Instance.SendMessage(message);//发送到服务端
+            this.Send<UserGameEnterRequest>(req =>
+            {
+                req.gameEnter = new UserGameEnterRequest
+                {
+                    characterIdx = characterIdx
+                };
+            });
         }
 
         private void OnGameEnter(object sender, UserGameEnterResponse response)
@@ -268,10 +291,14 @@ namespace Services
         public void SendGameLeave()
         {
             Debug.Log("UserGameLeaveRequest");
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.gameLeave = new UserGameLeaveRequest();
-            NetClient.Instance.SendMessage(message);
+            //NetMessage message = new NetMessage();
+            //message.Request = new NetMessageRequest();
+            //message.Request.gameLeave = new UserGameLeaveRequest();
+            //NetClient.Instance.SendMessage(message);
+            this.Send<UserGameLeaveRequest>(req =>
+            {
+                req.gameLeave = new UserGameLeaveRequest();
+            });
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace GameServer.Models
         /// <param name="character"></param>
         internal  void CharacterEnter(NetConnection<NetSession> conn, Character character)
         {
-            Log.InfoFormat("CharacterEnter: Map:{0} CharacterID:{1}", this.Define.ID, character.Id);
+            Log.InfoFormat("[GameServer] Map CharacterEnter: Map:{0} CharacterID:{1}", this.Define.ID, character.Id);
             //将当前地图的id赋值给此角色所在的地图的id
             character.Info.mapId = this.ID;
             this.MapCharacters[character.Id] = new MapCharacter(conn, character);
@@ -97,7 +97,7 @@ namespace GameServer.Models
         /// <param name="cha"></param>
         internal void CharacterLeave(Character cha)
         {
-            Log.InfoFormat("CharacterLeave: Map{0} characterId{1}", this.Define.ID, cha.Id);//打印日志
+            Log.InfoFormat("[GameServer] Map CharacterLeave: Map{0} characterId{1}", this.Define.ID, cha.Id);
 
             //角色离开，通知其他所有在线玩家
             foreach (var kv in this.MapCharacters)
@@ -114,6 +114,7 @@ namespace GameServer.Models
         /// <param name="character"></param>
         void AddCharacterEnterMap(NetConnection<NetSession> conn, NCharacterInfo character)
         {
+            Log.InfoFormat("[GameServer] Map AddCharacterEnterMap To {0}:{1} : Map {2} : Character {3}", conn.Session.Character.Id, conn.Session.Character.Info.Name, this.Define.ID, character.Id, character.Name);
             if (conn.Session.Response.mapCharacterEnter == null)
             {
                 conn.Session.Response.mapCharacterEnter = new MapCharacterEnterResponse();
@@ -129,6 +130,7 @@ namespace GameServer.Models
         /// <param name="character"></param>
         private void SendCharacterLeaveMap(NetConnection<NetSession> conn, Character character)
         {
+            Log.InfoFormat("[GameServer] Map SendCharacterLeaveMap: To {0}:{1} : Map {2} : Character {3}", conn.Session.Character.Id,conn.Session.Character.Info.Name,this.Define.ID, character.Id, character.Info.Name);
             conn.Session.Response.mapCharacterLeave = new MapCharacterLeaveResponse();
             conn.Session.Response.mapCharacterLeave.entityId = character.entityId;
             conn.SendResPonse();
@@ -140,6 +142,7 @@ namespace GameServer.Models
         /// <param name="entity"></param>
         public void UpdateEntity(NEntitySync entity)
         {
+            Log.InfoFormat("[GameServer] Map UpdateEntity: entity {0} : Event {1}", entity.Id, entity.Event);
             //得到信息后，遍历发送给地图中的所有角色
             foreach (var kv in this.MapCharacters)
             {
@@ -164,7 +167,7 @@ namespace GameServer.Models
         /// <param name="monster">需要进入的怪物</param>
         internal void MonsterEnter(Monster monster)
         {
-            Log.InfoFormat("MonsterEnter：Map:{0} MonsterID:{1}", this.Define.ID, monster.Id);
+            Log.InfoFormat("[GameServer] Map MonsterEnter：Map:{0} MonsterID:{1}", this.Define.ID, monster.Id);
             foreach (var kv in this.MapCharacters)
             {
                 this.AddCharacterEnterMap(kv.Value.connection, monster.Info);

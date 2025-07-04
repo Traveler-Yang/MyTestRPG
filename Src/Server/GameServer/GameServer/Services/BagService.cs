@@ -30,7 +30,7 @@ namespace GameServer.Services
 
             if (request.BagInfo != null)
             {
-                character.Data.Bag.Items = request.BagInfo.Items;
+                character.TChar.Bag.Items = request.BagInfo.Items;
                 DBService.Instance.Save();
             }
         }

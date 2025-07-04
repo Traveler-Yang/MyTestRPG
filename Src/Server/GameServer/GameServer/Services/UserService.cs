@@ -39,7 +39,7 @@ namespace GameServer.Services
         /// <param name="request"></param>
         void OnRegister(NetConnection<NetSession> sender, UserRegisterRequest request)
         {
-            Log.InfoFormat("UserRegisterRequest: User:{0} Pass:{1}", request.User, request.Passward);
+            Log.InfoFormat("[GameServer] UserService OnRegister: User:{0} Pass:{1}", request.User, request.Passward);
 
             sender.Session.Response.userRegister = new UserRegisterResponse();
 
@@ -67,7 +67,7 @@ namespace GameServer.Services
         /// <param name="request"></param>
         void OnLogin(NetConnection<NetSession> sender, UserLoginRequest request)
         {
-            Log.InfoFormat("UserLoginRequest: User:{0} Pass:{1}", request.User, request.Passward);
+            Log.InfoFormat("[GameServer] UserService OnLogin: User:{0} Pass:{1}", request.User, request.Passward);
 
             sender.Session.Response.userLogin = new UserLoginResponse();
 
@@ -113,7 +113,7 @@ namespace GameServer.Services
         /// <param name="request"></param>
         private void OnCreateCharacter(NetConnection<NetSession> sender, UserCreateCharacterRequest request)
         {
-            Log.InfoFormat("UserCreateCharacterRequest: Name:{0} Class:{1}", request.Name, request.Class);//打印日志
+            Log.InfoFormat("[GameServer] UserService OnCreateCharacter: Name:{0} Class:{1}", request.Name, request.Class);//打印日志
 
             TCharacter character = new TCharacter()//new一个新的角色表
             {
@@ -183,7 +183,7 @@ namespace GameServer.Services
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
         {
             TCharacter dbchar = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
-            Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", dbchar.ID, dbchar.Name, dbchar.MapID);//打印日志
+            Log.InfoFormat("[GameServer] UserService OnGameEnter: CharacterID:{0}:{1} Map:{2}", dbchar.ID, dbchar.Name, dbchar.MapID);//打印日志
             Character character = CharacterManager.Instance.AddCharacter(dbchar);//1.添加一个角色到角色管理器，并得到一个实体的Character
             SessionManager.Instance.AddSession(character.Id,sender);//每进入游戏，就将当前角色的会话对象添加到管理器中
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
@@ -205,7 +205,7 @@ namespace GameServer.Services
         private void OnGameLeave(NetConnection<NetSession> sender, UserGameLeaveRequest request)
         {
             Character character = sender.Session.Character;//从客户端传过来的角色信息
-            Log.InfoFormat("UserGameEnterRequest: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
+            Log.InfoFormat("[GameServer] UserService OnGameLeave: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
             SessionManager.Instance.RemoveSession(character.Id);//角色离开删除会话对象
             CharacterLeave(character);
             sender.Session.Response.gameLeave = new UserGameLeaveResponse();
@@ -216,9 +216,10 @@ namespace GameServer.Services
 
         public void CharacterLeave(Character character)
         {
+            Log.InfoFormat("[GameServer] UserService > CharacterLeave：CharacterID:{0}:{1}", character.Id, character.Info.Name);
             CharacterManager.Instance.RemoveCharacter(character.entityId);//移除从客户端传送过来的角色
+            character.Clear();//要先更改状态，再离开，并发送消息
             MapManager.Instance[character.Info.mapId].CharacterLeave(character);
-            character.Clear();
         }
     }
 }

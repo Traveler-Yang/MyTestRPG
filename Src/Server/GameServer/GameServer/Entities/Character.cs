@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using GameServer.Managers;
 using Network;
+using GameServer.Models;
+using Common;
 
 namespace GameServer.Entities
 {
@@ -18,17 +20,20 @@ namespace GameServer.Entities
     class Character : CharacterBase,IPostResponser
     {
        
-        public TCharacter Data;
+        public TCharacter TChar;
 
         public ItemManager ItemManager;
         public QuestManager QuestManager;
         public StatusManager StatusManager;
         public FriendManager FriendManager;
 
+        public Temp temp;
+        public int tempUpdateTS;//自己的队伍何时更新的时间戳
+
         public Character(CharacterType type,TCharacter cha):
             base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
         {
-            this.Data = cha;
+            this.TChar = cha;
             this.Id = cha.ID;
             this.Info = new NCharacterInfo();
             this.Info.Type = type;
@@ -47,9 +52,9 @@ namespace GameServer.Entities
             this.ItemManager = new ItemManager(this);
             this.ItemManager.GetItemInfos(this.Info.Items);
             this.Info.Bag = new NBagInfo();
-            this.Info.Bag.Unlocked = this.Data.Bag.Unlocked;
-            this.Info.Bag.Items = this.Data.Bag.Items;
-            this.Info.Equips = this.Data.Equips;
+            this.Info.Bag.Unlocked = this.TChar.Bag.Unlocked;
+            this.Info.Bag.Items = this.TChar.Bag.Items;
+            this.Info.Equips = this.TChar.Equips;
             this.QuestManager = new QuestManager(this);
             this.QuestManager.GetQuestInfos(this.Info.Quests);
             this.StatusManager = new StatusManager(this);
@@ -59,22 +64,33 @@ namespace GameServer.Entities
 
         public long Gold
         {
-            get { return this.Data.Gold; }
+            get { return this.TChar.Gold; }
             set
             {
                 //要个金币赋值的话，先判断要赋值的值是否和当前金币是否相等
                 //如果相等就返回
-                if (this.Data.Gold == value)
+                if (this.TChar.Gold == value)
                     return;
 
-                this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));
-                this.Data.Gold = value;
+                this.StatusManager.AddGoldChange((int)(value - this.TChar.Gold));
+                this.TChar.Gold = value;
             }
         }
 
         public void PostProcess(NetMessageResponse message)
         {
             this.FriendManager.PostProcess(message);
+            //当前身上有没有队伍
+            if (this.temp != null)
+            {
+                Log.InfoFormat("[GameServer]: Character > PostProcess Temp:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, tempUpdateTS, temp.timestamp);
+                //如果有，再判断自己的更新队伍时间是否小于此队伍的更新时间
+                if (this.tempUpdateTS < temp.timestamp)
+                {
+                    this.tempUpdateTS = temp.timestamp;
+                    this.temp.PostProcess(message);
+                }
+            }
             if (this.StatusManager.HasStatus)
             {
                 this.StatusManager.PostProcess(message);
@@ -86,7 +102,18 @@ namespace GameServer.Entities
         public void Clear()
         {
             //离开时将自己的好友状态改变
-            this.FriendManager.UpdateFriendInfo(this.Info, false);
+            this.FriendManager.OfflineNotify();
+        }
+
+        public NCharacterInfo GetBasicInfo()
+        {
+            return new NCharacterInfo()
+            {
+                Id = this.Id,
+                Name = this.Info.Name,
+                Class = this.Info.Class,
+                Level = this.Info.Level,
+            };
         }
     }
 }

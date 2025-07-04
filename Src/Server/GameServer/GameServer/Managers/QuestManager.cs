@@ -22,7 +22,7 @@ namespace GameServer.Managers
 
         public void GetQuestInfos(List<NQuestInfo> list)
         {
-            foreach (var quest in Owner.Data.Quests)
+            foreach (var quest in Owner.TChar.Quests)
             {
                 list.Add(GetQuestInfo(quest));
             }
@@ -77,7 +77,7 @@ namespace GameServer.Managers
                     dbquest.Status = (int)QuestStatus.InProgress;
                 }
                 sender.Session.Response.questAccept.Quest = this.GetQuestInfo(dbquest);
-                character.Data.Quests.Add(dbquest);
+                character.TChar.Quests.Add(dbquest);
                 DBService.Instance.Save();
                 return Result.Success;
             }
@@ -106,7 +106,7 @@ namespace GameServer.Managers
             {
                 //如果存在
                 //查询数据库中是否有这个任务
-                var dbquest = character.Data.Quests.Where(q => q.QuestID == questId).FirstOrDefault();
+                var dbquest = character.TChar.Quests.Where(q => q.QuestID == questId).FirstOrDefault();
                 if (dbquest != null)
                 {
                     if (dbquest.Status != (int)QuestStatus.Complated)

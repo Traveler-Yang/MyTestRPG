@@ -60,6 +60,8 @@ public class UIFriends : UIWindow
             tips = "不可以添加自己哦~";
             return false;
         }
+        if (!CharacterManager.Instance.Characters.ContainsKey(friendId))
+            return false;
         friendName = CharacterManager.Instance.Characters[friendId].Name;
         FriendService.Instance.SendFriendAddRequest(friendId, friendName);
         return true;

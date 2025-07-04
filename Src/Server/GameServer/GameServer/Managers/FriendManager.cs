@@ -49,7 +49,7 @@ namespace GameServer.Managers
             //清空一次列表
             this.friends.Clear();
             //再从数据库中的好友列表加载进来
-            foreach (var friend in this.Owner.Data.Friends)
+            foreach (var friend in this.Owner.TChar.Friends)
             {
                 this.friends.Add(GetFriendInfo(friend));
             }
@@ -65,12 +65,12 @@ namespace GameServer.Managers
             TCharacterFriend tf = new TCharacterFriend
             {
                 FriendID = friend.Id,
-                FriendName = friend.Data.Name,
-                Class = friend.Data.Class,
-                Level = friend.Data.Level,
+                FriendName = friend.TChar.Name,
+                Class = friend.TChar.Class,
+                Level = friend.TChar.Level,
             };
             //再Add到数据库中
-            this.Owner.Data.Friends.Add(tf);
+            this.Owner.TChar.Friends.Add(tf);
             friendChanged = true;
         }
 
@@ -82,7 +82,7 @@ namespace GameServer.Managers
         public bool RemoveFriendByFriendId(int friendId)
         {
             //查找所有好友列表中的FriendID为我自己的好友实体（如果是我自己，说明这个人的好友列表中有我自己）
-            var removeItem = this.Owner.Data.Friends.FirstOrDefault(v => v.FriendID == friendId);
+            var removeItem = this.Owner.TChar.Friends.FirstOrDefault(v => v.FriendID == friendId);
             if (removeItem != null)
             {
                 DBService.Instance.Entities.TCharacterFriends.Remove(removeItem);
@@ -98,7 +98,7 @@ namespace GameServer.Managers
         /// <returns></returns>
         public bool RemoveFriendById(int id)
         {
-            var removeItem = this.Owner.Data.Friends.FirstOrDefault(v => v.Id == id);
+            var removeItem = this.Owner.TChar.Friends.FirstOrDefault(v => v.Id == id);
             if (removeItem != null)
             {
                 DBService.Instance.Entities.TCharacterFriends.Remove(removeItem);
@@ -134,31 +134,22 @@ namespace GameServer.Managers
             else//如果在线
             {
                 //将这个角色在线信息进行赋值
-                friendInfo.friendInfo = GetBasicInfo(character.Info);
+                friendInfo.friendInfo = character.GetBasicInfo();
                 friendInfo.friendInfo.Name = character.Info.Name;
                 friendInfo.friendInfo.Class = character.Info.Class;
                 friendInfo.friendInfo.Level = character.Info.Level;
+                //如果当前等级和数据库中的等级不一致，则重新更新
+                if (friend.Level != character.Info.Level)
+                {
+                    friend.Level = character.Info.Level;
+                }
                 character.FriendManager.UpdateFriendInfo(this.Owner.Info, true);
-                friendInfo.Status = false;
+                Log.InfoFormat("{0}:{1} GetFriendInfo : {2}:{3} Status:{4}", this.Owner.Id, this.Owner.Info.Name, friendInfo.friendInfo.Id, friendInfo.friendInfo.Name, friendInfo.Status);
+                friendInfo.Status = true;
             }
             return friendInfo;
         }
 
-        /// <summary>
-        /// 封装保护
-        /// </summary>
-        /// <param name="info"></param>
-        /// <returns></returns>
-        NCharacterInfo GetBasicInfo(NCharacterInfo info)
-        {
-            return new NCharacterInfo()
-            {
-                Id = info.Id,
-                Name = info.Name,
-                Class = info.Class,
-                Level = info.Level,
-            };
-        }
 
         /// <summary>
         /// 获取好友信息（根据ID获得当前好友信息）
@@ -199,6 +190,24 @@ namespace GameServer.Managers
         }
 
         /// <summary>
+        /// 下线通知
+        /// </summary>
+        public void OfflineNotify()
+        {
+            //遍历自己的所有好友
+            foreach (var friendInfo in this.friends)
+            {
+                var friend = CharacterManager.Instance.GetCharacter(friendInfo.friendInfo.Id);
+                //如果好友在线
+                if (friend != null)
+                {
+                    //则将好友更新，设置为离线
+                    friend.FriendManager.UpdateFriendInfo(this.Owner.Info, false);
+                }
+            }
+        }
+
+        /// <summary>
         /// 后处理（暂时只是更新好友列表信息）
         /// </summary>
         /// <param name="message"></param>
@@ -207,6 +216,7 @@ namespace GameServer.Managers
             //好友信息是否变化
             if (friendChanged)
             {
+                Log.InfoFormat("FriendManager > PostProcess ： Character：{0}:{1}", this,Owner.Id, this.Owner.Info.Name);
                 //如果变化则更新好友列表
                 this.InitFriends();
                 if (message.friendList == null)

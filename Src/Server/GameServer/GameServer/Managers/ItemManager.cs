@@ -21,7 +21,7 @@ namespace GameServer.Managers
         {
             this.Owner = owner;
 
-            foreach (var item in Owner.Data.Items)
+            foreach (var item in Owner.TChar.Items)
             {
                 this.Items.Add(item.ItemID, new Item(item));
             }
@@ -35,7 +35,7 @@ namespace GameServer.Managers
         /// <returns></returns>
         public bool UseItem(int itemId, int count = 1)
         {
-            Log.InfoFormat("[{0}]UseItem[{1}：{2}]", Owner.Data.ID, itemId, count);
+            Log.InfoFormat("[{0}]UseItem[{1}：{2}]", Owner.TChar.ID, itemId, count);
             //声明一个物品来存储字典中查找的结果
             Item item = null;
             if (this.Items.TryGetValue(itemId, out item))
@@ -75,7 +75,7 @@ namespace GameServer.Managers
         {
             Item item = null;
             Items.TryGetValue(itemId, out item);
-            Log.InfoFormat("[{0}]GetItem[{1}：{2}]", this.Owner.Data.ID, itemId, item);
+            Log.InfoFormat("[{0}]GetItem[{1}：{2}]", this.Owner.TChar.ID, itemId, item);
             return item;
         }
 
@@ -96,16 +96,16 @@ namespace GameServer.Managers
             else//如果字典中没有这个物品，则创建一个新物品
             {
                 TCharacterItem dbItem = new TCharacterItem();
-                dbItem.CharacterID = Owner.Data.ID;
-                dbItem.Owner = Owner.Data;
+                dbItem.CharacterID = Owner.TChar.ID;
+                dbItem.Owner = Owner.TChar;
                 dbItem.ItemID = itemId;
                 dbItem.ItemCount = count;
-                Owner.Data.Items.Add(dbItem);
+                Owner.TChar.Items.Add(dbItem);
                 item = new Item(dbItem);
                 Items.Add(itemId, item);
             }
             this.Owner.StatusManager.AddItemChange(itemId, count,StatusAction.Add);
-            Log.InfoFormat("[{0}]AddItem[{1}] addCount：[{2}]", this.Owner.Data.ID, itemId, count);
+            Log.InfoFormat("[{0}]AddItem[{1}] addCount：[{2}]", this.Owner.TChar.ID, itemId, count);
             return true;
         }
 
@@ -131,7 +131,7 @@ namespace GameServer.Managers
             //如果这个物品的数量足够，则从物品中移除指定数量
             item.Remove(count);
             this.Owner.StatusManager.AddItemChange(itemId, count, StatusAction.Delete);
-            Log.InfoFormat("[{0}]RemoveItem[{1}] removeCount[{2}]", this.Owner.Data.ID, item, count);
+            Log.InfoFormat("[{0}]RemoveItem[{1}] removeCount[{2}]", this.Owner.TChar.ID, item, count);
             return true;
         }
 
