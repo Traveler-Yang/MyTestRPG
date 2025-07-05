@@ -7,13 +7,13 @@ using System.Linq;
 
 namespace GameServer.Services
 {
-    class TempService : Singleton<FriendService>
+    class TempService : Singleton<TempService>
     {
         public TempService()
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempInviteRequest>(this.OnTempInviteRequest);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempInviteResponse>(this.OnTempInviteResponse);
-            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempLeaveResponse>(this.OnTempLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempLeaveRequest>(this.OnTempLeave);
         }
 
         public void Init()
@@ -29,7 +29,7 @@ namespace GameServer.Services
         private void OnTempInviteRequest(NetConnection<NetSession> sender, TempInviteRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
 
 
             NetConnection<NetSession> target = SessionManager.Instance.GetSession(request.ToId);
@@ -52,7 +52,7 @@ namespace GameServer.Services
             }
 
             //转发请求
-            Log.InfoFormat("[GameServer] UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
             target.Session.Response.tempInviteReq = request;
             target.SendResPonse();
         }
@@ -65,7 +65,7 @@ namespace GameServer.Services
         private void OnTempInviteResponse(NetConnection<NetSession> sender, TempInviteResponse response)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnTempInviteResponse ");
+            Log.InfoFormat("UserService OnTempInviteResponse ");
             sender.Session.Response.tempInviteRes = response;
             if (response.Result == Result.Success)
             {
@@ -94,14 +94,30 @@ namespace GameServer.Services
         /// 接收退出队伍响应
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="response"></param>
-        private void OnTempLeave(NetConnection<NetSession> sender, TempLeaveResponse response)
+        /// <param name="request"></param>
+        private void OnTempLeave(NetConnection<NetSession> sender, TempLeaveRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnTempLeave ");
+            Log.InfoFormat("UserService OnTempLeave ");
+            //如果当前队伍不为空，则有队伍
+            if (character.temp != null)
+            {
+                //再判断要退出的队伍与当前所在的队伍一致
+                if (request.TeamId == character.temp.id)
+                {
+                    //则可以退出队伍
+                    character.temp.Leave(character);
+                    sender.Session.Response.TempLeave = new TempLeaveResponse();
+                    sender.Session.Response.TempLeave.Result = Result.Success;
+                    sender.Session.Response.TempLeave.Errormsg = "退出队伍成功！";
+                    sender.Session.Response.TempLeave.Characterid = request.Characterid;
+                    sender.SendResPonse();
+                    return;
+                }
+            }
             sender.Session.Response.TempLeave = new TempLeaveResponse();
-            sender.Session.Response.TempLeave.Result = Result.Success;
-            sender.Session.Response.TempLeave.Characterid = response.Characterid;
+            sender.Session.Response.TempLeave.Result = Result.Failed;
+            sender.Session.Response.TempLeave.Errormsg = "当前角色没有队伍";
             sender.SendResPonse();
         }
 

@@ -38,7 +38,7 @@ namespace GameServer.Models
         /// <param name="member">成员</param>
         public void AddMember(Character member)
         {
-            Log.InfoFormat("[GameServer] Temp > AddMember Character:{0}:{1}", member.Id, member.Info.Name);
+            Log.InfoFormat("Temp > AddMember Character:{0}:{1}", member.Id, member.Info.Name);
             //如果队伍列表没有人的情况下，第一个添加进来的人就是队长
             if (this.Members.Count == 0)
             {
@@ -58,7 +58,7 @@ namespace GameServer.Models
         /// <param name="member"></param>
         public void Leave(Character member)
         {
-            Log.InfoFormat("[GameServer] Temp > Leave Character:{0}:{1}", member.Id, member.Info.Name);
+            Log.InfoFormat("Temp > Leave Character:{0}:{1}", member.Id, member.Info.Name);
             if (this.Members.Contains(member))
                 this.Members.Remove(member);
             //判断这个人如果是队长

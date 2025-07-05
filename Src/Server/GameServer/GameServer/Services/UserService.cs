@@ -121,7 +121,7 @@ namespace GameServer.Services
                 Name = request.Name,
                 Class = (int)request.Class,
                 TID = (int)request.Class,
-                Level = 1,
+                Level = 10,
                 //进入游戏时要在什么地方
                 MapID = 1,//初始地图
                 //初始位置坐标

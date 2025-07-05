@@ -254,7 +254,6 @@ namespace Network
             {
                 this.lastSendTime = Time.time;
             }
-            this.request = null;
         }
 
         void DoConnect()

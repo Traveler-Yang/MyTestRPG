@@ -144,9 +144,9 @@ namespace GameServer.Managers
                     friend.Level = character.Info.Level;
                 }
                 character.FriendManager.UpdateFriendInfo(this.Owner.Info, true);
-                Log.InfoFormat("{0}:{1} GetFriendInfo : {2}:{3} Status:{4}", this.Owner.Id, this.Owner.Info.Name, friendInfo.friendInfo.Id, friendInfo.friendInfo.Name, friendInfo.Status);
-                friendInfo.Status = true;
+               friendInfo.Status = true;
             }
+            Log.InfoFormat("{0}:{1} GetFriendInfo : {2}:{3} Status:{4}", this.Owner.Id, this.Owner.Info.Name, friendInfo.friendInfo.Id, friendInfo.friendInfo.Name, friendInfo.Status);
             return friendInfo;
         }
 

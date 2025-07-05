@@ -41,6 +41,6 @@ public class UITempItem : ListView.ListViewItem
         if (this.nickName != null) this.nickName.text = this.Info.Name;
         if (this.classIcon != null) this.classIcon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.Info.Class - 1];
         if (this.level != null) this.level.text = this.Info.Level.ToString();
-        if (isLeader) this.leaderIcon.gameObject.SetActive(true);
+        this.leaderIcon.gameObject.SetActive(isLeader ? true : false);
     }
 }

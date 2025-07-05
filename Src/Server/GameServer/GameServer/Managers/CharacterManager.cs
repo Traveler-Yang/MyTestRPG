@@ -61,9 +61,19 @@ namespace GameServer.Managers
 
         public Character GetCharacter(int characterId)
         {
-            Character character = null;
-            this.Characters.TryGetValue(characterId, out character);
-            return character;
+            foreach (var cha in this.Characters)
+            {
+                if (cha.Value.Id == characterId)
+                    return cha.Value;
+            }
+            return null;
         }
+
+        //public Character GetCharacter(int entityId)
+        //{
+        //    Character character = null;
+        //    this.Characters.TryGetValue(entityId, out character);
+        //    return character;
+        //}
     }
 }

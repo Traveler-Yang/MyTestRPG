@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using Entities;
 using Common.Data;
+using Assets.Scripts.UI.Temp;
 
 public class UIMain : MonoSingleton<UIMain>
 {
@@ -22,11 +23,11 @@ public class UIMain : MonoSingleton<UIMain>
 	void UpdateAvatar()
 	{
 		//将角色的名字赋值给UI显示
-		this.avatarName.text = string.Format("{0} ID: [{1}]", User.Instance.CurrentCharacter.Name, User.Instance.CurrentCharacter.Id);
+		this.avatarName.text = string.Format("{0}", User.Instance.CurrentCharacter.Name);
 		//将角色的等级赋值给UI显示
 		this.avatarLevel.text = User.Instance.CurrentCharacter.Level.ToString();
-		this.Icon.overrideSprite = Resources.Load<Sprite>(User.Instance.CurrentCharacter.Icon);
-		this.miniMapIcon.overrideSprite = Resources.Load<Sprite>(User.Instance.CurrentCharacter.Icon);
+		this.Icon.overrideSprite = SpriteManager.Instance.classIcons[(int)User.Instance.CurrentCharacter.Class - 1];
+        this.miniMapIcon.overrideSprite = SpriteManager.Instance.classIcons[(int)User.Instance.CurrentCharacter.Class - 1];
     }
 	
 	// Update is called once per frame

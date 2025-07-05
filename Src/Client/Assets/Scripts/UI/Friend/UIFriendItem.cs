@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using SkillBridge.Message;
+using Assets.Scripts.UI.Temp;
 
 public class UIFriendItem : ListView.ListViewItem
 {
@@ -41,7 +42,7 @@ public class UIFriendItem : ListView.ListViewItem
     {
         this.info = item;
         if (this.nickName != null) this.nickName.text = this.info.friendInfo.Name;
-        if (this.icon != null) this.icon.overrideSprite = Resources.Load<Sprite>(DataManager.Instance.Characters[(int)item.friendInfo.Class].Icon);
+        if (this.icon != null) this.icon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.info.friendInfo.Class - 1];
         if (this.@class != null) this.@class.text = this.info.friendInfo.Class.ToString();
         if (this.Level != null) this.Level.text = string.Format("Lv: {0}", this.info.friendInfo.Level);
         if (this.status != null) this.status.text = this.info.Status == true ? "‘⁄œﬂ" : "¿Îœﬂ";

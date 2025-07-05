@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class UIFriends : UIWindow
 {
@@ -21,10 +22,14 @@ public class UIFriends : UIWindow
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        FriendService.Instance.OnFriendUpdate += RefreshUI;
+    }
+
+    private void OnDisable()
+    {
+        FriendService.Instance.OnFriendUpdate -= RefreshUI;
     }
 
     public void OnFriendSelected(ListView.ListViewItem item)
@@ -110,6 +115,39 @@ public class UIFriends : UIWindow
         };
     }
 
+    /// <summary>
+    /// 好友搜索点击事件
+    /// </summary>
+    public void OnClickSearchFriend()
+    {
+        InputBox.Show("请输入要搜索的好友ID或昵称", "好友搜索").OnSubmit += OnFriendSearchSubmit;
+    }
+
+    private bool OnFriendSearchSubmit(string input, out string tips)
+    {
+        tips = "";
+        int friendId = 0;
+        string friendName = "";
+        //因为我们输入的有可能是一个id或者是一个文本
+        //所以我们要先判断这输入的内容可不可以转换成int类型
+        //如果不可以转换，就将输入的信息赋值给名字
+        if (!int.TryParse(input, out friendId))
+            friendName = input;
+        //如果可以转换
+        //判断输入的内容是否是自己
+        if (friendId == User.Instance.CurrentCharacter.Id || friendName == User.Instance.CurrentCharacter.Name)
+        {
+            tips = "是搜索不到自己的哦~";
+            return false;
+        }
+        //判断输入的id是否存在
+        if (!CharacterManager.Instance.Characters.ContainsKey(friendId))
+            return false;
+        friendName = CharacterManager.Instance.Characters[friendId].Name;
+        //搜索成功逻辑
+        return true;
+    }
+
     void RefreshUI()
     {
         ClearFriendList();
@@ -123,6 +161,19 @@ public class UIFriends : UIWindow
     {
         foreach (var item in FriendManager.Instance.allFriends)
         {
+            //如果状态为离线，则返回
+            if (!item.Status)
+                continue;
+            GameObject go = Instantiate(itemPrefab, this.listMain.transform);
+            UIFriendItem ui = go.GetComponent<UIFriendItem>();
+            ui.SetFriendInfo(item);
+            this.listMain.AddItem(ui);
+        }
+        foreach (var item in FriendManager.Instance.allFriends)
+        {
+            //如果状态为在线，则返回
+            if (item.Status)
+                continue;
             GameObject go = Instantiate(itemPrefab, this.listMain.transform);
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
             ui.SetFriendInfo(item);

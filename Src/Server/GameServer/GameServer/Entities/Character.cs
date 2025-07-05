@@ -83,7 +83,7 @@ namespace GameServer.Entities
             //当前身上有没有队伍
             if (this.temp != null)
             {
-                Log.InfoFormat("[GameServer]: Character > PostProcess Temp:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, tempUpdateTS, temp.timestamp);
+                Log.InfoFormat("Character > PostProcess Temp:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, tempUpdateTS, temp.timestamp);
                 //如果有，再判断自己的更新队伍时间是否小于此队伍的更新时间
                 if (this.tempUpdateTS < temp.timestamp)
                 {

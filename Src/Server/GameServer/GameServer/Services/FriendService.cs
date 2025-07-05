@@ -34,7 +34,7 @@ namespace GameServer.Services
         private void OnFriendAddRequest(NetConnection<NetSession> sender, FriendAddRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnFriendAddRequest: :FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("UserService OnFriendAddRequest: :FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
 
             if (request.ToId == 0)
             {
@@ -74,7 +74,7 @@ namespace GameServer.Services
                 return;
             }
 
-            Log.InfoFormat("[GameServer] UserService OnFriendAddRequest: :FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("UserService OnFriendAddRequest: :FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
             //消息转发
             //将此消息，发送给另一个角色
             friend.Session.Response.friendAddReq = request;
@@ -89,7 +89,7 @@ namespace GameServer.Services
         private void OnFriendAddResponse(NetConnection<NetSession> sender, FriendAddResponse response)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnFriendAddResponse: :Character:[{0}],Result:[{1}],FromID:[{2}],ToID:[{3}]", character.Id , response.Result, response.Request.FromId, response.Request.ToId);
+            Log.InfoFormat("UserService OnFriendAddResponse: :Character:[{0}],Result:[{1}],FromID:[{2}],ToID:[{3}]", character.Id , response.Result, response.Request.FromId, response.Request.ToId);
             sender.Session.Response.friendAddRes = response;
             var requester = SessionManager.Instance.GetSession(response.Request.FromId);
             if (response.Result == Result.Success)
@@ -125,7 +125,7 @@ namespace GameServer.Services
         private void OnFriendRemove(NetConnection<NetSession> sender, FriendRemoveRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("[GameServer] UserService OnFriendRemove: :character:[{0}] FriendReletionID:[{1}]", character.Id, request.Id);
+            Log.InfoFormat("UserService OnFriendRemove: :character:[{0}] FriendReletionID:[{1}]", character.Id, request.Id);
             sender.Session.Response.friendRemove = new FriendRemoveResponse();
             sender.Session.Response.friendRemove.Id = request.Id;
 
@@ -159,7 +159,7 @@ namespace GameServer.Services
         /// <param name="friendId">对方角色id</param>
         private void RemoveFriend(int charId, int friendId)
         {
-            Log.InfoFormat("[GameServer] UserService RemoveFriend character {0} friend {1)", charId, friendId);
+            Log.InfoFormat("UserService RemoveFriend character {0} friend {1)", charId, friendId);
             //查找数据库中好友列表中的characterid和friendid的好友实体
             var removeItem = DBService.Instance.Entities.TCharacterFriends.FirstOrDefault(v => v.CharacterID == charId && v.FriendID == friendId);
             if (removeItem != null)

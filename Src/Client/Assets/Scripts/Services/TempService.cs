@@ -28,10 +28,10 @@ namespace Services
 
         public void Dispose()
         {
-            MessageDistributer.Instance.Subscribe<TempInviteRequest>(this.OnTempInviteRequest);
-            MessageDistributer.Instance.Subscribe<TempInviteResponse>(this.OnTempInviteResponse);
-            MessageDistributer.Instance.Subscribe<TempInfoResponse>(this.OnTempInfo);
-            MessageDistributer.Instance.Subscribe<TempLeaveResponse>(this.OnTempLeave);
+            MessageDistributer.Instance.Unsubscribe<TempInviteRequest>(this.OnTempInviteRequest);
+            MessageDistributer.Instance.Unsubscribe<TempInviteResponse>(this.OnTempInviteResponse);
+            MessageDistributer.Instance.Unsubscribe<TempInfoResponse>(this.OnTempInfo);
+            MessageDistributer.Instance.Unsubscribe<TempLeaveResponse>(this.OnTempLeave);
         }
 
         /// <summary>
@@ -41,13 +41,15 @@ namespace Services
         /// <param name="friendName"></param>
         public void SendTempInviteRequest(int friendId, string friendName)
         {
-            Debug.Log("[Client]：SendTempInviteRequest");
-            NetClient.Instance.Request.tempInviteReq = new TempInviteRequest();
-            NetClient.Instance.Request.tempInviteReq.FromId = User.Instance.CurrentCharacter.Id;
-            NetClient.Instance.Request.tempInviteReq.FromName = User.Instance.CurrentCharacter.Name;
-            NetClient.Instance.Request.tempInviteReq.ToId = friendId;
-            NetClient.Instance.Request.tempInviteReq.ToName = friendName;
-            NetClient.Instance.SendMessage(NetClient.Instance.request);
+            Debug.Log("SendTempInviteRequest");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.tempInviteReq = new TempInviteRequest();
+            message.Request.tempInviteReq.FromId = User.Instance.CurrentCharacter.Id;
+            message.Request.tempInviteReq.FromName = User.Instance.CurrentCharacter.Name;
+            message.Request.tempInviteReq.ToId = friendId;
+            message.Request.tempInviteReq.ToName = friendName;
+            NetClient.Instance.SendMessage(message);
         }
 
         /// <summary>
@@ -70,12 +72,14 @@ namespace Services
         /// <param name="request">请求信息</param>
         public void SendTempInviteResponse(bool accept, TempInviteRequest request)
         {
-            Debug.Log("[Client]：SendTempInviteResponse");
-            NetClient.Instance.Request.tempInviteRes = new TempInviteResponse();
-            NetClient.Instance.Request.tempInviteRes.Result = accept ? Result.Success : Result.Failed;
-            NetClient.Instance.Request.tempInviteRes.Errormsg = accept ? "对方同意了组队邀请" : "对方拒绝了组队邀请";
-            NetClient.Instance.Request.tempInviteRes.Request = request;
-            NetClient.Instance.SendMessage(NetClient.Instance.request);
+            Debug.Log("SendTempInviteResponse");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.tempInviteRes = new TempInviteResponse();
+            message.Request.tempInviteRes.Result = accept ? Result.Success : Result.Failed;
+            message.Request.tempInviteRes.Errormsg = accept ? "对方同意了组队邀请" : "对方拒绝了组队邀请";
+            message.Request.tempInviteRes.Request = request;
+            NetClient.Instance.SendMessage(message);
         }
 
         /// <summary>
@@ -105,7 +109,7 @@ namespace Services
         /// <param name="message"></param>
         private void OnTempInfo(object sender, TempInfoResponse message)
         {
-            Debug.Log("[Client]：OnTempInfo");
+            Debug.Log("OnTempInfo");
             TempManager.Instance.UpdateTempInfo(message.Team);
         }
 
@@ -116,12 +120,13 @@ namespace Services
         /// <param name="characterId"></param>
         public void SendTempLeaveRequest(int tempId)
         {
-            Debug.Log("[Client]：SendTempLeaveRequest");
-            NetClient.Instance.Request.tempInviteReq = new TempInviteRequest();
-            NetClient.Instance.Request.TempLeave = new TempLeaveRequest();
-            NetClient.Instance.Request.TempLeave.TeamId = tempId;
-            NetClient.Instance.Request.TempLeave.Characterid = User.Instance.CurrentCharacter.Id;
-            NetClient.Instance.SendMessage(NetClient.Instance.request);
+            Debug.Log("SendTempLeaveRequest");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.TempLeave = new TempLeaveRequest();
+            message.Request.TempLeave.TeamId = tempId;
+            message.Request.TempLeave.Characterid= User.Instance.CurrentCharacter.Id;
+            NetClient.Instance.SendMessage(message);
         }
 
         /// <summary>
@@ -131,14 +136,14 @@ namespace Services
         /// <param name="request"></param>
         private void OnTempLeave(object sender, TempLeaveResponse message)
         {
-            Debug.Log("[Client]：OnTempLeave");
+            Debug.Log("OnTempLeave");
             if (message.Result == Result.Success)
             {
                 TempManager.Instance.UpdateTempInfo(null);
-                MessageBox.Show("退出成功", "退出队伍");
+                MessageBox.Show(message.Errormsg, "退出队伍");
             }
             else
-                MessageBox.Show("退出失败", "退出队伍");
+                MessageBox.Show(message.Errormsg, "退出队伍");
         }
     }
 }
