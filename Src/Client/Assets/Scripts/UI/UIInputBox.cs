@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIInputBox : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class UIInputBox : MonoBehaviour
     public Text tips;
     public Button buttonYes;
     public Button buttonNo;
-    public TMP_InputField input;
+    public InputField input;
 
     public Text buttonYesTitle;
     public Text buttonNoTitle;

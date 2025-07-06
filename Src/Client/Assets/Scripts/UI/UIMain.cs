@@ -63,8 +63,18 @@ public class UIMain : MonoSingleton<UIMain>
 		UIManager.Instance.Show<UIFriends>();
 	}
 
+	public void OnClickTemp()
+	{
+
+	}
+
 	public void ShowTeamUI(bool show)
 	{
 		TempWindow.ShowTeam(show);
+	}
+
+	public void OnClickSettings()
+	{
+
 	}
 }

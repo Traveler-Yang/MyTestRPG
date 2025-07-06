@@ -560,3 +560,16 @@ message TempLeaveResponse//退出队伍响应
 	string errormsg = 2;
 	int32 characterid = 3;//角色id
 }
+
+message TempDisbandTempRequest//队伍解散请求
+{
+	int32 temp_id = 1;//队伍id
+	int32 character_id = 2;//（解散者）角色id
+}
+
+message TempDisbandTempResponse//队伍解散响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NTempInfo temp = 3;//解散的队伍
+}
