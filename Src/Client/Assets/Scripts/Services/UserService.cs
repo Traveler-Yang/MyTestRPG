@@ -242,7 +242,7 @@ namespace Services
                     EquipManager.Instance.Init(response.Character.Equips);//初始化装备
                     QuestManager.Instance.Init(response.Character.Quests);//初始化任务
                     FriendManager.Instance.Init(response.Character.Friends);//初始化好友
-                    TempManager.Instance.Init();//初始化组队
+                    GuildManager.Instance.Init(response.Character.Guild);
                 }
             }
         }

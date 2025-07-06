@@ -28,7 +28,13 @@ namespace Network
             if (message.tempInviteRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteRes); }
             if (message.tempInfo != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInfo); }
             if (message.TempLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.TempLeave); }
-            
+            if (message.guildCreat != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildCreat); }
+            if (message.guildJoinReq != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildJoinReq); }
+            if (message.guildJoinRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildJoinRes); }
+            if (message.Guild != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.Guild); }
+            if (message.guildLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildLeave); }
+            if (message.guildList != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildList); }
+
         }
 
         public void Dispatch(T sender, SkillBridge.Message.NetMessageRequest message)
@@ -53,6 +59,12 @@ namespace Network
             if (message.tempInviteRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteRes); }
             if (message.tempInfo != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInfo); }
             if (message.TempLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.TempLeave); }
+            if (message.guildCreat != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildCreat); }
+            if (message.guildJoinReq != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildJoinReq); }
+            if (message.guildJoinRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildJoinRes); }
+            if (message.Guild != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.Guild); }
+            if (message.guildLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildLeave); }
+            if (message.guildList != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.guildList); }
 
         }
     }

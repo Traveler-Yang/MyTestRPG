@@ -32,6 +32,7 @@ public class LoadingManager : MonoBehaviour
 		ShopManager.Instance.Init();
 		FriendService.Instance.Init();
 		TempService.Instance.Init();
+		GuildService.Instance.Init();
 
         for (float i = 0.01f; i <= 1;)
         {

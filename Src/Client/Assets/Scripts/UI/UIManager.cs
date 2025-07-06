@@ -29,6 +29,10 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resource = "UI/UIQuestPrefab/UIQuestDialog", cache = false });
         UIResources.Add(typeof(UIFriends), new UIElement() { Resource = "UI/UIFriend/UIFriends", cache = false });
         UIResources.Add(typeof(UITemp), new UIElement() { Resource = "UI/UIFriend/UITemp", cache = false });
+        //UIResources.Add(typeof(UIGuild), new UIElement() { Resource = "UI/UIGuild/UIGuild", cache = false });
+        //UIResources.Add(typeof(UIGuildList), new UIElement() { Resource = "UI/UIGuild/UIGuildList", cache = false });
+        //UIResources.Add(typeof(UIGuildPopNoGuild), new UIElement() { Resource = "UI/UIGuild/UIGuildPopNoGuild", cache = false });
+        //UIResources.Add(typeof(UIGuildPopGreate), new UIElement() { Resource = "UI/UIGuild/UIGuildPopCreate", cache = false });
         //可以继续添加其他UI类型
     }
 

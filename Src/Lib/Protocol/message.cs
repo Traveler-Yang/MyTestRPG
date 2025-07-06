@@ -56,42 +56,41 @@ namespace SkillBridge.Message
         [global::System.ComponentModel.DefaultValue("")]
         public string Name { get; set; } = "";
 
-        [global::ProtoBuf.ProtoMember(5, Name = @"icon")]
-        [global::System.ComponentModel.DefaultValue("")]
-        public string Icon { get; set; } = "";
-
-        [global::ProtoBuf.ProtoMember(6, Name = @"type")]
+        [global::ProtoBuf.ProtoMember(5, Name = @"type")]
         public CharacterType Type { get; set; }
 
-        [global::ProtoBuf.ProtoMember(7, Name = @"class")]
+        [global::ProtoBuf.ProtoMember(6, Name = @"class")]
         public CharacterClass Class { get; set; }
 
-        [global::ProtoBuf.ProtoMember(8, Name = @"level")]
+        [global::ProtoBuf.ProtoMember(7, Name = @"level")]
         public int Level { get; set; }
 
-        [global::ProtoBuf.ProtoMember(9)]
+        [global::ProtoBuf.ProtoMember(8)]
         public int mapId { get; set; }
 
-        [global::ProtoBuf.ProtoMember(10, Name = @"entity")]
+        [global::ProtoBuf.ProtoMember(9, Name = @"entity")]
         public NEntity Entity { get; set; }
 
-        [global::ProtoBuf.ProtoMember(11, Name = @"gold")]
+        [global::ProtoBuf.ProtoMember(10, Name = @"gold")]
         public long Gold { get; set; }
 
-        [global::ProtoBuf.ProtoMember(12)]
+        [global::ProtoBuf.ProtoMember(11)]
         public global::System.Collections.Generic.List<NItemInfo> Items { get; } = new global::System.Collections.Generic.List<NItemInfo>();
 
-        [global::ProtoBuf.ProtoMember(13)]
+        [global::ProtoBuf.ProtoMember(12)]
         public NBagInfo Bag { get; set; }
 
-        [global::ProtoBuf.ProtoMember(14)]
+        [global::ProtoBuf.ProtoMember(13)]
         public byte[] Equips { get; set; }
 
-        [global::ProtoBuf.ProtoMember(15, Name = @"quest")]
+        [global::ProtoBuf.ProtoMember(14, Name = @"quest")]
         public global::System.Collections.Generic.List<NQuestInfo> Quests { get; } = new global::System.Collections.Generic.List<NQuestInfo>();
 
-        [global::ProtoBuf.ProtoMember(16, Name = @"friends")]
+        [global::ProtoBuf.ProtoMember(15, Name = @"friends")]
         public global::System.Collections.Generic.List<NFriendInfo> Friends { get; } = new global::System.Collections.Generic.List<NFriendInfo>();
+
+        [global::ProtoBuf.ProtoMember(16, Name = @"guild")]
+        public NGuildInfo Guild { get; set; }
 
     }
 
@@ -300,6 +299,24 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(22)]
         public TempLeaveRequest TempLeave { get; set; }
 
+        [global::ProtoBuf.ProtoMember(23)]
+        public GuildCreatRequest guildCreat { get; set; }
+
+        [global::ProtoBuf.ProtoMember(24)]
+        public GuildJoinRequest guildJoinReq { get; set; }
+
+        [global::ProtoBuf.ProtoMember(25)]
+        public GuildJoinResponse guildJoinRes { get; set; }
+
+        [global::ProtoBuf.ProtoMember(26, Name = @"guild")]
+        public GuildRequest Guild { get; set; }
+
+        [global::ProtoBuf.ProtoMember(27)]
+        public GuildLeaveRequest guildLeave { get; set; }
+
+        [global::ProtoBuf.ProtoMember(28)]
+        public GuildListRequest guildList { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -371,6 +388,24 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(22)]
         public TempLeaveResponse TempLeave { get; set; }
+
+        [global::ProtoBuf.ProtoMember(23)]
+        public GuildCreatResponse guildCreat { get; set; }
+
+        [global::ProtoBuf.ProtoMember(24)]
+        public GuildJoinRequest guildJoinReq { get; set; }
+
+        [global::ProtoBuf.ProtoMember(25)]
+        public GuildJoinResponse guildJoinRes { get; set; }
+
+        [global::ProtoBuf.ProtoMember(26, Name = @"guild")]
+        public GuildResponse Guild { get; set; }
+
+        [global::ProtoBuf.ProtoMember(27)]
+        public GuildLeaveResponse guildLeave { get; set; }
+
+        [global::ProtoBuf.ProtoMember(28)]
+        public GuildListResponse guildList { get; set; }
 
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }
@@ -1110,6 +1145,289 @@ namespace SkillBridge.Message
 
     }
 
+    [global::ProtoBuf.ProtoContract()]
+    public partial class TempDisbandTempRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"temp_id")]
+        public int TempId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"character_id")]
+        public int CharacterId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class TempDisbandTempResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"temp")]
+        public NTempInfo Temp { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class NGuildInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id")]
+        public int Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"guild_name")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string GuildName { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"guild_icon")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string GuildIcon { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(4)]
+        public int leaderId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string leaderName { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"notice")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Notice { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(7)]
+        public int memberCount { get; set; }
+
+        [global::ProtoBuf.ProtoMember(8, Name = @"members")]
+        public global::System.Collections.Generic.List<NGuildMemberInfo> Members { get; } = new global::System.Collections.Generic.List<NGuildMemberInfo>();
+
+        [global::ProtoBuf.ProtoMember(9, Name = @"applies")]
+        public global::System.Collections.Generic.List<NGuildApplyInfo> Applies { get; } = new global::System.Collections.Generic.List<NGuildApplyInfo>();
+
+        [global::ProtoBuf.ProtoMember(10)]
+        public long createTime { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class NGuildMemberInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id")]
+        public int Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2)]
+        public int characterId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"duty")]
+        public GuildDuty Duty { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4)]
+        public NCharacterInfo charInfo { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5)]
+        public long joinTime { get; set; }
+
+        [global::ProtoBuf.ProtoMember(6)]
+        public long lastTime { get; set; }
+
+        [global::ProtoBuf.ProtoMember(7, Name = @"status")]
+        public bool Status { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class NGuildApplyInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"guild_id")]
+        public int GuildId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2)]
+        public int characterId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string characterName { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"class")]
+        public int Class { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"level")]
+        public int Level { get; set; }
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"result")]
+        public ApplyResult Result { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildCreatRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"guild_name")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string GuildName { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"guild_notice")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string GuildNotice { get; set; } = "";
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildCreatResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3)]
+        public NGuildInfo guildInfo { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildJoinRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"apply")]
+        public NGuildApplyInfo Apply { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildJoinResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"apply")]
+        public NGuildApplyInfo Apply { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildListRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildListResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"guilds")]
+        public global::System.Collections.Generic.List<NGuildInfo> Guilds { get; } = new global::System.Collections.Generic.List<NGuildInfo>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3)]
+        public NGuildInfo guildInfo { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildLeaveRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildLeaveResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"RESULT")]
     public enum Result
     {
@@ -1256,6 +1574,28 @@ namespace SkillBridge.Message
         InProgress = 1,
         [global::ProtoBuf.ProtoEnum(Name = @"FINISHED")]
         Finished = 2,
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"GUILD_DUTY")]
+    public enum GuildDuty
+    {
+        [global::ProtoBuf.ProtoEnum(Name = @"NONE")]
+        None = 0,
+        [global::ProtoBuf.ProtoEnum(Name = @"PRESIDENT")]
+        President = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"VICE_PRESIDENT")]
+        VicePresident = 2,
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"APPLY_RESULT")]
+    public enum ApplyResult
+    {
+        [global::ProtoBuf.ProtoEnum(Name = @"NONE")]
+        None = 0,
+        [global::ProtoBuf.ProtoEnum(Name = @"ACCEPT")]
+        Accept = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"REJECT")]
+        Reject = 2,
     }
 
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/04/2025 15:19:11
+-- Date Created: 07/06/2025 22:01:49
 -- Generated from EDMX file: D:\GitMMORPG\MyTestRPG\Src\Server\GameServer\GameServer\Entities.edmx
 -- --------------------------------------------------
 
@@ -35,6 +35,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TCharacterTCharacterFriend]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TCharacterFriends] DROP CONSTRAINT [FK_TCharacterTCharacterFriend];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TGuildTGuildMember]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TGuildMembers] DROP CONSTRAINT [FK_TGuildTGuildMember];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TGuildTGuildApply]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TGuildApplies] DROP CONSTRAINT [FK_TGuildTGuildApply];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -60,6 +66,15 @@ IF OBJECT_ID(N'[dbo].[CharacterQuests]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TCharacterFriends]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TCharacterFriends];
+GO
+IF OBJECT_ID(N'[dbo].[TGuilds]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TGuilds];
+GO
+IF OBJECT_ID(N'[dbo].[TGuildMembers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TGuildMembers];
+GO
+IF OBJECT_ID(N'[dbo].[TGuildApplies]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TGuildApplies];
 GO
 
 -- --------------------------------------------------
@@ -141,6 +156,45 @@ CREATE TABLE [dbo].[TCharacterFriends] (
 );
 GO
 
+-- Creating table 'TGuilds'
+CREATE TABLE [dbo].[TGuilds] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Icon] nvarchar(max)  NOT NULL,
+    [LeaderID] int  NOT NULL,
+    [LeaderName] nvarchar(max)  NOT NULL,
+    [Notice] nvarchar(max)  NOT NULL,
+    [CreateTime] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'TGuildMembers'
+CREATE TABLE [dbo].[TGuildMembers] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CharacterID] int  NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Class] int  NOT NULL,
+    [Level] int  NOT NULL,
+    [Duty] int  NOT NULL,
+    [JoinTime] datetime  NOT NULL,
+    [LastTime] datetime  NOT NULL,
+    [GuildId] int  NOT NULL
+);
+GO
+
+-- Creating table 'TGuildApplies'
+CREATE TABLE [dbo].[TGuildApplies] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CharacterID] int  NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Class] int  NOT NULL,
+    [Level] int  NOT NULL,
+    [Result] int  NOT NULL,
+    [ApplyTime] datetime  NOT NULL,
+    [GuildId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -184,6 +238,24 @@ GO
 -- Creating primary key on [Id] in table 'TCharacterFriends'
 ALTER TABLE [dbo].[TCharacterFriends]
 ADD CONSTRAINT [PK_TCharacterFriends]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TGuilds'
+ALTER TABLE [dbo].[TGuilds]
+ADD CONSTRAINT [PK_TGuilds]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TGuildMembers'
+ALTER TABLE [dbo].[TGuildMembers]
+ADD CONSTRAINT [PK_TGuildMembers]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TGuildApplies'
+ALTER TABLE [dbo].[TGuildApplies]
+ADD CONSTRAINT [PK_TGuildApplies]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -279,6 +351,36 @@ GO
 CREATE INDEX [IX_FK_TCharacterTCharacterFriend]
 ON [dbo].[TCharacterFriends]
     ([CharacterID]);
+GO
+
+-- Creating foreign key on [GuildId] in table 'TGuildMembers'
+ALTER TABLE [dbo].[TGuildMembers]
+ADD CONSTRAINT [FK_TGuildTGuildMember]
+    FOREIGN KEY ([GuildId])
+    REFERENCES [dbo].[TGuilds]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TGuildTGuildMember'
+CREATE INDEX [IX_FK_TGuildTGuildMember]
+ON [dbo].[TGuildMembers]
+    ([GuildId]);
+GO
+
+-- Creating foreign key on [GuildId] in table 'TGuildApplies'
+ALTER TABLE [dbo].[TGuildApplies]
+ADD CONSTRAINT [FK_TGuildTGuildApply]
+    FOREIGN KEY ([GuildId])
+    REFERENCES [dbo].[TGuilds]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TGuildTGuildApply'
+CREATE INDEX [IX_FK_TGuildTGuildApply]
+ON [dbo].[TGuildApplies]
+    ([GuildId]);
 GO
 
 -- --------------------------------------------------

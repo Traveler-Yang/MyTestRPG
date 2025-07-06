@@ -43,38 +43,89 @@ public class UIMain : MonoSingleton<UIMain>
 		Services.UserService.Instance.SendGameLeave();//发送角色离开的消息到服务器
 	}
 
+	/// <summary>
+	/// 背包按钮
+	/// </summary>
 	public void OnClickBag()
 	{
 		UIManager.Instance.Show<UIBag>();
 	}
 
+	/// <summary>
+	/// 装备按钮
+	/// </summary>
 	public void OnClickCharEquip()
 	{
 		UIManager.Instance.Show<UICharEquip>();
 	}
 
+	/// <summary>
+	/// 任务按钮
+	/// </summary>
 	public void OnClickQuest()
 	{
 		UIManager.Instance.Show<UIQuestSystem>();
     }
 
+	/// <summary>
+	/// 好友按钮
+	/// </summary>
 	public void OnClickFriend()
 	{
 		UIManager.Instance.Show<UIFriends>();
 	}
 
+	/// <summary>
+	/// 组队按钮
+	/// </summary>
 	public void OnClickTemp()
 	{
 
 	}
 
-	public void ShowTeamUI(bool show)
+	/// <summary>
+	/// 公会按钮
+	/// </summary>
+	public void OnClickGuild()
+	{
+
+	}
+
+	/// <summary>
+	/// 坐骑按钮
+	/// </summary>
+	public void OnClickRide()
+	{
+
+	}
+
+	/// <summary>
+	/// 技能按钮
+	/// </summary>
+	public void OnClickSKill()
+	{
+
+	}
+
+    /// <summary>
+    /// 设置按钮
+    /// </summary>
+    public void OnClickSettings()
+    {
+
+    }
+
+	/// <summary>
+	/// 邮件按钮
+	/// </summary>
+	public void OnClickEmail()
+	{
+
+	}
+
+    public void ShowTeamUI(bool show)
 	{
 		TempWindow.ShowTeam(show);
 	}
 
-	public void OnClickSettings()
-	{
-
-	}
 }

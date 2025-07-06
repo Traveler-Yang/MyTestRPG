@@ -81,19 +81,19 @@ message NCharacterInfo {
 	int32 config_id = 2;//config id
 	int32 entity_id = 3;//entity id
 	string name = 4;
-	string icon = 5;
-	CHARACTER_TYPE type = 6;
-	CHARACTER_CLASS class = 7;
-	int32 level = 8;
-	int32 mapId = 9;
-	NEntity entity = 10;
-	int64 gold = 11;
+	CHARACTER_TYPE type = 5;
+	CHARACTER_CLASS class = 6;
+	int32 level = 7;
+	int32 mapId = 8;
+	NEntity entity = 9;
+	int64 gold = 10;
 
-	repeated NItemInfo Items = 12;//拥有的道具
-	NBagInfo Bag = 13;//背包
-	bytes Equips = 14;//穿上的装备
-	repeated NQuestInfo quest = 15;//任务列表
-	repeated NFriendInfo friends = 16;//好友信息
+	repeated NItemInfo Items = 11;//拥有的道具
+	NBagInfo Bag = 12;//背包
+	bytes Equips = 13;//穿上的装备
+	repeated NQuestInfo quest = 14;//任务列表
+	repeated NFriendInfo friends = 15;//好友信息
+	NGuildInfo guild = 16;//公会信息
 }
 
 message NItemInfo 
@@ -212,6 +212,13 @@ message NetMessageRequest{
 	TempInviteResponse tempInviteRes = 20;
 	TempInfoRequest tempInfo = 21;
 	TempLeaveRequest TempLeave = 22;
+
+	GuildCreatRequest guildCreat = 23;
+	GuildJoinRequest guildJoinReq = 24;
+	GuildJoinResponse guildJoinRes = 25;
+	GuildRequest guild = 26;
+	GuildLeaveRequest guildLeave = 27;
+	GuildListRequest guildList = 28;
 }
 
 message NetMessageResponse{
@@ -242,6 +249,13 @@ message NetMessageResponse{
 	TempInviteResponse tempInviteRes = 20;
 	TempInfoResponse tempInfo = 21;
 	TempLeaveResponse TempLeave = 22;
+
+	GuildCreatResponse guildCreat = 23;
+	GuildJoinRequest guildJoinReq = 24;
+	GuildJoinResponse guildJoinRes = 25;
+	GuildResponse guild = 26;
+	GuildLeaveResponse guildLeave = 27;
+	GuildListResponse guildList = 28;
 
 	StatusNotify statusNotify = 100;
 	
@@ -459,6 +473,7 @@ message QuestAbandonResponse
 	string errormsg = 2;
 }
 
+
 //Friend System
 
 message NFriendInfo//好友信息
@@ -510,6 +525,7 @@ message FriendRemoveResponse
 	string errormsg = 2;
 	int32 id = 3;
 }
+
 
 //Temp System
 
@@ -572,4 +588,117 @@ message TempDisbandTempResponse//队伍解散响应
 	RESULT result = 1;
 	string errormsg = 2;
 	NTempInfo temp = 3;//解散的队伍
+}
+
+
+//Guild System
+
+enum GUILD_DUTY//成员职务类型
+{
+	NONE = 0;//成员
+	PRESIDENT = 1;//会长
+	VICE_PRESIDENT = 2;//副会长
+}
+
+enum APPLY_RESULT//公会申请结果
+{
+	NONE = 0;
+	ACCEPT = 1;//接受
+	REJECT = 2;//拒绝
+}
+
+message NGuildInfo//公会信息
+{
+	int32 id = 1;//公会id
+	string guild_name = 2;//公会名字
+	string guild_icon = 3;//公会图标
+	int32 leaderId = 4;//会长id
+	string leaderName = 5;//会长名字
+	string notice = 6;//公会宗旨/介绍
+	int32 memberCount = 7;//公会成员数量
+	repeated NGuildMemberInfo members = 8;//成员列表
+	repeated NGuildApplyInfo applies = 9;//申请加入信息
+	int64 createTime = 10;//公会创建时间
+}
+
+message NGuildMemberInfo//成员信息
+{
+	int32 id= 1;//信息id
+	int32 characterId = 2;//角色id
+	GUILD_DUTY duty = 3;//职务
+	NCharacterInfo charInfo = 4;//角色信息
+	int64 joinTime = 5;//加入时间
+	int64 lastTime = 6;//上次在线时间
+	bool status = 7;//在线状态
+}
+
+message NGuildApplyInfo//公会加入申请信息
+{
+	int32 guild_id = 1;//公会id
+	int32 characterId = 2;//角色id
+	string characterName = 3;//角色名字
+	int32 class = 4;//角色职业
+	int32 level = 5;//角色等级
+	APPLY_RESULT result = 6;//申请结果
+}
+
+message GuildCreatRequest//创建公会请求
+{
+	string guild_name = 1;//公会名字
+	string guild_notice = 2;//公会介绍
+}
+
+message GuildCreatResponse//创建公会响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NGuildInfo guildInfo = 3;//公会信息
+}
+
+//member -> server -> leader（发送服务器，如果会长在线，则再发送给会长）
+message GuildJoinRequest//申请加入公会请求
+{
+	NGuildApplyInfo apply = 1;
+}
+
+message GuildJoinResponse//申请加入公会响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NGuildApplyInfo apply = 3;
+}
+
+message GuildListRequest
+{
+
+}
+
+message GuildListResponse//公会列表响应（刷新）
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	repeated NGuildInfo guilds = 3;
+}
+
+message GuildRequest
+{
+
+}
+
+message GuildResponse//公会信息响应（刷新）
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NGuildInfo guildInfo = 3;
+}
+
+message GuildLeaveRequest//公会退出请求
+{
+
+}
+
+message GuildLeaveResponse//公会退出响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
 }

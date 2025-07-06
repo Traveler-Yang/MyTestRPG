@@ -40,7 +40,6 @@ namespace GameServer.Entities
             this.Info.Id = cha.ID;
             this.Info.EntityId = this.entityId;
             this.Info.Name = cha.Name;
-            this.Info.Icon = DataManager.Instance.Characters[cha.TID].Icon;
             this.Info.Level = 10;//cha.Level;
             this.Info.ConfigId = cha.TID;
             this.Info.Class = (CharacterClass)cha.Class;
