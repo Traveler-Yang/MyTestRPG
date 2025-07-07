@@ -10,6 +10,7 @@ namespace Services
 {
     class GuildService : Singleton<GuildService>, IDisposable
     {
+        internal Action<List<NGuildInfo>> OnGuildListResult;
 
         public GuildService()
         {
@@ -34,6 +35,16 @@ namespace Services
         }
 
         public void SendGuildCreate(string text1, string text2)
+        {
+            
+        }
+
+        public void SendGuildListRequest()
+        {
+
+        }
+
+        public void SendGuildJoinRequest(NGuildInfo info)
         {
             
         }
