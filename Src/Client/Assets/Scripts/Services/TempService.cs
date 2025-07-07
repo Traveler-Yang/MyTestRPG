@@ -148,6 +148,10 @@ namespace Services
                 MessageBox.Show(message.Errormsg, "退出队伍");
         }
 
+        /// <summary>
+        /// 发送解散队伍请求
+        /// </summary>
+        /// <param name="temp"></param>
         public void SendTempDisband(NTempInfo temp)
         {
             Debug.Log("SendTempDisband");
@@ -159,6 +163,11 @@ namespace Services
             NetClient.Instance.SendMessage(message);
         }
 
+        /// <summary>
+        /// 接收解散队伍响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
         private void OnTempDisband(object sender, TempDisbandTempResponse response)
         {
             Debug.Log("OnTempDisband");
