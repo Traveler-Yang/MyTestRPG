@@ -11,6 +11,7 @@ public class UITemp : MonoBehaviour
     public Text tempTitle;//标题
     public UITempItem[] members;//队伍成员列表
     public ListView list;//列表
+    public GameObject disbandButton;//解散按钮
    
     void Start()
     {
@@ -52,6 +53,7 @@ public class UITemp : MonoBehaviour
         if (User.Instance.TempInfo == null) return;
         //设置标题
         this.tempTitle.text = string.Format("我的队伍({0}/5)", User.Instance.TempInfo.Members.Count);
+        this.disbandButton.gameObject.SetActive(User.Instance.TempInfo.Leader == User.Instance.CurrentCharacter.Id ? true : false);
         //显示队伍成员
         for (int i = 0; i < 5; i++)
         {
@@ -77,6 +79,17 @@ public class UITemp : MonoBehaviour
         MessageBox.Show("确定要离开队伍吗？", "退出队伍", MessageBoxType.Confirm, "离开", "取消").OnYes = () =>
         {
             TempService.Instance.SendTempLeaveRequest(User.Instance.TempInfo.Id);
+        };
+    }
+
+    /// <summary>
+    /// 解散队伍点击事件
+    /// </summary>
+    public void OnClickDisband()
+    {
+        MessageBox.Show("确定要解散该队伍吗", "解散队伍", MessageBoxType.Confirm, "解散", "取消").OnYes = () =>
+        {
+            TempService.Instance.SendTempDisband(User.Instance.TempInfo);
         };
     }
 }

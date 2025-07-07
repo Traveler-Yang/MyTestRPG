@@ -44,20 +44,14 @@ namespace Services
         public void SendFriendAddRequest(int friendId, string friendName)
         {
             Debug.Log("[Client]：SendFriendAddRequest");
-            //NetMessage message = new NetMessage();
-            //message.Request = new NetMessageRequest();
-            //message.Request.friendAddReq = new FriendAddRequest();
-            //message.Request.friendAddReq.FromId = User.Instance.CurrentCharacter.Id;
-            //message.Request.friendAddReq.FromName = User.Instance.CurrentCharacter.Name;
-            //message.Request.friendAddReq.ToId = friendId;
-            //message.Request.friendAddReq.ToName = friendName;
-            //NetClient.Instance.SendMessage(message);
-            NetClient.Instance.Request.friendAddReq = new FriendAddRequest();
-            NetClient.Instance.Request.friendAddReq.FromId = User.Instance.CurrentCharacter.Id;
-            NetClient.Instance.Request.friendAddReq.FromName = User.Instance.CurrentCharacter.Name;
-            NetClient.Instance.Request.friendAddReq.ToId= friendId;
-            NetClient.Instance.Request.friendAddReq.ToName= friendName;
-            NetClient.Instance.SendMessage(NetClient.Instance.request);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.friendAddReq = new FriendAddRequest();
+            message.Request.friendAddReq.FromId = User.Instance.CurrentCharacter.Id;
+            message.Request.friendAddReq.FromName = User.Instance.CurrentCharacter.Name;
+            message.Request.friendAddReq.ToId = friendId;
+            message.Request.friendAddReq.ToName = friendName;
+            NetClient.Instance.SendMessage(message);
         }
 
         /// <summary>

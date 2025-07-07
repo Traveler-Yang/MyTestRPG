@@ -300,21 +300,24 @@ namespace SkillBridge.Message
         public TempLeaveRequest TempLeave { get; set; }
 
         [global::ProtoBuf.ProtoMember(23)]
-        public GuildCreatRequest guildCreat { get; set; }
+        public TempDisbandTempRequest tempDisband { get; set; }
 
         [global::ProtoBuf.ProtoMember(24)]
-        public GuildJoinRequest guildJoinReq { get; set; }
+        public GuildCreatRequest guildCreat { get; set; }
 
         [global::ProtoBuf.ProtoMember(25)]
+        public GuildJoinRequest guildJoinReq { get; set; }
+
+        [global::ProtoBuf.ProtoMember(26)]
         public GuildJoinResponse guildJoinRes { get; set; }
 
-        [global::ProtoBuf.ProtoMember(26, Name = @"guild")]
+        [global::ProtoBuf.ProtoMember(27, Name = @"guild")]
         public GuildRequest Guild { get; set; }
 
-        [global::ProtoBuf.ProtoMember(27)]
+        [global::ProtoBuf.ProtoMember(28)]
         public GuildLeaveRequest guildLeave { get; set; }
 
-        [global::ProtoBuf.ProtoMember(28)]
+        [global::ProtoBuf.ProtoMember(29)]
         public GuildListRequest guildList { get; set; }
 
     }
@@ -390,21 +393,24 @@ namespace SkillBridge.Message
         public TempLeaveResponse TempLeave { get; set; }
 
         [global::ProtoBuf.ProtoMember(23)]
-        public GuildCreatResponse guildCreat { get; set; }
+        public TempDisbandTempResponse tempDisband { get; set; }
 
         [global::ProtoBuf.ProtoMember(24)]
-        public GuildJoinRequest guildJoinReq { get; set; }
+        public GuildCreatResponse guildCreat { get; set; }
 
         [global::ProtoBuf.ProtoMember(25)]
+        public GuildJoinRequest guildJoinReq { get; set; }
+
+        [global::ProtoBuf.ProtoMember(26)]
         public GuildJoinResponse guildJoinRes { get; set; }
 
-        [global::ProtoBuf.ProtoMember(26, Name = @"guild")]
+        [global::ProtoBuf.ProtoMember(27, Name = @"guild")]
         public GuildResponse Guild { get; set; }
 
-        [global::ProtoBuf.ProtoMember(27)]
+        [global::ProtoBuf.ProtoMember(28)]
         public GuildLeaveResponse guildLeave { get; set; }
 
-        [global::ProtoBuf.ProtoMember(28)]
+        [global::ProtoBuf.ProtoMember(29)]
         public GuildListResponse guildList { get; set; }
 
         [global::ProtoBuf.ProtoMember(100)]
@@ -1152,8 +1158,8 @@ namespace SkillBridge.Message
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"temp_id")]
-        public int TempId { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"temp")]
+        public NTempInfo Temp { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"character_id")]
         public int CharacterId { get; set; }

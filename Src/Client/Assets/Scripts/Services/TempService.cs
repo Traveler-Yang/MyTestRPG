@@ -24,6 +24,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<TempInviteResponse>(this.OnTempInviteResponse);
             MessageDistributer.Instance.Subscribe<TempInfoResponse>(this.OnTempInfo);
             MessageDistributer.Instance.Subscribe<TempLeaveResponse>(this.OnTempLeave);
+            MessageDistributer.Instance.Subscribe<TempDisbandTempResponse>(this.OnTempDisband);
         }
 
         public void Dispose()
@@ -32,6 +33,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<TempInviteResponse>(this.OnTempInviteResponse);
             MessageDistributer.Instance.Unsubscribe<TempInfoResponse>(this.OnTempInfo);
             MessageDistributer.Instance.Unsubscribe<TempLeaveResponse>(this.OnTempLeave);
+            MessageDistributer.Instance.Unsubscribe<TempDisbandTempResponse>(this.OnTempDisband);
         }
 
         /// <summary>
@@ -145,5 +147,29 @@ namespace Services
             else
                 MessageBox.Show(message.Errormsg, "退出队伍");
         }
+
+        public void SendTempDisband(NTempInfo temp)
+        {
+            Debug.Log("SendTempDisband");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.tempDisband = new TempDisbandTempRequest();
+            message.Request.tempDisband.CharacterId = User.Instance.CurrentCharacter.Id;
+            message.Request.tempDisband.Temp = temp;
+            NetClient.Instance.SendMessage(message);
+        }
+
+        private void OnTempDisband(object sender, TempDisbandTempResponse response)
+        {
+            Debug.Log("OnTempDisband");
+            if (response.Result == Result.Success)
+            {
+                TempManager.Instance.UpdateTempInfo(null);
+                MessageBox.Show(response.Errormsg, "解散队伍");
+            }
+            else
+                MessageBox.Show(response.Errormsg, "解散队伍");
+        }
+
     }
 }

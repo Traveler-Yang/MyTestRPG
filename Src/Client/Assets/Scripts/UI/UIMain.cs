@@ -34,14 +34,6 @@ public class UIMain : MonoSingleton<UIMain>
 	void Update () {
 		
 	}
-	/// <summary>
-	/// 返回角色选择按钮
-	/// </summary>
-	public void BackToCharSelect()
-	{
-		SceneManager.Instance.LoadScene("CharSelect");//切换场景为角色选择
-		Services.UserService.Instance.SendGameLeave();//发送角色离开的消息到服务器
-	}
 
 	/// <summary>
 	/// 背包按钮
@@ -76,19 +68,11 @@ public class UIMain : MonoSingleton<UIMain>
 	}
 
 	/// <summary>
-	/// 组队按钮
-	/// </summary>
-	public void OnClickTemp()
-	{
-
-	}
-
-	/// <summary>
 	/// 公会按钮
 	/// </summary>
 	public void OnClickGuild()
 	{
-
+		//UIManager.Instance.Show<UIGuild>();
 	}
 
 	/// <summary>
@@ -110,9 +94,9 @@ public class UIMain : MonoSingleton<UIMain>
     /// <summary>
     /// 设置按钮
     /// </summary>
-    public void OnClickSettings()
+    public void OnClickSetting()
     {
-
+		UIManager.Instance.Show<UISetting>();	
     }
 
 	/// <summary>

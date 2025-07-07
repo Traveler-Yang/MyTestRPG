@@ -212,13 +212,14 @@ message NetMessageRequest{
 	TempInviteResponse tempInviteRes = 20;
 	TempInfoRequest tempInfo = 21;
 	TempLeaveRequest TempLeave = 22;
+	TempDisbandTempRequest tempDisband = 23;
 
-	GuildCreatRequest guildCreat = 23;
-	GuildJoinRequest guildJoinReq = 24;
-	GuildJoinResponse guildJoinRes = 25;
-	GuildRequest guild = 26;
-	GuildLeaveRequest guildLeave = 27;
-	GuildListRequest guildList = 28;
+	GuildCreatRequest guildCreat = 24;
+	GuildJoinRequest guildJoinReq = 25;
+	GuildJoinResponse guildJoinRes = 26;
+	GuildRequest guild = 27;
+	GuildLeaveRequest guildLeave = 28;
+	GuildListRequest guildList = 29;
 }
 
 message NetMessageResponse{
@@ -249,13 +250,14 @@ message NetMessageResponse{
 	TempInviteResponse tempInviteRes = 20;
 	TempInfoResponse tempInfo = 21;
 	TempLeaveResponse TempLeave = 22;
+	TempDisbandTempResponse tempDisband = 23;
 
-	GuildCreatResponse guildCreat = 23;
-	GuildJoinRequest guildJoinReq = 24;
-	GuildJoinResponse guildJoinRes = 25;
-	GuildResponse guild = 26;
-	GuildLeaveResponse guildLeave = 27;
-	GuildListResponse guildList = 28;
+	GuildCreatResponse guildCreat = 24;
+	GuildJoinRequest guildJoinReq = 25;
+	GuildJoinResponse guildJoinRes = 26;
+	GuildResponse guild = 27;
+	GuildLeaveResponse guildLeave = 28;
+	GuildListResponse guildList = 29;
 
 	StatusNotify statusNotify = 100;
 	
@@ -579,7 +581,7 @@ message TempLeaveResponse//退出队伍响应
 
 message TempDisbandTempRequest//队伍解散请求
 {
-	int32 temp_id = 1;//队伍id
+	NTempInfo temp = 1;//队伍id
 	int32 character_id = 2;//（解散者）角色id
 }
 

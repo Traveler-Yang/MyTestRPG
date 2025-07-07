@@ -3,6 +3,7 @@ using GameServer.Entities;
 using GameServer.Managers;
 using Network;
 using SkillBridge.Message;
+using System;
 using System.Linq;
 
 namespace GameServer.Services
@@ -14,7 +15,9 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempInviteRequest>(this.OnTempInviteRequest);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempInviteResponse>(this.OnTempInviteResponse);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempLeaveRequest>(this.OnTempLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<TempDisbandTempRequest>(this.OnTempDisband);
         }
+
 
         public void Init()
         {
@@ -99,6 +102,7 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;
             Log.InfoFormat("UserService OnTempLeave ");
+            //判断当前角色有没有队伍
             //如果当前队伍不为空，则有队伍
             if (character.temp != null)
             {
@@ -121,5 +125,43 @@ namespace GameServer.Services
             sender.SendResPonse();
         }
 
+        /// <summary>
+        /// 接收队伍解散响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="request"></param>
+        private void OnTempDisband(NetConnection<NetSession> sender, TempDisbandTempRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("UserService OnTempDisband ");
+            //判断当前角色有没有队伍
+            if (character.temp != null)
+            {
+                //再次判断队伍是否相等
+                if (character.temp.id == request.Temp.Id)
+                {
+                    //判断是否是队长，是队长才可解散队伍
+                    if (character.Id == request.Temp.Leader)
+                    {
+                        var members = character.temp.Members.ToList();
+                        foreach (var item in members)
+                        {
+                            character.temp.Leave(item);
+                        }
+                        sender.Session.Response.tempDisband = new TempDisbandTempResponse();
+                        sender.Session.Response.tempDisband.Result = Result.Success;
+                        sender.Session.Response.tempDisband.Errormsg = "队伍解散成功";
+                        sender.Session.Response.tempDisband.Temp = request.Temp;
+                    }
+                    else//不是队长
+                    {
+                        sender.Session.Response.tempDisband = new TempDisbandTempResponse();
+                        sender.Session.Response.tempDisband.Result = Result.Failed;
+                        sender.Session.Response.tempDisband.Errormsg = "您不是队长，无权限解散队伍";
+                        sender.SendResPonse();
+                    }
+                }
+            }
+        }
     }
 }
