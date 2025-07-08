@@ -11,12 +11,12 @@ public class UIGuildPopCreate : UIWindow
 
     void Start()
     {
-        //GuildService.Instance.OnGuildCreateResult = OnGuildCreated;
+        GuildService.Instance.OnGuildCreateResult = OnGuildCreated;
     }
 
     private void OnDestroy()
     {
-        //GuildService.Instance.OnGuildCreateResult = null;
+        GuildService.Instance.OnGuildCreateResult = null;
     }
 
     public override void OnYesClick()

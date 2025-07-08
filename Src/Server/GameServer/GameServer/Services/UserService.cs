@@ -189,11 +189,12 @@ namespace GameServer.Services
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
             sender.Session.Response.gameEnter.Result = Result.Success;//结果值
             sender.Session.Response.gameEnter.Errormsg = "None";//错误信息
+
+            sender.Session.Character = character;
+            sender.Session.PostResponser = character;//进入游戏给后处理器赋值（里氏替换）
+
             sender.Session.Response.gameEnter.Character = character.Info;//进入成功 发送初始角色信息给客户端
             sender.SendResPonse();
-
-            sender.Session.Character = character;//一旦进入游戏，就会将选择的指定角色 赋值给 会话对象
-            sender.Session.PostResponser = character;//进入游戏给后处理器赋值（里氏替换）
             MapManager.Instance[dbchar.MapID].CharacterEnter(sender, character);//2.让角色进入地图
         }
         /// <summary>

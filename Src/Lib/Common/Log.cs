@@ -1,4 +1,5 @@
 ﻿using log4net;
+using System;
 
 namespace Common
 {
@@ -111,6 +112,11 @@ namespace Common
         public static void FatalFormat(string format, params object[] args)
         {
             log.FatalFormat(format, args);
+        }
+
+        public static void InfoFormat(string v, string guildName, object user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -7,6 +7,7 @@ using TMPro;
 using Entities;
 using Common.Data;
 using Assets.Scripts.UI.Temp;
+using Managers;
 
 public class UIMain : MonoSingleton<UIMain>
 {
@@ -72,7 +73,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// </summary>
 	public void OnClickGuild()
 	{
-		//UIManager.Instance.Show<UIGuild>();
+		GuildManager.Instance.ShowGuild();
 	}
 
 	/// <summary>

@@ -32,7 +32,7 @@ namespace GameServer.Services
         private void OnTempInviteRequest(NetConnection<NetSession> sender, TempInviteRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("TempService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
 
 
             NetConnection<NetSession> target = SessionManager.Instance.GetSession(request.ToId);
@@ -55,7 +55,7 @@ namespace GameServer.Services
             }
 
             //转发请求
-            Log.InfoFormat("UserService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
+            Log.InfoFormat("TempService OnTempInviteRequest FromID:[{0}],FromName:[{1}],ToID:[{2}],ToName:[{3}]", request.FromId, request.FromName, request.ToId, request.ToName);
             target.Session.Response.tempInviteReq = request;
             target.SendResPonse();
         }
@@ -68,7 +68,7 @@ namespace GameServer.Services
         private void OnTempInviteResponse(NetConnection<NetSession> sender, TempInviteResponse response)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("UserService OnTempInviteResponse ");
+            Log.InfoFormat("TempService OnTempInviteResponse ");
             sender.Session.Response.tempInviteRes = response;
             if (response.Result == Result.Success)
             {
@@ -101,7 +101,7 @@ namespace GameServer.Services
         private void OnTempLeave(NetConnection<NetSession> sender, TempLeaveRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("UserService OnTempLeave ");
+            Log.InfoFormat("TempService OnTempLeave ");
             //判断当前角色有没有队伍
             //如果当前队伍不为空，则有队伍
             if (character.temp != null)
@@ -133,7 +133,7 @@ namespace GameServer.Services
         private void OnTempDisband(NetConnection<NetSession> sender, TempDisbandTempRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("UserService OnTempDisband ");
+            Log.InfoFormat("TempService OnTempDisband ");
             //判断当前角色有没有队伍
             if (character.temp != null)
             {
