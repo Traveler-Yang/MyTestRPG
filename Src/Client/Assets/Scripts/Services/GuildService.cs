@@ -48,7 +48,7 @@ namespace Services
         /// </summary>
         /// <param name="guildName"></param>
         /// <param name="guildNotice"></param>
-        public void SendGuildCreate(string guildName, string guildNotice)
+        public void SendGuildCreate(string guildName, string guildNotice, string icon)
         {
             Debug.Log("SendGuildCreate");
             NetMessage message = new NetMessage();
@@ -56,6 +56,7 @@ namespace Services
             message.Request.guildCreat = new GuildCreatRequest();
             message.Request.guildCreat.GuildName = guildName;
             message.Request.guildCreat.GuildNotice = guildNotice;
+            message.Request.guildCreat.GuildIcon = icon;
             NetClient.Instance.SendMessage(message);
         }
 

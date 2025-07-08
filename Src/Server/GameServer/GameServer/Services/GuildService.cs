@@ -53,8 +53,8 @@ namespace GameServer.Services
                 sender.SendResPonse();
                 return;
             }
-
-            GuildManager.Instance.CerateGuild(request.GuildName, request.GuildNotice, character);
+            //创建公会
+            GuildManager.Instance.CerateGuild(request.GuildName, request.GuildNotice, request.GuildIcon, character);
             sender.Session.Response.guildCreat.guildInfo = character.guild.GuildInfo(character);
             sender.Session.Response.guildCreat.Result = Result.Success;
             sender.SendResPonse();

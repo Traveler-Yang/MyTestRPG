@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using SkillBridge.Message;
+using Common;
 
 public class UIGuildInfo : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class UIGuildInfo : MonoBehaviour
             this.guildID.text = "ID: 0";
             this.guildLeader.text = "нч";
             this.guildNotice.text = "";
-            this.memberNumber.text = string.Format("0 / {0}");
+            this.memberNumber.text = string.Format("0 / {0}", GameDefine.GuildMaxMemberCount);
         }
         else
         {
@@ -41,7 +42,7 @@ public class UIGuildInfo : MonoBehaviour
             this.guildID.text = string.Format("ID: {0}", this.info.Id);
             this.guildLeader.text = this.info.leaderName;
             this.guildNotice.text = this.info.Notice;
-            this.memberNumber.text = string.Format("{0} / {1}", this.info.memberCount);
+            this.memberNumber.text = string.Format("{0} / {1}", this.info.memberCount, GameDefine.GuildMaxMemberCount);
         }
     }
 }

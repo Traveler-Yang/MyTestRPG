@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Common.Utils
+{
+    public class TimeUtil
+    {
+        public static  double timestamp
+        {
+            get { return GetTimestamp(DateTime.Now); }
+        }
+
+        public static DateTime GetTime(long timeStamp)
+        {
+            DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            long lTime = timeStamp * 100000000;
+            TimeSpan toNow = new TimeSpan(lTime);
+            return dateTimeStart.Add(toNow);
+        }
+
+        public static double GetTimestamp(DateTime time)
+        {
+            DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            return (time - startTime).TotalSeconds;
+        }
+
+    }
+}

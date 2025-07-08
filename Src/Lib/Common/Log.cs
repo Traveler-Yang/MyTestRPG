@@ -113,10 +113,5 @@ namespace Common
         {
             log.FatalFormat(format, args);
         }
-
-        public static void InfoFormat(string v, string guildName, object user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,4 +1,5 @@
 using Services;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,20 @@ using UnityEngine.UI;
 
 public class UIGuildPopCreate : UIWindow
 {
+    public ListView listMain;//图标列表
     public InputField inputName;//名字
     public InputField inputNotice;//简介
+    public UIGuildIconItem guildIconItem;//当前选择的图标
 
     void Start()
     {
         GuildService.Instance.OnGuildCreateResult = OnGuildCreated;
+        this.listMain.onItemSelected += OnIconSelected;
+    }
+
+    private void OnIconSelected(ListView.ListViewItem item)
+    {
+        this.guildIconItem = item as UIGuildIconItem;
     }
 
     private void OnDestroy()
@@ -42,7 +51,7 @@ public class UIGuildPopCreate : UIWindow
             return;
         }
 
-        GuildService.Instance.SendGuildCreate(this.inputName.text, this.inputNotice.text);
+        GuildService.Instance.SendGuildCreate(this.inputName.text, this.inputNotice.text, guildIconItem.path);
     }
 
     void OnGuildCreated(bool result)

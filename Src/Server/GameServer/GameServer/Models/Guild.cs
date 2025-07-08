@@ -1,4 +1,6 @@
-﻿using GameServer.Entities;
+﻿using Common;
+using Common.Utils;
+using GameServer.Entities;
 using GameServer.Managers;
 using GameServer.Services;
 using SkillBridge.Message;
@@ -70,7 +72,7 @@ namespace GameServer.Models
             this.Data.Applies.Add(dbApply);
             DBService.Instance.Save();
 
-            this.timestape = Time.timestamp;
+            this.timestape = TimeUtil.timestamp;
             return true;
 
         }
@@ -100,7 +102,7 @@ namespace GameServer.Models
             //并保存
             DBService.Instance.Save();
 
-            this.timestape = Time.timestamp;
+            this.timestape = TimeUtil.timestamp;
             return true;
         }
 
@@ -112,9 +114,9 @@ namespace GameServer.Models
         /// <param name="class"></param>
         /// <param name="level"></param>
         /// <param name="duty"></param>
-        private void AddMember(int characterId, string characterName, int @class, int level, GuildDuty duty)
+        public void AddMember(int characterId, string characterName, int @class, int level, GuildDuty duty)
         {
-            DateTime now = new DateTime();
+            DateTime now = DateTime.Now;
             TGuildMember dbMemeber = new TGuildMember
             {
                 CharacterID = characterId,
@@ -125,8 +127,11 @@ namespace GameServer.Models
                 JoinTime = now,
                 LastTime = now
             };
+            Character member = CharacterManager.Instance.GetCharacter(characterId);
+            if (member != null)
+                this.Members.Add(member);
             this.Data.Members.Add(dbMemeber);
-            this.timestape = Time.timestamp;
+            this.timestape = TimeUtil.timestamp;
         }
 
         /// <summary>
@@ -135,7 +140,15 @@ namespace GameServer.Models
         /// <param name="character"></param>
         public void Leave(Character character)
         {
-            
+            TGuildMember member = this.Data.Members.FirstOrDefault(m => m.CharacterID == character.Id);
+            if (member != null)
+            {
+                character.TChar.GuildId = 0;
+                character.guild = null;
+                this.Members.Remove(character);
+                DBService.Instance.Entities.TGuildMembers.Remove(member);
+            }
+            DBService.Instance.Save();
         }
 
         /// <summary>
@@ -153,7 +166,12 @@ namespace GameServer.Models
             }
         }
 
-        public NGuildInfo GuildInfo(Character character)
+        /// <summary>
+        /// 获取NGuildInfo信息
+        /// </summary>
+        /// <param name="from"></param>
+        /// <returns></returns>
+        public NGuildInfo GuildInfo(Character from)
         {
             NGuildInfo info =  new NGuildInfo()
             {
@@ -163,25 +181,31 @@ namespace GameServer.Models
                 Notice = this.Data.Notice,
                 leaderId = this.Data.LeaderID,
                 leaderName = this.Data.LeaderName,
-                createTime = (long)Time.GetTimestamp(this.Data.CreateTime),
+                createTime = (long)TimeUtil.GetTimestamp(this.Data.CreateTime),
                 memberCount = this.Data.Members.Count,
             };
-            //在character有值时，他才会是公会成员
-            if (character != null)
+            //在from有值时，他才会是公会成员
+            //如果from是null，则只获得公会信息
+            if (from != null)
             {
                 //只有是成员才可以查看公会信息
                 info.Members.AddRange(GetMemberInfos());
                 //判断这个人是否是队长，只有是队长才可以查看申请信息
-                if (character.Id == this.Data.LeaderID)
+                if (from.Id == this.Data.LeaderID)
                     info.Applies.AddRange(GetApplyInfos());
             }
             return info;
         }
 
+        /// <summary>
+        /// 获取公会成员列表信息（DB改网络）
+        /// </summary>
+        /// <returns></returns>
         private List<NGuildMemberInfo> GetMemberInfos()
         {
+            //构建返回值
             List<NGuildMemberInfo> members = new List<NGuildMemberInfo>();
-
+            //循环遍历当前公会的数据公会成员列表
             foreach (var member in this.Data.Members)
             {
                 var memberInfo = new NGuildMemberInfo
@@ -189,10 +213,10 @@ namespace GameServer.Models
                     Id = member.Id,
                     characterId = member.CharacterID,
                     Duty = (GuildDuty)member.Duty,
-                    joinTime = (long)Time.GetTimestamp(member.JoinTime),
-                    lastTime = (long)Time.GetTimestamp(member.LastTime),
+                    joinTime = (long)TimeUtil.GetTimestamp(member.JoinTime),
+                    lastTime = (long)TimeUtil.GetTimestamp(member.LastTime),
                 };
-
+                //查看此角色是否在线
                 var character = CharacterManager.Instance.GetCharacter(member.CharacterID);
                 if (character != null)//角色在线
                 {
@@ -202,7 +226,7 @@ namespace GameServer.Models
                     member.Level = character.TChar.Level;
                     member.Name = character.TChar.Name;
                     member.LastTime = DateTime.Now;
-                    if (member.Id == this.Data.LeaderID)//如果当前成员是会长，则让会长赋值给当前会长信息
+                    if (member.Id == this.Data.LeaderID)//如果当前成员是会长，将此角色拉取出来赋值给当前会长
                         this.leader = character;
                 }
                 else//角色离线
@@ -212,19 +236,51 @@ namespace GameServer.Models
                     if (member.Id == this.Data.LeaderID)//如果当前成员是会长，则赋值为null
                         this.leader = null;
                 }
+                //每拉取出来一个成员，就添加到返回值
                 members.Add(memberInfo);
             }
             return members;
         }
 
+        /// <summary>
+        /// Get角色信息（DB改网络）
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
         private NCharacterInfo GetMemberInfo(TGuildMember member)
         {
-            throw new NotImplementedException();
+            return new NCharacterInfo
+            {
+                Id = member.Id,
+                Name = member.Name,
+                Class = (CharacterClass)member.Class,
+                Level = member.Level,
+            };
         }
 
+        /// <summary>
+        /// Get申请信息（DB改网络）
+        /// </summary>
+        /// <returns></returns>
         private List<NGuildApplyInfo> GetApplyInfos()
         {
-            throw new NotImplementedException();
+            //构建返回值
+            List<NGuildApplyInfo> applies = new List<NGuildApplyInfo>();
+            //循环遍历数据的申请信息
+            foreach (var apply in this.Data.Applies)
+            {
+                //将每一条信息Add到网络信息中
+                applies.Add(new NGuildApplyInfo()
+                {
+                    characterId = apply.CharacterID,
+                    GuildId = apply.GuildId,
+                    Class = apply.Class,
+                    Level = apply.Level,
+                    characterName = apply.Name,
+                    Result = (ApplyResult)apply.Result,
+                });
+            }
+            return applies;
         }
     }
 }

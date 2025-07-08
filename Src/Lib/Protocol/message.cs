@@ -1301,6 +1301,10 @@ namespace SkillBridge.Message
         [global::System.ComponentModel.DefaultValue("")]
         public string GuildNotice { get; set; } = "";
 
+        [global::ProtoBuf.ProtoMember(3, Name = @"guild_icon")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string GuildIcon { get; set; } = "";
+
     }
 
     [global::ProtoBuf.ProtoContract()]
