@@ -28,7 +28,10 @@ namespace GameServer.Entities
         public FriendManager FriendManager;
 
         public Temp temp;
-        public int tempUpdateTS;//自己的队伍何时更新的时间戳
+        public double tempUpdateTS;//自己的队伍何时更新的时间戳
+
+        public Guild guild;
+        public double guildUpdateTS;//公会创建或加入更新时间戳
 
         public Character(CharacterType type,TCharacter cha):
             base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
@@ -59,6 +62,8 @@ namespace GameServer.Entities
             this.StatusManager = new StatusManager(this);
             this.FriendManager = new FriendManager(this);
             this.FriendManager.GetFriendInfos(this.Info.Friends);
+
+            this.guild = GuildManager.Instance.GetGuild(this.TChar.GuildId);
         }
 
         public long Gold
@@ -90,6 +95,25 @@ namespace GameServer.Entities
                     this.temp.PostProcess(message);
                 }
             }
+
+            //判断有无公会
+            if (this.guild != null)
+            {
+                Log.InfoFormat("Character > PostProcess Guild:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, tempUpdateTS, temp.timestamp);
+                if (this.Info.Guild == null)//再次进行判断，网络消息中是否有公会，如果没有，则拉一份
+                {
+                    this.Info.Guild = this.guild.GuildInfo(this);
+                    if (message.mapCharacterEnter != null)
+                        guildUpdateTS = guild.timestape;
+                }
+                //判断自己公会的更新时间，是否小于公会的更新时间，如果小于，则进行更新
+                if (guildUpdateTS < this.guild.timestape && message.mapCharacterEnter == null)
+                {
+                    guildUpdateTS = this.guild.timestape;
+                    this.guild.Posprocess(this, message);
+                }
+            }
+
             if (this.StatusManager.HasStatus)
             {
                 this.StatusManager.PostProcess(message);

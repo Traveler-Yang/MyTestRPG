@@ -134,6 +134,7 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;
             Log.InfoFormat("TempService OnTempDisband ");
+            sender.Session.Response.tempDisband = new TempDisbandTempResponse();
             //判断当前角色有没有队伍
             if (character.temp != null)
             {
@@ -148,14 +149,12 @@ namespace GameServer.Services
                         {
                             character.temp.Leave(item);
                         }
-                        sender.Session.Response.tempDisband = new TempDisbandTempResponse();
                         sender.Session.Response.tempDisband.Result = Result.Success;
                         sender.Session.Response.tempDisband.Errormsg = "队伍解散成功";
                         sender.Session.Response.tempDisband.Temp = request.Temp;
                     }
                     else//不是队长
                     {
-                        sender.Session.Response.tempDisband = new TempDisbandTempResponse();
                         sender.Session.Response.tempDisband.Result = Result.Failed;
                         sender.Session.Response.tempDisband.Errormsg = "您不是队长，无权限解散队伍";
                         sender.SendResPonse();
