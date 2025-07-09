@@ -34,6 +34,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Subscribe<GuildLeaveResponse>(this.OnGuildLeave);
             MessageDistributer.Instance.Subscribe<GuildSearchResponse>(this.OnGuildSearch);
+            MessageDistributer.Instance.Subscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         public void Dispose()
@@ -45,6 +46,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Unsubscribe<GuildLeaveResponse>(this.OnGuildLeave);
             MessageDistributer.Instance.Unsubscribe<GuildSearchResponse>(this.OnGuildSearch);
+            MessageDistributer.Instance.Unsubscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         /// <summary>
@@ -245,5 +247,48 @@ namespace Services
             }
         }
 
+        /// <summary>
+        /// 加入公会审批请求
+        /// </summary>
+        /// <param name="accept"></param>
+        /// <param name="apply"></param>
+        public void SendGuilJoinApply(bool accept, NGuildApplyInfo apply)
+        {
+            Debug.Log("SendGuilJoinApply");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildJoinRes = new GuildJoinResponse();
+            message.Request.guildJoinRes.Result = Result.Success;
+            message.Request.guildJoinRes.Apply = apply;
+            message.Request.guildJoinRes.Apply.Result = accept ? ApplyResult.Accept : ApplyResult.Reject;
+            NetClient.Instance.SendMessage(message);
+        }
+
+        /// <summary>
+        /// 公会权限请求
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="characterId"></param>
+        public void SendAdminCommand(GuildAdminCommand command, int characterId)
+        {
+            Debug.LogFormat("SendAdminCommand : Command: [{0}] : Character: [{1}]", command, characterId);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildAdmin = new GuildAdminRequest();
+            message.Request.guildAdmin.Command = command;
+            message.Request.guildAdmin.Target = characterId;
+            NetClient.Instance.SendMessage(message);
+        }
+
+        /// <summary>
+        /// 接收权限响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="message"></param>
+        private void OnGuildAdmin(object sender, GuildAdminResponse response)
+        {
+            Debug.LogFormat("OnGuildAdmin : {0} {1}", response.Command, response.Result);
+            MessageBox.Show(string.Format("执行操作: {0} 结果 {1}:{2}", response.Command, response.Result, response.Errormsg));
+        }
     }
 }

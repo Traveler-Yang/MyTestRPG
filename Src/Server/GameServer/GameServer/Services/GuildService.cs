@@ -21,6 +21,7 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildLeaveRequest>(this.OnGuildLeave);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildSearchRequest>(this.OnGuildSearch);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildAdminRequest>(this.OnGuildAdmin);
         }
 
 
@@ -205,6 +206,17 @@ namespace GameServer.Services
                     sender.SendResPonse();
                 }
             }
+        }
+
+        /// <summary>
+        /// 接收公会权限请求
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="message"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest message)
+        {
+            
         }
     }
 }

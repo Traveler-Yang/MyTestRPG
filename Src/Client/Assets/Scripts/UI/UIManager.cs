@@ -33,6 +33,7 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UIGuildList), new UIElement() { Resource = "UI/UIGuild/UIGuildList", cache = false });
         UIResources.Add(typeof(UIGuildPopNoGuild), new UIElement() { Resource = "UI/UIGuild/UIGuildPopNoGuild", cache = false });
         UIResources.Add(typeof(UIGuildPopCreate), new UIElement() { Resource = "UI/UIGuild/UIGuildPopCreate", cache = false });
+        UIResources.Add(typeof(UIGuildApplyList), new UIElement() { Resource = "UI/UIGuild/UIGuildApplyList", cache = false });
         //可以继续添加其他UI类型
     }
 

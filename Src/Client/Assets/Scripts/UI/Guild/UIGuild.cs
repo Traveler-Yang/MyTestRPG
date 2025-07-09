@@ -13,16 +13,20 @@ public class UIGuild : UIWindow
     public Transform listRoot;//成员列表根节点
     public UIGuildInfo uiInfo;//公会信息栏
     public UIGuildMemberItem selectedItem;//当前选中的成员
+
+    public GameObject panelAdmin;//长老面板
+    public GameObject panelLeader;//会长面板
+
     void Start()
     {
-        GuildService.Instance.OnGuildUpdate = UpdateUI;
+        GuildService.Instance.OnGuildUpdate += UpdateUI;
         this.listMain.onItemSelected += OnGuildMemberSelected;
         this.UpdateUI();
     }
 
     private void OnDestroy()
     {
-        
+        GuildService.Instance.OnGuildUpdate -= UpdateUI;
     }
 
     private void UpdateUI()
@@ -30,6 +34,11 @@ public class UIGuild : UIWindow
         this.uiInfo.Info = GuildManager.Instance.guildInfo;
         ClearList();
         InitItems();
+
+        //如果我的管理权限大于普通成员的，就显示管理员的按钮，反之否
+        this.panelAdmin.SetActive(GuildManager.Instance.MyMemberInfo.Duty > GuildDuty.None);
+        //如果我是会长，则显示会长的权限按钮，反之否
+        this.panelLeader.SetActive(GuildManager.Instance.MyMemberInfo.Duty == GuildDuty.President);
     }
 
     private void OnGuildMemberSelected(ListView.ListViewItem item)
@@ -62,7 +71,15 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickTransfer()
     {
-        MessageBox.Show("暂未开放");
+        if (this.selectedItem == null)
+        {
+            MessageBox.Show("请选择要转让的成员", "错误", MessageBoxType.Error);
+            return;
+        }
+        MessageBox.Show(string.Format("确定要将会长职务转让给 [{0}] 吗", selectedItem.info.charInfo.Name), "转让会长", MessageBoxType.Confirm).OnYes = () =>
+        {
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Transfer, this.selectedItem.info.charInfo.Id);
+        };
     }
 
     /// <summary>
@@ -70,7 +87,20 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickPromotion()
     {
-        MessageBox.Show("暂未开放");
+        if (this.selectedItem == null)
+        {
+            MessageBox.Show("请选择要晋升的成员", "错误", MessageBoxType.Error);
+            return;
+        }
+        if (this.selectedItem.info.Duty != GuildDuty.None)
+        {
+            MessageBox.Show("对方似乎已是尊贵身份了", "晋升", MessageBoxType.Information);
+            return;
+        }
+        MessageBox.Show(string.Format("确定要将 [{0}] 晋升为副会长吗", selectedItem.info.charInfo.Name), "成员晋升", MessageBoxType.Confirm).OnYes = () =>
+        {
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Promote, this.selectedItem.info.charInfo.Id);
+        };
     }
 
     /// <summary>
@@ -78,7 +108,25 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickRecall()
     {
-        MessageBox.Show("暂未开放");
+        if (this.selectedItem == null)
+        {
+            MessageBox.Show("请选择要罢免的成员", "错误", MessageBoxType.Error);
+            return;
+        }
+        if (this.selectedItem.info.Duty == GuildDuty.None)
+        {
+            MessageBox.Show("对方似乎无职可免", "罢免", MessageBoxType.Information);
+            return;
+        }
+        if (this.selectedItem.info.Duty == GuildDuty.President)
+        {
+            MessageBox.Show("会长可不是你能动的", "罢免", MessageBoxType.Information);
+            return;
+        }
+        MessageBox.Show(string.Format("确定要将 [{0}] 罢免为普通成员吗", selectedItem.info.charInfo.Name), "职务罢免", MessageBoxType.Confirm).OnYes = () =>
+        {
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Depost, this.selectedItem.info.charInfo.Id);
+        };
     }
 
     /// <summary>
@@ -86,7 +134,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickRequestList()
     {
-        MessageBox.Show("暂未开放");
+        UIManager.Instance.Show<UIGuildApplyList>();
     }
 
     /// <summary>
@@ -94,7 +142,15 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickKickOut()
     {
-        MessageBox.Show("暂未开放");
+        if (this.selectedItem == null)
+        {
+            MessageBox.Show("请选择要踢出的成员", "错误", MessageBoxType.Error);
+            return;
+        }
+        MessageBox.Show(string.Format("确定要将 [{0}] 踢出公会吗", selectedItem.info.charInfo.Name), "踢出公会", MessageBoxType.Confirm).OnYes = () =>
+        {
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Kickout, this.selectedItem.info.charInfo.Id);
+        };
     }
 
     /// <summary>
@@ -114,5 +170,13 @@ public class UIGuild : UIWindow
         {
             GuildService.Instance.SendGuildLeaveRequest();
         };
+    }
+
+    /// <summary>
+    /// 修改公会公告
+    /// </summary>
+    public void OnClickChangeNotice()
+    {
+        MessageBox.Show("暂未开放");
     }
 }

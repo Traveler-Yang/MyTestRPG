@@ -39,8 +39,6 @@ public class UIGuildMemberItem : ListView.ListViewItem
                 case CharacterClass.Archer:
                     this.@class.text = "¹­¼ýÊÖ";
                     break;
-                default:
-                    break;
             }
         }
         if (this.level != null) this.level.text = this.info.charInfo.Level.ToString();
