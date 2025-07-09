@@ -20,7 +20,9 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildJoinRequest>(this.OnGuildJoinRequest);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildLeaveRequest>(this.OnGuildLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildSearchRequest>(this.OnGuildSearch);
         }
+
 
         public void Init()
         {
@@ -55,6 +57,7 @@ namespace GameServer.Services
             }
             //创建公会
             GuildManager.Instance.CerateGuild(request.GuildName, request.GuildNotice, request.GuildIcon, character);
+            //character.guild.leader = character;
             sender.Session.Response.guildCreat.guildInfo = character.guild.GuildInfo(character);
             sender.Session.Response.guildCreat.Result = Result.Success;
             sender.SendResPonse();
@@ -160,12 +163,48 @@ namespace GameServer.Services
             Log.InfoFormat("GuildService OnGuildLeave : Character:[{0}]", character.Id);
             sender.Session.Response.guildLeave = new GuildLeaveResponse();
 
-            character.guild.Leave(character);
+            if (!character.guild.Leave(character))
+            {
+                //如果是false，则代表是会长，不允许离开
+                sender.Session.Response.guildLeave.Result = Result.Failed;
+                sender.Session.Response.guildLeave.Errormsg = "您是会长，不可以直接退出公会，请转让会长后才可退出";
+                sender.SendResPonse();
+                return;
+            }
             sender.Session.Response.guildLeave.Result = Result.Success;
+            sender.Session.Response.guildLeave.Errormsg = string.Format("退出 [{0}] 公会成功", character.guild.Name);
 
             DBService.Instance.Save();
 
             sender.SendResPonse();
+        }
+
+        /// <summary>
+        /// 接收公会搜索请求
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="request"></param>
+        private void OnGuildSearch(NetConnection<NetSession> sender, GuildSearchRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("GuildService OnGuildSearch : Input: {0}", request.Input);
+            string guildName = "";
+            int guildId = 0;
+            //检查是否可以转换为ID，如果可以，说明搜索的是ID
+            if (!int.TryParse(request.Input, out guildId))
+            {
+                guildName = request.Input;
+            }
+            foreach (var guild in GuildManager.Instance.Guilds)
+            {
+                if (guild.Value.Name == guildName)
+                {
+                    sender.Session.Response.guildSearch = new GuildSearchResponse();
+                    sender.Session.Response.guildSearch.Result = Result.Success;
+                    sender.Session.Response.guildSearch.guildInfo = guild.Value.GuildInfo(null);
+                    sender.SendResPonse();
+                }
+            }
         }
     }
 }

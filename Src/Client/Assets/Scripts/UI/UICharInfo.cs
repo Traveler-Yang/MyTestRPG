@@ -24,7 +24,19 @@ public class UICharInfo : MonoBehaviour {
 	void Start () {
 		if (info != null)
         {
-            this.charclass.text = info.Class.ToString();
+			switch (info.Class)
+			{
+				case CharacterClass.Warrior:
+					this.charclass.text = "战士";
+                    break;
+				case CharacterClass.Wizard:
+                    this.charclass.text = "法师";
+                    break;
+				case CharacterClass.Archer:
+                    this.charclass.text = "弓箭手";
+                    break;
+			}
+			
             this.charName.text = info.Name;
         }
 	}

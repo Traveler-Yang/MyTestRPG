@@ -5,15 +5,26 @@ using UnityEngine.UI;
 
 public class UIGuildIconItem : ListView.ListViewItem
 {
+    public int id;
     public Image Icon;
-    public string path;
-    void Start()
+
+    public override void onSelected(bool selected)
     {
-        
+        base.onSelected(selected);
     }
 
-    public void SetIcon()
+    private void Start()
     {
-        if (Icon != null) this.Icon.overrideSprite = Resources.Load<Sprite>(path);
+        Init();
+    }
+
+    public void Init()
+    {
+        if (Icon != null)
+        {
+            this.Icon.overrideSprite = Resources.Load<Sprite>(DataManager.Instance.Icons[this.id].Icon);
+            this.Icon.color = Color.white;
+        }
+
     }
 }

@@ -99,7 +99,7 @@ namespace GameServer.Entities
             //判断有无公会
             if (this.guild != null)
             {
-                Log.InfoFormat("Character > PostProcess Guild:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, tempUpdateTS, temp.timestamp);
+                Log.InfoFormat("Character > PostProcess Guild:Character{0}:{1} : {2}<{3}", this.Id, this.Info.Name, guildUpdateTS, guild.timestape);
                 if (this.Info.Guild == null)//再次进行判断，网络消息中是否有公会，如果没有，则拉一份
                 {
                     this.Info.Guild = this.guild.GuildInfo(this);

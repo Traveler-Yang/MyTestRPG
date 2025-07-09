@@ -12,7 +12,7 @@ public class UIGuild : UIWindow
     public ListView listMain;//成员列表
     public Transform listRoot;//成员列表根节点
     public UIGuildInfo uiInfo;//公会信息栏
-    public UIGuildItem selectedItem;//当前选中的成员
+    public UIGuildMemberItem selectedItem;//当前选中的成员
     void Start()
     {
         GuildService.Instance.OnGuildUpdate = UpdateUI;
@@ -34,7 +34,7 @@ public class UIGuild : UIWindow
 
     private void OnGuildMemberSelected(ListView.ListViewItem item)
     {
-        this.selectedItem = item as UIGuildItem;
+        this.selectedItem = item as UIGuildMemberItem;
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickTransfer()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickPromotion()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickRecall()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickRequestList()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickKickOut()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickChat()
     {
-
+        MessageBox.Show("暂未开放");
     }
 
     /// <summary>
@@ -110,6 +110,9 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickLeave()
     {
-
+        MessageBox.Show(string.Format("确定要退出公会 [{0}] 吗", GuildManager.Instance.guildInfo.GuildName), "退出公会", MessageBoxType.Confirm).OnYes = () =>
+        {
+            GuildService.Instance.SendGuildLeaveRequest();
+        };
     }
 }

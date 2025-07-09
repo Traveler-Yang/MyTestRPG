@@ -24,11 +24,42 @@ public class UIGuildMemberItem : ListView.ListViewItem
     public NGuildMemberInfo info;
     public void SetGuildMemberInfo(NGuildMemberInfo info)
     {
+        this.info = info;
         if (this.nickName != null) this.nickName.text = this.info.charInfo.Name;
-        if (this.@class != null) this.@class.text = this.info.charInfo.Class.ToString();
+        if (this.@class != null)
+        {
+            switch (this.info.charInfo.Class)
+            {
+                case CharacterClass.Warrior:
+                    this.@class.text = "战士";
+                    break;
+                case CharacterClass.Wizard:
+                    this.@class.text = "法师";
+                    break;
+                case CharacterClass.Archer:
+                    this.@class.text = "弓箭手";
+                    break;
+                default:
+                    break;
+            }
+        }
         if (this.level != null) this.level.text = this.info.charInfo.Level.ToString();
-        if (this.duty != null) this.duty.text = this.info.Duty.ToString();
-        if (this.status != null) this.status.text = this.info.Status.ToString();
+        if (this.duty != null)
+        {
+            switch (this.info.Duty)
+            {
+                case GuildDuty.None:
+                    this.duty.text = "普通成员";
+                    break;
+                case GuildDuty.President:
+                    this.duty.text = "会长";
+                    break;
+                case GuildDuty.VicePresident:
+                    this.duty.text = "副会长";
+                    break;
+            }
+        }
+        if (this.status != null) this.status.text = this.info.Status ? "在线" : "离线";
     }
 
     /// <summary>

@@ -220,6 +220,7 @@ message NetMessageRequest{
 	GuildRequest guild = 27;
 	GuildLeaveRequest guildLeave = 28;
 	GuildListRequest guildList = 29;
+	GuildSearchRequest guildSearch = 30;
 }
 
 message NetMessageResponse{
@@ -258,6 +259,7 @@ message NetMessageResponse{
 	GuildResponse guild = 27;
 	GuildLeaveResponse guildLeave = 28;
 	GuildListResponse guildList = 29;
+	GuildSearchResponse guildSearch = 30;
 
 	StatusNotify statusNotify = 100;
 	
@@ -704,4 +706,16 @@ message GuildLeaveResponse//公会退出响应
 {
 	RESULT result = 1;
 	string errormsg = 2;
+}
+
+message GuildSearchRequest//公会搜索请求
+{
+	string input = 1;
+}
+
+message GuildSearchResponse//公会搜索响应
+{
+	RESULT result = 1;
+	string errormsg = 2;
+	NGuildInfo guildInfo = 3;
 }

@@ -18,7 +18,7 @@ namespace GameServer.Managers
         /// <summary>
         /// 所有的公会名称
         /// </summary>
-        private HashSet<string> GuildNames = new HashSet<string>();
+        public HashSet<string> GuildNames = new HashSet<string>();
 
         public void Init()
         {
@@ -73,6 +73,7 @@ namespace GameServer.Managers
             //构建公会Model
             Guild guild = new Guild(dbGuild);
             guild.AddMember(leader.Id, leader.Name, leader.TChar.Class, leader.TChar.Level, GuildDuty.President);
+            leader.Gold -= 50000;//扣钱
             leader.guild = guild;
             DBService.Instance.Save();
             leader.TChar.GuildId = guild.Id;

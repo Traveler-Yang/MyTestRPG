@@ -18,6 +18,8 @@ namespace Services
 
         public UnityAction<bool> OnGuildCreateResult;//公会创建成功事件
 
+        public UnityAction<NGuildInfo> OnGuildSearchResult;//公会搜索事件
+
         public void Init()
         {
 
@@ -31,6 +33,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer.Instance.Subscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Subscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Subscribe<GuildSearchResponse>(this.OnGuildSearch);
         }
 
         public void Dispose()
@@ -41,6 +44,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer.Instance.Unsubscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Unsubscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Unsubscribe<GuildSearchResponse>(this.OnGuildSearch);
         }
 
         /// <summary>
@@ -183,10 +187,10 @@ namespace Services
             if (message.Result == Result.Success)
             {
                 GuildManager.Instance.Init(null);
-                MessageBox.Show("退出公会成功", "公会");
+                MessageBox.Show(message.Errormsg, "公会");
             }
             else
-                MessageBox.Show("退出公会失败", "公会", MessageBoxType.Error);
+                MessageBox.Show(message.Errormsg, "公会", MessageBoxType.Error);
         }
 
         /// <summary>
@@ -211,5 +215,35 @@ namespace Services
             if (this.OnGuildListResult != null)
                 this.OnGuildListResult(message.Guilds);
         }
+
+        /// <summary>
+        /// 好友搜索请求
+        /// </summary>
+        /// <param name="input"></param>
+        public void SendGuildSearch(string input)
+        {
+            Debug.LogFormat("SendGuildSearch");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildSearch = new GuildSearchRequest();
+            message.Request.guildSearch.Input = input;
+            NetClient.Instance.SendMessage(message);
+        }
+
+        /// <summary>
+        /// 接收好友搜索响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
+        private void OnGuildSearch(object sender, GuildSearchResponse response)
+        {
+            Debug.LogFormat("OnGuildSearch");
+            if (response.Result == Result.Success)
+            {
+                if (this.OnGuildSearchResult != null)
+                    this.OnGuildSearchResult(response.guildInfo);
+            }
+        }
+
     }
 }

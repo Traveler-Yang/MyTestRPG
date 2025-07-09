@@ -1,4 +1,5 @@
 using Services;
+using SkillBridge.Message;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,22 +11,25 @@ public class UIGuildPopCreate : UIWindow
     public ListView listMain;//图标列表
     public InputField inputName;//名字
     public InputField inputNotice;//简介
-    public UIGuildIconItem guildIconItem;//当前选择的图标
+    public UIGuildIconItem[] iconItems;
+    public UIGuildIconItem selectIconItem;//当前选择的图标
 
     void Start()
     {
         GuildService.Instance.OnGuildCreateResult = OnGuildCreated;
         this.listMain.onItemSelected += OnIconSelected;
+        InitIcons();
     }
 
     private void OnIconSelected(ListView.ListViewItem item)
     {
-        this.guildIconItem = item as UIGuildIconItem;
+        this.selectIconItem = item as UIGuildIconItem;
     }
 
     private void OnDestroy()
     {
         GuildService.Instance.OnGuildCreateResult = null;
+        this.selectIconItem = null;
     }
 
     public override void OnYesClick()
@@ -50,8 +54,22 @@ public class UIGuildPopCreate : UIWindow
             MessageBox.Show("公会简介应在5-30个字符之内", "错误", MessageBoxType.Error);
             return;
         }
+        if (this.selectIconItem == null)
+        {
+            MessageBox.Show("请选择公会图标", "错误", MessageBoxType.Error);
+            return;
+        }
 
-        GuildService.Instance.SendGuildCreate(this.inputName.text, this.inputNotice.text, guildIconItem.path);
+        GuildService.Instance.SendGuildCreate(this.inputName.text, this.inputNotice.text, DataManager.Instance.Icons[selectIconItem.id].Icon);
+    }
+
+    public void InitIcons()
+    {
+        for (int i = 0; i < this.iconItems.Length; i++)
+        {
+            iconItems[i].Init();
+            this.listMain.AddItem(iconItems[i]);
+        }
     }
 
     void OnGuildCreated(bool result)

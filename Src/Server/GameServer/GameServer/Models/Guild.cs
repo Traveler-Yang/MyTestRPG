@@ -138,17 +138,23 @@ namespace GameServer.Models
         /// 成员离开
         /// </summary>
         /// <param name="character"></param>
-        public void Leave(Character character)
+        public bool Leave(Character character)
         {
+            //如果是会长，则不允许直接离开
+            if (character == leader)
+                return false;
+            //查找数据库中的要离开的成员
             TGuildMember member = this.Data.Members.FirstOrDefault(m => m.CharacterID == character.Id);
             if (member != null)
             {
+                //查到后，进行移除处理
                 character.TChar.GuildId = 0;
                 character.guild = null;
                 this.Members.Remove(character);
                 DBService.Instance.Entities.TGuildMembers.Remove(member);
             }
             DBService.Instance.Save();
+            return true;
         }
 
         /// <summary>

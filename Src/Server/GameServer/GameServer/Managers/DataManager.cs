@@ -25,6 +25,7 @@ namespace GameServer.Managers
         public Dictionary<int, Dictionary<int, ShopItemDefine>> ShopItems = null;
         public Dictionary<int, EquipDefine> Equips = null;
         public Dictionary<int, QuestDefine> Quests = null;
+        public Dictionary<int, IconDefine> Icons = null;
 
         public DataManager()
         {
@@ -66,6 +67,9 @@ namespace GameServer.Managers
 
             json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
             this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
+
+            json = File.ReadAllText(this.DataPath + "IconDefine.txt");
+            this.Icons = JsonConvert.DeserializeObject<Dictionary<int, IconDefine>>(json);
         }
     }
 }

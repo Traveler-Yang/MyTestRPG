@@ -18,8 +18,8 @@ public class UIGuildInfo : MonoBehaviour
     private NGuildInfo info;
     public NGuildInfo Info
     {
-        get { return this.Info; }
-        set { this.Info = value; this.UpdateUI(); }
+        get { return this.info; }
+        set { this.info = value; this.UpdateUI(); }
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public class UIGuildInfo : MonoBehaviour
     /// </summary>
     private void UpdateUI()
     {
-        if (this.info == null)
+        if (this.Info == null)
         {
             this.guildName.text = "нч";
             this.guildID.text = "ID: 0";

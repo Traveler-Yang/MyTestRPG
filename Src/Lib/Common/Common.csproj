@@ -58,6 +58,7 @@
     <Compile Include="Data\CharacterDefine.cs" />
     <Compile Include="Data\EquipDefine.cs" />
     <Compile Include="Data\GameDefine.cs" />
+    <Compile Include="Data\IconDefine.cs" />
     <Compile Include="Data\QuestDefine.cs" />
     <Compile Include="Data\ShopDefine.cs" />
     <Compile Include="Data\ShopItemDefine.cs" />
@@ -89,7 +90,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)Common.* $(ProjectDir)..\..\Client\Assets\References\ /Y
-copy $(TargetDir)Protocol.* $(ProjectDir)..\..\Client\Assets\References\ /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
