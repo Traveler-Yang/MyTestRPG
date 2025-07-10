@@ -288,7 +288,26 @@ namespace Services
         private void OnGuildAdmin(object sender, GuildAdminResponse response)
         {
             Debug.LogFormat("OnGuildAdmin : {0} {1}", response.Command, response.Result);
-            MessageBox.Show(string.Format("执行操作: {0} 结果 {1}:{2}", response.Command, response.Result, response.Errormsg));
+            string target = "";
+            switch (response.Command)
+            {
+                case GuildAdminCommand.Kickout:
+                    target = "踢人";
+                    break;
+                case GuildAdminCommand.Promote:
+                    target = "晋升";
+                    break;
+                case GuildAdminCommand.Depost:
+                    target = "罢免";
+                    break;
+                case GuildAdminCommand.Transfer:
+                    target = "转让会长";
+                    break;
+                case GuildAdminCommand.ChangeInfo:
+                    target = "修改公会信息";
+                    break;
+            }
+            MessageBox.Show(string.Format("执行操作: {0}\n结果 {1}: {2}", target, response.Result == Result.Success ? "成功" : "失败", response.Errormsg));
         }
     }
 }

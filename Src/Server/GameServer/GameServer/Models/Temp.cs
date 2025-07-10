@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Utils;
 using GameServer.Entities;
 using SkillBridge.Message;
 using System;
@@ -25,7 +26,7 @@ namespace GameServer.Models
         /// <summary>
         /// 队伍信息的变更时间
         /// </summary>
-        public int timestamp;
+        public double timestamp;
 
         public Temp(Character leader)
         {
@@ -49,7 +50,7 @@ namespace GameServer.Models
             //将当前队伍指定给此成员
             member.temp = this;
             //记录时间戳
-            timestamp = Time.timestamp;
+            timestamp = TimeUtil.timestamp;
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace GameServer.Models
             //这个人的队伍信息为null
             member.temp = null;
             //记录时间戳
-            timestamp = Time.timestamp;
+            timestamp = TimeUtil.timestamp;
         }
 
         /// <summary>

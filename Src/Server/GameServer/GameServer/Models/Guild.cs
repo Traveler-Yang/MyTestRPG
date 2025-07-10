@@ -19,7 +19,6 @@ namespace GameServer.Models
         /// </summary>
         public int Id { get { return this.Data.Id; } }
 
-        public Character leader;//会长
         /// <summary>
         /// 公会名字
         /// </summary>
@@ -127,11 +126,18 @@ namespace GameServer.Models
                 JoinTime = now,
                 LastTime = now
             };
+            this.Data.Members.Add(dbMemeber);//添加到DB中的成员列表中
             Character member = CharacterManager.Instance.GetCharacter(characterId);
-            if (member != null)
-                this.Members.Add(member);
-            this.Data.Members.Add(dbMemeber);
-            this.timestape = TimeUtil.timestamp;
+            if (member != null)//判断这个角色是否在线
+                member.TChar.GuildId = this.Id;//在线，则直接让这个角色身上的公会id赋值给当前公会
+            else
+            {
+                //不在线，则使用DB查询此角色，再给这个角色的公会id赋值未当前公会
+                //DBService.Instance.Entities.Database.ExecuteSqlCommand("uPDATE characters SET GuildId = @p0 WHERE CharacterId = @p1", this.Id, characterId);
+                TCharacter dbchar = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == characterId);
+                dbchar.GuildId = this.Id;
+            }
+                this.timestape = TimeUtil.timestamp;
         }
 
         /// <summary>
@@ -141,19 +147,23 @@ namespace GameServer.Models
         public bool Leave(Character character)
         {
             //如果是会长，则不允许直接离开
-            if (character == leader)
+            if (character.TChar.ID == this.Data.LeaderID)
                 return false;
             //查找数据库中的要离开的成员
             TGuildMember member = this.Data.Members.FirstOrDefault(m => m.CharacterID == character.Id);
-            if (member != null)
+            this.Data.Members.Remove(member);
+            var cha = CharacterManager.Instance.GetCharacter(character.Id);
+            if (cha != null)
             {
-                //查到后，进行移除处理
-                character.TChar.GuildId = 0;
-                character.guild = null;
-                this.Members.Remove(character);
-                DBService.Instance.Entities.TGuildMembers.Remove(member);
+                //在线
+                cha.TChar.GuildId = 0;
             }
-            DBService.Instance.Save();
+            else
+            {
+                DBService.Instance.Entities.Database.ExecuteSqlCommand("UPDATE characters SET GuildId = @p0 WHERE CharacterId = @p1", this.Id, character.TChar.ID);
+                member.GuildId = 0;
+            }
+            timestape = TimeUtil.timestamp;
             return true;
         }
 
@@ -232,15 +242,11 @@ namespace GameServer.Models
                     member.Level = character.TChar.Level;
                     member.Name = character.TChar.Name;
                     member.LastTime = DateTime.Now;
-                    if (member.Id == this.Data.LeaderID)//如果当前成员是会长，将此角色拉取出来赋值给当前会长
-                        this.leader = character;
                 }
                 else//角色离线
                 {
                     memberInfo.charInfo = this.GetMemberInfo(member);
                     memberInfo.Status = false;
-                    if (member.Id == this.Data.LeaderID)//如果当前成员是会长，则赋值为null
-                        this.leader = null;
                 }
                 //每拉取出来一个成员，就添加到返回值
                 members.Add(memberInfo);
@@ -275,6 +281,7 @@ namespace GameServer.Models
             //循环遍历数据的申请信息
             foreach (var apply in this.Data.Applies)
             {
+                if (apply.Result != (int)ApplyResult.None) continue;
                 //将每一条信息Add到网络信息中
                 applies.Add(new NGuildApplyInfo()
                 {
@@ -288,5 +295,50 @@ namespace GameServer.Models
             }
             return applies;
         }
+
+        private TGuildMember GetDBMember(int characterId)
+        {
+            foreach (var member in this.Data.Members)
+            {
+                if (member.CharacterID == characterId)
+                    return member;
+            }
+            return null;
+        }
+
+        public bool ExecuteAdmin(GuildAdminCommand command, int targetId, int characterId)
+        {
+            var target = GetDBMember(targetId);
+            var source = GetDBMember(characterId);
+            if (characterId == this.Data.LeaderID)//判断是否是会长
+            {
+                switch (command)
+                {
+                    case GuildAdminCommand.Kickout://踢出公会
+                        Leave(CharacterManager.Instance.GetCharacter(target.CharacterID));
+                        break;
+                    case GuildAdminCommand.Promote://晋升
+                        target.Duty = (int)GuildDuty.VicePresident;//晋升为副会长
+                        break;
+                    case GuildAdminCommand.Depost://罢免
+                        target.Duty = (int)GuildDuty.None;//降职为普通成员
+                        break;
+                    case GuildAdminCommand.Transfer://转让
+                        target.Duty = (int)GuildDuty.President;//目标为会长
+                        source.Duty = (int)GuildDuty.None;//自己设置为普通成员
+                        this.Data.LeaderID = targetId;
+                        this.Data.LeaderName = target.Name;
+                        break;
+                    case GuildAdminCommand.ChangeInfo://更改公会信息
+                        break;
+                }
+                DBService.Instance.Save();
+                timestape = TimeUtil.timestamp;
+                return true;
+            }
+            else
+                return false;
+        }
+
     }
 }

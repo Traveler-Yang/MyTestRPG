@@ -214,9 +214,44 @@ namespace GameServer.Services
         /// <param name="sender"></param>
         /// <param name="message"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest message)
+        private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest request)
         {
-            
+            Character character = sender.Session.Character;
+            Log.InfoFormat("GuildService OnGuildAdmin : Commend: {0} : Character: {1}", request.Command, request.Target);
+            sender.Session.Response.guildAdmin = new GuildAdminResponse();
+            if (character.guild == null)//判断这个角色有无公会
+            {
+                sender.Session.Response.guildAdmin.Result = Result.Failed;
+                sender.Session.Response.guildAdmin.Errormsg = "你没有公会不要乱来";
+                sender.SendResPonse();
+                return;
+            }
+            if (character.guild.Data.LeaderID == character.TChar.ID)//判断当前执行管理行为的角色是否是会长
+            {
+                //执行管理
+                if (character.guild.ExecuteAdmin(request.Command, request.Target, character.Id))
+                {
+                    //如果成功
+                    var target = SessionManager.Instance.GetSession(request.Target);
+                    if (target != null)//查看目标角色是否在线
+                    {
+                        //如果在线，则给他发送一个消息，告诉他一声
+                        target.Session.Response.guildAdmin = new GuildAdminResponse();
+                        target.Session.Response.guildAdmin.Result = Result.Success;
+                        target.Session.Response.guildAdmin.Command = request.Command;
+                        target.SendResPonse();
+                    }
+                    sender.Session.Response.guildAdmin.Result = Result.Success;
+                    sender.Session.Response.guildAdmin.Command = request.Command;
+                    sender.SendResPonse();
+                }
+            }
+            else
+            {
+                sender.Session.Response.guildAdmin.Result = Result.Failed;
+                sender.Session.Response.guildAdmin.Errormsg = "您不是会长，无法进行此操作";
+                sender.SendResPonse();
+            }
         }
     }
 }
