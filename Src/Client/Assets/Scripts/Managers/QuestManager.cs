@@ -126,6 +126,8 @@ namespace Managers
             //如果这个是新任务（Info 为空），则添加给接取任务的npc
             if (quest.Info == null)
             {
+                //如果这个npc是接收任务的npc
+                //查找接收任务的这个npc，如果没有，则Add
                 if (npcId == quest.Define.AcceptNPC && !this.npcQuests[npcId][NpcQuestStatus.Available].Contains(quest))
                 {
                     this.npcQuests[npcId][NpcQuestStatus.Available].Add(quest);
@@ -133,6 +135,15 @@ namespace Managers
             }
             else
             {
+                //进行中任务，添加给接任务的 NPC
+                if (npcId == quest.Define.AcceptNPC && quest.Info.Status == QuestStatus.InProgress)
+                {
+                    if (!this.npcQuests[npcId][NpcQuestStatus.Incomplete].Contains(quest))
+                    {
+                        this.npcQuests[npcId][NpcQuestStatus.Incomplete].Add(quest);
+                    }
+                }
+
                 //如果是 交任务的npc，并且判断任务状态是否是已经完成的
                 if (quest.Define.SubmitNPC == npcId && quest.Info.Status == QuestStatus.Complated)
                 {

@@ -24,6 +24,8 @@ public class UIQuestSystem : UIWindow
         this.listBranch.onItemSelected += OnQuestSelected;
         this.Tabs.OnTabSelect += OnSelectTab;
         RefreshUI();
+
+        OnSelectTab(1);
     }
 
 
@@ -61,6 +63,11 @@ public class UIQuestSystem : UIWindow
                 if (kv.Value.Info == null)
                     continue;
             }
+            if (kv.Value.Info != null)
+            {
+                if (kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Finished)
+                    continue;
+            }
             //加载任务项的预制体，并根据任务类型添加到对应的列表中
             GameObject go = Instantiate(itemPrefab, kv.Value.Define.Type == QuestType.Main ? this.listMain.transform : this.listBranch.transform);
             UIQuestItem ui = go.GetComponent<UIQuestItem>();
@@ -85,13 +92,12 @@ public class UIQuestSystem : UIWindow
     {
         //设置当前选择的任务项的信息到Info中
         UIQuestItem questItem = item as UIQuestItem;
-        this.questInfo.SetQuestInfo(questItem.quest);
-        if (questItem.quest.Info.Status == SkillBridge.Message.QuestStatus.Finished)
+        if (questItem == null || questItem.quest == null)
         {
-            if (questItem.owner == listMain)
-            {
-                listMain.RemoveItem(questItem);
-            }
+            Debug.LogWarning("任务项为空或未设置任务数据");
+            return;
         }
+
+        this.questInfo.SetQuestInfo(questItem.quest);
     }
 }

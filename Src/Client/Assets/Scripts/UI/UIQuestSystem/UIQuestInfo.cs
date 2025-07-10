@@ -6,16 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Common.Data;
+using Managers;
 
 public class UIQuestInfo : MonoBehaviour
 {
     public Text title;//任务标题
 
     public Text[] targets;//任务目标列表
+    public GameObject target;
 
     public Text description;//任务描述
 
     public UIIconItem[] rewardItems;//奖励物品列表
+    public GameObject rewardItem;
 
     public TextMeshProUGUI rewarGold;//任务奖励金币
     public TextMeshProUGUI rewarExp;//任务奖励经验
@@ -50,35 +53,25 @@ public class UIQuestInfo : MonoBehaviour
                 this.description.text = quest.Define.DialogFinish;
             }
         }
-        if (rewardItems[0] != null && quest.Define.RewardItem1 > 0)
+        if (quest.Define.Target1ID == 0)
         {
-            rewardItems[0].gameObject.SetActive(true);
-            rewardItems[0].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem1].Icon, quest.Define.RewardItem1Count.ToString());
+            this.target.SetActive(false);
         }
         else
         {
-            rewardItems[0].gameObject.SetActive(false);
+            this.target.SetActive(true);
+            if (quest.Define.Target1 == QuestTraget.Kill)
+            {
+                this.targets[0].text = string.Format("消灭{0}只{1} {2}/{3}", quest.Define.Target1Num, DataManager.Instance.Characters[quest.Define.Target1ID].Name, 1, quest.Define.Target1Num);
+            }
+            if (quest.Define.Target1 == QuestTraget.Item)
+            {
+                this.targets[0].text = "将信件送到琴那里";
+            }
+            this.targets[1].text = "";
+            this.targets[2].text = "";
         }
-
-        if (rewardItems[1] != null && quest.Define.RewardItem2 > 0)
-        {
-            rewardItems[1].gameObject.SetActive(true);
-            rewardItems[1].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem2].Icon, quest.Define.RewardItem2Count.ToString());
-        }
-        else
-        {
-            rewardItems[1].gameObject.SetActive(false);
-        }
-
-        if (rewardItems[2] != null && quest.Define.RewardItem3 > 0)
-        {
-            rewardItems[2].gameObject.SetActive(true);
-            rewardItems[2].SetMainIcon(DataManager.Instance.Items[quest.Define.RewardItem3].Icon, quest.Define.RewardItem3Count.ToString());
-        }
-        else
-        {
-            rewardItems[2].gameObject.SetActive(false);
-        }
+        SetRewardItems(quest);
         //设置奖励金币和经验
         this.rewarGold.text = quest.Define.RewardGold.ToString();
         this.rewarExp.text = quest.Define.RewardExp.ToString();
@@ -88,4 +81,38 @@ public class UIQuestInfo : MonoBehaviour
             fitter.SetLayoutVertical();
         }
     }
+
+    /// <summary>
+    /// 设置任务奖励信息
+    /// </summary>
+    private void SetRewardItems(Quest quest)
+    {
+        int[] rewardItemIds = new int[] {
+        quest.Define.RewardItem1,
+        quest.Define.RewardItem2,
+        quest.Define.RewardItem3
+    };
+        int[] rewardItemCounts = new int[] {
+        quest.Define.RewardItem1Count,
+        quest.Define.RewardItem2Count,
+        quest.Define.RewardItem3Count
+    };
+
+        for (int i = 0; i < rewardItems.Length; i++)
+        {
+            if (rewardItems[i] == null) continue;
+
+            if (i < rewardItemIds.Length && rewardItemIds[i] > 0)
+            {
+                var itemDefine = DataManager.Instance.Items[rewardItemIds[i]];
+                rewardItems[i].gameObject.SetActive(true);
+                rewardItems[i].SetMainIcon(itemDefine.Icon, rewardItemCounts[i].ToString());
+            }
+            else
+            {
+                rewardItems[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UIGuildMemberItem : ListView.ListViewItem
 {
     public Text nickName;//昵称
-    public TextMeshProUGUI @class;//职业
+    public Text @class;//职业
     public TextMeshProUGUI level;//等级
     public Text duty;//职务
     public Text status;//状态
