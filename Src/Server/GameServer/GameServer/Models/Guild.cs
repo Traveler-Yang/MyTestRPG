@@ -25,12 +25,7 @@ namespace GameServer.Models
         public string Name { get { return this.Data.Name; } }
 
          public string Icon { get { return this.Data.Icon; } }
-
-        /// <summary>
-        /// 公会成员列表
-        /// </summary>
-        public List<Character> Members = new List<Character>();
-
+        
         /// <summary>
         /// 更新变化时间戳
         /// </summary>
@@ -97,6 +92,8 @@ namespace GameServer.Models
             {
                 //把此角色，添加到公会中
                 this.AddMember(apply.characterId, apply.characterName, apply.Class, apply.Level, GuildDuty.None);
+                DBService.Instance.Entities.TGuildApplies.Remove(oldApply);
+
             }
             //并保存
             DBService.Instance.Save();
@@ -149,9 +146,7 @@ namespace GameServer.Models
             //如果是会长，则不允许直接离开
             if (character.TChar.ID == this.Data.LeaderID)
                 return false;
-            //查找数据库中的要离开的成员
-            TGuildMember member = this.Data.Members.FirstOrDefault(m => m.CharacterID == character.Id);
-            this.Data.Members.Remove(member);
+            RemoveMember(character.TChar.ID);
             var cha = CharacterManager.Instance.GetCharacter(character.Id);
             if (cha != null)
             {
@@ -160,11 +155,24 @@ namespace GameServer.Models
             }
             else
             {
-                DBService.Instance.Entities.Database.ExecuteSqlCommand("UPDATE characters SET GuildId = @p0 WHERE CharacterId = @p1", this.Id, character.TChar.ID);
-                member.GuildId = 0;
+                TCharacter dbchar = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == character.TChar.ID);
+                dbchar.GuildId = 0;
             }
+            DBService.Instance.Save();
             timestape = TimeUtil.timestamp;
             return true;
+        }
+
+        /// <summary>
+        /// 移除角色
+        /// </summary>
+        /// <param name="characterId"></param>
+        public void RemoveMember(int characterId)
+        {
+            //查找数据库中的要离开的成员
+            TGuildMember member = this.Data.Members.FirstOrDefault(m => m.CharacterID == characterId);
+            if (member != null)
+                DBService.Instance.Entities.TGuildMembers.Remove(member);
         }
 
         /// <summary>
@@ -306,27 +314,42 @@ namespace GameServer.Models
             return null;
         }
 
-        public bool ExecuteAdmin(GuildAdminCommand command, int targetId, int characterId)
+        /// <summary>
+        /// 执行行为
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="targetInfo"></param>
+        /// <param name="characterId"></param>
+        /// <returns></returns>
+        public string ExecuteAdmin(GuildAdminCommand command, int targetInfo, int characterId)
         {
-            var target = GetDBMember(targetId);
+            var target = GetDBMember(targetInfo);
             var source = GetDBMember(characterId);
             if (characterId == this.Data.LeaderID)//判断是否是会长
             {
                 switch (command)
                 {
                     case GuildAdminCommand.Kickout://踢出公会
+                        if (targetInfo == characterId)//判断目标是否是自己，如果是自己，则无法踢出自己
+                            return "您无法将自己踢出公会";
                         Leave(CharacterManager.Instance.GetCharacter(target.CharacterID));
                         break;
                     case GuildAdminCommand.Promote://晋升
+                        if (targetInfo == this.Data.LeaderID)//判断目标是否是会长，如果已经是会长，则无法再晋升我自己
+                            return "您已是会长，已无法再晋升";
                         target.Duty = (int)GuildDuty.VicePresident;//晋升为副会长
                         break;
                     case GuildAdminCommand.Depost://罢免
+                        if (targetInfo == this.Data.LeaderID)//判断目标是否是会长，如果已经是会长，则无法罢免我自己
+                            return "您是会长，无法罢免自己，请先将会长一职转让给其他成员";
                         target.Duty = (int)GuildDuty.None;//降职为普通成员
                         break;
                     case GuildAdminCommand.Transfer://转让
+                        if (targetInfo == this.Data.LeaderID)//判断目标是否是会长，如果已经是会长，则无法转让我自己
+                            return "您已经是会长，无法转让给自己";
                         target.Duty = (int)GuildDuty.President;//目标为会长
                         source.Duty = (int)GuildDuty.None;//自己设置为普通成员
-                        this.Data.LeaderID = targetId;
+                        this.Data.LeaderID = targetInfo;
                         this.Data.LeaderName = target.Name;
                         break;
                     case GuildAdminCommand.ChangeInfo://更改公会信息
@@ -334,11 +357,39 @@ namespace GameServer.Models
                 }
                 DBService.Instance.Save();
                 timestape = TimeUtil.timestamp;
-                return true;
+                return string.Format("操作: {0} 成功", target);
             }
             else
-                return false;
+                return string.Format("操作: {0} 失败", target);
         }
 
+        /// <summary>
+        /// 修改信息
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="guildNotice"></param>
+        /// <param name="guildIcon"></param>
+        /// <param name="id"></param>
+        public bool ExecuteAdmin(GuildAdminCommand command, string guildNotice, string guildIcon, int id)
+        {
+            switch (command)
+            {
+                case GuildAdminCommand.ChangeInfo:
+                    //判断公会公告是否为空或者Icon图标是否为空
+                    if (guildNotice != null && guildNotice != "")
+                    {
+                        this.Data.Notice = guildNotice;
+                        DBService.Instance.Save();
+                    }
+                    if (guildIcon != null && guildIcon != "")
+                    {
+                        this.Data.Icon = guildIcon;
+                        DBService.Instance.Save();
+                    }
+                    timestape = TimeUtil.timestamp;
+                    return true;
+            }
+            return false;
+        }
     }
 }

@@ -740,6 +740,8 @@ message GuildAdminRequest//公会管理请求
 {
 	GUILD_ADMIN_COMMAND command = 1;
 	int32 target = 2;
+	string guildNotice = 3;//公会公告信息
+	string guildIcon = 4;//公会图标
 }
 
 message GuildAdminResponse//公会管理响应

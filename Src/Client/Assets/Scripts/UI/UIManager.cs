@@ -21,7 +21,6 @@ public class UIManager : Singleton<UIManager>
     public UIManager()
     {
         //初始化UI资源信息
-        //UIResources.Add(typeof(UITest), new UIElement() { Resource = "UI/UITest", cache = true });
         UIResources.Add(typeof(UIBag), new UIElement() { Resource = "UI/UIBagPrefab/UIBag", cache = false });
         UIResources.Add(typeof(UIShop), new UIElement() { Resource = "UI/UIShopPrefab/UIShop", cache = false });
         UIResources.Add(typeof(UICharEquip), new UIElement() { Resource = "UI/UIEquipPrefab/UICharEquip", cache = false });
@@ -29,11 +28,12 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resource = "UI/UIQuestPrefab/UIQuestDialog", cache = false });
         UIResources.Add(typeof(UIFriends), new UIElement() { Resource = "UI/UIFriend/UIFriends", cache = false });
         UIResources.Add(typeof(UISetting), new UIElement() { Resource = "UI/UISetting/UISetting", cache = false });
-        UIResources.Add(typeof(UIGuild), new UIElement() { Resource = "UI/UIGuild/UIGuild", cache = false });
-        UIResources.Add(typeof(UIGuildList), new UIElement() { Resource = "UI/UIGuild/UIGuildList", cache = false });
+        UIResources.Add(typeof(UIGuild), new UIElement() { Resource = "UI/UIGuild/Guild/UIGuild", cache = false });
+        UIResources.Add(typeof(UIGuildList), new UIElement() { Resource = "UI/UIGuild/GuildList/UIGuildList", cache = false });
         UIResources.Add(typeof(UIGuildPopNoGuild), new UIElement() { Resource = "UI/UIGuild/UIGuildPopNoGuild", cache = false });
         UIResources.Add(typeof(UIGuildPopCreate), new UIElement() { Resource = "UI/UIGuild/UIGuildPopCreate", cache = false });
-        UIResources.Add(typeof(UIGuildApplyList), new UIElement() { Resource = "UI/UIGuild/UIGuildApplyList", cache = false });
+        UIResources.Add(typeof(UIGuildApplyList), new UIElement() { Resource = "UI/UIGuild/GuildApply/UIGuildApplyList", cache = false });
+        UIResources.Add(typeof(UIGuildChangeInfo), new UIElement() { Resource = "UI/UIGuild/UIGuildChangeInfo", cache = false });
         //可以继续添加其他UI类型
     }
 

@@ -269,13 +269,15 @@ namespace Services
         /// </summary>
         /// <param name="command"></param>
         /// <param name="characterId"></param>
-        public void SendAdminCommand(GuildAdminCommand command, int characterId)
+        public void SendAdminCommand(GuildAdminCommand command, string guildnotice, string guildIcon, int characterId)
         {
             Debug.LogFormat("SendAdminCommand : Command: [{0}] : Character: [{1}]", command, characterId);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.guildAdmin = new GuildAdminRequest();
             message.Request.guildAdmin.Command = command;
+            message.Request.guildAdmin.guildNotice = guildnotice;
+            message.Request.guildAdmin.guildIcon = guildIcon;
             message.Request.guildAdmin.Target = characterId;
             NetClient.Instance.SendMessage(message);
         }
@@ -292,13 +294,13 @@ namespace Services
             switch (response.Command)
             {
                 case GuildAdminCommand.Kickout:
-                    target = "踢人";
+                    target = "踢出公会";
                     break;
                 case GuildAdminCommand.Promote:
-                    target = "晋升";
+                    target = "晋升职务";
                     break;
                 case GuildAdminCommand.Depost:
-                    target = "罢免";
+                    target = "罢免职务";
                     break;
                 case GuildAdminCommand.Transfer:
                     target = "转让会长";
@@ -307,7 +309,7 @@ namespace Services
                     target = "修改公会信息";
                     break;
             }
-            MessageBox.Show(string.Format("执行操作: {0}\n结果 {1}: {2}", target, response.Result == Result.Success ? "成功" : "失败", response.Errormsg));
+            MessageBox.Show(string.Format("执行操作: {0}\n结果: {1}", target, response.Errormsg));
         }
     }
 }

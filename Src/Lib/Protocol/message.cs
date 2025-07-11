@@ -1495,6 +1495,14 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(2, Name = @"target")]
         public int Target { get; set; }
 
+        [global::ProtoBuf.ProtoMember(3)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string guildNotice { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(4)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string guildIcon { get; set; } = "";
+
     }
 
     [global::ProtoBuf.ProtoContract()]

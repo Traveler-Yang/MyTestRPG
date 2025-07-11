@@ -175,8 +175,6 @@ namespace GameServer.Services
             sender.Session.Response.guildLeave.Result = Result.Success;
             sender.Session.Response.guildLeave.Errormsg = string.Format("退出 [{0}] 公会成功", character.guild.Name);
 
-            DBService.Instance.Save();
-
             sender.SendResPonse();
         }
 
@@ -228,23 +226,36 @@ namespace GameServer.Services
             }
             if (character.guild.Data.LeaderID == character.TChar.ID)//判断当前执行管理行为的角色是否是会长
             {
-                //执行管理
-                if (character.guild.ExecuteAdmin(request.Command, request.Target, character.Id))
+                //判断是否传过来了公会的信息或者图标，则代表需要修改公会信息
+                if (request.guildNotice != null && request.guildNotice != "" || 
+                    request.guildIcon != null && request.guildIcon != "")
                 {
-                    //如果成功
-                    var target = SessionManager.Instance.GetSession(request.Target);
-                    if (target != null)//查看目标角色是否在线
-                    {
-                        //如果在线，则给他发送一个消息，告诉他一声
-                        target.Session.Response.guildAdmin = new GuildAdminResponse();
-                        target.Session.Response.guildAdmin.Result = Result.Success;
-                        target.Session.Response.guildAdmin.Command = request.Command;
-                        target.SendResPonse();
-                    }
+                    character.guild.ExecuteAdmin(request.Command, request.guildNotice, request.guildIcon, character.Id);
+                    sender.Session.Response.guildAdmin = new GuildAdminResponse();
                     sender.Session.Response.guildAdmin.Result = Result.Success;
+                    sender.Session.Response.guildAdmin.Errormsg = "修改公会信息成功";
                     sender.Session.Response.guildAdmin.Command = request.Command;
                     sender.SendResPonse();
+                    return;
                 }
+                //执行管理操作
+                string errormsg = character.guild.ExecuteAdmin(request.Command, request.Target, character.Id);
+
+                //查看目标角色是否在线，并且对方不是自己
+                var target = SessionManager.Instance.GetSession(request.Target);
+                if (target != null && target != SessionManager.Instance.GetSession(character.TChar.ID))
+                {
+                    //如果在线，则给他发送一个消息，告诉他一声
+                    target.Session.Response.guildAdmin = new GuildAdminResponse();
+                    target.Session.Response.guildAdmin.Result = Result.Success;
+                    target.Session.Response.guildAdmin.Errormsg = errormsg;
+                    target.Session.Response.guildAdmin.Command = request.Command;
+                    target.SendResPonse();
+                }
+                sender.Session.Response.guildAdmin.Result = Result.Success;
+                sender.Session.Response.guildAdmin.Errormsg = errormsg;
+                sender.Session.Response.guildAdmin.Command = request.Command;
+                sender.SendResPonse();
             }
             else
             {

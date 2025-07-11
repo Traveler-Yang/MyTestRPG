@@ -78,7 +78,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("确定要将会长职务转让给 [{0}] 吗", selectedItem.info.charInfo.Name), "转让会长", MessageBoxType.Confirm).OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Transfer, this.selectedItem.info.charInfo.Id);
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Transfer, "", "", this.selectedItem.info.charInfo.Id);
         };
     }
 
@@ -99,7 +99,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("确定要将 [{0}] 晋升为副会长吗", selectedItem.info.charInfo.Name), "成员晋升", MessageBoxType.Confirm).OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Promote, this.selectedItem.info.charInfo.Id);
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Promote, "", "", this.selectedItem.info.charInfo.Id);
         };
     }
 
@@ -125,7 +125,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("确定要将 [{0}] 罢免为普通成员吗", selectedItem.info.charInfo.Name), "职务罢免", MessageBoxType.Confirm).OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Depost, this.selectedItem.info.charInfo.Id);
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Depost, "", "", this.selectedItem.info.charInfo.Id);
         };
     }
 
@@ -149,7 +149,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("确定要将 [{0}] 踢出公会吗", selectedItem.info.charInfo.Name), "踢出公会", MessageBoxType.Confirm).OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Kickout, this.selectedItem.info.charInfo.Id);
+            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Kickout, "", "", this.selectedItem.info.charInfo.Id);
         };
     }
 
@@ -177,6 +177,6 @@ public class UIGuild : UIWindow
     /// </summary>
     public void OnClickChangeNotice()
     {
-        MessageBox.Show("暂未开放");
+        UIManager.Instance.Show<UIGuildChangeInfo>();
     }
 }

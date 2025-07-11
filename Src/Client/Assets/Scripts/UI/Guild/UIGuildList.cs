@@ -65,9 +65,13 @@ public class UIGuildList : UIWindow
     /// </summary>
     public void OnClickSearch()
     {
-        if (this.searchInput != null)
+        if (this.searchInput.text.Length > 0)
         {
             GuildService.Instance.SendGuildSearch(searchInput.text);
+        }
+        else
+        {
+            MessageBox.Show("请输入要搜索的公会名", "搜索公会", MessageBoxType.Information);
         }
     }
 
