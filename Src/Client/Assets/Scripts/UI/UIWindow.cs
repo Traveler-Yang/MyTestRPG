@@ -9,6 +9,8 @@ public class UIWindow : MonoBehaviour
 
     public virtual System.Type Type { get { return this.GetType(); } }
 
+    public GameObject Root;
+
     /// <summary>
     /// UI窗口的默认选项类型
     /// </summary>

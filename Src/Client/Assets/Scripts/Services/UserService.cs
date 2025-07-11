@@ -20,6 +20,8 @@ namespace Services
         NetMessage pendingMessage = null;
         bool connected = false;
 
+        bool isQuitGame = false;
+
         public UserService()
         {
             NetClient.Instance.OnConnect += OnGameServerConnect;
@@ -248,24 +250,11 @@ namespace Services
         }
 
         /// <summary>
-        /// 角色进入地图
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="message"></param>
-        private void OnCharacterEnter(object sender, MapCharacterEnterResponse message)
-        {
-            //Debug.LogFormat("OnMapCharacterEnter:{0}", message.mapId);
-
-            //NCharacterInfo info = message.Characters[0];
-            //User.Instance.CurrentCharacter = info;
-            //SceneManager.Instance.LoadScene(DataManager.Instance.Maps[message.mapId].Resource);//加载从服务端接收的地图ID并加载场景
-           
-        }
-        /// <summary>
         /// 角色离开
         /// </summary>
-        public void SendGameLeave()
+        public void SendGameLeave(bool isQuitGame = false)
         {
+            this.isQuitGame = isQuitGame;
             Debug.Log("UserGameLeaveRequest");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
@@ -274,7 +263,7 @@ namespace Services
         }
 
         /// <summary>
-        /// 离开主城
+        /// 离开游戏
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="response"></param>
@@ -283,6 +272,14 @@ namespace Services
             MapService.Instance.CurrentMapId = 0;
             User.Instance.CurrentCharacter = null;
             Debug.LogFormat("OnGameLeave:{0} [{1}]", response.Result, response.Errormsg);
+            if (this.isQuitGame)
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
         }
 
     }
