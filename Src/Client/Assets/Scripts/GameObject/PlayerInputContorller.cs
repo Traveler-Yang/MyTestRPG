@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Managers;
 using Services;
 using SkillBridge.Message;
 using System.Collections;
@@ -51,6 +52,9 @@ public class PlayerInputContorller : MonoBehaviour {
 	{
         if (character == null || this.entityContorller == null)
             return;
+
+        if (InputManager.Instance.IsInputMode) return;
+
         #region 前后移动
         float v = Input.GetAxis("Vertical");
         if (v > 0.01)//向前移动

@@ -1,3 +1,4 @@
+using Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,8 @@ public class UIPopCharMenu : UIWindow, IDeselectHandler
     /// </summary>
     public void OnChat()
     {
-
+        ChatManager.Instance.StartPrivateChat(targetId, targetName);
+        this.Close(UIWindowResult.None);
     }
 
     /// <summary>
@@ -38,7 +40,7 @@ public class UIPopCharMenu : UIWindow, IDeselectHandler
     /// </summary>
     public void OnAddFriend()
     {
-
+        this.Close(UIWindowResult.None);
     }
 
     /// <summary>
@@ -46,6 +48,6 @@ public class UIPopCharMenu : UIWindow, IDeselectHandler
     /// </summary>
     public void OnInviteTemp()
     {
-
+        this.Close(UIWindowResult.None);
     }
 }
