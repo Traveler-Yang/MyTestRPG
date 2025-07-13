@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SkillBridge.Message;
+using TMPro;
 
 public class UIChat : MonoBehaviour
 {
-    public HyperText textArea;//聊天内容显示区
+    public TextMeshProUGUI textArea;//聊天内容显示区
 
     public TabView channelTab;//按钮区
 
@@ -104,8 +105,8 @@ public class UIChat : MonoBehaviour
     /// <param name="text"></param>
     public void OnEndInput(string text)
     {
-        //如果不等于null
-        if (string.IsNullOrEmpty(text.Trim()))
+        //如果不等于null，则发送消息
+        if (!string.IsNullOrEmpty(text.Trim()))
             this.SendChat(text);//发送消息
         this.chatText.text = "";//并清空消息框
     }
@@ -119,6 +120,10 @@ public class UIChat : MonoBehaviour
         ChatManager.Instance.SendChat(content);
     }
 
+    /// <summary>
+    /// 切换频道
+    /// </summary>
+    /// <param name="idx"></param>
     public void OnSendChannelChanged(int idx)
     {
         if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(idx + 1))

@@ -92,11 +92,13 @@ namespace Managers
         {
             this.Messages.Add(new ChatMessage()
             {
-                Channel = ChatChannel.Local,
+                Channel = this.SendChannel,
                 Message = content,
                 FromId = User.Instance.CurrentCharacter.Id,
                 FromName = User.Instance.CurrentCharacter.Name
             });
+            if (this.OnChat != null)
+                this.OnChat();//添加完成系统消息，并刷新聊天
         }
 
         /// <summary>
@@ -171,23 +173,23 @@ namespace Managers
             switch (message.Channel)
             {
                 case ChatChannel.Local:
-                    return string.Format("[本地]{0}{1}", FormatFromPlayer(message), message.Message);
+                    return string.Format("【本地】{0}:{1}", FormatFromPlayer(message), message.Message);
                 case ChatChannel.World:
-                    return string.Format("<color=cyan>[世界]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<#FF8000>【世界】{0}:{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.System:
-                    return string.Format("<color=yellow>[系统]{0}</color>", message.Message);
+                    return string.Format("<#FFFF00>【系统】{0}</color>", message.Message);
                 case ChatChannel.Private:
-                    return string.Format("<color=magenta>[私聊]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<#FF00FF>【私聊】{0}:{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.Temp:
-                    return string.Format("<color=green>[队伍]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<#00FF00>【队伍】{0}:{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.Guild:
-                    return string.Format("<color=blue>[公会]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<#0000FF>【公会】{0}:{1}</color>", FormatFromPlayer(message), message.Message);
             }
             return "";
         }
 
         /// <summary>
-        /// 转换格式化文本（判断是否是角色）
+        /// 转换格式化文本（发送消息的角色）
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
@@ -196,10 +198,12 @@ namespace Managers
             //如果这个消息的信息来源是我自己发的，则设置为我自己的标头
             if (message.FromId == User.Instance.CurrentCharacter.Id)
             {
-                return "<a name=\"\" class=\"player\">[我]</a>";
+                //return "<a name=\"\" class=\"player\">[我]</a>";
+                return "<link=\"\"><#00FFE0><u>[我]</u></color><link>";
             }
             else
-                return string.Format("<a name=\"c:{0}:{1}\" class=\"player\">[{1}]</a>", message.FromId, message.FromName);
+                //return string.Format("<a name=\"c:{0}:{1}\" class=\"player\">[{1}]</a>", message.FromId, message.FromName);
+                return string.Format("<link=\"{0}:{1}\"><#00FFE0><u>[{1}]</u></color><link>", message.FromId, message.FromName);
         }
 
     }
