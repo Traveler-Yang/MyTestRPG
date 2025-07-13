@@ -8,7 +8,7 @@ namespace Common.Utils
 {
     public class TimeUtil
     {
-        public static  double timestamp
+        public static double timestamp
         {
             get { return GetTimestamp(DateTime.Now); }
         }
@@ -16,7 +16,7 @@ namespace Common.Utils
         public static DateTime GetTime(long timeStamp)
         {
             DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            long lTime = timeStamp * 100000000;
+            long lTime = timeStamp * 10000000;
             TimeSpan toNow = new TimeSpan(lTime);
             return dateTimeStart.Add(toNow);
         }

@@ -224,7 +224,7 @@ message NetMessageRequest{
 
 	GuildAdminRequest guildAdmin = 31;
 
-	ChatRequest ChatReq = 32;
+	ChatRequest Chat = 32;
 }
 
 message NetMessageResponse{
@@ -267,7 +267,7 @@ message NetMessageResponse{
 
 	GuildAdminResponse guildAdmin = 31;
 
-	ChatResponse chatRes = 32;
+	ChatResponse chat = 32;
 
 	StatusNotify statusNotify = 100;
 	
@@ -771,14 +771,14 @@ enum CHAT_CHANNEL
 
 message ChatMessage
 {
-	CHAT_CHANNEL channel = 1;//发送的频道
-	 int32 id = 2;
+	CHAT_CHANNEL channel = 1;//属于哪个频道
+	 int32 id = 2;//此聊天内容的唯一id
 	 int32 from_id = 3;//发送者的id
 	 string from_name = 4;//发送者的name
-	 int32 to_id = 5;
-	 string to_name = 6;
-	 string message = 7;
-	 double time = 8;
+	 int32 to_id = 5;//接收者id
+	 string to_name = 6;//接收者name
+	 string message = 7;//发送的信息
+	 double time = 8;//发送时间
 }
 
 message ChatRequest
@@ -790,6 +790,7 @@ message ChatResponse
 {
 	RESULT result = 1;
 	string errormsg = 2;
+	//返回回来的各个频道的消息列表
 	repeated ChatMessage localMessages = 3;
 	repeated ChatMessage worldMessages = 4;
 	repeated ChatMessage systemMessages = 5;

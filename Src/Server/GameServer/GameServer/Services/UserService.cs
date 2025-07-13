@@ -207,7 +207,6 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;//从客户端传过来的角色信息
             Log.InfoFormat("UserService OnGameLeave: CharacterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);//打印日志
-            SessionManager.Instance.RemoveSession(character.Id);//角色离开删除会话对象
             CharacterLeave(character);
             sender.Session.Response.gameLeave = new UserGameLeaveResponse();
             sender.Session.Response.gameLeave.Result = Result.Success;//得到结果
@@ -218,6 +217,7 @@ namespace GameServer.Services
         public void CharacterLeave(Character character)
         {
             Log.InfoFormat("UserService > CharacterLeave：CharacterID:{0}:{1}", character.Id, character.Info.Name);
+            SessionManager.Instance.RemoveSession(character.Id);//角色离开删除会话对象
             CharacterManager.Instance.RemoveCharacter(character.entityId);//移除从客户端传送过来的角色
             character.Clear();//要先更改状态，再离开，并发送消息
             MapManager.Instance[character.Info.mapId].CharacterLeave(character);

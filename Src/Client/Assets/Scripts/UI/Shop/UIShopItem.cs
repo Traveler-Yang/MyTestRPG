@@ -9,7 +9,7 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
     public Image icon;//图标
     public Text title;//商品名字
     public TextMeshProUGUI price;//价格
-    public TextMeshProUGUI limitClass;//职业类型
+    public Text limitClass;//职业类型
     public TextMeshProUGUI count;//数量
 
 
@@ -55,7 +55,21 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
         this.title.text = this.item.Name;
         this.count.text = "X" + shopItem.Count.ToString();
         this.price.text = shopItem.Price.ToString();
-        this.limitClass.text = this.item.LimitClass.ToString();
+        switch (item.LimitClass)
+        {
+            case SkillBridge.Message.CharacterClass.None:
+                this.limitClass.text = "无";
+                break;
+            case SkillBridge.Message.CharacterClass.Warrior:
+                this.limitClass.text = "战士";
+                break;
+            case SkillBridge.Message.CharacterClass.Wizard:
+                this.limitClass.text = "法师";
+                break;
+            case SkillBridge.Message.CharacterClass.Archer:
+                this.limitClass.text = "弓箭手";
+                break;
+        }
         this.icon.overrideSprite = Resloader.Load<Sprite>(item.Icon);
     }
 

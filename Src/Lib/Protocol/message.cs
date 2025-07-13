@@ -327,7 +327,7 @@ namespace SkillBridge.Message
         public GuildAdminRequest guildAdmin { get; set; }
 
         [global::ProtoBuf.ProtoMember(32)]
-        public ChatRequest ChatReq { get; set; }
+        public ChatRequest Chat { get; set; }
 
     }
 
@@ -428,8 +428,8 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(31)]
         public GuildAdminResponse guildAdmin { get; set; }
 
-        [global::ProtoBuf.ProtoMember(32)]
-        public ChatResponse chatRes { get; set; }
+        [global::ProtoBuf.ProtoMember(32, Name = @"chat")]
+        public ChatResponse Chat { get; set; }
 
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }

@@ -33,6 +33,7 @@ public class LoadingManager : MonoBehaviour
 		FriendService.Instance.Init();
 		TempService.Instance.Init();
 		GuildService.Instance.Init();
+		ChatService.Instance.Init();
 
         for (float i = 0.01f; i <= 1;)
         {

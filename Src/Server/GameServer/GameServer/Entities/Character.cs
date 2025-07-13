@@ -33,6 +33,8 @@ namespace GameServer.Entities
         public Guild guild;
         public double guildUpdateTS;//公会创建或加入更新时间戳
 
+        public Chat chat;
+
         public Character(CharacterType type,TCharacter cha):
             base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
         {
@@ -64,6 +66,8 @@ namespace GameServer.Entities
             this.FriendManager.GetFriendInfos(this.Info.Friends);
 
             this.guild = GuildManager.Instance.GetGuild(this.TChar.GuildId);
+
+            this.chat = new Chat(this);
         }
 
         public long Gold
@@ -118,6 +122,8 @@ namespace GameServer.Entities
             {
                 this.StatusManager.PostProcess(message);
             }
+
+            this.chat.PostProcess(message);
         }
         /// <summary>
         /// 角色离开时调用

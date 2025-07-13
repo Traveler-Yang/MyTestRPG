@@ -75,5 +75,17 @@ namespace Managers
                 this.Characters.Remove(entityId);
             }
         }
+
+        /// <summary>
+        /// 根据id获取角色
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Character GetCharacter(int id)
+        {
+            Character character;
+            this.Characters.TryGetValue(id, out character);
+            return character;
+        }
     }
 }

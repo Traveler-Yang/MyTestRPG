@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Managers
 
         public ChatChannel[] ChannelFilter = new ChatChannel[6]
         {
-            ChatChannel.Local | ChatChannel.World | ChatChannel.Guild | ChatChannel.Temp | ChatChannel.Private | ChatChannel.System,
+            ChatChannel.Local | ChatChannel.World | ChatChannel.Guild | ChatChannel.Temp | ChatChannel.Private | ChatChannel.System,//所有频道
             ChatChannel.Local,
             ChatChannel.World,
             ChatChannel.Temp,
@@ -49,7 +50,15 @@ namespace Managers
         /// <summary>
         /// 本地的所有聊天信息
         /// </summary>
-        public List<ChatMessage> Messages = new List<ChatMessage>();
+        public List<ChatMessage>[] Messages = new List<ChatMessage>[6]
+        {
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+        };
 
         public LocalChannel displayChannel;
 
@@ -85,20 +94,15 @@ namespace Managers
 
         public void Init()
         {
-
+            foreach (var message in Messages)
+            {
+                message.Clear();
+            }
         }
 
-        public void SendChat(string content)
+        public void SendChat(string content, int toId = 0, string toName = "")
         {
-            this.Messages.Add(new ChatMessage()
-            {
-                Channel = this.SendChannel,
-                Message = content,
-                FromId = User.Instance.CurrentCharacter.Id,
-                FromName = User.Instance.CurrentCharacter.Name
-            });
-            if (this.OnChat != null)
-                this.OnChat();//添加完成系统消息，并刷新聊天
+            ChatService.Instance.SendChat(this.SendChannel, content, toId, toName);
         }
 
         /// <summary>
@@ -131,6 +135,19 @@ namespace Managers
             return true;
         }
 
+        public void AddMessage(ChatChannel channel, List<ChatMessage> messages)
+        {
+            for (int ch = 0; ch < 6; ch++)
+            {
+                if ((this.ChannelFilter[ch] & channel) == channel)
+                {
+                    this.Messages[ch].AddRange(messages);
+                }
+            }
+            if (this.OnChat != null)
+                this.OnChat();//添加完成系统消息，并刷新聊天
+        }
+
         /// <summary>
         /// Add系统信息
         /// </summary>
@@ -138,7 +155,7 @@ namespace Managers
         /// <param name="from"></param>
         public void AddSystemMessage(string message, string from = "")
         {
-            this.Messages.Add(new ChatMessage
+            this.Messages[(int)LocalChannel.All].Add(new ChatMessage
             {
                 Channel = ChatChannel.System,
                 Message = message,
@@ -156,7 +173,7 @@ namespace Managers
         {
             StringBuilder sb = new StringBuilder();
             //遍历所有的消息列表
-            foreach (var message in this.Messages)
+            foreach (var message in this.Messages[(int)displayChannel])
             {
                 sb.AppendLine(FormatMessage(message));
             }
@@ -199,11 +216,11 @@ namespace Managers
             if (message.FromId == User.Instance.CurrentCharacter.Id)
             {
                 //return "<a name=\"\" class=\"player\">[我]</a>";
-                return "<link=\"\"><#00FFE0><u>[我]</u></color><link>";
+                return "<link=\"\"><#00FFE0><u>我</u></color><link>";
             }
             else
                 //return string.Format("<a name=\"c:{0}:{1}\" class=\"player\">[{1}]</a>", message.FromId, message.FromName);
-                return string.Format("<link=\"{0}:{1}\"><#00FFE0><u>[{1}]</u></color><link>", message.FromId, message.FromName);
+                return string.Format("<link=\"{0}:{1}\"><#00FFE0><u>{1}</u></color><link>", message.FromId, message.FromName);
         }
 
     }

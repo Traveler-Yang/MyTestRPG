@@ -34,6 +34,7 @@ namespace GameServer
             FriendService.Instance.Init();
             TempService.Instance.Init();
             GuildService.Instance.Init();
+            ChatService.Instance.Init();
 
             thread = new Thread(new ThreadStart(this.Update));
             return true;

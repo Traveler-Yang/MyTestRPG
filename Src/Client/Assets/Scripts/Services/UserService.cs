@@ -223,6 +223,9 @@ namespace Services
         public void SendGameEnter(int characterIdx)
         {
             Debug.LogFormat("UserGameEnterRequest::charatcterId :{0}", characterIdx);
+
+            ChatManager.Instance.Init();//游戏进入时初始化聊天
+
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameEnter = new UserGameEnterRequest();
