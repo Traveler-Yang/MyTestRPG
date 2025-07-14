@@ -44,7 +44,7 @@ public class UICharEquip : UIWindow
         foreach (var kv in ItemManager.Instance.Items)
         {
             //如果是装备类型，并且类型是当前的职业
-            if (kv.Value.Define.Type == ItemType.Equip && kv.Value.Id/1000 == User.Instance.CurrentCharacter.Id)
+            if (kv.Value.Define.Type == ItemType.Equip && kv.Value.Id/1000 == (int)User.Instance.CurrentCharacter.Class)
             {
                 //已经装备就不显示了
                 if (EquipManager.Instance.Contains(kv.Key))
@@ -66,8 +66,8 @@ public class UICharEquip : UIWindow
     {
         foreach (var item in slots)
         {
-            if (item.childCount > 0)
-                Destroy(item.GetChild(0).gameObject);
+            if (item.childCount > 0 && item.GetComponentInChildren<UIEquipItem>())
+                Destroy(item.GetComponentInChildren<UIEquipItem>().gameObject);
         }
     }
 

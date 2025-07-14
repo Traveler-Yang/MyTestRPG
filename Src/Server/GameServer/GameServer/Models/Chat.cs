@@ -13,6 +13,7 @@ namespace GameServer.Models
     {
         Character Owner;
 
+        //当前的最新消息索引
         public int localIdx;
         public int worldIdx;
         public int systemIdx;

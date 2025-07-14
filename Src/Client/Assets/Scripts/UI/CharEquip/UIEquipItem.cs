@@ -14,7 +14,7 @@ public class UIEquipItem : MonoBehaviour, IPointerClickHandler
     public Image icon;
     public Text title;
     public TextMeshProUGUI level;
-    public TextMeshProUGUI limitClass;
+    public Text limitClass;
     public Text limitCategory;
 
     public Image backGround;
@@ -55,7 +55,21 @@ public class UIEquipItem : MonoBehaviour, IPointerClickHandler
 
         if (this.title != null) this.title.text = item.Define.Name;
         if (this.level != null) this.level.text = item.Define.Level.ToString();
-        if (this.limitClass != null) this.limitClass.text = item.Define.LimitClass.ToString();
+        if (this.limitClass != null)
+        {
+            switch (item.Define.LimitClass)
+            {
+                case SkillBridge.Message.CharacterClass.Warrior:
+                    this.limitClass.text = "战士";
+                    break;
+                case SkillBridge.Message.CharacterClass.Wizard:
+                    this.limitClass.text = "法师";
+                    break;
+                case SkillBridge.Message.CharacterClass.Archer:
+                    this.limitClass.text = "弓箭手";
+                    break;
+            }
+        }
         if (this.limitCategory != null) this.limitCategory.text = item.Define.Category;
         if (this.icon != null) this.icon.overrideSprite = Resloader.Load<Sprite>(item.Define.Icon);
     }
