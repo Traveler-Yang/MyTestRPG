@@ -22,6 +22,9 @@ namespace Managers
             Private = 5,//私聊
         }
 
+        /// <summary>
+        /// 本地的所有频道类型
+        /// </summary>
         public ChatChannel[] ChannelFilter = new ChatChannel[6]
         {
             ChatChannel.Local | ChatChannel.World | ChatChannel.Guild | ChatChannel.Temp | ChatChannel.Private | ChatChannel.System,//所有频道
@@ -60,8 +63,14 @@ namespace Managers
             new List<ChatMessage>(),
         };
 
+        /// <summary>
+        /// 当前显示的频道
+        /// </summary>
         public LocalChannel displayChannel;
 
+        /// <summary>
+        /// 本地的当前频道类型
+        /// </summary>
         public LocalChannel sendChannel;
 
         public int PrivateID = 0;
@@ -139,6 +148,7 @@ namespace Managers
         {
             for (int ch = 0; ch < 6; ch++)
             {
+                //循环遍历所有的频道与要添加的消息的类型进行判断，如果遇到相同的，则Add进去
                 if ((this.ChannelFilter[ch] & channel) == channel)
                 {
                     this.Messages[ch].AddRange(messages);
@@ -216,11 +226,11 @@ namespace Managers
             if (message.FromId == User.Instance.CurrentCharacter.Id)
             {
                 //return "<a name=\"\" class=\"player\">[我]</a>";
-                return "<link=\"\"><#00FFE0><u>我</u></color><link>";
+                return "<link=\"\"><#00FFE0><u>我</u></color></link>";
             }
             else
                 //return string.Format("<a name=\"c:{0}:{1}\" class=\"player\">[{1}]</a>", message.FromId, message.FromName);
-                return string.Format("<link=\"{0}:{1}\"><#00FFE0><u>{1}</u></color><link>", message.FromId, message.FromName);
+                return string.Format("<link=\"{0}:{1}\"><#00FFE0><u>{1}</u></color></link>", message.FromId, message.FromName);
         }
 
     }

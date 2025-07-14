@@ -52,6 +52,7 @@ namespace Services
             message.Request.Chat.Message.ToId = toId;
             message.Request.Chat.Message.ToName = toName;
             message.Request.Chat.Message.Message = content;
+            message.Request.Chat.Message.Time = TimeUtil.timestamp;
             NetClient.Instance.SendMessage(message);
         }
 

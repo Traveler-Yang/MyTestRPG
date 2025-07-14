@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SkillBridge.Message;
 using TMPro;
+using Services;
 
 public class UIChat : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class UIChat : MonoBehaviour
     void Start()
     {
         this.channelTab.OnTabSelect += OnDisPlayChannelSelected;
-        ChatManager.Instance.OnChat += RefreshUI;   
+        ChatManager.Instance.OnChat += RefreshUI;
     }
 
     private void OnDestroy()
@@ -71,27 +72,6 @@ public class UIChat : MonoBehaviour
     }
 
     /// <summary>
-    /// 聊天区点击事件
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="link">链接</param>
-    public void OnClickChatLink(HyperText text, HyperText.LinkInfo link)
-    {
-        //判断链接里的name是否为null或空字符
-        if (string.IsNullOrEmpty(link.Name))
-            return;
-        //<a name="c:1001:name" class="player">Name</a>
-        //<a name="i:1001:name" class="item">Name</a>
-        if (link.Name.StartsWith("c:"))//根据开头字符来判断是什么类型
-        {
-            string[] strs = link.Name.Split(":".ToCharArray());
-            UIPopCharMenu menu = UIManager.Instance.Show<UIPopCharMenu>();
-            menu.targetId = int.Parse(strs[1]);
-            menu.targetName = strs[2];
-        }
-    }
-
-    /// <summary>
     /// 发送消息按钮
     /// </summary>
     public void OnClickSend()
@@ -117,25 +97,28 @@ public class UIChat : MonoBehaviour
     /// <param name="content"></param>
     private void SendChat(string content)
     {
-        ChatManager.Instance.SendChat(content);
+        ChatManager.Instance.SendChat(content, ChatManager.Instance.PrivateID, ChatManager.Instance.PrivateName);
     }
 
     /// <summary>
     /// 切换频道
     /// </summary>
-    /// <param name="idx"></param>
+    /// <param name="idx">当前切换的频道索引</param>
     public void OnSendChannelChanged(int idx)
     {
+        //如果当前选择的频道和当前频道一致，则不切换频道，直接返回
         if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(idx + 1))
             return;
 
         //如果当前频道和要切换的频道不相同，才赋值
+        //先更改Manager中的当前频道，如果更改成功，则更改UI的索引
         if (!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)idx + 1))
         {
             this.channelSelect.value = (int)(ChatManager.Instance.sendChannel - 1);
         }
         else
         {
+            //如果未更改成功，则刷新UI（无队伍，无公会才会返回失败）
             RefreshUI();
         }
     }

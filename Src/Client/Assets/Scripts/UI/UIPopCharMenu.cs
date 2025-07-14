@@ -1,4 +1,5 @@
 using Managers;
+using Services;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class UIPopCharMenu : UIWindow, IDeselectHandler
     /// </summary>
     public void OnAddFriend()
     {
+        FriendService.Instance.SendFriendAddRequest(targetId, targetName);
         this.Close(UIWindowResult.None);
     }
 
@@ -48,6 +50,7 @@ public class UIPopCharMenu : UIWindow, IDeselectHandler
     /// </summary>
     public void OnInviteTemp()
     {
+        TempService.Instance.SendTempInviteRequest(targetId, targetName);
         this.Close(UIWindowResult.None);
     }
 }
