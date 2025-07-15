@@ -45,6 +45,7 @@ enum ENTITY_EVENT
 	MOVE_BACK = 3;
 	JUMP = 4;
 	RUNNING_JUMP = 5;
+	RIDE = 6;
 }
 
 enum ITEM_TYPE
@@ -53,6 +54,7 @@ enum ITEM_TYPE
 	MATERIAL = 1;//材料
 	TASK = 2;//任务道具
 	EQUIP = 3;//装备
+	RIDE = 4;//坐骑
 }
 //装备槽位
 enum EQUIP_SLOT
@@ -94,6 +96,7 @@ message NCharacterInfo {
 	repeated NQuestInfo quest = 14;//任务列表
 	repeated NFriendInfo friends = 15;//好友信息
 	NGuildInfo guild = 16;//公会信息
+	int32 ride = 17;//坐骑信息
 }
 
 message NItemInfo 
@@ -168,7 +171,7 @@ message NEntitySync {
 	int32 id = 1;
 	ENTITY_EVENT event = 2;
 	NEntity entity = 3;
-	
+	int32 param = 4;
 }
 
 

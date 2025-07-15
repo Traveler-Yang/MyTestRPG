@@ -865,7 +865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1132230007138760469}
-  verticalVelHash: 0
   gravity: 9.81
   rotateSpeed: 2
   turnAngle: 10
@@ -890,8 +889,6 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   lastPosition: {x: 0, y: 0, z: 0}
-  forwardSpeed: -1
-  backwardSpeed: 2
   isPlayer: 1
 --- !u!143 &1132230007138760469
 CharacterController:
@@ -914,7 +911,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.5
   m_Radius: 0.2
-  m_SlopeLimit: 1
+  m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
