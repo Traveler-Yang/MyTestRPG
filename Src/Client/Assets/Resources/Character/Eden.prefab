@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5749486008056033444}
   - component: {fileID: 2898741965071946164}
   - component: {fileID: 2183767464615577741}
-  - component: {fileID: 242289631831125314}
-  - component: {fileID: 8710993524357359108}
+  - component: {fileID: 2565876232206913433}
   m_Layer: 0
   m_Name: Eden
   m_TagString: Untagged
@@ -48,7 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e641c05f52e614ab5344b4e96cf8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8710993524357359108}
+  controller: {fileID: 2565876232206913433}
+  verticalVelHash: 0
+  gravity: 9.81
   rotateSpeed: 2
   turnAngle: 10
   speed: 5
@@ -68,15 +69,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4223997498276978007}
-  rb: {fileID: 8710993524357359108}
+  controller: {fileID: 2565876232206913433}
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   lastPosition: {x: 0, y: 0, z: 0}
   forwardSpeed: -1
   backwardSpeed: 2
   isPlayer: 1
---- !u!136 &242289631831125314
-CapsuleCollider:
+--- !u!143 &2565876232206913433
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,38 +94,14 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
+  m_Height: 1.75
   m_Radius: 0.2
-  m_Height: 1.7028608
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.86915576, z: 0}
---- !u!54 &8710993524357359108
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817857214514520580}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!1 &1393345588039462154
 GameObject:
   m_ObjectHideFlags: 0

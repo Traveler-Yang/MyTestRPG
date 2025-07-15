@@ -10,8 +10,7 @@ using UnityEngine.InputSystem;
 public class EntityContorller : MonoBehaviour, IEntityNotify{
 
 	public Animator anim;
-	public Rigidbody rb;
-	private AnimatorStateInfo currentBaseState;
+    public CharacterController controller;
 
 	public Entity entity;
 
@@ -22,12 +21,6 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 	public UnityEngine.Vector3 lastPosition;
 	Quaternion lastRotation;
 
-    public float forwardSpeed = -1f;//前进速度
-    public float backwardSpeed = 2f;//后退速度
-    float currentSpeed;
-    float targetSpeed;//当前速度
-    Vector3 movement;//移动向量
-
     public bool isPlayer  = false;
 
 	void Start ()
@@ -37,14 +30,11 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 			EntityManager.Instance.RegisterEntityChangeNotify(entity.entityId, this);
 			this.UpdateTransform();
 		}
-
-        if (!this.isPlayer)
-            rb.useGravity = false;
     }
 
-    private void Update()
+    public void SetSpeed(float speed)
     {
-		anim.SetFloat("Speed",rb.velocity.z);
+        anim.SetFloat("Speed", speed);
     }
 
     void UpdateTransform()
@@ -52,7 +42,7 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 		this.position = GameObjectTool.LogicToWorld(entity.position);
 		this.direction = GameObjectTool.LogicToWorld(entity.direction);
 
-		this.rb.MovePosition(this.position);
+		this.transform.position = this.position;
 		this.transform.forward = this.direction;
 		this.lastPosition = this.position;
 		this.lastRotation = this.rotation;

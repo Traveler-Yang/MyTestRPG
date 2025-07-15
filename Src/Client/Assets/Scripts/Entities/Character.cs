@@ -64,7 +64,7 @@ namespace Entities
         public void MoveBack()
         {
             //Debug.LogFormat("MoveBack");
-            this.speed = -this.Define.Speed;
+            this.speed = this.Define.Speed;
         }
 
         public void Stop()
