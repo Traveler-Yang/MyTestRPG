@@ -119,7 +119,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             Debug.LogErrorFormat("Ride[{0}] Resource[{1}] not existed.", rideDefine.ID, rideDefine.Resource);
             return null;
         }
-        GameObject go = (GameObject)Instantiate(obj, this.transform);
+        GameObject go = (GameObject)Instantiate(obj, parent);
         go.name = "Ride_" + rideDefine.ID + "_" + rideDefine.Name;
         return go.GetComponent<RideController>();
     }

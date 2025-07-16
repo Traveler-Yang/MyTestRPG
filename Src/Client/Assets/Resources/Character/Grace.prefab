@@ -890,6 +890,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   lastPosition: {x: 0, y: 0, z: 0}
   isPlayer: 1
+  rideController: {fileID: 0}
+  rideBone: {fileID: 5168543317819010995}
 --- !u!143 &1132230007138760469
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9733,6 +9735,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5143685174571684670}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5168543317819010995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9162484748627739507, guid: 83d8ac8c86a1b6f4cacd20239be5940e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5143685174571684670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5176193970555775449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 51653493537585895, guid: 83d8ac8c86a1b6f4cacd20239be5940e,
@@ -9788,7 +9796,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 11defe89a9aa9834690b6a4bd44b9eb5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

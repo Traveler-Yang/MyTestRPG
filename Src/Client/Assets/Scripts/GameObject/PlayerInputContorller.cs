@@ -170,10 +170,7 @@ public class PlayerInputContorller : MonoBehaviour {
 	{
         //把当前的信息发送给角色
 		if (entityContorller != null)
-        {
             entityContorller.OnEntityEvent(entityEvent, param);
-            Debug.Log("SendEntityEvent" + entityEvent);
-        }
         //将自身当前的状态发送给当前地图中的所有角色
         MapService.Instance.SendMapEntitySync(entityEvent, this.character.EntityData, param);
 	}

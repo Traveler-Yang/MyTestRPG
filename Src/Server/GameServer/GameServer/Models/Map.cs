@@ -142,7 +142,7 @@ namespace GameServer.Models
         /// <param name="entity"></param>
         public void UpdateEntity(NEntitySync entity)
         {
-            Log.InfoFormat("[GameServer] Map UpdateEntity: entity {0} : Event {1}", entity.Id, entity.Event);
+            //Log.InfoFormat("[GameServer] Map UpdateEntity: entity {0} : Event {1}", entity.Id, entity.Event);
             //得到信息后，遍历发送给地图中的所有角色
             foreach (var kv in this.MapCharacters)
             {

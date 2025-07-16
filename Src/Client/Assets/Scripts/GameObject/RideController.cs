@@ -8,7 +8,7 @@ public class RideController : MonoBehaviour
     public Transform mountPoint;//Æï³Ëµã
     public EntityContorller rider;//Æï³ËÕß
     public Vector3 offset;//Æ«ÒÆ
-    public Animator anim;
+    private Animator anim;
 
     void Start()
     {
