@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using Entities;
+using Managers;
+using Models;
+using SkillBridge.Message;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using Entities;
-using Managers;
-using SkillBridge.Message;
-using Models;
 
 public class GameObjectManager : MonoSingleton<GameObjectManager>
 {
@@ -90,6 +89,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             ec.entity = character;
             ec.isPlayer = character.IsCurrentPlayer;
+            ec.Ride(character.Info.Ride);
         }
 
         PlayerInputContorller pc = go.GetComponent<PlayerInputContorller>();
@@ -97,7 +97,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             if (character.IsCurrentPlayer)
             {
-                User.Instance.CurrentCharacterObject = go;
+                User.Instance.CurrentCharacterObject = pc;
                 MainPlayerCamera.Instance.player = go;
                 pc.enabled = true;
                 pc.character = character;
@@ -108,6 +108,20 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 pc.enabled = false;
             }
         }
+    }
+
+    public RideController LoadRide(int rideId, Transform parent)
+    {
+        var rideDefine = DataManager.Instance.Rides[rideId];
+        Object obj = Resloader.Load<Object>(rideDefine.Resource);
+        if (obj == null)
+        {
+            Debug.LogErrorFormat("Ride[{0}] Resource[{1}] not existed.", rideDefine.ID, rideDefine.Resource);
+            return null;
+        }
+        GameObject go = (GameObject)Instantiate(obj, this.transform);
+        go.name = "Ride_" + rideDefine.ID + "_" + rideDefine.Name;
+        return go.GetComponent<RideController>();
     }
 }
 

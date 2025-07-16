@@ -88,13 +88,13 @@ namespace Services
         }
 
         /// <summary>
-        /// 接收角色发送过来的状态
+        /// 发送实体的同步信息
         /// </summary>
         /// <param name="entityEvent"></param>
         /// <param name="entity"></param>
-        public void SendMapEntitySync(EntityEvent entityEvent, NEntity entity)
+        public void SendMapEntitySync(EntityEvent entityEvent, NEntity entity, int param)
         {
-            //Debug.LogFormat("MapEntityUpdateRequest :ID{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(), entity.Direction.ToString(), entity.Speed);
+            Debug.LogFormat("MapEntityUpdateRequest :ID{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(), entity.Direction.ToString(), entity.Speed);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.mapEntitySync = new MapEntitySyncRequest();
@@ -104,7 +104,8 @@ namespace Services
             {
                 Id = entity.Id,//id信息
                 Event = entityEvent,//状态信息：移动、停止、跳跃。。。
-                Entity = entity//id、位置、方向、速度
+                Entity = entity,//id、位置、方向、速度
+                Param = param//坐骑信息
             };
             //发送给服务器
             NetClient.Instance.SendMessage(message);

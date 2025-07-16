@@ -23,6 +23,12 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 
     public bool isPlayer  = false;
 
+    public RideController rideController;
+
+    private int currentRide = 0;//当前坐骑的id
+
+    public Transform rideBone;//坐骑骨骼
+
 	void Start ()
 	{
 		if (entity != null)
@@ -79,7 +85,7 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
         Destroy(this.gameObject);
     }
 
-    public void OnEntityEvent(EntityEvent entityEvent)
+    public void OnEntityEvent(EntityEvent entityEvent, int param)
     {
         switch(entityEvent)
         {
@@ -103,11 +109,56 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
             case EntityEvent.RunningJump:
                 anim.SetTrigger("RunningJump");
                 break;
+            case EntityEvent.Ride:
+                this.Ride(param);
+                break;
         }
+        if (this.rideController != null) this.rideController.OnEntityEvent(entityEvent, param);
     }
 
     public void OnEntityChanged(Entity entity)
     {
         Debug.LogFormat("OnEntityChanged :ID:{0} POS:{1} DIR:{2} SPD:{3}", entity.entityId, entity.position, entity.direction, entity.speed);
+    }
+
+    public void Ride(int rideId)
+    {
+        if (this.currentRide == rideId) return;
+        this.currentRide = rideId;
+        if (currentRide > 0)
+        {
+            //上马
+            this.rideController = GameObjectManager.Instance.LoadRide(rideId, this.transform);
+        }
+        else
+        {
+            //下马
+            Destroy(this.rideController.gameObject);
+            this.rideController = null;
+        }
+
+        if (this.rideController == null)
+        {
+            //下马后将角色的动画设为0
+            this.anim.transform.localPosition = Vector3.zero;
+            //如果不是骑乘状态，将权重设置为0
+            this.anim.SetLayerWeight(1, 0);
+        }
+        else
+        {
+            //上马后设置骑乘者和权重
+            this.rideController.SetRider(this);
+            //骑马状态，将权重设置为1
+            this.anim.SetLayerWeight(1, 1);
+        }
+    }
+
+    /// <summary>
+    /// 根据坐骑设置角色位置
+    /// </summary>
+    /// <param name="position"></param>
+    public void SetridePosition(Vector3 position)
+    {
+        this.anim.transform.position = position + (this.anim.transform.position - this.rideBone.position);
     }
 }

@@ -57,7 +57,7 @@ public class PlayerInputContorller : MonoBehaviour {
         if (character == null || this.entityContorller == null) return;
 
         CaculateGravity();
-        if (InputManager.Instance.IsInputMode) return;
+        if (InputManager.Instance != null && InputManager.Instance.IsInputMode) return;
 
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
@@ -166,15 +166,15 @@ public class PlayerInputContorller : MonoBehaviour {
     /// 发送角色状态消息
     /// </summary>
     /// <param name="entityEvent">状态</param>
-	void SendEntityEvent(EntityEvent entityEvent)
+	public void SendEntityEvent(EntityEvent entityEvent, int param = 0)
 	{
         //把当前的信息发送给角色
 		if (entityContorller != null)
         {
-            entityContorller.OnEntityEvent(entityEvent);
+            entityContorller.OnEntityEvent(entityEvent, param);
             Debug.Log("SendEntityEvent" + entityEvent);
         }
         //将自身当前的状态发送给当前地图中的所有角色
-        MapService.Instance.SendMapEntitySync(entityEvent, this.character.EntityData);
+        MapService.Instance.SendMapEntitySync(entityEvent, this.character.EntityData, param);
 	}
 }

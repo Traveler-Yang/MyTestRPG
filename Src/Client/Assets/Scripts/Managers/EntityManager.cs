@@ -10,7 +10,7 @@ namespace Managers
     {
         void OnEntityRemoved();
         void OnEntityChanged(Entity entity);
-        void OnEntityEvent(EntityEvent @event);
+        void OnEntityEvent(EntityEvent @event, int param);
     }
     class EntityManager : Singleton<EntityManager>
     {
@@ -53,7 +53,7 @@ namespace Managers
                 if (notifiers.ContainsKey(data.Id))
                 {
                     notifiers[entity.entityId].OnEntityChanged(entity);//通知entity发生改变
-                    notifiers[entity.entityId].OnEntityEvent(data.Event);//通知entity的状态发生变化
+                    notifiers[entity.entityId].OnEntityEvent(data.Event, data.Param);//通知entity的状态发生变化
                 }
             }
         }

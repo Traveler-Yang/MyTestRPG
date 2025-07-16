@@ -33,7 +33,24 @@ namespace Models
 
         public SkillBridge.Message.NCharacterInfo CurrentCharacter { get; set; }
 
-        public GameObject CurrentCharacterObject { get; set; }
+        public PlayerInputContorller CurrentCharacterObject { get; set; }
+
         public NTempInfo TempInfo { get; set; }
+
+        //当前角色骑着的的坐骑
+        public int CurrrentRide = 0;
+        public void Ride(int id)
+        {
+            if (CurrrentRide != id)
+            {
+                CurrrentRide = id;
+                CurrentCharacterObject.SendEntityEvent(EntityEvent.Ride, id);
+            }
+            else
+            {
+                CurrrentRide = 0;
+                CurrentCharacterObject.SendEntityEvent(EntityEvent.Ride, 0);
+            }
+        }
     }
 }
