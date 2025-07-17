@@ -19,6 +19,7 @@ public class UIMain : MonoSingleton<UIMain>
     protected override void OnStart()
     {
 		this.UpdateAvatar();
+		InputManager.Instance.EnableGameplayInput = true;
 	}
 
 	void UpdateAvatar()
@@ -39,7 +40,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 背包按钮
 	/// </summary>
-	public void OnClickBag()
+	public static void OnClickBag()
 	{
 		UIManager.Instance.Show<UIBag>();
 	}
@@ -47,7 +48,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 装备按钮
 	/// </summary>
-	public void OnClickCharEquip()
+	public static void OnClickCharEquip()
 	{
 		UIManager.Instance.Show<UICharEquip>();
 	}
@@ -55,7 +56,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 任务按钮
 	/// </summary>
-	public void OnClickQuest()
+	public static void OnClickQuest()
 	{
 		UIManager.Instance.Show<UIQuestSystem>();
     }
@@ -63,7 +64,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 好友按钮
 	/// </summary>
-	public void OnClickFriend()
+	public static void OnClickFriend()
 	{
 		UIManager.Instance.Show<UIFriends>();
 	}
@@ -71,7 +72,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 公会按钮
 	/// </summary>
-	public void OnClickGuild()
+	public static void OnClickGuild()
 	{
 		GuildManager.Instance.ShowGuild();
 	}
@@ -79,7 +80,7 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 坐骑按钮
 	/// </summary>
-	public void OnClickRide()
+	public static void OnClickRide()
 	{
 		UIManager.Instance.Show<UIRide>();
 	}
@@ -87,15 +88,15 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 技能按钮
 	/// </summary>
-	public void OnClickSKill()
+	public static void OnClickSKill()
 	{
-
-	}
+        MessageBox.Show("暂未开放", "提示", MessageBoxType.Information);
+    }
 
     /// <summary>
     /// 设置按钮
     /// </summary>
-    public void OnClickSetting()
+    public static void OnClickSetting()
     {
 		UIManager.Instance.Show<UISetting>();	
     }
@@ -103,9 +104,9 @@ public class UIMain : MonoSingleton<UIMain>
 	/// <summary>
 	/// 邮件按钮
 	/// </summary>
-	public void OnClickEmail()
+	public static void OnClickEmail()
 	{
-
+		MessageBox.Show("暂未开放", "提示", MessageBoxType.Information);
 	}
 
     public void ShowTeamUI(bool show)

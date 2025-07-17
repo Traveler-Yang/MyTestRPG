@@ -8,11 +8,11 @@ public class RideController : MonoBehaviour
     public Transform mountPoint;//Æï³Ëµã
     public EntityContorller rider;//Æï³ËÕß
     public Vector3 offset;//Æ«ÒÆ
-    private Animator anim;
+    public Animator anim;
 
     void Start()
     {
-        this.anim = GetComponent<Animator>();
+        //this.anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,16 +44,18 @@ public class RideController : MonoBehaviour
         {
             case EntityEvent.Idle:
                 anim.SetBool("Move", false);
-                anim.SetTrigger("Idle");
+                anim.SetBool("Idle", true);
                 break;
             case EntityEvent.MoveFwd:
                 anim.SetBool("Move", true);
+                anim.SetBool("Idle", false);
                 break;
             case EntityEvent.MoveBack:
                 anim.SetBool("Move", true);
+                anim.SetBool("Idle", false);
                 break;
             case EntityEvent.Jump:
-                anim.SetTrigger("Jump");
+                //anim.SetTrigger("Jump");
                 break;
         }
     }
