@@ -34,7 +34,7 @@ public class LoadingManager : MonoBehaviour
 		TempService.Instance.Init();
 		GuildService.Instance.Init();
 		ChatService.Instance.Init();
-
+		SoundManager.Instance.PlayMusic(SoundDefine.Music_Login);
         for (float i = 0.01f; i <= 1;)
         {
 			i += Random.Range(0.01f, 0.03f);

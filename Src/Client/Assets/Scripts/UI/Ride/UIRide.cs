@@ -43,6 +43,8 @@ public class UIRide : UIWindow
             if (item.Value.Define.ID / 1000 == 8 &&
                 item.Value.Define.LimitClass == CharacterClass.None)
             {
+                if (EquipManager.Instance.Contains(item.Key))
+                    continue;
                 GameObject go = Instantiate(itemPrefab, listMain.transform);
                 UIRideItem ui = go.GetComponent<UIRideItem>();
                 ui.SetRideItem(item.Value, this, false);

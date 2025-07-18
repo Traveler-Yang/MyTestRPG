@@ -27,6 +27,7 @@ public class UIWindow : MonoBehaviour
     /// <param name="result"></param>
     public void Close(UIWindowResult result = UIWindowResult.None)
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
         UIManager.Instance.Colse(this.Type);
         if(this.OnClose != null)
             this.OnClose(this, result);

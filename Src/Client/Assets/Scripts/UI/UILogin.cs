@@ -36,6 +36,7 @@ public class UILogin : MonoBehaviour {
         if (result == Result.Success)
         {
             SceneManager.Instance.LoadScene("CharSelect");
+            SoundManager.Instance.PlayMusic(SoundDefine.Music_Select);
         }
         else
         {

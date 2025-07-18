@@ -80,6 +80,7 @@ namespace Services
                 MapDefine map = DataManager.Instance.Maps[mapId];
                 User.Instance.CurrentMapData = map;//在加载地图前，将地图资源赋值给map
                 SceneManager.Instance.LoadScene(map.Resource);//加载地图
+                SoundManager.Instance.PlayMusic(map.Music);//播放地图音乐
             }
             else
             {

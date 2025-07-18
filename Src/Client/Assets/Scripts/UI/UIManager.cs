@@ -46,6 +46,7 @@ public class UIManager : Singleton<UIManager>
     /// <returns></returns>
     public T Show<T>()
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Open);
         //获取UI类型
         Type type = typeof(T);
         //判断UI是否存在
@@ -78,6 +79,7 @@ public class UIManager : Singleton<UIManager>
     /// <param name="type">UI信息字典的Key值，指的哪一个UI</param>
     public void Colse(Type type)
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
         //检查UI是否存在
         if (UIResources.ContainsKey(type))
         {

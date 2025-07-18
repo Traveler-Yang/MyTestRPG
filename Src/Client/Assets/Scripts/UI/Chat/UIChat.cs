@@ -76,6 +76,7 @@ public class UIChat : MonoBehaviour
     public void OnClickSend()
     {
         OnEndInput(this.chatText.text);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
     }
 
     /// <summary>
