@@ -30,8 +30,4 @@ json-excel\json-excel json Tables\ Data\
 @copy Data\ShopItemDefine.txt ..\Client\Data\
 @copy Data\ShopItemDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data\
 
-@copy Data\TeleporterDefine.txt ..\Client\Data\
-@copy Data\TeleporterDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data\
-
-
 pause

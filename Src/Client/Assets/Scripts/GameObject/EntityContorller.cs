@@ -43,6 +43,11 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
         anim.SetFloat("Speed", speed);
     }
 
+    public void SetDirectionSpeed(float speed)
+    {
+        anim.SetFloat("Turn Speed", speed);
+    }
+
     void UpdateTransform()
 	{
 		this.position = GameObjectTool.LogicToWorld(entity.position);
