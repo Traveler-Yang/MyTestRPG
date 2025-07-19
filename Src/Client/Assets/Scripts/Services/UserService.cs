@@ -248,6 +248,7 @@ namespace Services
                     QuestManager.Instance.Init(response.Character.Quests);//初始化任务
                     FriendManager.Instance.Init(response.Character.Friends);//初始化好友
                     GuildManager.Instance.Init(response.Character.Guild);
+
                 }
             }
         }

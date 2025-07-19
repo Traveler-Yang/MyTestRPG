@@ -30,24 +30,25 @@ public class UIRegisters : MonoBehaviour {
     {
 		if (string.IsNullOrEmpty(username.text))
 		{
-            MessageBox.Show("请输入账号");
+            MessageBox.Show("请输入账号", "提示", MessageBoxType.Information);
             return;
 		}
         if (string.IsNullOrEmpty(password.text))
         {
-            MessageBox.Show("请输入密码");
+            MessageBox.Show("请输入密码", "提示", MessageBoxType.Information);
             return;
         }
         if (string.IsNullOrEmpty(verifyPassword.text))
         {
-            MessageBox.Show("请输入确认密码");
+            MessageBox.Show("请输入确认密码", "提示", MessageBoxType.Information);
             return;
         }
         if (password.text != verifyPassword.text)
         {
-            MessageBox.Show("两次输入的密码不一致");
+            MessageBox.Show("两次输入的密码不一致", "提示", MessageBoxType.Information);
             return;
         }
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
         UserService.Instance.SendRegister(username.text, password.text);
     }
 }

@@ -75,6 +75,7 @@ public class UICharacterSelect : MonoBehaviour {
 
     public void OnSelectCharacter(int idx, CharacterClass charClass)
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         this.selectCharacterIdx = idx;
         var cha = User.Instance.Info.Player.Characters[idx];
         Debug.LogFormat("Select Char:[{0}]{1}[{2}]", cha.Id, cha.Name, cha.Class);
@@ -100,6 +101,7 @@ public class UICharacterSelect : MonoBehaviour {
             MessageBox.Show("请输入昵称");
             return;
         }
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         UserService.Instance.SendCharacterCreate(this.characterName.text, charClass);//输入完昵称，创建角色，将信息发送给UserService
         //SceneManager.Instance.LoadScene("MainCity");
     }

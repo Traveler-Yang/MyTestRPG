@@ -5,42 +5,59 @@ using UnityEngine.Events;
 
 public class SceneManager : MonoSingleton<SceneManager>
 {
-    UnityAction<float> onProgress = null;
+    public GameObject loadingUIPrefab;
 
-    // Use this for initialization
-    protected override void OnStart()
+    private LoadingUIController loadingUI;
+
+    public void LoadScene(string sceneName)
     {
-        
+        StartCoroutine(LoadSceneAsync(sceneName));
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
-    public void LoadScene(string name)
+    /// <summary>
+    /// 协程加载场景
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
+    IEnumerator LoadSceneAsync(string sceneName)
     {
-        StartCoroutine(LoadLevel(name));
-    }
+        GameObject ui = Instantiate(loadingUIPrefab);
+        loadingUI = ui.GetComponent<LoadingUIController>();
 
-    IEnumerator LoadLevel(string name)
-    {
-        Debug.LogFormat("LoadLevel: {0}", name);
-        AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name);
-        async.allowSceneActivation = true;
-        async.completed += LevelLoadCompleted;
-        while (!async.isDone)
+        DontDestroyOnLoad(ui); // 切场景时不销毁
+
+        //异步加载场景
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+        //设置加载场景时不自动切换
+        op.allowSceneActivation = false;
+
+        float fakeProgress = 0f;
+        //当前加载未完成
+        while (!op.isDone)
         {
-            if (onProgress != null)
-                onProgress(async.progress);
+            //获取操作进度
+            float progress = Mathf.Clamp01(op.progress / 0.9f);
+            if (progress > fakeProgress)
+            {
+                fakeProgress += Time.deltaTime; // 每帧平滑增加
+            }
+            loadingUI.SetProgress(fakeProgress);
+            if (op.progress >= 0.9f)
+            {
+                //加载完成后
+                //激活场景切换
+                op.allowSceneActivation = true;
+                //按任意键继续
+                //loadingUI.ShowComplete();
+                //if (Input.anyKeyDown)
+                //{
+                //    op.allowSceneActivation = true;
+                //}
+            }
+
             yield return null;
         }
-    }
 
-    private void LevelLoadCompleted(AsyncOperation obj)
-    {
-        if (onProgress != null)
-            onProgress(1f);
-        Debug.Log("LevelLoadCompleted:" + obj.progress);
+        Destroy(ui); // 场景加载完成后清除 LoadingUI
     }
 }

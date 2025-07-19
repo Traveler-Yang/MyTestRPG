@@ -24,6 +24,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance != null && instance != this.gameObject.GetComponent<T>())
             {
+                Debug.LogWarning(this.gameObject.name);
                 Destroy(this.gameObject);
                 return;
             }

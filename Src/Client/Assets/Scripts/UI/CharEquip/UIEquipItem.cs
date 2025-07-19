@@ -114,6 +114,7 @@ public class UIEquipItem : MonoBehaviour, IPointerClickHandler
             {
                 this.owner.DoEquip(this.item);
             }
+            SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Equip);
         };
     }
 

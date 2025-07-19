@@ -18,18 +18,19 @@ public class UILogin : MonoBehaviour {
 	}
 
 	public void OnLoginClickButton()
-	{
+    {
         if (string.IsNullOrEmpty(username.text))
 		{
-            MessageBox.Show("请输入账号");
+            MessageBox.Show("请输入账号", "提示", MessageBoxType.Information);
             return;
         }
 		if (string.IsNullOrEmpty(password.text))
 		{
-            MessageBox.Show("请输入密码");
+            MessageBox.Show("请输入密码", "提示", MessageBoxType.Information);
             return;
         }
-		UserService.Instance.SendLogin(username.text, password.text);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
+        UserService.Instance.SendLogin(username.text, password.text);
     }
     void OnLogin(Result result, string msg)
     {

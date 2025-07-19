@@ -215,21 +215,7 @@ namespace Network
 
         }
 
-        public NetMessage request;
-        public NetMessageRequest Request
-        {
-            get
-            {
-                if (this.request == null)
-                {
-                    request = new NetMessage();
-                }
-                if (request.Request == null)
-                    request.Request = new NetMessageRequest();
-                return request.Request;
-            }
-        }
-
+       
         //send a Protobuf message
         public void SendMessage(NetMessage message)
         {

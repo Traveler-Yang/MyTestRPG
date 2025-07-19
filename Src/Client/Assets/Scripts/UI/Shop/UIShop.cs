@@ -86,7 +86,7 @@ public class UIShop : UIWindow
         }
         if (!ShopManager.Instance.BuyItem(this.shop.ID, this.selsecShopItem.ShopItemID))
         {
-
+            SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Shop_Buy);
         }
     }
 }

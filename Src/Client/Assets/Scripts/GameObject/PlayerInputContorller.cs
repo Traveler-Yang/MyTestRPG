@@ -15,6 +15,7 @@ public class PlayerInputContorller : MonoBehaviour {
     public float gravity = 9.81f;        // 重力值
 
     SkillBridge.Message.CharacterState state;
+    EntityEvent EntityEventstate = EntityEvent.Idle;
 
 	public Character character;//角色
 
@@ -29,7 +30,8 @@ public class PlayerInputContorller : MonoBehaviour {
     public EntityContorller entityContorller;
 
 	public bool onAir = false;
-	void Start () 
+
+    void Start () 
 	{
         controller = GetComponent<CharacterController>();
 		state = SkillBridge.Message.CharacterState.Idle;
@@ -69,18 +71,33 @@ public class PlayerInputContorller : MonoBehaviour {
         // 状态切换
         if (v > 0)
         {
-            character.MoveForward();
-            SendEntityEvent(EntityEvent.MoveFwd);
+            if (EntityEventstate != EntityEvent.MoveFwd)
+            {
+                EntityEventstate = EntityEvent.MoveFwd;
+                character.MoveForward();
+                SendEntityEvent(EntityEvent.MoveFwd);
+            }
         }
         else if (v < 0)
         {
-            character.MoveBack();
-            SendEntityEvent(EntityEvent.MoveBack);
+            if (EntityEventstate != EntityEvent.MoveBack)
+            {
+                EntityEventstate = EntityEvent.MoveBack;
+                character.MoveBack();
+                SendEntityEvent(EntityEvent.MoveBack);
+            }
+                
+             
         }
         else
         {
-            character.Stop();
-            SendEntityEvent(EntityEvent.Idle);
+            if (EntityEventstate != EntityEvent.Idle)
+            {
+                character.Stop();
+                EntityEventstate = EntityEvent.Idle;
+                SendEntityEvent(EntityEvent.Idle);
+            }
+           
         }
 
         // 左右转向
@@ -147,9 +164,15 @@ public class PlayerInputContorller : MonoBehaviour {
         this.lastPos = this.transform.position;
 
         var logicPos = GameObjectTool.WorldToLogic(this.transform.position);
-        if ((logicPos - this.character.position).magnitude > 50)
+        //if ((logicPos - this.character.position).magnitude > 50)
+        //{
+        //    this.character.SetPosition(logicPos);
+        //    this.SendEntityEvent(EntityEvent.None);
+        //}
+
+        if ((GameObjectTool.WorldToLogic(this.transform.position) - this.character.position).magnitude > 100)
         {
-            this.character.SetPosition(logicPos);
+            this.character.SetPosition(GameObjectTool.WorldToLogic(this.transform.position));
             this.SendEntityEvent(EntityEvent.None);
         }
 
