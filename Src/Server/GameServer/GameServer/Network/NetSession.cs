@@ -27,7 +27,7 @@ namespace Network
         public void Disconnected()
         {
             this.PostResponser = null;
-            if (this.Character != null)
+            if (this.Character != null && GameServer.Managers.CharacterManager.Instance.Characters.ContainsKey(Character.TChar.ID))
                 UserService.Instance.CharacterLeave(this.Character);
         }
 
