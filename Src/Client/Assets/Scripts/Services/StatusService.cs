@@ -44,7 +44,7 @@ namespace Services
 
         public void Dispose()
         {
-            MessageDistributer.Instance.Subscribe<StatusNotify>(this.OnStatusNotify);
+            MessageDistributer.Instance.Unsubscribe<StatusNotify>(this.OnStatusNotify);
         }
 
         private void OnStatusNotify(object sender, StatusNotify notify)

@@ -37,5 +37,6 @@ public class TabButton : MonoBehaviour
     void OnClick()
     {
         this.tabView.SelectTab(this.tabIndex);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
 }

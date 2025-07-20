@@ -18,8 +18,8 @@ namespace Services
 
         public void Dispose()
         {
-            MessageDistributer.Instance.Subscribe<ItemBuyResponse>(this.OnBuyItem);
-            MessageDistributer.Instance.Subscribe<ItemEquipResponse>(this.OnItemEquip);
+            MessageDistributer.Instance.Unsubscribe<ItemBuyResponse>(this.OnBuyItem);
+            MessageDistributer.Instance.Unsubscribe<ItemEquipResponse>(this.OnItemEquip);
         }
 
         public void SendBuyItem(int shopId, int ShopItemId)
@@ -40,6 +40,7 @@ namespace Services
             if (response.Result == Result.Success)
             {
                 MessageBox.Show("购买结果" + response.Result + "\n" + response.Errormsg, "购买完成");
+                SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Shop_Buy);
             }
         }
 
@@ -78,7 +79,7 @@ namespace Services
                         EquipManager.Instance.OnUnEquipItem(pendingEquip.EquipInfo.Slot);
                     pendingEquip = null;
                 }
-
+                SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Equip);
             }
         }
 

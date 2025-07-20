@@ -21,8 +21,8 @@ namespace Services
 
         public void Dispose()
         {
-            MessageDistributer.Instance.Subscribe<QuestAcceptResponse>(this.OnQuestAccept);
-            MessageDistributer.Instance.Subscribe<QuestSubmitResponse>(this.OnQuestSubmit);
+            MessageDistributer.Instance.Unsubscribe<QuestAcceptResponse>(this.OnQuestAccept);
+            MessageDistributer.Instance.Unsubscribe<QuestSubmitResponse>(this.OnQuestSubmit);
         }
 
         public bool SendQuestAccept(Quest quest)

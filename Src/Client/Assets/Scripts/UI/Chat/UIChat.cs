@@ -76,7 +76,7 @@ public class UIChat : MonoBehaviour
     public void OnClickSend()
     {
         OnEndInput(this.chatText.text);
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
 
     /// <summary>
@@ -106,6 +106,7 @@ public class UIChat : MonoBehaviour
     /// <param name="idx">当前切换的频道索引</param>
     public void OnSendChannelChanged(int idx)
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         //如果当前选择的频道和当前频道一致，则不切换频道，直接返回
         if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(idx + 1))
             return;

@@ -86,6 +86,7 @@ public class UICharacterSelect : MonoBehaviour {
             UICharInfo ci = this.uiChars[i].GetComponent<UICharInfo>();
             ci.Selected = idx == i;
         }
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
     public void Onclass(CharacterClass charClass)
     {
@@ -133,6 +134,7 @@ public class UICharacterSelect : MonoBehaviour {
         }
 
         descs.text = DataManager.Instance.Characters[charClass].Description;//将职业描述赋值到UI
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
 
     }
     /// <summary>
@@ -144,5 +146,6 @@ public class UICharacterSelect : MonoBehaviour {
         {
             UserService.Instance.SendGameEnter(selectCharacterIdx);
         }
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
     }
 }

@@ -12,12 +12,18 @@ public class UISetting : UIWindow
     public Slider sliderMusic;//音乐滑块
     public Slider sliderSound;//音效滑块
 
+    private bool isInit = false;
+
     private void Start()
     {
+        isInit = true;
+
         this.toggleMusic.isOn = Config.MusicOn;
         this.toggleSound.isOn = Config.SoundOn;
         this.sliderMusic.value = Config.MusicVolume;
         this.sliderSound.value = Config.SoundVolume;
+
+        isInit = false;
     }
 
     /// <summary>
@@ -55,24 +61,28 @@ public class UISetting : UIWindow
 
     public void MusicVolume(float vol)
     {
+        if (isInit) return; // 避免在初始化时触发事件
         Config.MusicVolume = (int)vol;
         PlaySound();
     }
 
     public void MusicToggle(bool on)
     {
+        if (isInit) return; // 避免在初始化时触发事件
         Config.MusicOn = on;
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
     }
 
     public void SoundVolume(float vol)
     {
+        if (isInit) return; // 避免在初始化时触发事件
         Config.SoundVolume = (int)vol;
         PlaySound();
     }
 
     public void SoundToggle(bool on)
     {
+        if (isInit) return; // 避免在初始化时触发事件
         Config.SoundOn = on;
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
     }
