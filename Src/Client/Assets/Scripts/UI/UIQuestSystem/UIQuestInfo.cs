@@ -23,6 +23,9 @@ public class UIQuestInfo : MonoBehaviour
     public TextMeshProUGUI rewarGold;//任务奖励金币
     public TextMeshProUGUI rewarExp;//任务奖励经验
 
+    public Button navButton;//导航按钮
+    private int npc = 0;
+
     private void Start()
     {
         for (int i = 0; i < rewardItems.Length; i++)
@@ -76,10 +79,34 @@ public class UIQuestInfo : MonoBehaviour
         this.rewarGold.text = quest.Define.RewardGold.ToString();
         this.rewarExp.text = quest.Define.RewardExp.ToString();
 
+        if (quest.Info == null)
+        {
+            //如果info为null，则表示是新任务，则显示接受NPC
+            this.npc = quest.Define.AcceptNPC;
+        }
+        else if (quest.Info.Status == SkillBridge.Message.QuestStatus.Complated)
+        {
+            //如果info不为null，并且任务状态是已经完成的，则显示提交NPC
+            this.npc = quest.Define.SubmitNPC;
+        }
+        this.navButton.gameObject.SetActive(this.npc > 0);
+
         foreach (var fitter in GetComponentsInChildren<ContentSizeFitter>())
         {
             fitter.SetLayoutVertical();
         }
+    }
+
+    public void OnClickAbandon()
+    {
+
+    }
+
+    public void OnClickNav()
+    {
+        Vector3 pos = NPCManager.Instance.GetNpcPosition(this.npc);
+        User.Instance.CurrentCharacterObject.StartNav(pos);
+        UIManager.Instance.Close<UIQuestSystem>();
     }
 
     /// <summary>

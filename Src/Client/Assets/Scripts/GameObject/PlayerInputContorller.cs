@@ -5,6 +5,7 @@ using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerInputContorller : MonoBehaviour {
@@ -31,6 +32,12 @@ public class PlayerInputContorller : MonoBehaviour {
 
 	public bool onAir = false;
 
+    NpcQuestStatus questStatus;
+
+    private NavMeshAgent agent;//寻路代理组件
+
+    private bool autoVav;//是否在寻路
+
     void Start () 
 	{
         controller = GetComponent<CharacterController>();
@@ -52,11 +59,84 @@ public class PlayerInputContorller : MonoBehaviour {
 
 			if (entityContorller != null) entityContorller.entity = this.character;
 		}
+        if (this.agent == null)
+        {
+            this.agent = this.gameObject.AddComponent<NavMeshAgent>();
+            this.agent.stoppingDistance = 0.3f;//设置到达目标点的停止的距离
+        }
+    }
+
+    /// <summary>
+    /// 开始寻路
+    /// </summary>
+    /// <param name="target">目标点</param>
+    public void StartNav(Vector3 target)
+    {
+        StartCoroutine(BeginNav(target));
+    }
+
+    IEnumerator BeginNav(Vector3 target)
+    {
+        agent.SetDestination(target);//设置目标点
+        yield return null;
+        autoVav = true;//设置开始寻路
+        if (state != CharacterState.Move)//判断当前是否是移动状态
+        {
+            state = CharacterState.Move;
+            this.character.MoveForward();
+            SendEntityEvent(EntityEvent.MoveFwd);
+            agent.speed = this.character.speed;//设置寻路速度
+        }
+    }
+
+    public void StopNav()
+    {
+        autoVav = false;//设置停止寻路
+        agent.ResetPath();//重置寻路路径
+        if (state != CharacterState.Idle)
+        {
+            this.controller.Move(Vector3.zero);//停止移动
+            state = CharacterState.Idle;
+            this.character.Stop();
+            SendEntityEvent(EntityEvent.Idle);
+        }
+        NavPathRenderer.Instance.SetPath(null, Vector3.zero);//清除寻路路径渲染
+    }
+
+    public void MoveNav()
+    {
+        if (agent.pathPending) return; // 如果寻路已经完成，直接返回
+        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            StopNav();
+            return; // 如果路径无效，停止寻路
+        }
+
+        if (agent.pathStatus != NavMeshPathStatus.PathComplete) return; // 如果寻路未完成，直接返回
+
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > 0.1 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1)
+        {
+            StopNav();
+            return; // 如果有输入，停止寻路
+        }
+
+        NavPathRenderer.Instance.SetPath(agent.path, agent.destination);//设置寻路路径
+        if (agent.isStopped || agent.remainingDistance < 1f)
+        {
+            StopNav();
+            return; // 如果寻路已停止或到达目标点，停止寻路
+        }
     }
 
     void Update ()
     {
         if (character == null || this.entityContorller == null) return;
+
+        if (autoVav)
+        {
+            MoveNav();
+            return;
+        }
 
         CaculateGravity();
         if (InputManager.Instance != null && InputManager.Instance.IsInputMode) return;
@@ -177,7 +257,9 @@ public class PlayerInputContorller : MonoBehaviour {
         }
 
         Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
-        Quaternion rot = Quaternion.FromToRotation(dir, this.transform.forward);
+        Quaternion rot = new Quaternion();
+        rot.SetFromToRotation(dir, this.transform.forward);
+
         if (rot.eulerAngles.y > this.turnAngle && rot.eulerAngles.y < (360 - this.turnAngle))
         {
             character.SetDirection(GameObjectTool.WorldToLogic(this.transform.forward));

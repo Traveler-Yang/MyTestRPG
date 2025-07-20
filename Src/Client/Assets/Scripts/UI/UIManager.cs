@@ -77,7 +77,7 @@ public class UIManager : Singleton<UIManager>
     /// 关闭UI界面
     /// </summary>
     /// <param name="type">UI信息字典的Key值，指的哪一个UI</param>
-    public void Colse(Type type)
+    public void Close(Type type)
     {
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
         //检查UI是否存在
@@ -98,5 +98,11 @@ public class UIManager : Singleton<UIManager>
                 uiInfo.instance = null;
             }
         }
+    }
+
+    public void Close<T>()
+    {
+        //调用Close方法，传入UI类型
+        Close(typeof(T));
     }
 }

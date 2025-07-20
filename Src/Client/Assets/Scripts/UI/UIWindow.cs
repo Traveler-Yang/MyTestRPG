@@ -28,7 +28,7 @@ public class UIWindow : MonoBehaviour
     public void Close(UIWindowResult result = UIWindowResult.None)
     {
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
-        UIManager.Instance.Colse(this.Type);
+        UIManager.Instance.Close(this.Type);
         if(this.OnClose != null)
             this.OnClose(this, result);
         this.OnClose = null; // 清除事件订阅，避免内存泄漏

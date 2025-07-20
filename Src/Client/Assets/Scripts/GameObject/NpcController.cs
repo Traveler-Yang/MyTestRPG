@@ -26,6 +26,7 @@ public class NpcController : MonoBehaviour
         animator = GetComponent<Animator>();
         //originalColor = renderer.sharedMaterial.color; // 保存NPC的原始颜色
         npc = NPCManager.Instance.GetNpcDefine(npcId);
+        NPCManager.Instance.UpdateNpcPosition(npcId, this.transform.position);//更新NPC的位置到NPCManager中
         //this.StartCoroutine(Actions());
         RefreshNpcStatus();
         QuestManager.Instance.onQuestStatusChanged += OnQuestStatusChanged;
@@ -136,6 +137,11 @@ public class NpcController : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (Vector3.Distance(this.transform.position, User.Instance.CurrentCharacterObject.transform.position) > 2f)
+        {
+            //点击NPC时，如果距离大于2米，则开始导航到NPC位置
+            User.Instance.CurrentCharacterObject.StartNav(this.transform.position);
+        }
         //鼠标点击NPC时，开始交互
         Interactive();
     }
