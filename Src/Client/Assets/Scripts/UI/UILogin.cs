@@ -19,6 +19,7 @@ public class UILogin : MonoBehaviour {
 
 	public void OnLoginClickButton()
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         if (string.IsNullOrEmpty(username.text))
 		{
             MessageBox.Show("请输入账号", "提示", MessageBoxType.Information);
@@ -29,7 +30,6 @@ public class UILogin : MonoBehaviour {
             MessageBox.Show("请输入密码", "提示", MessageBoxType.Information);
             return;
         }
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
         UserService.Instance.SendLogin(username.text, password.text);
     }
     void OnLogin(Result result, string msg)

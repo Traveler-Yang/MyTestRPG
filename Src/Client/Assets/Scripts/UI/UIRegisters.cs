@@ -28,7 +28,8 @@ public class UIRegisters : MonoBehaviour {
 
     public void OnRegistersClickButton()
     {
-		if (string.IsNullOrEmpty(username.text))
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        if (string.IsNullOrEmpty(username.text))
 		{
             MessageBox.Show("请输入账号", "提示", MessageBoxType.Information);
             return;
@@ -48,7 +49,6 @@ public class UIRegisters : MonoBehaviour {
             MessageBox.Show("两次输入的密码不一致", "提示", MessageBoxType.Information);
             return;
         }
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
         UserService.Instance.SendRegister(username.text, password.text);
     }
 }

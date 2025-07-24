@@ -54,7 +54,7 @@ public class UISetting : UIWindow
 
     public override void OnYesClick()
     {
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         PlayerPrefs.Save();
         base.OnYesClick();
     }
@@ -70,7 +70,7 @@ public class UISetting : UIWindow
     {
         if (isInit) return; // 避免在初始化时触发事件
         Config.MusicOn = on;
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
 
     public void SoundVolume(float vol)
@@ -84,7 +84,7 @@ public class UISetting : UIWindow
     {
         if (isInit) return; // 避免在初始化时触发事件
         Config.SoundOn = on;
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
 
     float lastPlay = 0;

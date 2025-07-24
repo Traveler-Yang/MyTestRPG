@@ -146,6 +146,6 @@ public class UICharacterSelect : MonoBehaviour {
         {
             UserService.Instance.SendGameEnter(selectCharacterIdx);
         }
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Chat_Send);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
     }
 }

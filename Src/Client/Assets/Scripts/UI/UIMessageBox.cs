@@ -30,6 +30,7 @@ public class UIMessageBox : MonoBehaviour {
 
     public void Init(string title, string message, MessageBoxType type = MessageBoxType.Information, string btnOK = "", string btnCancel = "")
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Open);
         if (!string.IsNullOrEmpty(title)) this.title.text = title;
         this.message.text = message;
         this.icons[0].enabled = type == MessageBoxType.Information;
@@ -44,15 +45,15 @@ public class UIMessageBox : MonoBehaviour {
 
         this.buttonNo.gameObject.SetActive(type == MessageBoxType.Confirm);
 
-        if(type == MessageBoxType.Error)
-            SoundManager.Instance.PlaySound(SoundDefine.SFX_Message_Error);
-        else
-            SoundManager.Instance.PlaySound(SoundDefine.SFX_Message_Info);
+        //if(type == MessageBoxType.Error)
+        //    SoundManager.Instance.PlaySound(SoundDefine.SFX_Message_Error);
+        //else
+        //    SoundManager.Instance.PlaySound(SoundDefine.SFX_Message_Info);
     }
 
     void OnClickYes()
     {
-        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Confirm);
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
         Destroy(this.gameObject);
         if (this.OnYes != null)
             this.OnYes();

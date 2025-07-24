@@ -41,8 +41,9 @@ public class UIMain : MonoSingleton<UIMain>
 	/// 背包按钮
 	/// </summary>
 	public static void OnClickBag()
-	{
-		UIManager.Instance.Show<UIBag>();
+    {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UIBag>();
 	}
 
 	/// <summary>
@@ -50,7 +51,8 @@ public class UIMain : MonoSingleton<UIMain>
 	/// </summary>
 	public static void OnClickCharEquip()
 	{
-		UIManager.Instance.Show<UICharEquip>();
+		SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UICharEquip>();
 	}
 
 	/// <summary>
@@ -58,7 +60,8 @@ public class UIMain : MonoSingleton<UIMain>
 	/// </summary>
 	public static void OnClickQuest()
 	{
-		UIManager.Instance.Show<UIQuestSystem>();
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UIQuestSystem>();
     }
 
 	/// <summary>
@@ -66,30 +69,34 @@ public class UIMain : MonoSingleton<UIMain>
 	/// </summary>
 	public static void OnClickFriend()
 	{
-		UIManager.Instance.Show<UIFriends>();
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UIFriends>();
 	}
 
 	/// <summary>
 	/// 公会按钮
 	/// </summary>
 	public static void OnClickGuild()
-	{
-		GuildManager.Instance.ShowGuild();
+    {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        GuildManager.Instance.ShowGuild();
 	}
 
 	/// <summary>
 	/// 坐骑按钮
 	/// </summary>
 	public static void OnClickRide()
-	{
-		UIManager.Instance.Show<UIRide>();
+    {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UIRide>();
 	}
 
 	/// <summary>
 	/// 技能按钮
 	/// </summary>
 	public static void OnClickSKill()
-	{
+    {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
         MessageBox.Show("暂未开放", "提示", MessageBoxType.Information);
     }
 
@@ -98,15 +105,17 @@ public class UIMain : MonoSingleton<UIMain>
     /// </summary>
     public static void OnClickSetting()
     {
-		UIManager.Instance.Show<UISetting>();	
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        UIManager.Instance.Show<UISetting>();	
     }
 
 	/// <summary>
 	/// 邮件按钮
 	/// </summary>
 	public static void OnClickEmail()
-	{
-		MessageBox.Show("暂未开放", "提示", MessageBoxType.Information);
+    {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
+        MessageBox.Show("暂未开放", "提示", MessageBoxType.Information);
 	}
 
     public void ShowTeamUI(bool show)
