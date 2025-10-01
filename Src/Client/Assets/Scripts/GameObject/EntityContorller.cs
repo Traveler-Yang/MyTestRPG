@@ -95,24 +95,24 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
         switch(entityEvent)
         {
             case EntityEvent.Idle:
-                anim.SetBool("Move", false);
-                anim.SetBool("MoveFow", false);
-                anim.SetBool("MoveBack", false);
-                anim.SetTrigger("Idle");
+                //anim.SetBool("Move", false);
+                //anim.SetBool("MoveFow", false);
+                //anim.SetBool("MoveBack", false);
+                //anim.SetTrigger("Idle");
                 break;
             case EntityEvent.MoveFwd:
-                anim.SetBool("Move", true);
-                anim.SetBool("MoveFow", true);
+                //anim.SetBool("Move", true);
+                //anim.SetBool("MoveFow", true);
                 break;
             case EntityEvent.MoveBack:
-                anim.SetBool("Move", true);
-                anim.SetBool("MoveBack", true);
+                //anim.SetBool("Move", true);
+                //anim.SetBool("MoveBack", true);
                 break;
             case EntityEvent.Jump:
-                anim.SetTrigger("Jump");
+                //anim.SetTrigger("Jump");
                 break;
             case EntityEvent.RunningJump:
-                anim.SetTrigger("RunningJump");
+                //anim.SetTrigger("RunningJump");
                 break;
             case EntityEvent.Ride:
                 this.Ride(param);

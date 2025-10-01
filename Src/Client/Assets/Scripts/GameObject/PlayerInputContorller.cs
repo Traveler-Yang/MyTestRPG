@@ -20,13 +20,27 @@ public class PlayerInputContorller : MonoBehaviour {
 
 	public Character character;//角色
 
-	public float rotateSpeed = 2.0f;//旋转速度
-
 	public float turnAngle = 10;
 
 	public int speed;//移动速度
 
     public float jumpPower = 3.0f;//跳跃力度
+
+    private int speedZID = Animator.StringToHash("Horizontal Speed");
+    private int speedRotateID = Animator.StringToHash("Vertical Speed");
+
+    // 当前实际移动速度（逐渐变化）
+    private float currentSpeed = 0f;
+
+    // 最大速度
+    public float moveSpeed = 5f;
+
+    // 加速度（数值越大加速越快）
+    public float acceleration = 5f;
+
+    private float animH = 0f;
+    private float animV = 0f;
+    public float animAcceleration = 5f; // 动画平滑速度
 
     public EntityContorller entityContorller;
 
@@ -144,71 +158,140 @@ public class PlayerInputContorller : MonoBehaviour {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
 
-        Vector3 move = new Vector3(h, 0, v);
-        Vector3 moveDir = transform.TransformDirection(move.normalized);
+        #region 方向计算
+        // 输入方向
+        Vector3 inputDir = new Vector3(h, 0, v);
 
-        // 前后移动方向（角色面向方向）
-        // 状态切换
-        if (v > 0)
+        // 如果输入太小就直接归零
+        if (inputDir.magnitude < 0.1f)
+        {
+            inputDir = Vector3.zero;
+        }
+
+        // 获取摄像机
+        Transform cam = Camera.main.transform;
+
+        // 相机的前方向（忽略 y 分量）
+        Vector3 camForward = cam.forward;
+        camForward.y = 0;
+        camForward.Normalize();
+
+        // 相机的右方向
+        Vector3 camRight = cam.right;
+        camRight.y = 0;
+        camRight.Normalize();
+
+        // 把输入映射到相机空间
+        Vector3 moveDir = (camForward * v + camRight * h).normalized;
+        #endregion
+
+        // 目标速度（输入方向 × 最大速度）
+        float targetSpeed = inputDir.magnitude * moveSpeed;
+
+        // 线性插值（让 currentSpeed 逐渐靠近 targetSpeed）
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * acceleration);
+
+        // 移动
+        Vector3 finalMove = moveDir * currentSpeed;
+        finalMove.y = verticalVelocity;
+        controller.Move(finalMove * Time.deltaTime);
+
+        // 角色朝向
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(moveDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
+        }
+
+        // 目标值（输入值）
+        float targetH = h;
+        float targetV = v;
+
+        // 平滑插值 (让动画参数逐渐变化，而不是瞬间跳变)
+        animH = Mathf.Lerp(animH, targetH, Time.deltaTime * animAcceleration);
+        animV = Mathf.Lerp(animV, targetV, Time.deltaTime * animAcceleration);
+
+        // 设置给 Animator
+        entityContorller.anim.SetFloat(speedZID, animH);
+        entityContorller.anim.SetFloat(speedRotateID, animV);
+
+        if (inputDir.magnitude > 0.1f) // 不管前后还是左右，只要有输入
         {
             if (EntityEventstate != EntityEvent.MoveFwd)
             {
                 EntityEventstate = EntityEvent.MoveFwd;
-                character.MoveForward();
+                character.MoveForward(); // 这里其实是“移动中”的意思
                 SendEntityEvent(EntityEvent.MoveFwd);
             }
-        }
-        else if (v < 0)
-        {
-            if (EntityEventstate != EntityEvent.MoveBack)
-            {
-                EntityEventstate = EntityEvent.MoveBack;
-                character.MoveBack();
-                SendEntityEvent(EntityEvent.MoveBack);
-            }
-                
-             
         }
         else
         {
             if (EntityEventstate != EntityEvent.Idle)
             {
-                character.Stop();
                 EntityEventstate = EntityEvent.Idle;
+                character.Stop();
                 SendEntityEvent(EntityEvent.Idle);
             }
-           
         }
+
+        #region 废弃代码
+        // 前后移动方向（角色面向方向）
+        // 状态切换
+        //if (v > 0)
+        //{
+        //    if (EntityEventstate != EntityEvent.MoveFwd)
+        //    {
+        //        EntityEventstate = EntityEvent.MoveFwd;
+        //        character.MoveForward();
+        //        SendEntityEvent(EntityEvent.MoveFwd);
+        //    }
+        //}
+        //else if (v < 0)
+        //{
+        //    if (EntityEventstate != EntityEvent.MoveBack)
+        //    {
+        //        EntityEventstate = EntityEvent.MoveBack;
+        //        character.MoveBack();
+        //        SendEntityEvent(EntityEvent.MoveBack);
+        //    }
+
+
+        //}
+        //else
+        //{
+        //    if (EntityEventstate != EntityEvent.Idle)
+        //    {
+        //        character.Stop();
+        //        EntityEventstate = EntityEvent.Idle;
+        //        SendEntityEvent(EntityEvent.Idle);
+        //    }
+
+        //}
 
         // 左右转向
-        if (h != 0)
-        {
-            transform.Rotate(0, h * rotateSpeed, 0);
-            Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
-            Quaternion rot = Quaternion.FromToRotation(dir, transform.forward);
-            if (rot.eulerAngles.y > turnAngle && rot.eulerAngles.y < (360 - turnAngle))
-            {
-                character.SetDirection(GameObjectTool.WorldToLogic(transform.forward));
-                SendEntityEvent(EntityEvent.None);
-            }
-        }
+        //if (h != 0)
+        //{
+        //    transform.Rotate(0, h * rotateSpeed, 0);
+        //    Vector3 dir = GameObjectTool.LogicToWorld(character.direction);
+        //    Quaternion rot = Quaternion.FromToRotation(dir, transform.forward);
+        //    if (rot.eulerAngles.y > turnAngle && rot.eulerAngles.y < (360 - turnAngle))
+        //    {
+        //        character.SetDirection(GameObjectTool.WorldToLogic(transform.forward));
+        //        SendEntityEvent(EntityEvent.None);
+        //    }
+        //}
 
         //跳跃
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
-        {
-            verticalVelocity = jumpPower;
-            onAir = true;
-            if (v > 0)
-                SendEntityEvent(EntityEvent.RunningJump);
-            else
-                SendEntityEvent(EntityEvent.Jump);
-        }
-
-        //加入垂直方向重力
-        Vector3 finalMove = moveDir * character.speed;
-        finalMove.y = verticalVelocity;
-
-        controller.Move(finalMove * Time.deltaTime);
+        //if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        //{
+        //    verticalVelocity = jumpPower;
+        //    onAir = true;
+        //    if (v > 0)
+        //        SendEntityEvent(EntityEvent.RunningJump);
+        //    else
+        //        SendEntityEvent(EntityEvent.Jump);
+        //}
+        #endregion
 
         if (entityContorller != null)
         {

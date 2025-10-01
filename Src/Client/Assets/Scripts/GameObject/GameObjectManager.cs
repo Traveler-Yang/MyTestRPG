@@ -74,6 +74,13 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             Characters[character.entityId] = go;
 
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+
+            // ✅ 只给本地玩家绑定相机
+            if (character.IsCurrentPlayer)
+            {
+                MainPlayerCamera camMgr = FindObjectOfType<MainPlayerCamera>();
+                camMgr.SetTarget(go.transform);
+            }
         }
         this.InitGameObject(Characters[character.entityId], character);
     }
