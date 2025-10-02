@@ -34,9 +34,23 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         if (player == null && User.Instance.CurrentCharacterObject != null)
         {
             player = User.Instance.CurrentCharacterObject.gameObject;
-
-            // 设置相机跟随本地玩家
             SetTarget(player.transform);
         }
+
+        // 🚨 UI模式下禁用相机旋转
+        if (vcam != null)
+        {
+            if (MouseControl.Instance != null && MouseControl.Instance.IsInUIMode())
+            {
+                vcam.m_XAxis.m_InputAxisName = ""; // 清空输入
+                vcam.m_YAxis.m_InputAxisName = "";
+            }
+            else
+            {
+                vcam.m_XAxis.m_InputAxisName = "Mouse X"; // 恢复
+                vcam.m_YAxis.m_InputAxisName = "Mouse Y";
+            }
+        }
     }
+
 }

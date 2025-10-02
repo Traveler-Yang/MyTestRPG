@@ -27,11 +27,13 @@ public class UIFriends : UIWindow
     private void OnEnable()
     {
         FriendService.Instance.OnFriendUpdate += RefreshUI;
+        MouseControl.Instance.OnUIOpen();
     }
 
     private void OnDisable()
     {
         FriendService.Instance.OnFriendUpdate -= RefreshUI;
+        MouseControl.Instance.OnUIClose();
     }
 
     public void OnFriendSelected(ListView.ListViewItem item)

@@ -34,6 +34,17 @@ public class UIQuestInfo : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        MouseControl.Instance.OnUIOpen();
+    }
+
+    void OnDisable()
+    {
+        MouseControl.Instance.OnUIClose();
+    }
+
+
     /// <summary>
     /// 设置任务面板的信息
     /// </summary>

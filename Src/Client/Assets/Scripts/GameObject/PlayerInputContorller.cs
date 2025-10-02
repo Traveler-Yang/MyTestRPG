@@ -146,6 +146,10 @@ public class PlayerInputContorller : MonoBehaviour {
     {
         if (character == null || this.entityContorller == null) return;
 
+        // 🚨 如果在UI模式，直接跳过角色输入
+        if (MouseControl.Instance != null && MouseControl.Instance.IsInUIMode())
+            return;
+
         if (autoVav)
         {
             MoveNav();

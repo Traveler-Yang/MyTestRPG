@@ -28,6 +28,17 @@ public class UIMessageBox : MonoBehaviour {
 		
 	}
 
+    void OnEnable()
+    {
+        MouseControl.Instance.OnUIOpen();
+    }
+
+    void OnDisable()
+    {
+        MouseControl.Instance.OnUIClose();
+    }
+
+
     public void Init(string title, string message, MessageBoxType type = MessageBoxType.Information, string btnOK = "", string btnCancel = "")
     {
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Open);

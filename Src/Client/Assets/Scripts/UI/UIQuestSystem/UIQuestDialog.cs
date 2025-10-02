@@ -17,6 +17,17 @@ public class UIQuestDialog : UIWindow
         
     }
 
+    void OnEnable()
+    {
+        MouseControl.Instance.OnUIOpen();
+    }
+
+    void OnDisable()
+    {
+        MouseControl.Instance.OnUIClose();
+    }
+
+
     public void SetQuest(Quest quest)
     {
         this.quest = quest;

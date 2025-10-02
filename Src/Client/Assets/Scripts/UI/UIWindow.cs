@@ -11,6 +11,17 @@ public class UIWindow : MonoBehaviour
 
     public GameObject Root;
 
+    void OnEnable()
+    {
+        MouseControl.Instance.OnUIOpen();
+    }
+
+    void OnDisable()
+    {
+        MouseControl.Instance.OnUIClose();
+    }
+
+
     /// <summary>
     /// UI窗口的默认选项类型
     /// </summary>

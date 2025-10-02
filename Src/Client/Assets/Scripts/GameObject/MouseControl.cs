@@ -1,38 +1,51 @@
 using UnityEngine;
 
-public class MouseControl : MonoBehaviour
+public class MouseControl : MonoSingleton<MouseControl>
 {
     private bool uiMode = false;
+    private int uiPanelCount = 0; // 当前打开的UI数量
 
     void Update()
     {
-        // 按下 Alt 键进入 UI 模式
+        // Alt 键切换（临时解锁）
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
-        {
             EnterUIMode();
-        }
-
-        // 松开 Alt 键恢复游戏模式
         if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
+            ExitUIMode();
+    }
+
+    public void EnterUIMode()
+    {
+        uiMode = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ExitUIMode()
+    {
+        // 如果有 UI 面板没关，不能退出 UI 模式
+        if (uiPanelCount > 0) return;
+
+        uiMode = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    // UI 打开时调用
+    public void OnUIOpen()
+    {
+        uiPanelCount++;
+        EnterUIMode();
+    }
+
+    // UI 关闭时调用
+    public void OnUIClose()
+    {
+        uiPanelCount = Mathf.Max(0, uiPanelCount - 1);
+        if (uiPanelCount == 0)
         {
             ExitUIMode();
         }
-    }
-
-    void EnterUIMode()
-    {
-        uiMode = true;
-        Cursor.lockState = CursorLockMode.None;  // 解锁鼠标
-        Cursor.visible = true;                  // 显示鼠标
-        // 这里可以通知 InputSystem/角色控制器暂停相机输入
-    }
-
-    void ExitUIMode()
-    {
-        uiMode = false;
-        Cursor.lockState = CursorLockMode.Locked; // 锁定鼠标
-        Cursor.visible = false;                  // 隐藏鼠标
-        // 恢复相机/角色控制
     }
 
     public bool IsInUIMode()
