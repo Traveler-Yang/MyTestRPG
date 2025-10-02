@@ -1669,12 +1669,16 @@ namespace SkillBridge.Message
         MoveFwd = 2,
         [global::ProtoBuf.ProtoEnum(Name = @"MOVE_BACK")]
         MoveBack = 3,
+        [global::ProtoBuf.ProtoEnum(Name = @"MOVE_RIGHT")]
+        MoveRight = 4,
+        [global::ProtoBuf.ProtoEnum(Name = @"MOVE_LEFT")]
+        MoveLeft = 5,
         [global::ProtoBuf.ProtoEnum(Name = @"JUMP")]
-        Jump = 4,
+        Jump = 6,
         [global::ProtoBuf.ProtoEnum(Name = @"RUNNING_JUMP")]
-        RunningJump = 5,
+        RunningJump = 7,
         [global::ProtoBuf.ProtoEnum(Name = @"RIDE")]
-        Ride = 6,
+        Ride = 8,
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"ITEM_TYPE")]

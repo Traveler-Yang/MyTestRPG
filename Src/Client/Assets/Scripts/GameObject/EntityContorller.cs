@@ -92,30 +92,31 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
 
     public void OnEntityEvent(EntityEvent entityEvent, int param)
     {
-        switch(entityEvent)
+        switch (entityEvent)
         {
             case EntityEvent.Idle:
-                //anim.SetBool("Move", false);
-                //anim.SetBool("MoveFow", false);
-                //anim.SetBool("MoveBack", false);
-                //anim.SetTrigger("Idle");
+                anim.SetFloat("Horizontal Speed", 0, 0, Time.deltaTime);
+                anim.SetFloat("Vertical Speed", 0, 0, Time.deltaTime);
                 break;
+
             case EntityEvent.MoveFwd:
-                //anim.SetBool("Move", true);
-                //anim.SetBool("MoveFow", true);
+                anim.SetFloat("Horizontal Speed", 0, 0, Time.deltaTime);
+                anim.SetFloat("Vertical Speed", 1, 0, Time.deltaTime);
                 break;
+
             case EntityEvent.MoveBack:
-                //anim.SetBool("Move", true);
-                //anim.SetBool("MoveBack", true);
+                anim.SetFloat("Horizontal Speed", 0, 0, Time.deltaTime);
+                anim.SetFloat("Vertical Speed", -1, 0, Time.deltaTime);
                 break;
-            case EntityEvent.Jump:
-                //anim.SetTrigger("Jump");
+
+            case EntityEvent.MoveRight:
+                anim.SetFloat("Horizontal Speed", 1, 0, Time.deltaTime);
+                anim.SetFloat("Vertical Speed", 0, 0, Time.deltaTime);
                 break;
-            case EntityEvent.RunningJump:
-                //anim.SetTrigger("RunningJump");
-                break;
-            case EntityEvent.Ride:
-                this.Ride(param);
+
+            case EntityEvent.MoveLeft:
+                anim.SetFloat("Horizontal Speed", -1, 0, Time.deltaTime);
+                anim.SetFloat("Vertical Speed", 0, 0, Time.deltaTime);
                 break;
         }
         if (this.rideController != null) this.rideController.OnEntityEvent(entityEvent, param);

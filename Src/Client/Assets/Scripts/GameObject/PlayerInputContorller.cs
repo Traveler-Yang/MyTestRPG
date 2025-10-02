@@ -333,7 +333,7 @@ public class PlayerInputContorller : MonoBehaviour {
         //    this.SendEntityEvent(EntityEvent.None);
         //}
 
-        if ((GameObjectTool.WorldToLogic(this.transform.position) - this.character.position).magnitude > 100)
+        if ((GameObjectTool.WorldToLogic(this.transform.position) - this.character.position).magnitude > 50)
         {
             this.character.SetPosition(GameObjectTool.WorldToLogic(this.transform.position));
             this.SendEntityEvent(EntityEvent.None);
