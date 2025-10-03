@@ -137,14 +137,26 @@ public class NpcController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Vector3.Distance(this.transform.position, User.Instance.CurrentCharacterObject.transform.position) > 2f)
+        var player = User.Instance.CurrentCharacterObject;
+        float distance = Vector3.Distance(this.transform.position, player.transform.position);
+
+        if (distance > 2f)
         {
-            //点击NPC时，如果距离大于2米，则开始导航到NPC位置
-            User.Instance.CurrentCharacterObject.StartNav(this.transform.position);
+            // 先走到 NPC
+            player.OnNavEnd += () =>
+            {
+                // 到达后再交互
+                Interactive();
+            };
+            player.StartNav(this.transform.position);
         }
-        //鼠标点击NPC时，开始交互
-        Interactive();
+        else
+        {
+            // 已经在范围内，直接交互
+            Interactive();
+        }
     }
+
 
     private void OnMouseOver()
     {

@@ -100,7 +100,7 @@ public class UIQuestInfo : MonoBehaviour
             //如果info不为null，并且任务状态是已经完成的，则显示提交NPC
             this.npc = quest.Define.SubmitNPC;
         }
-        this.navButton.gameObject.SetActive(this.npc > 0);
+        this.navButton?.gameObject.SetActive(this.npc > 0);
 
         foreach (var fitter in GetComponentsInChildren<ContentSizeFitter>())
         {
@@ -115,6 +115,7 @@ public class UIQuestInfo : MonoBehaviour
 
     public void OnClickNav()
     {
+        if (this.npc <= 0) return;
         Vector3 pos = NPCManager.Instance.GetNpcPosition(this.npc);
         User.Instance.CurrentCharacterObject.StartNav(pos);
         UIManager.Instance.Close<UIQuestSystem>();

@@ -5,6 +5,11 @@ public class MouseControl : MonoSingleton<MouseControl>
     private bool uiMode = false;
     private int uiPanelCount = 0; // 当前打开的UI数量
 
+    protected override void OnStart()
+    {
+        this.ExitUIMode();
+    }
+
     void Update()
     {
         // Alt 键切换（临时解锁）

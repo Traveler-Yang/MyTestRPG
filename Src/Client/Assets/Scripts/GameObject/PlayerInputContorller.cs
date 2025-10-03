@@ -52,6 +52,8 @@ public class PlayerInputContorller : MonoBehaviour {
 
     private bool autoVav;//是否在寻路
 
+    public event System.Action OnNavEnd; // 导航完成事件
+
     void Start () 
 	{
         controller = GetComponent<CharacterController>();
@@ -115,6 +117,10 @@ public class PlayerInputContorller : MonoBehaviour {
             SendEntityEvent(EntityEvent.Idle);
         }
         NavPathRenderer.Instance.SetPath(null, Vector3.zero);//清除寻路路径渲染
+
+        // 🚀 到达目标点后，触发事件
+        OnNavEnd?.Invoke();
+        OnNavEnd = null; // 执行一次后清空，避免多次触发
     }
 
     public void MoveNav()
