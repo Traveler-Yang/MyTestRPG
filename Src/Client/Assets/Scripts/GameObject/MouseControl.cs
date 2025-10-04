@@ -1,9 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MouseControl : MonoSingleton<MouseControl>
 {
     private bool uiMode = false;
-    private int uiPanelCount = 0; // µ±Ç°´ò¿ªµÄUIÊıÁ¿
+    private int uiPanelCount = 0; // å½“å‰æ‰“å¼€çš„UIæ•°é‡
+
+    public bool justSwitched = false; // ğŸš¨ æ–°å¢æ ‡å¿—ä½
 
     protected override void OnStart()
     {
@@ -12,7 +14,7 @@ public class MouseControl : MonoSingleton<MouseControl>
 
     void Update()
     {
-        // Alt ¼üÇĞ»»£¨ÁÙÊ±½âËø£©
+        // Alt é”®åˆ‡æ¢ï¼ˆä¸´æ—¶è§£é”ï¼‰
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
             EnterUIMode();
         if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
@@ -24,26 +26,27 @@ public class MouseControl : MonoSingleton<MouseControl>
         uiMode = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        justSwitched = true; // è¿›å…¥UIæ¨¡å¼æ—¶æ ‡è®°
     }
 
     public void ExitUIMode()
     {
-        // Èç¹ûÓĞ UI Ãæ°åÃ»¹Ø£¬²»ÄÜÍË³ö UI Ä£Ê½
-        if (uiPanelCount > 0) return;
-
         uiMode = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        justSwitched = true; // é€€å‡ºUIæ¨¡å¼æ—¶æ ‡è®°
     }
 
-    // UI ´ò¿ªÊ±µ÷ÓÃ
+    public bool IsInUIMode() => uiMode;
+
+    // UI æ‰“å¼€æ—¶è°ƒç”¨
     public void OnUIOpen()
     {
         uiPanelCount++;
         EnterUIMode();
     }
 
-    // UI ¹Ø±ÕÊ±µ÷ÓÃ
+    // UI å…³é—­æ—¶è°ƒç”¨
     public void OnUIClose()
     {
         uiPanelCount = Mathf.Max(0, uiPanelCount - 1);
@@ -51,10 +54,5 @@ public class MouseControl : MonoSingleton<MouseControl>
         {
             ExitUIMode();
         }
-    }
-
-    public bool IsInUIMode()
-    {
-        return uiMode;
     }
 }

@@ -131,7 +131,7 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
     {
         if (this.currentRide == rideId) return;
         this.currentRide = rideId;
-        if (currentRide > 0)
+        if (rideId > 0)
         {
             //上马
             this.rideController = GameObjectManager.Instance.LoadRide(rideId, this.transform);

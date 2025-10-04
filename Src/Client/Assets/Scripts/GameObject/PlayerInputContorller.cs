@@ -152,17 +152,35 @@ public class PlayerInputContorller : MonoBehaviour {
     {
         if (character == null || this.entityContorller == null) return;
 
-        // 🚨 如果在UI模式，直接跳过角色输入
-        if (MouseControl.Instance != null && MouseControl.Instance.IsInUIMode())
-            return;
+        bool inUI = MouseControl.Instance != null && MouseControl.Instance.IsInUIMode();
 
         if (autoVav)
         {
-            MoveNav();
+            if (!inUI)   // 🚀 UI 模式下不允许自动寻路
+                MoveNav();
             return;
         }
 
+        // ✅ 重力始终要计算
         CaculateGravity();
+
+        if (inUI)
+        {
+            // 🚨 在UI模式：禁用输入，但保留重力
+            Vector3 gravityMove = new Vector3(0, verticalVelocity, 0);
+            controller.Move(gravityMove * Time.deltaTime);
+
+            // 动画保持Idle
+            if (EntityEventstate != EntityEvent.Idle)
+            {
+                EntityEventstate = EntityEvent.Idle;
+                character.Stop();
+                SendEntityEvent(EntityEvent.Idle);
+            }
+
+            return;
+        }
+
         if (InputManager.Instance != null && InputManager.Instance.IsInputMode) return;
 
         float v = Input.GetAxis("Vertical");

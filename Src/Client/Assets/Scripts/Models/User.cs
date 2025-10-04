@@ -44,7 +44,7 @@ namespace Models
             if (CurrrentRide != id)
             {
                 CurrrentRide = id;
-                CurrentCharacterObject.SendEntityEvent(EntityEvent.Ride, id);
+                CurrentCharacterObject.SendEntityEvent(EntityEvent.Ride, CurrrentRide);
             }
             else
             {

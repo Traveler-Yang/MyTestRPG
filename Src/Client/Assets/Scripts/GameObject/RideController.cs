@@ -12,7 +12,7 @@ public class RideController : MonoBehaviour
 
     void Start()
     {
-        //this.anim = GetComponent<Animator>();
+        this.anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
