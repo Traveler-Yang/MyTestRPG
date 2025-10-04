@@ -4,21 +4,48 @@ public class MouseControl : MonoSingleton<MouseControl>
 {
     private bool uiMode = false;
     private int uiPanelCount = 0; // 当前打开的UI数量
-
-    public bool justSwitched = false; // 🚨 新增标志位
+    private bool altHeld = false; // 是否按住了 Alt
+    public bool justSwitched = false;
 
     protected override void OnStart()
     {
-        this.ExitUIMode();
+        ExitUIMode();
     }
 
     void Update()
     {
         // Alt 键切换（临时解锁）
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
-            EnterUIMode();
+        {
+            altHeld = true;
+            UpdateCursorState();
+        }
         if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
-            ExitUIMode();
+        {
+            altHeld = false;
+            UpdateCursorState();
+        }
+    }
+
+    private void UpdateCursorState()
+    {
+        bool shouldBeInUI = uiPanelCount > 0 || altHeld;
+        if (shouldBeInUI != uiMode)
+        {
+            uiMode = shouldBeInUI;
+            justSwitched = true;
+
+            if (uiMode)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 
     public void EnterUIMode()
@@ -43,16 +70,13 @@ public class MouseControl : MonoSingleton<MouseControl>
     public void OnUIOpen()
     {
         uiPanelCount++;
-        EnterUIMode();
+        UpdateCursorState();
     }
 
     // UI 关闭时调用
     public void OnUIClose()
     {
         uiPanelCount = Mathf.Max(0, uiPanelCount - 1);
-        if (uiPanelCount == 0)
-        {
-            ExitUIMode();
-        }
+        UpdateCursorState();
     }
 }
