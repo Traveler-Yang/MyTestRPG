@@ -118,6 +118,9 @@ public class EntityContorller : MonoBehaviour, IEntityNotify{
                 anim.SetFloat("Horizontal Speed", -1, 0, Time.deltaTime);
                 anim.SetFloat("Vertical Speed", 0, 0, Time.deltaTime);
                 break;
+            case EntityEvent.Ride:
+                this.Ride(param);
+                break;
         }
         if (this.rideController != null) this.rideController.OnEntityEvent(entityEvent, param);
     }
