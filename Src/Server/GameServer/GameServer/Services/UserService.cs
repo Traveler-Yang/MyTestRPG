@@ -47,7 +47,7 @@ namespace GameServer.Services
             if (user != null)
             {
                 sender.Session.Response.userRegister.Result = Result.Failed;
-                sender.Session.Response.userRegister.Errormsg = "用户已存在.";
+                sender.Session.Response.userRegister.Errormsg = "用户已存在！";
             }
             else
             {
@@ -55,7 +55,7 @@ namespace GameServer.Services
                 DBService.Instance.Entities.Users.Add(new TUser() { Username = request.User, Password = request.Passward, Player = player });
                 DBService.Instance.Entities.SaveChanges();
                 sender.Session.Response.userRegister.Result = Result.Success;
-                sender.Session.Response.userRegister.Errormsg = "None";
+                sender.Session.Response.userRegister.Errormsg = "注册成功！";
             }
             sender.SendResPonse();
         }

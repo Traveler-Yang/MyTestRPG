@@ -23,7 +23,7 @@ public class UIRegisters : MonoBehaviour {
 
     public void OnRegister(Result result, string msg)
     {
-        MessageBox.Show(string.Format("结果:{0} msg:{1}", result, msg));
+        MessageBox.Show(string.Format("{0} {1}", result, msg));
     }
 
     public void OnRegistersClickButton()
