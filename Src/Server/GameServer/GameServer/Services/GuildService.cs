@@ -134,13 +134,26 @@ namespace GameServer.Services
             Log.InfoFormat("GuildService OnGuildJoinResponse: Guild:[{0}] : Character :[{1}] {2}", response.Apply.GuildId, response.Apply.characterId, response.Apply.characterName);
 
             var guild = GuildManager.Instance.GetGuild(response.Apply.GuildId);
-            if (response.Result == Result.Success)
+
+            var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
+            if (response.Apply.Result == ApplyResult.Accept)
             {
                 //同意申请
                 guild.JoinAppove(response.Apply);
             }
+            else if (response.Apply.Result == ApplyResult.Reject)
+            {
+                requester.Session.Response.guildJoinRes = response;
+                requester.Session.Response.guildJoinRes.Result = Result.Failed;
+                requester.Session.Response.guildJoinRes.Errormsg = "对方拒绝了你的请求";
+                requester.SendResPonse();
+                return;
+            }
+            else
+            {
+                return;
+            }
 
-            var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
             if (requester != null)//申请的人是否还在线，在线的话，发送给他
             {
                 //把他加到公会里面
@@ -148,7 +161,7 @@ namespace GameServer.Services
 
                 requester.Session.Response.guildJoinRes = response;
                 requester.Session.Response.guildJoinRes.Result = Result.Success;
-                requester.Session.Response.guildJoinRes.Errormsg = "加入公会成功";
+                requester.Session.Response.guildJoinRes.Errormsg = "对方同意了你的请求";
                 requester.SendResPonse();
             }
         }

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NpcController : MonoBehaviour
 {
@@ -137,6 +138,10 @@ public class NpcController : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // ?? 首先检测：当前是否点击在UI上
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return; // 如果点在UI上，直接返回，不触发NPC交互
+
         var player = User.Instance.CurrentCharacterObject;
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
 

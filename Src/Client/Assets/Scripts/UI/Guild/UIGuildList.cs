@@ -23,9 +23,15 @@ public class UIGuildList : UIWindow
         GuildService.Instance.SendGuildListRequest();//发送列表请求
     }
 
-    private void OnDisable()
+    void OnEnable()
+    {
+        MouseControl.Instance.OnUIOpen();
+    }
+
+    void OnDisable()
     {
         GuildService.Instance.OnGuildListResult -= UpdateGuildList;
+        MouseControl.Instance.OnUIClose();
     }
 
     private void UpdateGuildList(List<NGuildInfo> guilds)

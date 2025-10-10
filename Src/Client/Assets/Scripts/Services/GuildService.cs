@@ -148,10 +148,10 @@ namespace Services
             Debug.LogFormat("OnGuildJoinResponse: {0}", response.Result);
             if (response.Result == Result.Success)
             {
-                MessageBox.Show("加入公会成功", "公会");
+                MessageBox.Show(response.Errormsg, "公会", MessageBoxType.Information);
             }
             else
-                MessageBox.Show("加入公会失败", "公会", MessageBoxType.Error);
+                MessageBox.Show(response.Errormsg, "公会", MessageBoxType.Error);
         }
         /// <summary>
         /// 接收后处理更新

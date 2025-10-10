@@ -43,7 +43,7 @@ public class UIFriends : UIWindow
 
     public void OnClickFriendAdd()
     {
-        InputBox.Show("请输入要添加的好友的名称或ID", "添加好友").OnSubmit += OnFriendAddSubmit;
+        InputBox.Show("请输入要添加好友的ID", "添加好友").OnSubmit += OnFriendAddSubmit;
     }
 
     /// <summary>
