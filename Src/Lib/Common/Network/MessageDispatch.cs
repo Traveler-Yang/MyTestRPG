@@ -25,6 +25,7 @@ namespace Network
             if (message.friendList != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendList); }
             if (message.friendRemoveRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendRemoveRes); }
             if (message.friendRemoveNotify != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.friendRemoveNotify); }
+            if (message.tempInviteReq != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteReq); }
             if (message.tempInviteRes != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInviteRes); }
             if (message.tempInfo != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.tempInfo); }
             if (message.TempLeave != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.TempLeave); }
