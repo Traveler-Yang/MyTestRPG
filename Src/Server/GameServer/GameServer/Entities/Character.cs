@@ -142,8 +142,7 @@ namespace GameServer.Entities
         /// </summary>
         public void Clear()
         {
-            //离开时将自己的好友状态改变
-            this.FriendManager.OfflineNotify();
+            this.FriendManager.OffLineNotify();
         }
 
         public NCharacterInfo GetBasicInfo()

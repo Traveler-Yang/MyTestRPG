@@ -1,51 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 using SkillBridge.Message;
-using Assets.Scripts.UI.Temp;
 
 public class UIFriendItem : ListView.ListViewItem
 {
-    public Image icon;//头像图标
-    public Text nickName;//昵称
+    public Image icon;//头像
+    public TextMeshProUGUI name;//名字
+    public TextMeshProUGUI level;//等级
     public TextMeshProUGUI @class;//职业
-    public TextMeshProUGUI Level;//等级
-    public Text status;//状态
+    public TextMeshProUGUI status;//状态
 
-    public Image backGround;//背景
-    public Sprite normalBg;//正常背景
-    public Sprite selectBg;//选中背景
+    public Image backGround;//商品的背景图
+    public Sprite normalBg;//正常状态的背景图
+    public Sprite selectBg;//选中状态的背景图
+
+    public NFriendInfo info;
+
     public override void onSelected(bool selected)
     {
         this.backGround.overrideSprite = selected ? selectBg : normalBg;
     }
 
-    public NFriendInfo info;
-    void Start()
+    public void SetFriendInfo(NFriendInfo info)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /// <summary>
-    /// 设置好友项信息
-    /// </summary>
-    /// <param name="item"></param>
-    public void SetFriendInfo(NFriendInfo item)
-    {
-        this.info = item;
-        if (this.nickName != null) this.nickName.text = this.info.friendInfo.Name;
-        if (this.icon != null) this.icon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.info.friendInfo.Class - 1];
+        this.info = info;
+        if (this.name != null) this.name.text = this.info.Info.Name;
+        if (this.level != null) this.level.text = this.info.Info.Level.ToString();
         if (this.@class != null)
         {
-            switch (this.info.friendInfo.Class)
+            switch (this.info.Info.Class)
             {
                 case CharacterClass.Warrior:
                     this.@class.text = "战士";
@@ -56,11 +42,8 @@ public class UIFriendItem : ListView.ListViewItem
                 case CharacterClass.Archer:
                     this.@class.text = "弓箭手";
                     break;
-                default:
-                    break;
             }
         }
-        if (this.Level != null) this.Level.text = string.Format("Lv: {0}", this.info.friendInfo.Level);
-        if (this.status != null) this.status.text = this.info.Status == true ? "在线" : "离线";
+        if (this.status != null) this.status.text = this.info.Status ? "在线" : "离线";
     }
 }

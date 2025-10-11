@@ -1,22 +1,14 @@
-﻿using SkillBridge.Message;
-using System;
+using SkillBridge.Message;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Managers
+public class FriendManager : Singleton<FriendManager>
 {
-    class FriendManager : Singleton<FriendManager>
-    {
-        /// <summary>
-        /// 所有好友
-        /// </summary>
-        public List<NFriendInfo> allFriends;
+    public List<NFriendInfo> allFriend;
 
-        public void Init(List<NFriendInfo> friends)
-        {
-            this.allFriends = friends;
-        }
+    public void Init(List<NFriendInfo> friends)
+    {
+        this.allFriend = friends;
     }
 }

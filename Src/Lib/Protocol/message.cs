@@ -291,7 +291,7 @@ namespace SkillBridge.Message
         public FriendListRequest friendList { get; set; }
 
         [global::ProtoBuf.ProtoMember(18)]
-        public FriendRemoveRequest friendRemove { get; set; }
+        public FriendRemoveRequest friendRemoveReq { get; set; }
 
         [global::ProtoBuf.ProtoMember(19)]
         public TempInviteRequest tempInviteReq { get; set; }
@@ -393,7 +393,7 @@ namespace SkillBridge.Message
         public FriendListResponse friendList { get; set; }
 
         [global::ProtoBuf.ProtoMember(18)]
-        public FriendRemoveResponse friendRemove { get; set; }
+        public FriendRemoveResponse friendRemoveRes { get; set; }
 
         [global::ProtoBuf.ProtoMember(19)]
         public TempInviteRequest tempInviteReq { get; set; }
@@ -439,6 +439,9 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }
+
+        [global::ProtoBuf.ProtoMember(101)]
+        public FriendRemoveNotify friendRemoveNotify { get; set; }
 
     }
 
@@ -938,8 +941,8 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"id")]
         public int Id { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2)]
-        public NCharacterInfo friendInfo { get; set; }
+        [global::ProtoBuf.ProtoMember(2, Name = @"info")]
+        public NCharacterInfo Info { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"status")]
         public bool Status { get; set; }
@@ -1004,15 +1007,15 @@ namespace SkillBridge.Message
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        [global::ProtoBuf.ProtoMember(1, Name = @"friends")]
+        public global::System.Collections.Generic.List<NFriendInfo> Friends { get; } = new global::System.Collections.Generic.List<NFriendInfo>();
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(3, Name = @"errormsg")]
         [global::System.ComponentModel.DefaultValue("")]
         public string Errormsg { get; set; } = "";
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"friends")]
-        public global::System.Collections.Generic.List<NFriendInfo> Friends { get; } = new global::System.Collections.Generic.List<NFriendInfo>();
 
     }
 
@@ -1026,9 +1029,6 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"id")]
         public int Id { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2)]
-        public int friendId { get; set; }
-
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -1038,15 +1038,34 @@ namespace SkillBridge.Message
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        [global::ProtoBuf.ProtoMember(1, Name = @"id")]
+        public int Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(3, Name = @"errormsg")]
         [global::System.ComponentModel.DefaultValue("")]
         public string Errormsg { get; set; } = "";
 
-        [global::ProtoBuf.ProtoMember(3, Name = @"id")]
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class FriendRemoveNotify : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id")]
         public int Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
 
     }
 

@@ -87,5 +87,22 @@ namespace Managers
             this.Characters.TryGetValue(id, out character);
             return character;
         }
+
+        /// <summary>
+        /// 根据name获得角色
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Character GetCharacterByName(string name)
+        {
+            foreach (var c in Characters)
+            {
+                if (name == c.Value.Name)
+                {
+                    return c.Value;
+                }
+            }
+            return null;
+        }
     }
 }

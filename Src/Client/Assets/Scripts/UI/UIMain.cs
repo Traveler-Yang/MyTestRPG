@@ -70,7 +70,7 @@ public class UIMain : MonoSingleton<UIMain>
 	public static void OnClickFriend()
 	{
         SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Btn_1);
-        UIManager.Instance.Show<UIFriends>();
+        UIManager.Instance.Show<UIFriend>();
 	}
 
 	/// <summary>
